@@ -12,4 +12,5 @@ Under the following terms:
 
 No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
-License Link: https://creativecommons.org/licenses/by-nc-nd/4.0/
+License Link:\
+[![Creative Commons BY-NC-ND](https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
