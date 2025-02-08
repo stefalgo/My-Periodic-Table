@@ -176,6 +176,7 @@ button:hover {
 .linkText {
 	color: #5898bf;
 	cursor: pointer;
+	text-decoration: underline;
 	transition: 0.5s;
 }
 .linkText:hover {
