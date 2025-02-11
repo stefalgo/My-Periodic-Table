@@ -217,7 +217,7 @@ function openLink(rowId) {
 
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
-	var link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name + "?darkmode=1";
+	var link = "https://el.m.wikipedia.org/wiki/" + elementData[rowId].name;
 	
 	document.querySelector('#sitePopup iframe').src = link;
 	
