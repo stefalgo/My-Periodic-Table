@@ -186,10 +186,10 @@ function showElementData(target) {
 	const targetClasses = Array.from(target.classList);
 
 	function update(onElement) {
-		const atomic = closeUp.querySelector('b');
-		const symbol = closeUp.querySelector('abbr');
-		const name = closeUp.querySelector('em');
-		const mass = closeUp.querySelector('data');
+		const atomic = closeUp.querySelector('.closeUp-atomic');
+		const symbol = closeUp.querySelector('.closeUp-shortName');
+		const name = closeUp.querySelector('.closeUp-name');
+		const mass = closeUp.querySelector('.closeUp-mass');
 					
 		atomic.textContent = elementAtomicNumber;
 		energyLevel(elementAtomicNumber);
