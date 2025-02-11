@@ -216,7 +216,6 @@ function openLink(rowId) {
 }
 
 function openLinkInIframe(rowId) {
-	console.log("test");
 	const sitePopup = document.getElementById('sitePopup');
 	var link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name + "?darkmode=1";
 	
@@ -224,6 +223,7 @@ function openLinkInIframe(rowId) {
 	
 	sitePopup.style.display = "block";
 	function closePopup(event) {
+		document.querySelector('#sitePopup iframe').src = '';
 		sitePopup.style.display = "none";
 		document.querySelector('#sitePopup .close').removeEventListener('click', closePopup);
 		//document.querySelector('#sitePopup').removeEventListener('click', closePopup);
