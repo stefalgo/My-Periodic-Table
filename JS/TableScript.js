@@ -219,16 +219,16 @@ function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
 	var link = "https://el.m.wikipedia.org/wiki/" + elementData[rowId].name;
 	
-	document.querySelector('#sitePopup iframe').src = link;
+	sitePopup.querySelector('iframe').src = link;
 	
 	sitePopup.style.display = "block";
 	function closePopup(event) {
-		document.querySelector('#sitePopup iframe').src = '';
+		sitePopup.querySelector('iframe').src = '';
 		sitePopup.style.display = "none";
-		document.querySelector('#sitePopup .close').removeEventListener('click', closePopup);
+		sitePopup.querySelector('.close').removeEventListener('click', closePopup);
 		//document.querySelector('#sitePopup').removeEventListener('click', closePopup);
 	}
-	document.querySelector('#sitePopup .close').addEventListener('click', closePopup);
+	sitePopup.querySelector('.close').addEventListener('click', closePopup);
 	//document.querySelector('#sitePopup').addEventListener('click', closePopup);
 }
 
@@ -280,13 +280,13 @@ function infoElement() {
 		}
 		const closeUp2 = copyCloseUp()
 					
-		const name = document.querySelector('#infoPopup .popup-name');
-		const atomic = document.querySelector('#infoPopup .popup-atomic');
-		const energyLevels = document.querySelector('#infoPopup .popup-energyLevels');
-		const discovered = document.querySelector('#infoPopup .popup-discovered');
-		const block = document.querySelector('#infoPopup .popup-block');
-		const elementClass = document.querySelector('#infoPopup .popup-class');
-		const wikipediaLink = document.querySelector('#infoPopup .popup-wikipediaLink');
+		const name = infoPopup.querySelector('.popup-name');
+		const atomic = infoPopup.querySelector('.popup-atomic');
+		const energyLevels = infoPopup.querySelector('.popup-energyLevels');
+		const discovered = infoPopup.querySelector('.popup-discovered');
+		const block = infoPopup.querySelector('.popup-block');
+		const elementClass = infoPopup.querySelector('.popup-class');
+		const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
 					
 		name.innerHTML = elementData[element].name;
 		atomic.innerHTML = element;
@@ -308,13 +308,13 @@ function infoElement() {
 			infoPopup.style.display = "none";
 			wikipediaLink.removeEventListener('click', wikipediaLinkOpen);
 			closeUp2.removeEventListener('click', wikipediaIframeOpen);
-			document.querySelector('#infoPopup .close').removeEventListener('click', closePopup);
+			infoPopup.querySelector('.close').removeEventListener('click', closePopup);
 			//document.querySelector('#infoPopup').removeEventListener('click', closePopup);
 		}
 					
 		wikipediaLink.addEventListener('click', wikipediaLinkOpen);
 		closeUp2.addEventListener('click', wikipediaIframeOpen);
-		document.querySelector('#infoPopup .close').addEventListener('click', closePopup);
+		infoPopup.querySelector('.close').addEventListener('click', closePopup);
 		//document.querySelector('#infoPopup').addEventListener('click', closePopup);
 	}
 				
