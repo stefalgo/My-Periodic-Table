@@ -217,8 +217,8 @@ function openLink(rowId) {
 
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
-	var link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf";
-	//var link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + ""
+	//var link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf";
+	var link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + ""
 	//var link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
 	
 	sitePopup.querySelector('iframe').src = link;
