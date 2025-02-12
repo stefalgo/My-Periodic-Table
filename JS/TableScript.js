@@ -287,8 +287,10 @@ function infoElement() {
 		const block = infoPopup.querySelector('.popup-block');
 		const elementClass = infoPopup.querySelector('.popup-class');
 		const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
+		const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
 
 		var link = "https://el.wikipedia.org/wiki/" + elementData[element].name;
+		var pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].name;
 		
 		name.innerHTML = elementData[element].name;
 		atomic.innerHTML = element;
@@ -308,6 +310,8 @@ function infoElement() {
 					
 		function closePopup(event) {
 			infoPopup.style.display = "none";
+			wikipediaLink.href = "";
+			downloadPDF.href = "";
 			//wikipediaLink.removeEventListener('click', wikipediaLinkOpen);
 			closeUp2.removeEventListener('click', wikipediaIframeOpen);
 			infoPopup.querySelector('.close').removeEventListener('click', closePopup);
@@ -318,6 +322,7 @@ function infoElement() {
 		closeUp2.addEventListener('click', wikipediaIframeOpen);
 		infoPopup.querySelector('.close').addEventListener('click', closePopup);
 		wikipediaLink.href = link;
+		downloadPDF.href = pdf;
 		//document.querySelector('#infoPopup').addEventListener('click', closePopup);
 	}
 				
