@@ -290,6 +290,15 @@ button:hover {
 	width: 25%;
 	height: 55%;
 }
+#infoPopup .infoContainer hr {
+	margin: 10px 0;
+	border: none;
+	border-top: 1px solid #676666;
+}
+#infoPopup .infoContainer div {
+	display: flex;
+	justify-content: space-between;
+}
 #infoPopup .infoContainer .close {
 	color: gray;
 	float: right;
