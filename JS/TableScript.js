@@ -217,7 +217,8 @@ function openLink(rowId) {
 
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
-	var link = "https://el.m.wikipedia.org/wiki/" + elementData[rowId].name;
+	var link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + ""
+	//var link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
 	
 	sitePopup.querySelector('iframe').src = link;
 	
