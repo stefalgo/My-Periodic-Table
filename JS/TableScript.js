@@ -96,7 +96,7 @@ const elementData = {
 
 	'87':{'energyLevels': ['2','8','18','32','18','8','1'], 'block': 's', 'name': 'Φράγκιο', 'shortName': 'Fr', 'discovered': '1939 μ.Χ.'},
 	'88':{'energyLevels': ['2','8','18','32','18','8','2'], 'block': 's', 'name': 'Ράδιο', 'shortName': 'Ra', 'discovered': '1898 μ.Χ.'},
-	'89':{'energyLevels': ['2','8','18','32','18','9','2'], 'block': 'f', 'name': 'Ακτίνιο', 'shortName': 'Ac', 'discovered': '1899 μ.Χ.'},
+	'89':{'energyLevels': ['2','8','18','32','18','9','2'], 'block': 'f', 'name': 'Ακτίνιο', 'shortName': 'Ac', 'discovered': '1899 μ.Χ.', 'linkElementName': 'Ακτίνιο (στοιχείο)'},
 	'90':{'energyLevels': ['2','8','18','32','18','10','2'], 'block': 'f', 'name': 'Θόριο', 'shortName': 'Th', 'discovered': '1829 μ.Χ.'},
 	'91':{'energyLevels': ['2','8','18','32','20','9','2'], 'block': 'f', 'name': 'Πρωτακτίνιο', 'shortName': 'Pa', 'discovered': '1913 μ.Χ.'},
 	'92':{'energyLevels': ['2','8','18','32','21','9','2'], 'block': 'f', 'name': 'Ουράνιο', 'shortName': 'U', 'discovered': '1789 μ.Χ.'},
