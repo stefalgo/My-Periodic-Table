@@ -179,13 +179,13 @@ button:hover {
 	background-color: var(--buttonHoverColor);
 }
 /**-----------------------------------------------**/
-.linkText {
+.linkText, a {
 	color: #5898bf;
 	cursor: pointer;
 	text-decoration: underline;
 	transition: 0.5s;
 }
-.linkText:hover {
+.linkText:hover, a:hover {
 	color: #9d58bf;
 }
 /**-----------------------------------------------**/
