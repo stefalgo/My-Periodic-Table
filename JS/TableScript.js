@@ -287,7 +287,9 @@ function infoElement() {
 		const block = infoPopup.querySelector('.popup-block');
 		const elementClass = infoPopup.querySelector('.popup-class');
 		const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
-					
+
+		var link = "https://el.wikipedia.org/wiki/" + elementData[element].name;
+		
 		name.innerHTML = elementData[element].name;
 		atomic.innerHTML = element;
 					
@@ -306,15 +308,16 @@ function infoElement() {
 					
 		function closePopup(event) {
 			infoPopup.style.display = "none";
-			wikipediaLink.removeEventListener('click', wikipediaLinkOpen);
+			//wikipediaLink.removeEventListener('click', wikipediaLinkOpen);
 			closeUp2.removeEventListener('click', wikipediaIframeOpen);
 			infoPopup.querySelector('.close').removeEventListener('click', closePopup);
 			//document.querySelector('#infoPopup').removeEventListener('click', closePopup);
 		}
 					
-		wikipediaLink.addEventListener('click', wikipediaLinkOpen);
+		//wikipediaLink.addEventListener('click', wikipediaLinkOpen);
 		closeUp2.addEventListener('click', wikipediaIframeOpen);
 		infoPopup.querySelector('.close').addEventListener('click', closePopup);
+		wikipediaLink.href = link;
 		//document.querySelector('#infoPopup').addEventListener('click', closePopup);
 	}
 				
