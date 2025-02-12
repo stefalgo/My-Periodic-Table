@@ -218,8 +218,14 @@ function openLink(rowId) {
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
 	//var link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf";
-	var link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + ""
+	//var link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
 	//var link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
+	var link;
+	if (elementData[rowId].linkElementName) {
+		link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].linkElementName + "#view=Fit";
+	} else {
+		link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit";
+	}
 	
 	sitePopup.querySelector('iframe').src = link;
 	
