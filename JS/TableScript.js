@@ -149,25 +149,26 @@ function energyLevel(elementName) {
 
 function generateAtom(atomicNumber) {
 	const atomContainer = document.getElementById('atom');
+	const atomCore = atomContainer.querySelector('.atom');
 	const atom = elementData[atomicNumber];
 	if (!atom) {console.error('Atomic number not found in the data.'); return;}
 
-	atomContainer.innerHTML = '<div class="atom"></div>';
+	//atomContainer.innerHTML = '<div class="atom"></div>';
 
 	atom.energyLevels.forEach((numElectrons, index) => {
 		const energyLevelDiv = document.createElement('div');
 		const radius = (index + 2) * 9;
 		const animationSpeed = radius / 2
-		const xPos = '50%';
-		const yPos = '50%';
+		//const xPos = '50%';
+		//const yPos = '50%';
 
 		energyLevelDiv.classList.add('energy-level');
 		energyLevelDiv.style.width = radius * 2 + 'px';
 		energyLevelDiv.style.height = radius * 2 + 'px';
-		energyLevelDiv.style.top = yPos;
-		energyLevelDiv.style.left = xPos;
+		//energyLevelDiv.style.top = yPos;
+		//energyLevelDiv.style.left = xPos;
 		energyLevelDiv.style.animation = `spin ${animationSpeed}s linear infinite`;
-		atomContainer.appendChild(energyLevelDiv);
+		atomCore.appendChild(energyLevelDiv);
 
 		for (let i = 0; i < numElectrons; i++) {
 			const angle = (360 / numElectrons) * i - 90;
