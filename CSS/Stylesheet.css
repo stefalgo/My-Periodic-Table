@@ -234,7 +234,7 @@ button:hover {
 /**-----------------------------------------------**/
 #atom {
 	/*position: relative;*/
-	transform: translate(0%, 650%);
+	/*transform: translate(0%, 650%);*/
 }
 #atom .atom {
 	position: relative;
@@ -244,12 +244,14 @@ button:hover {
 	left: 50%;
 	border-radius: 50%;
 	background-color: #888;
-	transform: translate(-50%, 0%);
+	transform: translate(-50%, 50%);
 }
 #atom .energy-level {
 	position: absolute;
 	border: 1px solid #77868b;
 	border-radius: 50%;
+	top: 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
 }
 #atom .electron {
