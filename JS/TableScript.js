@@ -154,11 +154,12 @@ function generateAtom(atomicNumber) {
 	if (!atom) {console.error('Atomic number not found in the data.'); return;}
 
 	//atomContainer.innerHTML = '<div class="atom"></div>';
+	atomCore.innerHTML = '';
 
 	atom.energyLevels.forEach((numElectrons, index) => {
 		const energyLevelDiv = document.createElement('div');
 		const radius = (index + 2) * 9;
-		const animationSpeed = radius / 2
+		const animationSpeed = radius / 2;
 		//const xPos = '50%';
 		//const yPos = '50%';
 
