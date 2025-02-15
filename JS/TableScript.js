@@ -4,10 +4,10 @@ var elementAtomicNumber;
 
 const elementData = [];
 
-fetch("../JsonData/Elements.json")
+fetch("https://raw.githubusercontent.com/stefalgo/My-Periodic-Table/main/JsonData/Elements.json")
   .then(response => response.json())
   .then(jsonData => {
-    Object.assign(elementData, jsonData);
+	Object.assign(elementData, jsonData);
 	console.log("JSON loaded successfully:");
 	generateAtom('1');
   })
