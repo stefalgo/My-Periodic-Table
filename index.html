@@ -11,11 +11,11 @@
 		<!--<h1>The Periodic Table Of Elements</h1>-->
 		<h1 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h1>
 
-		<button onclick="showBlocks()">Προβολή τομέων</button>
+		<button onclick="showBlocks()">Προβολή τομέων</button><!--Toggle blocks vew-->
 
 		<div style="display: flex; align-items: center;">
-			<li class="empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;"> <b>Ατομικός</b> <abbr>Σύμβολο</abbr> <em>Όνομα</em> <data>Βάρος</data></li>
-			<li class="nonmetal" id="CloseUp" style=" width: 80px; height: 80px; display: flex; flex-direction: row; justify-content: space-between;">
+			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;"> <b>Ατομικός</b> <abbr>Σύμβολο</abbr> <em>Όνομα</em> <data>Βάρος</data></div>
+			<div class="elementStyle nonmetal" id="CloseUp" style=" width: 80px; height: 80px; display: flex; flex-direction: row; justify-content: space-between;">
 			<output style="display: flex; flex-direction: column; justify-content: space-between; line-height: 1;">
 				<b class="closeUp-atomic" style=" font-size: 1em;">1</b> 
 				<abbr class="closeUp-shortName" style=" font-size: 1.8em;">H</abbr> 
@@ -25,10 +25,10 @@
 			<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
 				<span>1</span>
 			</small>
-			</li>
-			<li class="empty" style="width: 80px; height: 80px; display: flex;"> <b>Ηλεκτρονική δομή</b></li>
+			</div>
+			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex;"> <b>Ηλεκτρονική δομή</b></div>
 		</div>
-
+		
 		<div id="sitePopup">
 			<div class="infoContainer">
 				<span class="close">X</span>
@@ -46,288 +46,245 @@
 				</div>
 				<hr>
 				<div>
-					<h3>Όνομα</h3>
+					<h3>Ονομα:</h3>
 					<h3 class="popup-name"></h3>
 				</div>
 				<hr>
 				<div>
-					<h3>Ατομικός</h3>
+					<h3>Ατομικός:</h3>
 					<h3 class="popup-atomic"></h3>
 				</div>
 				<hr>
 				<div>
-					<h3>Ηλεκτρονική δομή</h3>
+					<h3>Ηλεκτρονική δομή:</h3>
 					<h3 class="popup-energyLevels"></h3>
 				</div>
 				<hr>
 				<div>
-					<h3>Ταξινόμηση</h3>
+					<h3>Ταξινόμηση:</h3>
 					<h3 class="popup-class"></h3>
 				</div>
 				<hr>
 				<div>
-					<h3>Тομέας</h3>
+					<h3>Тομέας:</h3>
 					<h3 class="popup-block"></h3>
 				</div>
 				<hr>
 				<div>
-					<h3>Ανακαλύφθηκε</h3>
+					<h3>Ανακαλύφθηκε:</h3>
 					<h3 class="popup-discovered"></h3>
 				</div>
 				<hr>
 			</div>
 		</div>
-		
+
 		<div class="periodicTable">
+
+			<!--<div id="atom"> <div class="atom"></div> </div>-->
+			
 			<table id="elements">
 				<tr class="groups">
-					<td class="empty">-</td>
-					<td class="empty">1</td>
-					<td class="empty">2</td>
-					<td class="empty">3</td>
-					<td class="empty">4</td>
-					<td class="empty">5</td>
-					<td class="empty">6</td>
-					<td class="empty">7</td>
-					<td class="empty">8</td>
-					<td class="empty">9</td>
-					<td class="empty">10</td>
-					<td class="empty">11</td>
-					<td class="empty">12</td>
-					<td class="empty">13</td>
-					<td class="empty">14</td>
-					<td class="empty">15</td>
-					<td class="empty">16</td>
-					<td class="empty">17</td>
-					<td class="empty">18</td>
+					<td class="period">-</td>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>7</td>
+					<td>8</td>
+					<td>9</td>
+					<td>10</td>
+					<td>11</td>
+					<td>12</td>
+					<td>13</td>
+					<td>14</td>
+					<td>15</td>
+					<td>16</td>
+					<td>17</td>
+					<td>18</td>
 				</tr>
 				<tr>
-					<td class="periods">1</td>
-					<td><li class="nonmetal s" data-atomic="1"> <b>1</b> <abbr>H</abbr> <em>Υδρογόνο</em> <data>1,008</data></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="noble s" data-atomic="2"> <b>2</b> <abbr>He</abbr> <em>Ήλιο</em> <data>4,0026</data></li></td>
-				</tr>
-				<tr>
-					<td class="periods">2</td>
-					<td><li class="alkali s" data-atomic="3"> <b>3</b> <abbr>Li</abbr> <em>Λίθιο</em> <data>6,94</data></li></td>
-					<td><li class="alkaline s" data-atomic="4"> <b>4</b> <abbr>Be</abbr> <em>Βηρύλλιο</em> <data>9,0122</data></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td>
-						<li class="empty">
-							<div id="atom">
-								<div class="atom"></div>
-							</div>
-						</li>
+					<td class="period">1</td>
+					<td><div class="element nonmetal s" data-atomic="1"> <b>1</b> <abbr>H</abbr> <em>Υδρογόνο</em> <data>1,008</data> </div></td>
+					<td colspan="2"></td>
+					<td colspan="4" rowspan="2">
+						<div class="elementsClassVew">
+							<div class="alkali highlightElement hoverEffect"><span>Αλκαλι</span></div>
+							<div class="alkaline highlightElement hoverEffect"><span>Αλκαλικές</span></div>
+							<div class="lanthanoid highlightElement hoverEffect"><span>Λανθανίδες</span></div>
+							<div class="actinoid highlightElement hoverEffect"><span>Ακτινίδες</span></div>
+							<div class="transition highlightElement hoverEffect"><span>μετάπτωσης</span></div>
+							<div class="poor highlightElement hoverEffect"><span>Φτωχά</span></div>
+							<div class="metalloid highlightElement hoverEffect"><span>Μεταλλοειδή</span></div>
+							<div class="nonmetal highlightElement hoverEffect"><span>Αμέταλλα</span></div>
+							<div class="noble highlightElement hoverEffect"><span>Ευγενή</span></div>
+							<div class="unknown highlightElement hoverEffect"><span>Άγνωστα</span></div>
+						</div>
 					</td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="metalloid p" data-atomic="5"> <b>5</b> <abbr>B</abbr> <em>Βόριο</em> <data>10,81</data></li></td>
-					<td><li class="nonmetal p" data-atomic="6"> <b>6</b> <abbr>C</abbr> <em>Άνθρακας</em> <data>12,011</data></li></td>
-					<td><li class="nonmetal p" data-atomic="7"> <b>7</b> <abbr>N</abbr> <em>Άζωτο</em> <data>14,007</data></li></td>
-					<td><li class="nonmetal p" data-atomic="8"> <b>8</b> <abbr>O</abbr> <em>Οξυγόνο</em> <data>15,999</data></li></td>
-					<td><li class="nonmetal p" data-atomic="9"> <b>9</b> <abbr>F</abbr> <em>Φθόριο</em> <data>18,998</data></li></td>
-					<td><li class="noble p" data-atomic="10"> <b>10</b> <abbr>Ne</abbr> <em>Νέον</em> <data>20,180</data></li></td>
+					<td colspan="10"></td>
+					<td><div class="element noble s" data-atomic="2"> <b>2</b> <abbr>He</abbr> <em>Ήλιο</em> <data>4,0026</data> </div></td>
 				</tr>
 				<tr>
-					<td class="periods">3</td>
-					<td><li class="alkali s" data-atomic="11"> <b>11</b> <abbr>Na</abbr> <em>Νάτριο</em> <data>22,990</data></li></td>
-					<td><li class="alkaline s" data-atomic="12"> <b>12</b> <abbr>Mg</abbr> <em>Μαγνήσιο</em> <data>24,305</data></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="poor p" data-atomic="13"> <b>13</b> <abbr>Al</abbr> <em>Αργίλιο</em> <data>26,982</data></li></td>
-					<td><li class="metalloid p" data-atomic="14"> <b>14</b> <abbr>Si</abbr> <em>Πυρίτιο</em> <data>28,085</data></li></td>
-					<td><li class="nonmetal p" data-atomic="15"> <b>15</b> <abbr>P</abbr> <em>Φωσφόρος</em> <data>30,974</data></li></td>
-					<td><li class="nonmetal p" data-atomic="16"> <b>16</b> <abbr>S</abbr> <em>Θείο</em> <data>32,06</data></li></td>
-					<td><li class="nonmetal p" data-atomic="17"> <b>17</b> <abbr>Cl</abbr> <em>Χλώριο</em> <data>35,45</data></li></td>
-					<td><li class="noble p" data-atomic="18"> <b>18</b> <abbr>Ar</abbr> <em>Αργό</em> <data>39,948</data></li></td>
+					<td class="period">2</td>
+					<td><div class="element alkali s" data-atomic="3"> <b>3</b> <abbr>Li</abbr> <em>Λίθιο</em> <data>6,94</data> </div></td>
+					<td><div class="element alkaline s" data-atomic="4"> <b>4</b> <abbr>Be</abbr> <em>Βηρύλλιο</em> <data>9,0122</data> </div></td>
+					<td></td>
+					<td></td>
+					<td class="empty"><div id="atom"> <div class="atom"></div></div></td>
+					<td colspan="3"></td>
+					<td><div class="element metalloid p" data-atomic="5"> <b>5</b> <abbr>B</abbr> <em>Βόριο</em> <data>10,81</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="6"> <b>6</b> <abbr>C</abbr> <em>Άνθρακας</em> <data>12,011</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="7"> <b>7</b> <abbr>N</abbr> <em>Άζωτο</em> <data>14,007</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="8"> <b>8</b> <abbr>O</abbr> <em>Οξυγόνο</em> <data>15,999</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="9"> <b>9</b> <abbr>F</abbr> <em>Φθόριο</em> <data>18,998</data> </div></td>
+					<td><div class="element noble p" data-atomic="10"> <b>10</b> <abbr>Ne</abbr> <em>Νέον</em> <data>20,180</data> </div></td>
 				</tr>
 				<tr>
-					<td class="periods">4</td>
-					<td><li class="alkali s" data-atomic="19"> <b>19</b> <abbr>K</abbr> <em>Κάλιο</em> <data>39,098</data></li></td>
-					<td><li class="alkaline s" data-atomic="20"> <b>20</b> <abbr>Ca</abbr> <em>Ασβέστιο</em> <data>40,078</data></li></td>
-					<td><li class="transition d" data-atomic="21"> <b>21</b> <abbr>Sc</abbr> <em>Σκάνδιο</em> <data>44,956</data></li></td>
-					<td><li class="transition d" data-atomic="22"> <b>22</b> <abbr>Ti</abbr> <em>Τιτάνιο</em> <data>47,867</data></li></td>
-					<td><li class="transition d" data-atomic="23"> <b>23</b> <abbr>V</abbr> <em>Βανάδιο</em> <data>50,942</data></li></td>
-					<td><li class="transition d" data-atomic="24"> <b>24</b> <abbr>Cr</abbr> <em>Χρώμιο</em> <data>51,996</data></li></td>
-					<td><li class="transition d" data-atomic="25"> <b>25</b> <abbr>Mn</abbr> <em>Μαγγάνιο</em> <data>54,938</data></li></td>
-					<td><li class="transition d" data-atomic="26"> <b>26</b> <abbr>Fe</abbr> <em>Σίδηρος</em> <data>55,845</data></li></td>
-					<td><li class="transition d" data-atomic="27"> <b>27</b> <abbr>Co</abbr> <em>Κοβάλτιο</em> <data>58,933</data></li></td>
-					<td><li class="transition d" data-atomic="28"> <b>28</b> <abbr>Ni</abbr> <em>Νικέλιο</em> <data>58,693</data></li></td>
-					<td><li class="transition d" data-atomic="29"> <b>29</b> <abbr>Cu</abbr> <em>Χαλκός</em> <data>63,546</data></li></td>
-					<td><li class="transition d" data-atomic="30"> <b>30</b> <abbr>Zn</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-6.55738%) scaleX(0.868852);">Ψευδάργυρος</em> <data>65,38</data></li></td>
-					<td><li class="poor p" data-atomic="31"> <b>31</b> <abbr>Ga</abbr> <em>Γάλλιο</em> <data>69,723</data></li></td>
-					<td><li class="metalloid p" data-atomic="32"> <b>32</b> <abbr>Ge</abbr> <em>Γερμάνιο</em> <data>72,630</data></li></td>
-					<td><li class="metalloid p" data-atomic="33"> <b>33</b> <abbr>As</abbr> <em>Αρσενικό</em> <data>74,922</data></li></td>
-					<td><li class="nonmetal p" data-atomic="34"> <b>34</b> <abbr>Se</abbr> <em>Σελήνιο</em> <data>78,971</data></li></td>
-					<td><li class="nonmetal p" data-atomic="35"> <b>35</b> <abbr>Br</abbr> <em>Βρώμιο</em> <data>79,904</data></li></td>
-					<td><li class="noble p" data-atomic="36"> <b>36</b> <abbr>Kr</abbr> <em>Κρυπτό</em> <data>83,798</data></li></td>
+					<td class="period">3</td>
+					<td><div class="element alkali s" data-atomic="11"> <b>11</b> <abbr>Na</abbr> <em>Νάτριο</em> <data>22,990</data> </div></td>
+					<td><div class="element alkaline s" data-atomic="12"> <b>12</b> <abbr>Mg</abbr> <em>Μαγνήσιο</em> <data>24,305</data> </div></td>
+					<td colspan="10"></td>
+					<td><div class="element poor p" data-atomic="13"> <b>13</b> <abbr>Al</abbr> <em>Αργίλιο</em> <data>26,982</data> </div></td>
+					<td><div class="element metalloid p" data-atomic="14"> <b>14</b> <abbr>Si</abbr> <em>Πυρίτιο</em> <data>28,085</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="15"> <b>15</b> <abbr>P</abbr> <em>Φωσφόρος</em> <data>30,974</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="16"> <b>16</b> <abbr>S</abbr> <em>Θείο</em> <data>32,06</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="17"> <b>17</b> <abbr>Cl</abbr> <em>Χλώριο</em> <data>35,45</data> </div></td>
+					<td><div class="element noble p" data-atomic="18"> <b>18</b> <abbr>Ar</abbr> <em>Αργό</em> <data>39,948</data> </div></td>
 				</tr>
 				<tr>
-					<td class="periods">5</td>
-					<td><li class="alkali s" data-atomic="37"> <b>37</b> <abbr>Rb</abbr> <em>Ρουβίδιο</em> <data>85,468</data></li></td>
-					<td><li class="alkaline s" data-atomic="38"> <b>38</b> <abbr>Sr</abbr> <em>Στρόντιο</em> <data>87,62</data></li></td>
-					<td><li class="transition d" data-atomic="39"> <b>39</b> <abbr>Y</abbr> <em>Ύττριο</em> <data>88,906</data></li></td>
-					<td><li class="transition d" data-atomic="40"> <b>40</b> <abbr>Zr</abbr> <em>Ζιρκόνιο</em> <data>91,224</data></li></td>
-					<td><li class="transition d" data-atomic="41"> <b>41</b> <abbr>Nb</abbr> <em>Νιόβιο</em> <data>92,906</data></li></td>
-					<td><li class="transition d" data-atomic="42"> <b>42</b> <abbr>Mo</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-3.50877%) scaleX(0.929825);">Μολυβδαίνιο</em> <data>95,95</data></li></td>
-					<td><li class="transition d" data-atomic="43"> <b>43</b> <abbr>Tc</abbr> <em>Τεχνήτιο</em> <data>(98)</data></li></td>
-					<td><li class="transition d" data-atomic="44"> <b>44</b> <abbr>Ru</abbr> <em>Ρουθήνιο</em> <data>101,07</data></li></td>
-					<td><li class="transition d" data-atomic="45"> <b>45</b> <abbr>Rh</abbr> <em>Ρόδιο</em> <data>102,91</data></li></td>
-					<td><li class="transition d" data-atomic="46"> <b>46</b> <abbr>Pd</abbr> <em>Παλλάδιο</em> <data>106,42</data></li></td>
-					<td><li class="transition d" data-atomic="47"> <b>47</b> <abbr>Ag</abbr> <em>Άργυρος</em> <data>107,87</data></li></td>
-					<td><li class="transition d" data-atomic="48"> <b>48</b> <abbr>Cd</abbr> <em>Κάδμιο</em> <data>112,41</data></li></td>
-					<td><li class="poor p" data-atomic="49"> <b>49</b> <abbr>In</abbr> <em>Ίνδιο</em> <data>114,82</data></li></td>
-					<td><li class="poor p" data-atomic="50"> <b>50</b> <abbr>Sn</abbr> <em style="letter-spacing: -0.05em;">Κασσίτερος</em> <data>118,71</data></li></td>
-					<td><li class="metalloid p" data-atomic="51"> <b>51</b> <abbr>Sb</abbr> <em>Αντιμόνιο</em> <data>121,76</data></li></td>
-					<td><li class="metalloid p" data-atomic="52"> <b>52</b> <abbr>Te</abbr> <em>Τελλούριο</em> <data>127,60</data></li></td>
-					<td><li class="nonmetal p" data-atomic="53"> <b>53</b> <abbr>I</abbr> <em>Ιώδιο</em> <data>126,90</data></li></td>
-					<td><li class="noble p" data-atomic="54"> <b>54</b> <abbr>Xe</abbr> <em>Ξένο</em> <data>131,29</data></li></td>
+					<td class="period">4</td>
+					<td><div class="element alkali s" data-atomic="19"> <b>19</b> <abbr>K</abbr> <em>Κάλιο</em> <data>39,098</data> </div></td>
+					<td><div class="element alkaline s" data-atomic="20"> <b>20</b> <abbr>Ca</abbr> <em>Ασβέστιο</em> <data>40,078</data> </div></td>
+					<td><div class="element transition d" data-atomic="21"> <b>21</b> <abbr>Sc</abbr> <em>Σκάνδιο</em> <data>44,956</data> </div></td>
+					<td><div class="element transition d" data-atomic="22"> <b>22</b> <abbr>Ti</abbr> <em>Τιτάνιο</em> <data>47,867</data> </div></td>
+					<td><div class="element transition d" data-atomic="23"> <b>23</b> <abbr>V</abbr> <em>Βανάδιο</em> <data>50,942</data> </div></td>
+					<td><div class="element transition d" data-atomic="24"> <b>24</b> <abbr>Cr</abbr> <em>Χρώμιο</em> <data>51,996</data> </div></td>
+					<td><div class="element transition d" data-atomic="25"> <b>25</b> <abbr>Mn</abbr> <em>Μαγγάνιο</em> <data>54,938</data> </div></td>
+					<td><div class="element transition d" data-atomic="26"> <b>26</b> <abbr>Fe</abbr> <em>Σίδηρος</em> <data>55,845</data> </div></td>
+					<td><div class="element transition d" data-atomic="27"> <b>27</b> <abbr>Co</abbr> <em>Κοβάλτιο</em> <data>58,933</data> </div></td>
+					<td><div class="element transition d" data-atomic="28"> <b>28</b> <abbr>Ni</abbr> <em>Νικέλιο</em> <data>58,693</data> </div></td>
+					<td><div class="element transition d" data-atomic="29"> <b>29</b> <abbr>Cu</abbr> <em>Χαλκός</em> <data>63,546</data> </div></td>
+					<td><div class="element transition d" data-atomic="30"> <b>30</b> <abbr>Zn</abbr> <em>Ψευδάργυρος</em> <data>65,38</data> </div></td>
+					<td><div class="element poor p" data-atomic="31"> <b>31</b> <abbr>Ga</abbr> <em>Γάλλιο</em> <data>69,723</data> </div></td>
+					<td><div class="element metalloid p" data-atomic="32"> <b>32</b> <abbr>Ge</abbr> <em>Γερμάνιο</em> <data>72,630</data> </div></td>
+					<td><div class="element metalloid p" data-atomic="33"> <b>33</b> <abbr>As</abbr> <em>Αρσενικό</em> <data>74,922</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="34"> <b>34</b> <abbr>Se</abbr> <em>Σελήνιο</em> <data>78,971</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="35"> <b>35</b> <abbr>Br</abbr> <em>Βρώμιο</em> <data>79,904</data> </div></td>
+					<td><div class="element noble p" data-atomic="36"> <b>36</b> <abbr>Kr</abbr> <em>Κρυπτό</em> <data>83,798</data> </div></td>
 				</tr>
 				<tr>
-					<td class="periods">6</td>
-					<td><li class="alkali s" data-atomic="55"> <b>55</b> <abbr>Cs</abbr> <em>Καίσιο</em> <data>132,91</data></li></td>
-					<td><li class="alkaline s" data-atomic="56"> <b>56</b> <abbr>Ba</abbr> <em>Βάριο</em> <data>137,33</data></li></td>
-					<td><li class="lanthanoid f" data-linkedElement="57"> <b> </b> <abbr>57 - 71</abbr> <em> </em> <data> </data></li></td>
-					<td><li class="transition d" data-atomic="72"> <b>72</b> <abbr>Hf</abbr> <em>Άφνιο</em> <data>178,49</data></li></td>
-					<td><li class="transition d" data-atomic="73"> <b>73</b> <abbr>Ta</abbr> <em>Ταντάλιο</em> <data>180,95</data></li></td>
-					<td><li class="transition d" data-atomic="74"> <b>74</b> <abbr>W</abbr> <em style="letter-spacing: -0.037037em;">Βολφράμιο</em> <data>183,84</data></li></td>
-					<td><li class="transition d" data-atomic="75"> <b>75</b> <abbr>Re</abbr> <em>Ρήνιο</em> <data>186,21</data></li></td>
-					<td><li class="transition d" data-atomic="76"> <b>76</b> <abbr>Os</abbr> <em>Όσμιο</em> <data>190,23</data></li></td>
-					<td><li class="transition d" data-atomic="77"> <b>77</b> <abbr>Ir</abbr> <em>Ιρίδιο</em> <data>192,22</data></li></td>
-					<td><li class="transition d" data-atomic="78"> <b>78</b> <abbr>Pt</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-4.31034%) scaleX(0.913793);">Λευκόχρυσος</em> <data>195,08</data></li></td>
-					<td><li class="transition d" data-atomic="79"> <b>79</b> <abbr>Au</abbr> <em>Χρυσός</em> <data>196,97</data></li></td>
-					<td><li class="transition d" data-atomic="80"> <b>80</b> <abbr>Hg</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-1.81818%) scaleX(0.963636);">Υδράργυρος</em> <data>200,59</data></li></td>
-					<td><li class="poor p" data-atomic="81"> <b>81</b> <abbr>Tl</abbr> <em>Θάλλιο</em> <data>204,38</data></li></td>
-					<td><li class="poor p" data-atomic="82"> <b>82</b> <abbr>Pb</abbr> <em>Μόλυβδος</em> <data>207,2</data></li></td>
-					<td><li class="poor p" data-atomic="83"> <b>83</b> <abbr>Bi</abbr> <em>Βισμούθιο</em> <data>208,98</data></li></td>
-					<td><li class="poor p" data-atomic="84"> <b>84</b> <abbr>Po</abbr> <em>Πολώνιο</em> <data>(209)</data></li></td>
-					<td><li class="metalloid p" data-atomic="85"> <b>85</b> <abbr>At</abbr> <em>Άστατο</em> <data>(210)</data></li></td>
-					<td><li class="noble p" data-atomic="86"> <b>86</b> <abbr>Rn</abbr> <em>Ραδόνιο</em> <data>(222)</data></li></td>
+					<td class="period">5</td>
+					<td><div class="element alkali s" data-atomic="37"> <b>37</b> <abbr>Rb</abbr> <em>Ρουβίδιο</em> <data>85,468</data> </div></td>
+					<td><div class="element alkaline s" data-atomic="38"> <b>38</b> <abbr>Sr</abbr> <em>Στρόντιο</em> <data>87,62</data> </div></td>
+					<td><div class="element transition d" data-atomic="39"> <b>39</b> <abbr>Y</abbr> <em>Ύττριο</em> <data>88,906</data> </div></td>
+					<td><div class="element transition d" data-atomic="40"> <b>40</b> <abbr>Zr</abbr> <em>Ζιρκόνιο</em> <data>91,224</data> </div></td>
+					<td><div class="element transition d" data-atomic="41"> <b>41</b> <abbr>Nb</abbr> <em>Νιόβιο</em> <data>92,906</data> </div></td>
+					<td><div class="element transition d" data-atomic="42"> <b>42</b> <abbr>Mo</abbr> <em>Μολυβδαίνιο</em> <data>95,95</data> </div></td>
+					<td><div class="element transition d" data-atomic="43"> <b>43</b> <abbr>Tc</abbr> <em>Τεχνήτιο</em> <data>(98)</data> </div></td>
+					<td><div class="element transition d" data-atomic="44"> <b>44</b> <abbr>Ru</abbr> <em>Ρουθήνιο</em> <data>101,07</data> </div></td>
+					<td><div class="element transition d" data-atomic="45"> <b>45</b> <abbr>Rh</abbr> <em>Ρόδιο</em> <data>102,91</data> </div></td>
+					<td><div class="element transition d" data-atomic="46"> <b>46</b> <abbr>Pd</abbr> <em>Παλλάδιο</em> <data>106,42</data> </div></td>
+					<td><div class="element transition d" data-atomic="47"> <b>47</b> <abbr>Ag</abbr> <em>Άργυρος</em> <data>107,87</data> </div></td>
+					<td><div class="element transition d" data-atomic="48"> <b>48</b> <abbr>Cd</abbr> <em>Κάδμιο</em> <data>112,41</data> </div></td>
+					<td><div class="element poor p" data-atomic="49"> <b>49</b> <abbr>In</abbr> <em>Ίνδιο</em> <data>114,82</data> </div></td>
+					<td><div class="element poor p" data-atomic="50"> <b>50</b> <abbr>Sn</abbr> <em>Κασσίτερος</em> <data>118,71</data> </div></td>
+					<td><div class="element metalloid p" data-atomic="51"> <b>51</b> <abbr>Sb</abbr> <em>Αντιμόνιο</em> <data>121,76</data> </div></td>
+					<td><div class="element metalloid p" data-atomic="52"> <b>52</b> <abbr>Te</abbr> <em>Τελλούριο</em> <data>127,60</data> </div></td>
+					<td><div class="element nonmetal p" data-atomic="53"> <b>53</b> <abbr>I</abbr> <em>Ιώδιο</em> <data>126,90</data> </div></td>
+					<td><div class="element noble p" data-atomic="54"> <b>54</b> <abbr>Xe</abbr> <em>Ξένο</em> <data>131,29</data> </div></td>
 				</tr>
 				<tr>
-					<td class="periods">7</td>
-					<td><li class="alkali s" data-atomic="87"> <b>87</b> <abbr>Fr</abbr> <em>Φράγκιο</em> <data>(223)</data></li></td>
-					<td><li class="alkaline s" data-atomic="88"> <b>88</b> <abbr>Ra</abbr> <em>Ράδιο</em> <data>(226)</data></li></td>
-					<td><li class="actinoid f" data-linkedElement="89"> <b></b> <abbr>89-103</abbr> <em></em> <data></data></li></td>
-					<td><li class="transition d" data-atomic="104"> <b>104</b> <abbr>Rf</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-7.93651%) scaleX(0.84127);">Ραδερφόρντιο</em> <data>(267)</data></li></td>
-					<td><li class="transition d" data-atomic="105"> <b>105</b> <abbr>Db</abbr> <em>Ντούμπνιο</em> <data>(268)</data></li></td>
-					<td><li class="transition d" data-atomic="106"> <b>106</b> <abbr>Sg</abbr> <em style="letter-spacing: -0.0416667em;">Σιμπόργκιο</em> <data>(269)</data></li></td>
-					<td><li class="transition d" data-atomic="107"> <b>107</b> <abbr>Bh</abbr> <em>Μπόριο</em> <data>(270)</data></li></td>
-					<td><li class="transition d" data-atomic="108"> <b>108</b> <abbr>Hs</abbr> <em>Χάσιο</em> <data>(277)</data></li></td>
-
-					<td><li class="unknown d" data-atomic="109"> <b>109</b> <abbr>Mt</abbr> <em>Μαϊτνέριο</em> <data>(278)</data></li></td>
-					<td><li class="unknown d" data-atomic="110"> <b>110</b> <abbr>Ds</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-7.93651%) scaleX(0.84127);">Νταρμστάντιο</em> <data>(281)</data></li></td>
-					<td><li class="unknown d" data-atomic="111"> <b>111</b> <abbr>Rg</abbr> <em>Ρεντγκένιο</em> <data>(282)</data></li></td>
-					<td><li class="unknown d" data-atomic="112"> <b>112</b> <abbr>Cn</abbr> <em style="letter-spacing: -0.0333333em;">Κοπερνίκιο</em> <data>(285)</data></li></td>
-					<td><li class="unknown p" data-atomic="113"> <b>113</b> <abbr>Nh</abbr> <em>Νιχόνιο</em> <data>(286)</data></li></td>
-					<td><li class="unknown p" data-atomic="114"> <b>114</b> <abbr>Fl</abbr> <em>Φλερόβιο</em> <data>(289)</data></li></td>
-					<td><li class="unknown p" data-atomic="115"> <b>115</b> <abbr>Mc</abbr> <em>Μοσκόβιο</em> <data>(290)</data></li></td>
-					<td><li class="unknown p" data-atomic="116"> <b>116</b> <abbr>Lv</abbr> <em style="letter-spacing: -0.0416667em;">Λιβερμόριο</em> <data>(293)</data></li></td>
-					<td><li class="unknown p" data-atomic="117"> <b>117</b> <abbr>Ts</abbr> <em>Τενέσιο</em> <data>(294)</data></li></td>
-					<td><li class="unknown p" data-atomic="118"> <b>118</b> <abbr>Og</abbr> <em style="letter-spacing: -0.0666667em; transform: translateX(-0.925926%) scaleX(0.981481);">Ογκανέσσιο</em> <data>(294)</data></li></td>
-
-
+					<td class="period">6</td>
+					<td><div class="element alkali s" data-atomic="55"> <b>55</b> <abbr>Cs</abbr> <em>Καίσιο</em> <data>132,91</data> </div></td>
+					<td><div class="element alkaline s" data-atomic="56"> <b>56</b> <abbr>Ba</abbr> <em>Βάριο</em> <data>137,33</data> </div></td>
+					
+					<td><div class="element lanthanoid f" data-atomic="57"> <b></b> <abbr>57 - 71</abbr> <em></em> <data></data> </div></td>
+					<td><div class="element transition d" data-atomic="72"> <b>72</b> <abbr>Hf</abbr> <em>Άφνιο</em> <data>178,49</data> </div></td>
+					<td><div class="element transition d" data-atomic="73"> <b>73</b> <abbr>Ta</abbr> <em>Ταντάλιο</em> <data>180,95</data> </div></td>
+					<td><div class="element transition d" data-atomic="74"> <b>74</b> <abbr>W</abbr> <em>Βολφράμιο</em> <data>183,84</data> </div></td>
+					<td><div class="element transition d" data-atomic="75"> <b>75</b> <abbr>Re</abbr> <em>Ρήνιο</em> <data>186,21</data> </div></td>
+					<td><div class="element transition d" data-atomic="76"> <b>76</b> <abbr>Os</abbr> <em>Όσμιο</em> <data>190,23</data> </div></td>
+					<td><div class="element transition d" data-atomic="77"> <b>77</b> <abbr>Ir</abbr> <em>Ιρίδιο</em> <data>192,22</data> </div></td>
+					<td><div class="element transition d" data-atomic="78"> <b>78</b> <abbr>Pt</abbr> <em>Λευκόχρυσος</em> <data>195,08</data> </div></td>
+					<td><div class="element transition d" data-atomic="79"> <b>79</b> <abbr>Au</abbr> <em>Χρυσός</em> <data>196,97</data> </div></td>
+					<td><div class="element transition d" data-atomic="80"> <b>80</b> <abbr>Hg</abbr> <em>Υδράργυρος</em> <data>200,59</data> </div></td>
+					<td><div class="element poor p" data-atomic="81"> <b>81</b> <abbr>Tl</abbr> <em>Θάλλιο</em> <data>204,38</data> </div></td>
+					<td><div class="element poor p" data-atomic="82"> <b>82</b> <abbr>Pb</abbr> <em>Μόλυβδος</em> <data>207,2</data> </div></td>
+					<td><div class="element poor p" data-atomic="83"> <b>83</b> <abbr>Bi</abbr> <em>Βισμούθιο</em> <data>208,98</data> </div></td>
+					<td><div class="element poor p" data-atomic="84"> <b>84</b> <abbr>Po</abbr> <em>Πολώνιο</em> <data>(209)</data> </div></td>
+					<td><div class="element metalloid p" data-atomic="85"> <b>85</b> <abbr>At</abbr> <em>Άστατο</em> <data>(210)</data> </div></td>
+					<td><div class="element noble p" data-atomic="86"> <b>86</b> <abbr>Rn</abbr> <em>Ραδόνιο</em> <data>(222)</data> </div></td>
 				</tr>
 				<tr>
-					<td class="periods"></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
+					<td class="period">7</td>
+					<td><div class="element alkali s" data-atomic="87"> <b>87</b> <abbr>Fr</abbr> <em>Φράγκιο</em> <data>(223)</data> </div></td>
+					<td><div class="element alkaline s" data-atomic="88"> <b>88</b> <abbr>Ra</abbr> <em>Ράδιο</em> <data>(226)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="89"> <b></b> <abbr>89-103</abbr> <em></em> <data></data> </div></td>
+					<td><div class="element transition d" data-atomic="104"> <b>104</b> <abbr>Rf</abbr> <em>Ραδερφόρντιο</em> <data>(267)</data> </div></td>
+					<td><div class="element transition d" data-atomic="105"> <b>105</b> <abbr>Db</abbr> <em>Ντούμπνιο</em> <data>(268)</data> </div></td>
+					<td><div class="element transition d" data-atomic="106"> <b>106</b> <abbr>Sg</abbr> <em>Σιμπόργκιο</em> <data>(269)</data> </div></td>
+					<td><div class="element transition d" data-atomic="107"> <b>107</b> <abbr>Bh</abbr> <em>Μπόριο</em> <data>(270)</data> </div></td>
+					<td><div class="element transition d" data-atomic="108"> <b>108</b> <abbr>Hs</abbr> <em>Χάσιο</em> <data>(277)</data> </div></td>
+					<td><div class="element unknown d" data-atomic="109"> <b>109</b> <abbr>Mt</abbr> <em>Μαϊτνέριο</em> <data>(278)</data> </div></td>
+					<td><div class="element unknown d" data-atomic="110"> <b>110</b> <abbr>Ds</abbr> <em>Νταρμστάντιο</em> <data>(281)</data> </div></td>
+					<td><div class="element unknown d" data-atomic="111"> <b>111</b> <abbr>Rg</abbr> <em>Ρεντγκένιο</em> <data>(282)</data> </div></td>
+					<td><div class="element unknown d" data-atomic="112"> <b>112</b> <abbr>Cn</abbr> <em>Κοπερνίκιο</em> <data>(285)</data> </div></td>
+					<td><div class="element unknown p" data-atomic="113"> <b>113</b> <abbr>Nh</abbr> <em>Νιχόνιο</em> <data>(286)</data> </div></td>
+					<td><div class="element unknown p" data-atomic="114"> <b>114</b> <abbr>Fl</abbr> <em>Φλερόβιο</em> <data>(289)</data> </div></td>
+					<td><div class="element unknown p" data-atomic="115"> <b>115</b> <abbr>Mc</abbr> <em>Μοσκόβιο</em> <data>(290)</data> </div></td>
+					<td><div class="element unknown p" data-atomic="116"> <b>116</b> <abbr>Lv</abbr> <em>Λιβερμόριο</em> <data>(293)</data> </div></td>
+					<td><div class="element unknown p" data-atomic="117"> <b>117</b> <abbr>Ts</abbr> <em>Τενέσιο</em> <data>(294)</data> </div></td>
+					<td><div class="element unknown p" data-atomic="118"> <b>118</b> <abbr>Og</abbr> <em>Ογκανέσσιο</em> <data>(294)</data> </div></td>
 				</tr>
+				
 				<tr>
-					<td class="periods"></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="lanthanoid f" data-atomic="57"> <b>57</b> <abbr>La</abbr> <em>Λανθάνιο</em> <data>138,91</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="58"> <b>58</b> <abbr>Ce</abbr> <em>Δημήτριο</em> <data>140,12</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="59"> <b>59</b> <abbr>Pr</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-5.08475%) scaleX(0.898305);">Πρασεοδύμιο</em> <data>140,91</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="60"> <b>60</b> <abbr>Nd</abbr> <em>Νεοδύμιο</em> <data>144,24</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="61"> <b>61</b> <abbr>Pm</abbr> <em style="letter-spacing: -0.0277778em;">Προμήθειο</em> <data>(145)</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="62"> <b>62</b> <abbr>Sm</abbr> <em>Σαμάριο</em> <data>150,36</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="63"> <b>63</b> <abbr>Eu</abbr> <em>Ευρώπιο</em> <data>151,96</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="64"> <b>64</b> <abbr>Gd</abbr> <em>Γαδολίνιο</em> <data>157,25</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="65"> <b>65</b> <abbr>Tb</abbr> <em>Τέρβιο</em> <data>158,93</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="66"> <b>66</b> <abbr>Dy</abbr> <em style="letter-spacing: -0.037037em;">Δυσπρόσιο</em> <data>162,50</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="67"> <b>67</b> <abbr>Ho</abbr> <em>Όλμιο</em> <data>164,93</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="68"> <b>68</b> <abbr>Er</abbr> <em>Έρβιο</em> <data>167,26</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="69"> <b>69</b> <abbr>Tm</abbr> <em>Θούλιο</em> <data>168,93</data></li></td>
-					<td><li class="lanthanoid f" data-atomic="70"> <b>70</b> <abbr>Yb</abbr> <em>Υττέρβιο</em> <data>173,05</data></li></td>
-					<td><li class="lanthanoid d" data-atomic="71"> <b>71</b> <abbr>Lu</abbr> <em>Λουτήτιο</em> <data>174,97</data></li></td>
-
+					<td colspan="19"></td>
 				</tr>
+				
 				<tr>
-					<td class="periods"></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="empty"></li></td>
-					<td><li class="actinoid f" data-atomic="89"> <b>89</b> <abbr>Ac</abbr> <em>Ακτίνιο</em> <data>(227)</data></li></td>
-					<td><li class="actinoid f" data-atomic="90"> <b>90</b> <abbr>Th</abbr> <em>Θόριο</em> <data>232,04</data></li></td>
-					<td><li class="actinoid f" data-atomic="91"> <b>91</b> <abbr>Pa</abbr> <em style="letter-spacing: -0.0833333em; transform: translateX(-2.67857%) scaleX(0.946429);">Πρωτακτίνιο</em> <data>231,04</data></li></td>
-					<td><li class="actinoid f" data-atomic="92"> <b>92</b> <abbr>U</abbr> <em>Ουράνιο</em> <data>238,03</data></li></td>
-					<td><li class="actinoid f" data-atomic="93"> <b>93</b> <abbr>Np</abbr> <em style="letter-spacing: -0.0666667em;">Ποσειδώνιο</em> <data>(237)</data></li></td>
-					<td><li class="actinoid f" data-atomic="94"> <b>94</b> <abbr>Pu</abbr> <em style="letter-spacing: -0.037037em;">Πλουτώνιο</em> <data>(244)</data></li></td>
-					<td><li class="actinoid f" data-atomic="95"> <b>95</b> <abbr>Am</abbr> <em>Αμερίκιο</em> <data>(243)</data></li></td>
-					<td><li class="actinoid f" data-atomic="96"> <b>96</b> <abbr>Cm</abbr> <em>Κιούριο</em> <data>(247)</data></li></td>
-					<td><li class="actinoid f" data-atomic="97"> <b>97</b> <abbr>Bk</abbr> <em style="letter-spacing: -0.0185185em;">Μπερκέλιο</em> <data>(247)</data></li></td>
-					<td><li class="actinoid f" data-atomic="98"> <b>98</b> <abbr>Cf</abbr> <em style="letter-spacing: -0.05em; transform: translateX(-0.925926%) scaleX(0.981481);">Καλιφόρνιο</em> <data>(251)</data></li></td>
-					<td><li class="actinoid f" data-atomic="99"> <b>99</b> <abbr>Es</abbr> <em style="letter-spacing: -0.00833333em;">Αϊνσταΐνιο</em> <data>(252)</data></li></td>
-					<td><li class="actinoid f" data-atomic="100"> <b>100</b> <abbr>Fm</abbr> <em>Φέρμιο</em> <data>(257)</data></li></td>
-					<td><li class="actinoid f" data-atomic="101"> <b>101</b> <abbr>Md</abbr> <em style="letter-spacing: -0.0416667em; transform: translateX(-0.925926%) scaleX(0.981481);">Μεντελέβιο</em> <data>(258)</data></li></td>
-					<td><li class="actinoid f" data-atomic="102"> <b>102</b> <abbr>No</abbr> <em>Νομπέλιο</em> <data>(259)</data></li></td>
-					<td><li class="actinoid d" data-atomic="103"> <b>103</b> <abbr>Lr</abbr> <em>Λωρένσιο</em> <data>(266)</data></li></td>
+					<td colspan="4"></td>
+					<td><div class="element lanthanoid f" data-atomic="57"> <b>57</b> <abbr>La</abbr> <em>Λανθάνιο</em> <data>138,91</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="58"> <b>58</b> <abbr>Ce</abbr> <em>Δημήτριο</em> <data>140,12</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="59"> <b>59</b> <abbr>Pr</abbr> <em>Πρασεοδύμιο</em> <data>140,91</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="60"> <b>60</b> <abbr>Nd</abbr> <em>Νεοδύμιο</em> <data>144,24</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="61"> <b>61</b> <abbr>Pm</abbr> <em>Προμήθειο</em> <data>(145)</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="62"> <b>62</b> <abbr>Sm</abbr> <em>Σαμάριο</em> <data>150,36</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="63"> <b>63</b> <abbr>Eu</abbr> <em>Ευρώπιο</em> <data>151,96</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="64"> <b>64</b> <abbr>Gd</abbr> <em>Γαδολίνιο</em> <data>157,25</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="65"> <b>65</b> <abbr>Tb</abbr> <em>Τέρβιο</em> <data>158,93</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="66"> <b>66</b> <abbr>Dy</abbr> <em>Δυσπρόσιο</em> <data>162,50</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="67"> <b>67</b> <abbr>Ho</abbr> <em>Όλμιο</em> <data>164,93</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="68"> <b>68</b> <abbr>Er</abbr> <em>Έρβιο</em> <data>167,26</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="69"> <b>69</b> <abbr>Tm</abbr> <em>Θούλιο</em> <data>168,93</data> </div></td>
+					<td><div class="element lanthanoid f" data-atomic="70"> <b>70</b> <abbr>Yb</abbr> <em>Υττέρβιο</em> <data>173,05</data> </div></td>
+					<td><div class="element lanthanoid d" data-atomic="71"> <b>71</b> <abbr>Lu</abbr> <em>Λουτήτιο</em> <data>174,97</data> </div></td>
+				</tr>
+				
+				<tr>
+					<td colspan="4"></td>
+					<td><div class="element actinoid f" data-atomic="89"> <b>89</b> <abbr>Ac</abbr> <em>Ακτίνιο</em> <data>(227)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="90"> <b>90</b> <abbr>Th</abbr> <em>Θόριο</em> <data>232,04</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="91"> <b>91</b> <abbr>Pa</abbr> <em>Πρωτακτίνιο</em> <data>231,04</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="92"> <b>92</b> <abbr>U</abbr> <em>Ουράνιο</em> <data>238,03</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="93"> <b>93</b> <abbr>Np</abbr> <em>Ποσειδώνιο</em> <data>(237)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="94"> <b>94</b> <abbr>Pu</abbr> <em>Πλουτώνιο</em> <data>(244)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="95"> <b>95</b> <abbr>Am</abbr> <em>Αμερίκιο</em> <data>(243)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="96"> <b>96</b> <abbr>Cm</abbr> <em>Κιούριο</em> <data>(247)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="97"> <b>97</b> <abbr>Bk</abbr> <em>Μπερκέλιο</em> <data>(247)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="98"> <b>98</b> <abbr>Cf</abbr> <em>Καλιφόρνιο</em> <data>(251)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="99"> <b>99</b> <abbr>Es</abbr> <em>Αϊνσταΐνιο</em> <data>(252)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="100"> <b>100</b> <abbr>Fm</abbr> <em>Φέρμιο</em> <data>(257)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="101"> <b>101</b> <abbr>Md</abbr> <em>Μεντελέβιο</em> <data>(258)</data> </div></td>
+					<td><div class="element actinoid f" data-atomic="102"> <b>102</b> <abbr>No</abbr> <em>Νομπέλιο</em> <data>(259)</data> </div></td>
+					<td><div class="element actinoid d" data-atomic="103"> <b>103</b> <abbr>Lr</abbr> <em>Λωρένσιο</em> <data>(266)</data> </div></td>
 				</tr>
 			</table>
 		</div>
 
 		<script language="javascript" src="JS/TableScript.js" type="text/javascript"></script>
-
-		<script>
-
+		
+		<script type="text/javascript">
 			function showBlocks() {
 				document.body.classList.toggle('blocks');
 			}
@@ -348,6 +305,49 @@
 				document.body.classList.toggle('darkMode');
 				document.body.classList.toggle('lightMode');
 			}
+		</script>
+		
+		<script type="text/javascript">
+			const containerWidth = 57;
+
+			function adjustText() {
+				const elements = document.querySelectorAll('.element');
+				elements.forEach(el => {
+					const emEl = el.querySelector('em');
+					if (emEl) {
+
+						const measuredWidth = emEl.scrollWidth;
+
+						const scaleX = containerWidth / measuredWidth;
+
+						const translateX = 50 * (scaleX - 1);
+
+						const wordLength = emEl.textContent.length;
+						const letterSpacing = (wordLength >= 11);
+
+						emEl.style.transform = `translateX(${translateX}%) scaleX(${scaleX})`;
+						emEl.style.letterSpacing = `${letterSpacing}em`;
+					}
+				});
+			}
+
+		adjustText();
+		</script>
+		
+		<script type="text/javascript">
+			document.querySelectorAll(".highlightElement").forEach(highlight => {
+				highlight.addEventListener("mouseenter", () => {
+					const category = [...highlight.classList].find(cls => cls !== "highlightElement");
+				
+					document.querySelectorAll(".element, .highlightElement").forEach(el => {
+						el.style.opacity = el.classList.contains(category) ? "1" : "0.3";
+					});
+				});
+
+				highlight.addEventListener("mouseleave", () => {
+					document.querySelectorAll(".element, .highlightElement").forEach(el => el.style.opacity = "1");
+				});
+			});
 		</script>
 	</body>
 </html>
