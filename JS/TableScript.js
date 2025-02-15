@@ -142,13 +142,15 @@ function infoElement() {
 		const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
 
 		var link;
+		var pdf;
+		
 		if (elementData[element].linkElementName) {
 			link = "https://el.wikipedia.org/wiki/" + elementData[element].linkElementName;
+			pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].linkElementName;
 		} else {
 			link = "https://el.wikipedia.org/wiki/" + elementData[element].name;
+			pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].name;
 		}
-		
-		var pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].name;
 		
 		name.innerHTML = elementData[element].name;
 		atomic.innerHTML = element;
