@@ -2,12 +2,13 @@ const classes = ["alkali", "alkaline", "nonmetal", "transition", "unknown", "lan
 const closeUp = document.getElementById('CloseUp');
 var elementAtomicNumber;
 
-const elementData = [];
+const elementData = {};
 
+//fetch("../JsonData/Elements.json")
 fetch("https://raw.githubusercontent.com/stefalgo/My-Periodic-Table/main/JsonData/Elements.json")
   .then(response => response.json())
   .then(jsonData => {
-	Object.assign(elementData, jsonData);
+    Object.assign(elementData, jsonData);
 	console.log("JSON loaded successfully:");
 	generateAtom('1');
   })
@@ -86,8 +87,8 @@ function showElementData(target) {
 		const allChildElements = onElement.children;//getChildrenElements(onElement);
 		symbol.textContent = elementData[elementAtomicNumber].shortName;
 		mass.textContent = allChildElements[3].textContent;
-		closeUp.classList = [];
-		closeUp.classList.add(onElement.classList[0]);
+		closeUp.classList = ["elementStyle"];
+		closeUp.classList.add(onElement.classList[1]);
 	}
 	if (targetClasses.some(cls => classes.includes(cls))) {
 		update(target);
@@ -95,23 +96,6 @@ function showElementData(target) {
 }
 
 //-----------------------------------------------------------------------------------------------
-
-function elementClicked(clickedElement) {
-	while (clickedElement !== null) {
-		if (clickedElement.tagName === 'LI' && clickedElement.id !== 'ignore' && !clickedElement.classList.contains('empty')) {
-			if (clickedElement.hasAttribute('data-linkedElement')) {
-				elementAtomicNumber = clickedElement.getAttribute('data-linkedElement');
-				showElementData(document.querySelector(`[data-atomic="${elementAtomicNumber}"]`));
-				return;
-			} else {
-				elementAtomicNumber = clickedElement.getAttribute("data-atomic");
-				showElementData(clickedElement);
-				return;
-			}
-		}
-		clickedElement = clickedElement.parentElement;
-	}
-}
 
 function infoElement() {
 	const infoPopup = document.getElementById('infoPopup');
@@ -140,7 +124,7 @@ function infoElement() {
 		const elementClass = infoPopup.querySelector('.popup-class');
 		const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
 		const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
-
+		
 		var link;
 		var pdf;
 		
@@ -157,8 +141,8 @@ function infoElement() {
 					
 		energyLevels.innerHTML = elementData[element].energyLevels.join(', ');
 		discovered.innerHTML = elementData[element].discovered;
-		block.innerHTML = elementData[element].block + '-block';
-		elementClass.innerHTML = closeUp2.classList[0];
+		block.innerHTML = elementData[element].block + '-τομέας';
+		elementClass.innerHTML = closeUp2.classList[1];
 		
 		function wikipediaIframeOpen(event) {
 			openLinkInIframe(element);
@@ -168,30 +152,37 @@ function infoElement() {
 			infoPopup.style.display = "none";
 			wikipediaLink.href = "";
 			downloadPDF.href = "";
-			//wikipediaLink.removeEventListener('click', wikipediaLinkOpen);
 			closeUp2.removeEventListener('click', wikipediaIframeOpen);
 			infoPopup.querySelector('.close').removeEventListener('click', closePopup);
-			//document.querySelector('#infoPopup').removeEventListener('click', closePopup);
 		}
 					
-		//wikipediaLink.addEventListener('click', wikipediaLinkOpen);
 		closeUp2.addEventListener('click', wikipediaIframeOpen);
 		infoPopup.querySelector('.close').addEventListener('click', closePopup);
 		wikipediaLink.href = link;
 		downloadPDF.href = pdf;
-		//document.querySelector('#infoPopup').addEventListener('click', closePopup);
 	}
-				
-				
+
 	infoPopup.style.display = "block";
 	updateInfoPopup();
 }
 
+function elementClicked(clickedElement) {
+	if (clickedElement.hasAttribute('data-linkedElement')) {
+		elementAtomicNumber = clickedElement.getAttribute('data-linkedElement');
+		showElementData(document.querySelector(`[data-atomic="${elementAtomicNumber}"]`));
+		return;
+	} else {
+		elementAtomicNumber = clickedElement.getAttribute("data-atomic");
+		showElementData(clickedElement);
+		return;
+	}
+}
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
-	//var link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf";
+	//var link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
 	//var link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
 	//var link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
+	
 	var link;
 	if (elementData[rowId].linkElementName) {
 		link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].linkElementName + "#view=Fit";
@@ -212,10 +203,11 @@ function openLinkInIframe(rowId) {
 	//document.querySelector('#sitePopup').addEventListener('click', closePopup);
 }
 
-document.getElementById('elements').addEventListener('click', function(event) {
-	var clickedElement = event.target;
-	const targetClasses = Array.from(clickedElement.classList);
-	elementClicked(clickedElement);
+
+document.addEventListener('click', (event) => {
+	if (event.target.matches('.element')) {
+		elementClicked(event.target);
+	}
 });
 
 closeUp.addEventListener('click', function(event) {
