@@ -5,7 +5,7 @@
 body.darkMode {
 	--background: #0c0c0c;
 	--textColor: #d1cece;
-	--hoverColor: rgba(255, 255, 255, 1);
+	--hoverColor: #ffffff;
 			
 	--buttonColor: #333;
 	--buttonHoverColor: #222;
@@ -28,14 +28,14 @@ body.darkMode {
 	--f-block: #0023bb;
 			
 	--electron: #4369b3;
-			
-	::-webkit-scrollbar-track {
-		background: #141414;
-	}
+
+}
+body.darkMode ::-webkit-scrollbar-track {
+	background: #141414;
+}
 	
-	::-webkit-scrollbar-thumb {
-		background: #2f3133;
-	}
+body.darkMode ::-webkit-scrollbar-thumb {
+	background: #2f3133;
 }
 
 body.lightMode {
@@ -64,21 +64,19 @@ body.lightMode {
 	--f-block: #c1d0ff;
 			
 	--electron: #559fef;
-			
-	::-webkit-scrollbar-track {
-		background: #bdc3c9;
-	}
-	::-webkit-scrollbar-thumb {
-		background: #585b5e;
-	}
 }
 
-body.blocks {
-	.s { background-color: var(--s-block); }
-	.p { background-color: var(--p-block); }
-	.d { background-color: var(--d-block); }
-	.f { background-color: var(--f-block); }
+body.lightMode ::-webkit-scrollbar-track {
+	background: #bdc3c9;
 }
+body.lightMode ::-webkit-scrollbar-thumb {
+	background: #585b5e;
+}
+
+body.blocks .s {background-color: var(--s-block);}
+body.blocks .p { background-color: var(--p-block); }
+body.blocks .d { background-color: var(--d-block); }
+body.blocks .f { background-color: var(--f-block); }
 
 * {
 	box-sizing: border-box;
@@ -101,39 +99,96 @@ h1 {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /**-----------------------------------------------**/
-li {
-	line-height: 1;
-	font-style: normal;
-	font-weight: normal;
-	display: flex;
-	flex-direction: column;
-	width: 60px;
-	height: 60px;
-	justify-content: space-between;
-	padding: 2px;
-	transition: 0.3s;
-	b {
-		font-size: .8em;
-	}
-	em, data {
-		font-size: .85em;
-		font-weight: 300;
-		font-style: normal;
-	}
-	abbr {
-		font-size: 1.2em;
-		font-weight: 600;
-	}
+button {
+	display: inline-block;
+	background-color: var(--buttonColor);
+	border: none;
+	color: white;
+	padding: 4px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: 0.5s;
 }
-li:not(.empty) {
-	cursor: crosshair;
+button:hover {
+	background-color: var(--buttonHoverColor);
 }
-li:not(.empty):hover {
+/**-----------------------------------------------**/
+td {
+	width: 62px;
+	height: 62px;
+	min-width: 62px;
+	min-height: 62px;
+}
+
+.hoverEffect:hover {
 	box-shadow: 0 0 10px var(--hoverColor);
-	transition: 0.1s
+    transition: box-shadow 0.1s ease-in-out;
 }
-li:not(.empty):active {
-	box-shadow: 0 0 10px rgba(255, 0, 0, 1);
+
+.groups td {
+	height: auto;
+}
+.period {
+	width: auto;
+	min-width: auto;
+}
+/**--------------------**/
+.element, .elementStyle {
+    line-height: 1;
+    font-style: normal;
+    font-weight: normal;
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.element b, .elementStyle b {
+    font-size: 0.8em;
+}
+
+.element em, .elementStyle em,
+.element data, .elementStyle data {
+    font-size: 0.85em;
+    font-weight: 300;
+    font-style: normal;
+	/*overflow: hidden;*/
+	/*text-overflow: ellipsis;*/
+}
+
+.element abbr, .elementStyle abbr {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.element b, .elementStyle b,
+.element em, .elementStyle em,
+.element data, .elementStyle data,
+.element abbr, .elementStyle abbr {
+    pointer-events: none;
+}
+/**--------------------**/
+.element:not(.empty),
+.elementStyle:not(.empty) {
+    cursor: crosshair;
+}
+
+.element:not(.empty):hover,
+.elementStyle:not(.empty):hover {
+    box-shadow: 0 0 10px var(--hoverColor);
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.element:not(.empty):active,
+.elementStyle:not(.empty):active {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 1);
 }
 /**-----------------------------------------------**/
 
@@ -156,27 +211,23 @@ li:not(.empty):active {
 	/*border-radius: 10px;*/
 	/*box-shadow: 0 0 10px rgba(255, 255, 255, .2);*/
 }
-table {
-	display: block;
-	/*border-collapse: collapse;*/
-}
 /**-----------------------------------------------**/
-button {
-	display: inline-block;
-	background-color: var(--buttonColor);
-	border: none;
-	color: white;
-	padding: 4px 10px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 4px;
-	transition: 0.5s;
+.elementsClassVew {
+	display: flex;
+	width:100%;
+	height: 100%;
+    flex-wrap: wrap;
+	align-content: center;
 }
-button:hover {
-	background-color: var(--buttonHoverColor);
+
+.elementsClassVew div {
+	width:40%;
+	height: 15%;
+	margin: 3px;
+}
+
+.elementsClassVew div span {
+	cursor: default;
 }
 /**-----------------------------------------------**/
 .linkText, a {
@@ -210,6 +261,7 @@ button:hover {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	min-width: 300px;
+	/**min-height: 400px;**/
 	width: 55%;
 	height: 85%;
 }
@@ -232,10 +284,6 @@ button:hover {
 	text-decoration: none;
 }
 /**-----------------------------------------------**/
-#atom {
-	/*position: relative;*/
-	/*transform: translate(0%, 650%);*/
-}
 #atom .atom {
 	position: relative;
 	width: 20px;
@@ -244,14 +292,14 @@ button:hover {
 	left: 50%;
 	border-radius: 50%;
 	background-color: #888;
-	transform: translate(-50%, 50%);
+	transform: translate(-50%);
 }
 #atom .energy-level {
 	position: absolute;
 	border: 1px solid #77868b;
 	border-radius: 50%;
 	top: 50%;
-	left: 50%;
+    left: 50%;
 	transform: translate(-50%, -50%);
 }
 #atom .electron {
@@ -280,11 +328,13 @@ button:hover {
 	background-color: var(--background);
 	padding: 1rem;
 	border: 1px solid #888;
+	width: 500px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	overflow: auto;
 	min-width: 300px;
+	/**min-height: 100px;**/
 	width: 25%;
 	height: 55%;
 }
@@ -327,6 +377,7 @@ button:hover {
 @keyframes spin {
 	100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
 /**-----------------------------------------------**/
 .alkali { background-color: var(--alkali); }
 .alkaline { background-color: var(--alkaline); }
