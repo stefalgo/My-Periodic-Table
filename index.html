@@ -294,32 +294,18 @@
 		<script language="javascript" src="JS/TableScript.js" type="text/javascript"></script>
 		
 		<script type="text/javascript">
-			function showBlocks() {
-				document.body.classList.toggle('blocks');
-			}
-			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.body.classList.toggle('darkMode');
-			} else {
-				document.body.classList.toggle('lightMode');
-			}
 			function readParam(name) {
 				var value = (new URLSearchParams(window.location.search)).get(name);
 
 				return value
 			}
-			if (readParam('blocks') === 'yes' || readParam('blocks') === 'true' || readParam('blocks') === '1') {
-				document.body.classList.toggle('blocks');
+			
+			function showBlocks() {
+				document.documentElement.classList.toggle('blocks');
 			}
-			if (readParam('lighting') === 'other') {
-				document.body.classList.toggle('darkMode');
-				document.body.classList.toggle('lightMode');
-			}
-		</script>
-		
-		<script type="text/javascript">
-			const containerWidth = 57;
-
-			function adjustText() {
+			
+			function adjustElementsText() {
+				const containerWidth = 57;
 				const elements = document.querySelectorAll('.element');
 				elements.forEach(el => {
 					const emEl = el.querySelector('em');
@@ -339,11 +325,24 @@
 					}
 				});
 			}
-
-		adjustText();
-		</script>
-		
-		<script type="text/javascript">
+			
+			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.classList.toggle('darkMode');
+			} else {
+				document.documentElement.classList.toggle('lightMode');
+			}
+			
+			if (readParam('blocks') === 'yes' || readParam('blocks') === 'true' || readParam('blocks') === '1') {
+				document.documentElement.classList.toggle('blocks');
+			}
+			
+			if (readParam('lighting') === 'other') {
+				document.documentElement.classList.toggle('darkMode');
+				document.documentElement.classList.toggle('lightMode');
+			}
+			
+			adjustElementsText();
+			
 			document.querySelectorAll(".highlightElement").forEach(highlight => {
 				highlight.addEventListener("mouseenter", () => {
 					const category = [...highlight.classList].find(cls => cls !== "highlightElement");
