@@ -2,7 +2,7 @@
 	width: 0.5em;
 }
 
-body.darkMode {
+.darkMode {
 	--background: #0c0c0c;
 	--textColor: #d1cece;
 	--hoverColor: #ffffff;
@@ -28,17 +28,17 @@ body.darkMode {
 	--f-block: #0023bb;
 			
 	--electron: #4369b3;
-
 }
-body.darkMode ::-webkit-scrollbar-track {
+
+.darkMode ::-webkit-scrollbar-track {
 	background: #141414;
 }
 	
-body.darkMode ::-webkit-scrollbar-thumb {
+.darkMode ::-webkit-scrollbar-thumb {
 	background: #2f3133;
 }
 
-body.lightMode {
+.lightMode {
 	--background: rgb(243, 246, 248);
 	--textColor: black;
 	--hoverColor: rgba(0, 0, 0, 1);
@@ -66,22 +66,43 @@ body.lightMode {
 	--electron: #559fef;
 }
 
-body.lightMode ::-webkit-scrollbar-track {
+.lightMode ::-webkit-scrollbar-track {
 	background: #bdc3c9;
 }
-body.lightMode ::-webkit-scrollbar-thumb {
+
+.lightMode ::-webkit-scrollbar-thumb {
 	background: #585b5e;
 }
 
-body.blocks .s {background-color: var(--s-block);}
-body.blocks .p { background-color: var(--p-block); }
-body.blocks .d { background-color: var(--d-block); }
-body.blocks .f { background-color: var(--f-block); }
+:root {
+	--hoverShadow: 0 0 10px var(--hoverColor);
+	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
+}
+/**------------------------------------------------**/
+.blocks .s {background-color: var(--s-block);}
+.blocks .p { background-color: var(--p-block); }
+.blocks .d { background-color: var(--d-block); }
+.blocks .f { background-color: var(--f-block); }
 
 * {
 	box-sizing: border-box;
 }
+/**-----------------------------------------------**/
+.hoverEffect:hover {
+	box-shadow: var(--hoverShadow);
+}
 
+.linkText, a {
+	color: #5898bf;
+	cursor: pointer;
+	text-decoration: underline;
+	transition: 0.5s;
+}
+
+.linkText:hover, a:hover {
+	color: #9d58bf;
+}
+/**-----------------------------------------------**/
 body {
 	display: flex;
 	justify-content: center;
@@ -122,11 +143,6 @@ td {
 	height: 62px;
 	min-width: 62px;
 	min-height: 62px;
-}
-
-.hoverEffect:hover {
-	box-shadow: 0 0 10px var(--hoverColor);
-    transition: box-shadow 0.1s ease-in-out;
 }
 
 .groups td {
@@ -183,13 +199,12 @@ td {
 
 .element:not(.empty):hover,
 .elementStyle:not(.empty):hover {
-    box-shadow: 0 0 10px var(--hoverColor);
-    transition: box-shadow 0.1s ease-in-out;
+    box-shadow: var(--hoverShadow);
 }
 
 .element:not(.empty):active,
 .elementStyle:not(.empty):active {
-    box-shadow: 0 0 10px rgba(255, 0, 0, 1);
+    box-shadow: var(--clickShadow);
 }
 /**-----------------------------------------------**/
 
@@ -237,22 +252,12 @@ td {
 	font-weight: 1000;
 }
 
-body:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
+html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 	display: none;
 }
 
 .elementsClassVew div span {
 	cursor: default;
-}
-/**-----------------------------------------------**/
-.linkText, a {
-	color: #5898bf;
-	cursor: pointer;
-	text-decoration: underline;
-	transition: 0.5s;
-}
-.linkText:hover, a:hover {
-	color: #9d58bf;
 }
 /**-----------------------------------------------**/
 #sitePopup {
@@ -394,14 +399,14 @@ body:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 }
 
 /**-----------------------------------------------**/
-.alkali { background-color: var(--alkali); }
-.alkaline { background-color: var(--alkaline); }
-.transition { background-color: var(--transition); }
-.poor { background-color: var(--poor); }
-.lanthanoid { background-color: var(--lanthanoid); }
-.actinoid { background-color: var(--actinoid); }
-.metalloid { background-color: var(--metalloid); }
-.nonmetal { background-color: var(--nonmetal); }
-.halogen { background-color: var(--halogen); }
-.noble { background-color: var(--noble); }
-.unknown { background-color: var(--unknown); }
+.alkali {background-color: var(--alkali);}
+.alkaline {background-color: var(--alkaline);}
+.transition {background-color: var(--transition);}
+.poor {background-color: var(--poor);}
+.lanthanoid {background-color: var(--lanthanoid);}
+.actinoid {background-color: var(--actinoid);}
+.metalloid {background-color: var(--metalloid);}
+.nonmetal {background-color: var(--nonmetal);}
+.halogen {background-color: var(--halogen);}
+.noble {background-color: var(--noble);}
+.unknown {background-color: var(--unknown);}
