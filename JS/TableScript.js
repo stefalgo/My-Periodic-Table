@@ -141,7 +141,7 @@ function infoElement() {
 					
 		energyLevels.innerHTML = elementData[element].energyLevels.join(', ');
 		discovered.innerHTML = elementData[element].discovered;
-		block.innerHTML = elementData[element].block + '-τομέας';
+		block.innerHTML = elementData[element].block + '-block';
 		elementClass.innerHTML = closeUp2.classList[1];
 		
 		function wikipediaIframeOpen(event) {
