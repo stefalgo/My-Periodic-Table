@@ -148,9 +148,16 @@ td {
 .groups td {
 	height: auto;
 }
+
+.groups {
+	text-align: center;
+	user-select: none;
+}
+
 .period {
 	width: auto;
 	min-width: auto;
+	user-select: none;
 }
 /**--------------------**/
 .element, .elementStyle {
@@ -207,12 +214,6 @@ td {
     box-shadow: var(--clickShadow);
 }
 /**-----------------------------------------------**/
-
-.groups {
-	text-align: center;
-	user-select: none;
-}
-
 .periodicTable {
 	display: flex;
 	flex-direction: column;
