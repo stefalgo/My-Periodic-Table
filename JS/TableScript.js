@@ -73,26 +73,31 @@ function generateAtom(atomicNumber) {
 function showElementData(target) {
 	const targetClasses = Array.from(target.classList);
 
-	function update(onElement) {
-		const atomic = closeUp.querySelector('.closeUp-atomic');
-		const symbol = closeUp.querySelector('.closeUp-shortName');
-		const name = closeUp.querySelector('.closeUp-name');
-		const mass = closeUp.querySelector('.closeUp-mass');
-					
-		atomic.textContent = elementAtomicNumber;
-		energyLevel(elementAtomicNumber);
-		generateAtom(elementAtomicNumber)
-		name.textContent = elementData[elementAtomicNumber].name;
-					
-		const allChildElements = onElement.children;//getChildrenElements(onElement);
-		symbol.textContent = elementData[elementAtomicNumber].shortName;
-		mass.textContent = allChildElements[3].textContent;
-		closeUp.classList = ["elementStyle"];
-		closeUp.classList.add(onElement.classList[1]);
+	//function update(onElement) {
+	const atomic = closeUp.querySelector('.closeUp-atomic');
+	const symbol = closeUp.querySelector('.closeUp-shortName');
+	const name = closeUp.querySelector('.closeUp-name');
+	const mass = closeUp.querySelector('.closeUp-mass');
+				
+	atomic.textContent = elementAtomicNumber;
+	energyLevel(elementAtomicNumber);
+	generateAtom(elementAtomicNumber)
+	name.textContent = elementData[elementAtomicNumber].name;
+				
+	const allChildElements = target.children;//getChildrenElements(onElement);
+	symbol.textContent = elementData[elementAtomicNumber].shortName;
+	mass.textContent = allChildElements[3].textContent;
+	closeUp.classList = ["elementStyle"];
+	const matchingClass = targetClasses.find(cls => classes.includes(cls));
+	if (matchingClass) {
+		closeUp.classList.add(matchingClass);
 	}
+	//}
+	/*
 	if (targetClasses.some(cls => classes.includes(cls))) {
 		update(target);
 	}
+	*/
 }
 
 //-----------------------------------------------------------------------------------------------
