@@ -148,6 +148,7 @@ td {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+	opacity: 1;
 }
 
 .element b, .elementStyle b {
@@ -214,16 +215,30 @@ td {
 /**-----------------------------------------------**/
 .elementsClassVew {
 	display: flex;
-	width:100%;
+	width: 100%;
 	height: 100%;
     flex-wrap: wrap;
 	align-content: center;
+	justify-content: center;
 }
 
-.elementsClassVew div {
-	width:40%;
+.elementsClassVew .highlightElement {
+	width: 40%;
 	height: 15%;
 	margin: 3px;
+	transition: 0.3s;
+}
+
+.elementsClassVew .highlightElementBlocks {
+	width: 40%;
+	height: 40%;
+	margin: 3px;
+	text-align: center;
+	font-weight: 1000;
+}
+
+body:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
+	display: none;
 }
 
 .elementsClassVew div span {
