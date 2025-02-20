@@ -5,7 +5,7 @@ var elementAtomicNumber;
 const elementData = {};
 
 //fetch("../JsonData/Elements.json")
-fetch("../JsonData/Elements.json")
+fetch("JsonData/Elements.json")
   .then(response => response.json())
   .then(jsonData => {
     Object.assign(elementData, jsonData);
