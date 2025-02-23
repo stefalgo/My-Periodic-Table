@@ -261,21 +261,27 @@ html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 	cursor: default;
 }
 
-.periodicTable:has(.highlightElement.alkali:hover) :is(.element, .highlightElement):not(.alkali),
-.periodicTable:has(.highlightElement.alkaline:hover) :is(.element, .highlightElement):not(.alkaline),
-.periodicTable:has(.highlightElement.transition:hover) :is(.element, .highlightElement):not(.transition),
-.periodicTable:has(.highlightElement.poor:hover) :is(.element, .highlightElement):not(.poor),
-.periodicTable:has(.highlightElement.lanthanoid:hover) :is(.element, .highlightElement):not(.lanthanoid),
-.periodicTable:has(.highlightElement.actinoid:hover) :is(.element, .highlightElement):not(.actinoid),
-.periodicTable:has(.highlightElement.metalloid:hover) :is(.element, .highlightElement):not(.metalloid),
-.periodicTable:has(.highlightElement.nonmetal:hover) :is(.element, .highlightElement):not(.nonmetal),
-.periodicTable:has(.highlightElement.noble:hover) :is(.element, .highlightElement):not(.noble),
-.periodicTable:has(.highlightElement.unknown:hover) :is(.element, .highlightElement):not(.unknown),
-.periodicTable:has(.highlightElement.s:hover) :is(.element, .highlightElement):not(.s),
-.periodicTable:has(.highlightElement.p:hover) :is(.element, .highlightElement):not(.p),
-.periodicTable:has(.highlightElement.d:hover) :is(.element, .highlightElement):not(.d),
-.periodicTable:has(.highlightElement.f:hover) :is(.element, .highlightElement):not(.f) {
-  opacity: 0.3;
+
+.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement) {
+	opacity: 0.3;
+}
+.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
+.periodicTable:has(.highlightElement.alkali:hover) .alkali,
+.periodicTable:has(.highlightElement.alkaline:hover) .alkaline,
+.periodicTable:has(.highlightElement.transition:hover) .transition,
+.periodicTable:has(.highlightElement.poor:hover) .poor,
+.periodicTable:has(.highlightElement.lanthanoid:hover) .lanthanoid,
+.periodicTable:has(.highlightElement.actinoid:hover) .actinoid,
+.periodicTable:has(.highlightElement.metalloid:hover) .metalloid,
+.periodicTable:has(.highlightElement.nonmetal:hover) .nonmetal,
+.periodicTable:has(.highlightElement.noble:hover) .noble,
+.periodicTable:has(.highlightElement.unknown:hover) .unknown,
+.periodicTable:has(.highlightElement.s:hover) .s,
+.periodicTable:has(.highlightElement.p:hover) .p,
+.periodicTable:has(.highlightElement.d:hover) .d,
+.periodicTable:has(.highlightElement.f:hover) .f {
+	opacity: 1;
+	box-shadow: var(--hoverShadow);
 }
 /**-----------------------------------------------**/
 #sitePopup {
