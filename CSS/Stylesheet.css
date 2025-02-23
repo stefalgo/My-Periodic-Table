@@ -260,6 +260,23 @@ html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 .elementsClassVew div span {
 	cursor: default;
 }
+
+.periodicTable:has(.highlightElement.alkali:hover) :is(.element, .highlightElement):not(.alkali),
+.periodicTable:has(.highlightElement.alkaline:hover) :is(.element, .highlightElement):not(.alkaline),
+.periodicTable:has(.highlightElement.transition:hover) :is(.element, .highlightElement):not(.transition),
+.periodicTable:has(.highlightElement.poor:hover) :is(.element, .highlightElement):not(.poor),
+.periodicTable:has(.highlightElement.lanthanoid:hover) :is(.element, .highlightElement):not(.lanthanoid),
+.periodicTable:has(.highlightElement.actinoid:hover) :is(.element, .highlightElement):not(.actinoid),
+.periodicTable:has(.highlightElement.metalloid:hover) :is(.element, .highlightElement):not(.metalloid),
+.periodicTable:has(.highlightElement.nonmetal:hover) :is(.element, .highlightElement):not(.nonmetal),
+.periodicTable:has(.highlightElement.noble:hover) :is(.element, .highlightElement):not(.noble),
+.periodicTable:has(.highlightElement.unknown:hover) :is(.element, .highlightElement):not(.unknown),
+.periodicTable:has(.highlightElement.s:hover) :is(.element, .highlightElement):not(.s),
+.periodicTable:has(.highlightElement.p:hover) :is(.element, .highlightElement):not(.p),
+.periodicTable:has(.highlightElement.d:hover) :is(.element, .highlightElement):not(.d),
+.periodicTable:has(.highlightElement.f:hover) :is(.element, .highlightElement):not(.f) {
+  opacity: 0.3;
+}
 /**-----------------------------------------------**/
 #sitePopup {
 	position: fixed;
