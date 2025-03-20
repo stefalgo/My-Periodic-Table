@@ -6,6 +6,8 @@
 	--background: #0c0c0c;
 	--textColor: #d1cece;
 	--hoverColor: #ffffff;
+	
+	--elementBorderColor: 209, 206, 206;
 			
 	--buttonColor: #333;
 	--buttonHoverColor: #222;
@@ -40,8 +42,10 @@
 
 .lightMode {
 	--background: rgb(243, 246, 248);
-	--textColor: black;
+	--textColor: #000000;
 	--hoverColor: rgba(0, 0, 0, 1);
+	
+	--elementBorderColor: 0, 0, 0;
 			
 	--buttonColor: #6876bb;
 	--buttonHoverColor: #3c4369;
@@ -77,6 +81,8 @@
 :root {
 	--hoverShadow: 0 0 10px var(--hoverColor);
 	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
+	
+	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.12);
 }
 /**------------------------------------------------**/
 .blocks .s {background-color: var(--s-block);}
@@ -184,6 +190,11 @@ td {
     flex-direction: column;
 	opacity: 1;
 }
+/*
+.element {
+	box-shadow: var(--borderShadowColorEffect);
+}
+*/
 
 .element b, .elementStyle b {
     font-size: 0.8em;
@@ -254,6 +265,7 @@ td {
 	height: 15%;
 	margin: 3px;
 	transition: 0.3s;
+	/*box-shadow: var(--borderShadowColorEffect);*/
 }
 
 .elementsClassVew .highlightElementBlocks {
