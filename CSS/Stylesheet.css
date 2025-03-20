@@ -260,8 +260,15 @@ html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 .elementsClassVew div span {
 	cursor: default;
 }
-
-
+/*---------------------*/
+.periodicTable:has(.element.highlight) :is(.element) {
+	opacity: 0.3;
+}
+.periodicTable:has(.element.highlight) :is(.element.highlight) {
+	opacity: 1;
+	box-shadow: var(--hoverShadow);
+}
+/*---------------------*/
 .periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement) {
 	opacity: 0.3;
 }
