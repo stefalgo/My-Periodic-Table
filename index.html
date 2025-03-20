@@ -10,7 +10,7 @@
 	<body>
 		<!--<h1>The Periodic Table Of Elements</h1>-->
 		<h1 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h1>
-
+		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
 		<button onclick="showBlocks()">Προβολή τομέων</button><!--Toggle blocks vew-->
 
 		<div style="display: flex; align-items: center;">
@@ -325,6 +325,10 @@
 					}
 				});
 			}
+
+			function removeDiacritics(str) {
+    				return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+			}
 			
 			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 				document.documentElement.classList.toggle('darkMode');
@@ -342,6 +346,25 @@
 			}
 			
 			adjustElementsText();
+
+			document.getElementById("searchbar").addEventListener("input", function () {
+				let searchValue = removeDiacritics(this.value.trim().toLowerCase());
+				let items = document.querySelectorAll(".element");
+
+				items.forEach(item => {
+					let atomicValue = removeDiacritics(item.getAttribute("data-atomic") || "");
+					let emElement = item.querySelector("em");
+					let emText = emElement ? removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
+
+					if (searchValue === "") {
+						item.classList.remove("highlight");
+					} else if (atomicValue === searchValue || emText.includes(searchValue)) {
+						item.classList.add("highlight");
+					} else {
+						item.classList.remove("highlight");
+					}
+				});
+			});
 			/*
 			document.querySelectorAll(".highlightElement").forEach(highlight => {
 				highlight.addEventListener("mouseenter", () => {
