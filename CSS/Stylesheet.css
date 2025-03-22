@@ -79,10 +79,16 @@
 }
 
 :root {
+	--hoverColor2: #0099ff;
+
 	--hoverShadow: 0 0 10px var(--hoverColor);
 	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
 	
-	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.12);
+	--highlightShadow: 0 0 10px var(--hoverColor);
+	
+	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.3);
+	--borderShadowColorEffectHover: inset 0 0 0 2px var(--hoverColor2);
+	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
 }
 /**------------------------------------------------**/
 .blocks .s {background-color: var(--s-block);}
@@ -159,7 +165,7 @@ button:hover {
 }
 
 #searchbar:hover {
-	background-color: var(--buttonHoverColor);
+	box-shadow: var(--borderShadowColorEffectHover);
 }
 /**-----------------------------------------------**/
 td {
@@ -197,11 +203,10 @@ td {
     flex-direction: column;
 	opacity: 1;
 }
-/*
-.element {
+
+.element, .elementStyle:not(.empty) {
 	box-shadow: var(--borderShadowColorEffect);
 }
-*/
 
 .element b, .elementStyle b {
     font-size: 0.8em;
@@ -235,12 +240,12 @@ td {
 
 .element:not(.empty):hover,
 .elementStyle:not(.empty):hover {
-    box-shadow: var(--hoverShadow);
+    box-shadow: var(--borderShadowColorEffectHover);
 }
 
 .element:not(.empty):active,
 .elementStyle:not(.empty):active {
-    box-shadow: var(--clickShadow);
+    box-shadow: var(--borderShadowColorEffectClick);
 }
 /**-----------------------------------------------**/
 .periodicTable {
@@ -272,7 +277,7 @@ td {
 	height: 15%;
 	margin: 3px;
 	transition: 0.3s;
-	/*box-shadow: var(--borderShadowColorEffect);*/
+	box-shadow: var(--borderShadowColorEffect);
 }
 
 .elementsClassVew .highlightElementBlocks {
@@ -296,7 +301,7 @@ html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 }
 .periodicTable:has(.element.highlight) :is(.element.highlight) {
 	opacity: 1;
-	box-shadow: var(--hoverShadow);
+	box-shadow: var(--borderShadowColorEffectClick);
 }
 /*---------------------*/
 .periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement) {
@@ -318,7 +323,7 @@ html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 .periodicTable:has(.highlightElement.d:hover) .d,
 .periodicTable:has(.highlightElement.f:hover) .f {
 	opacity: 1;
-	box-shadow: var(--hoverShadow);
+	box-shadow: var(--borderShadowColorEffectHover);
 }
 /**-----------------------------------------------**/
 #sitePopup {
