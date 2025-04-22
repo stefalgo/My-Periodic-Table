@@ -291,15 +291,11 @@
 			</table>
 		</div>
 
+		<script language="javascript" src="JS/UrlParamsUtils.js" type="text/javascript"></script>
+
 		<script language="javascript" src="JS/TableScript.js" type="text/javascript"></script>
 		
 		<script type="text/javascript">
-			function readParam(name) {
-				var value = (new URLSearchParams(window.location.search)).get(name);
-
-				return value
-			}
-			
 			function showBlocks() {
 				document.documentElement.classList.toggle('blocks');
 			}
@@ -327,7 +323,7 @@
 			}
 
 			function removeDiacritics(str) {
-    				return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+    			return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
 			}
 			
 			if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -336,11 +332,11 @@
 				document.documentElement.classList.toggle('lightMode');
 			}
 			
-			if (readParam('blocks') === 'yes' || readParam('blocks') === 'true' || readParam('blocks') === '1') {
+			if (URL_readParam('blocks') === 'yes' || URL_readParam('blocks') === 'true' || URL_readParam('blocks') === '1') {
 				document.documentElement.classList.toggle('blocks');
 			}
 			
-			if (readParam('lighting') === 'other') {
+			if (URL_readParam('lighting') === 'other') {
 				document.documentElement.classList.toggle('darkMode');
 				document.documentElement.classList.toggle('lightMode');
 			}
@@ -365,6 +361,7 @@
 					}
 				});
 			});
+			
 			/*
 			document.querySelectorAll(".highlightElement").forEach(highlight => {
 				highlight.addEventListener("mouseenter", () => {
@@ -379,7 +376,7 @@
 					document.querySelectorAll(".element, .highlightElement").forEach(el => el.style.opacity = "1");
 				});
 			});
-   			*/
+			*/
 		</script>
 	</body>
 </html>
