@@ -20,4 +20,5 @@ https://stefalgo.github.io/My-Periodic-Table
 
 
 ## Author
+[![by-nc-nd](https://licensebuttons.net/l/by-nc-nd/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)\
 &copy; 2025 [@stefalgo](https://github.com/stefalgo) **All Rights Reserved.**
