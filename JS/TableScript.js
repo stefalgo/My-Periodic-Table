@@ -10,7 +10,14 @@ fetch("JsonData/Elements.json")
   .then(jsonData => {
     Object.assign(elementData, jsonData);
 	console.log("JSON loaded successfully:");
-	generateAtom('1');
+
+	var urlSelectedElement = URL_readParam("SelectedElement")
+
+	if (urlSelectedElement) {
+		elementClicked(document.querySelector(`[data-atomic="${urlSelectedElement}"]`));
+	} else {
+		generateAtom('1');
+	}
   })
   .catch(error => console.error("Error loading JSON:", error));
 
@@ -212,6 +219,7 @@ function openLinkInIframe(rowId) {
 document.addEventListener('click', (event) => {
 	if (event.target.matches('.element')) {
 		elementClicked(event.target);
+		URL_setParam("SelectedElement", event.target.getAttribute('data-atomic'));
 	}
 });
 
