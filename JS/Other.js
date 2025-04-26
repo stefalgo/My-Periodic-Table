@@ -39,7 +39,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     document.documentElement.classList.toggle('lightMode');
 }
 
-if (URL_readParam('blocks') === 'yes' || URL_readParam('blocks') === 'true' || URL_readParam('blocks') === '1') {
+if (URL_readParam('blocks') === 'true') {
     document.documentElement.classList.toggle('blocks');
 }
 
