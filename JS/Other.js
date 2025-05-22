@@ -21,7 +21,7 @@ function adjustElementsText() {
             const translateX = 50 * (scaleX - 1);
 
             const wordLength = emEl.textContent.length;
-            const letterSpacing = (wordLength >= 11);
+            const letterSpacing = (wordLength >= 11) ? 0.05 : 0;
 
             emEl.style.transform = `translateX(${translateX}%) scaleX(${scaleX})`;
             emEl.style.letterSpacing = `${letterSpacing}em`;
@@ -34,9 +34,11 @@ function removeDiacritics(str) {
 }
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.classList.toggle('darkMode');
+    document.documentElement.classList.add('darkMode');
+    document.documentElement.classList.remove('lightMode');
 } else {
-    document.documentElement.classList.toggle('lightMode');
+    document.documentElement.classList.add('lightMode');
+    document.documentElement.classList.remove('darkMode');
 }
 
 if (URL_readParam('blocks') === 'true') {
@@ -68,19 +70,3 @@ document.getElementById("searchbar").addEventListener("input", function () {
         }
     });
 });
-
-/*
-document.querySelectorAll(".highlightElement").forEach(highlight => {
-    highlight.addEventListener("mouseenter", () => {
-        const category = [...highlight.classList].find(cls => cls !== "highlightElement");
-    
-        document.querySelectorAll(".element, .highlightElement").forEach(el => {
-            el.style.opacity = el.classList.contains(category) ? "1" : "0.3";
-        });
-    });
-
-    highlight.addEventListener("mouseleave", () => {
-        document.querySelectorAll(".element, .highlightElement").forEach(el => el.style.opacity = "1");
-    });
-});
-*/
