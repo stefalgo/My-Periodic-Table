@@ -1,11 +1,35 @@
-const classes = ["alkali", "alkaline", "nonmetal", "transition", "unknown", "lanthanoid", "actinoid", "metalloid", "poor", "noble"];
+const classes = [
+	"alkali",
+	"alkaline",
+	"nonmetal",
+	"transition",
+	"unknown",
+	"lanthanoid",
+	"actinoid",
+	"metalloid",
+	"poor",
+	"noble"
+];
+const classesGreek = [
+	"Αλκαλική",
+	"Αλκαλική γαία",
+	"Αμέταλλο",
+	"Μετάλλα μετάπτωσης",
+	"Άγνωστο",
+	"Λανθανίδα",
+	"Ακτινίδα",
+	"Μεταλλοειδές",
+	"Φτωχό μέταλλο",
+	"Ευγενές αέριο"
+];
+
 const closeUp = document.getElementById('CloseUp');
 var elementAtomicNumber;
 
 const elementData = {};
 
-//fetch("../JsonData/Elements.json")
 fetch("JsonData/Elements.json")
+//fetch("https://raw.githubusercontent.com/stefalgo/My-Periodic-Table/main/JsonData/Elements.json")
   .then(response => response.json())
   .then(jsonData => {
     Object.assign(elementData, jsonData);
@@ -85,17 +109,17 @@ function showElementData(target) {
 	const symbol = closeUp.querySelector('.closeUp-shortName');
 	const name = closeUp.querySelector('.closeUp-name');
 	const mass = closeUp.querySelector('.closeUp-mass');
+	const allChildElements = target.children;//getChildrenElements(onElement);
+	const matchingClass = targetClasses.find(cls => classes.includes(cls));
 				
 	atomic.textContent = elementAtomicNumber;
 	energyLevel(elementAtomicNumber);
 	generateAtom(elementAtomicNumber)
 	name.textContent = elementData[elementAtomicNumber].name;
-				
-	const allChildElements = target.children;//getChildrenElements(onElement);
+	
 	symbol.textContent = elementData[elementAtomicNumber].shortName;
 	mass.textContent = allChildElements[3].textContent;
 	closeUp.classList = ["elementStyle"];
-	const matchingClass = targetClasses.find(cls => classes.includes(cls));
 	if (matchingClass) {
 		closeUp.classList.add(matchingClass);
 	}
@@ -118,7 +142,7 @@ function infoElement() {
 	} else {
 		element = '1';
 	}
-	function updateInfoPopup() {
+	//function updateInfoPopup() {
 		function copyCloseUp() {
 			var clonedElement = closeUp.cloneNode(true);
 			var closeUp2 = document.getElementById('CloseUp2');
@@ -153,8 +177,9 @@ function infoElement() {
 					
 		energyLevels.innerHTML = elementData[element].energyLevels.join(', ');
 		discovered.innerHTML = elementData[element].discovered;
-		block.innerHTML = elementData[element].block + '-block';
-		elementClass.innerHTML = closeUp2.classList[1];
+
+		block.innerHTML = elementData[element].block + '-τομέας';
+		elementClass.innerHTML = classesGreek[classes.indexOf(elementData[element].class)] ?? "Άγνωστη κατηγορία";//closeUp2.classList[1];
 		
 		function wikipediaIframeOpen(event) {
 			openLinkInIframe(element);
@@ -172,10 +197,10 @@ function infoElement() {
 		infoPopup.querySelector('.close').addEventListener('click', closePopup);
 		wikipediaLink.href = link;
 		downloadPDF.href = pdf;
-	}
+	//}
 
 	infoPopup.style.display = "block";
-	updateInfoPopup();
+	//updateInfoPopup();
 }
 
 function elementClicked(clickedElement) {
