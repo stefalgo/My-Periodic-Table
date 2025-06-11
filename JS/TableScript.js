@@ -33,45 +33,22 @@ fetch("JsonData/Elements.json")
   })
   .catch(error => console.error("Error loading JSON:", error));
 
-function energyLevel(elementName) {
-	const smallElement = closeUp.querySelector('small');
-	smallElement.innerHTML = '';
-
-	if (elementData.hasOwnProperty(elementName)) {
-
-		let element = elementData[elementName];
-
-	for (const level of element.energyLevels) {
-		let spanElement = document.createElement('span');
-		spanElement.textContent = level;
-		smallElement.appendChild(spanElement);
-	}
-	} else {
-		console.log('Element with name "' + elementName + '" does not exist.');
-	}
-}
-
 function generateAtom(atomicNumber) {
 	const atomContainer = document.getElementById('atom');
 	const atomCore = atomContainer.querySelector('.atom');
 	const atom = elementData[atomicNumber];
 	if (!atom) {console.error('Atomic number not found in the data.'); return;}
 
-	//atomContainer.innerHTML = '<div class="atom"></div>';
 	atomCore.innerHTML = '';
 
 	atom.energyLevels.forEach((numElectrons, index) => {
 		const energyLevelDiv = document.createElement('div');
 		const radius = (index + 2) * 9;
 		const animationSpeed = radius / 2;
-		//const xPos = '50%';
-		//const yPos = '50%';
 
 		energyLevelDiv.classList.add('energy-level');
 		energyLevelDiv.style.width = radius * 2 + 'px';
 		energyLevelDiv.style.height = radius * 2 + 'px';
-		//energyLevelDiv.style.top = yPos;
-		//energyLevelDiv.style.left = xPos;
 		energyLevelDiv.style.animation = `spin ${animationSpeed}s linear infinite`;
 		atomCore.appendChild(energyLevelDiv);
 
@@ -89,25 +66,33 @@ function generateAtom(atomicNumber) {
 }
 
 function showElementData(target) {
-	const targetClasses = Array.from(target.classList);
 	const atomic = closeUp.querySelector('.closeUp-atomic');
 	const symbol = closeUp.querySelector('.closeUp-shortName');
 	const name = closeUp.querySelector('.closeUp-name');
 	const mass = closeUp.querySelector('.closeUp-mass');
-	const allChildElements = target.children;//getChildrenElements(onElement);
-	const matchingClassObj = classes.find(c => targetClasses.includes(c.en));
-				
+	const energyLevel = closeUp.querySelector('small');
+	const massValue = target.children[3];
+	const matchingClassObj = classes.find(c => elementData[elementAtomicNumber].class.includes(c.en));
+
+	energyLevel.innerHTML = '';
 	atomic.textContent = elementAtomicNumber;
-	energyLevel(elementAtomicNumber);
-	generateAtom(elementAtomicNumber)
 	name.textContent = elementData[elementAtomicNumber].name;
-	
 	symbol.textContent = elementData[elementAtomicNumber].shortName;
-	mass.textContent = allChildElements[3].textContent;
+	mass.textContent = massValue.textContent;
+
 	closeUp.classList = ["elementStyle"];
+
 	if (matchingClassObj) {
 		closeUp.classList.add(matchingClassObj.en);
 	}
+
+	for (const level of elementData[elementAtomicNumber].energyLevels) {
+		let spanElement = document.createElement('span');
+		spanElement.textContent = level;
+		energyLevel.appendChild(spanElement);
+	}
+
+	generateAtom(elementAtomicNumber)
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -190,7 +175,6 @@ function openLinkInIframe(rowId) {
 	//let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
 	//let link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
 	//let link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
-	
 	let link;
 
 	function closePopup(event) {
