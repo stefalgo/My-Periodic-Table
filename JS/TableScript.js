@@ -147,7 +147,7 @@ function infoElement(elementAtomicNumber) {
 	atomic.innerHTML = element;
 	energyLevels.innerHTML = elementData[element].energyLevels.join(', ');
 	discovered.innerHTML = elementData[element].discovered;
-	mass = elementData[element].mass;
+	mass.innerHTML = elementData[element].mass;
 	block.innerHTML = elementData[element].block;// + '-τομέας';
 	elementClass.innerHTML = classes.find(c => c.en === elementData[element].class)?.gr ?? "Άγνωστη κατηγορία";
 				
