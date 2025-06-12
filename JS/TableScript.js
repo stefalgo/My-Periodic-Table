@@ -102,6 +102,7 @@ function infoElement(elementAtomicNumber) {
 	const atomic = infoPopup.querySelector('.popup-atomic');
 	const energyLevels = infoPopup.querySelector('.popup-energyLevels');
 	const discovered = infoPopup.querySelector('.popup-discovered');
+	const mass = infoPopup.querySelector('.popup-mass');
 	const block = infoPopup.querySelector('.popup-block');
 	const elementClass = infoPopup.querySelector('.popup-class');
 	const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
@@ -144,10 +145,9 @@ function infoElement(elementAtomicNumber) {
 	
 	name.innerHTML = elementData[element].name;
 	atomic.innerHTML = element;
-				
 	energyLevels.innerHTML = elementData[element].energyLevels.join(', ');
 	discovered.innerHTML = elementData[element].discovered;
-
+	mass = elementData[element].mass;
 	block.innerHTML = elementData[element].block;// + '-τομέας';
 	elementClass.innerHTML = classes.find(c => c.en === elementData[element].class)?.gr ?? "Άγνωστη κατηγορία";
 				
