@@ -14,7 +14,7 @@ const classes = [
 const elementData = {};
 const closeUp = document.getElementById('CloseUp');
 
-let elementAtomicNumber;
+let elementAtomicNumber = '1'
 
 fetch("JsonData/Elements.json")
 //fetch("https://raw.githubusercontent.com/stefalgo/My-Periodic-Table/main/JsonData/Elements.json")
@@ -65,20 +65,19 @@ function generateAtom(atomicNumber) {
 	});
 }
 
-function showElementData(target) {
+function showElementData(elementAtomicNumber) {
 	const atomic = closeUp.querySelector('.closeUp-atomic');
 	const symbol = closeUp.querySelector('.closeUp-shortName');
 	const name = closeUp.querySelector('.closeUp-name');
 	const mass = closeUp.querySelector('.closeUp-mass');
 	const energyLevel = closeUp.querySelector('small');
-	const massValue = target.children[3];
 	const matchingClassObj = classes.find(c => elementData[elementAtomicNumber].class.includes(c.en));
 
 	energyLevel.innerHTML = '';
 	atomic.textContent = elementAtomicNumber;
 	name.textContent = elementData[elementAtomicNumber].name;
 	symbol.textContent = elementData[elementAtomicNumber].shortName;
-	mass.textContent = massValue.textContent;
+	mass.textContent = elementData[elementAtomicNumber].mass;
 
 	closeUp.classList = ["elementStyle"];
 
@@ -97,7 +96,7 @@ function showElementData(target) {
 
 //-----------------------------------------------------------------------------------------------
 
-function infoElement() {
+function infoElement(elementAtomicNumber) {
 	const infoPopup = document.getElementById('infoPopup');
 	const name = infoPopup.querySelector('.popup-name');
 	const atomic = infoPopup.querySelector('.popup-atomic');
@@ -133,11 +132,7 @@ function infoElement() {
 		openLinkInIframe(element);
 	}
 				
-	if (typeof elementAtomicNumber !== 'undefined') {
-		element = elementAtomicNumber;
-	} else {
-		element = '1';
-	}
+	element = elementAtomicNumber;
 	
 	if (elementData[element].linkElementName) {
 		link = "https://el.wikipedia.org/wiki/" + elementData[element].linkElementName;
@@ -166,9 +161,9 @@ function infoElement() {
 
 function elementClicked(clickedElement) {
 	elementAtomicNumber = clickedElement.getAttribute('data-linkedElement') || clickedElement.getAttribute('data-atomic');
-	const elementToShow = clickedElement.hasAttribute('data-linkedElement') ? document.querySelector(`[data-atomic="${elementAtomicNumber}"]`) : clickedElement;
+	//const elementToShow = clickedElement.hasAttribute('data-linkedElement') ? document.querySelector(`[data-atomic="${elementAtomicNumber}"]`) : clickedElement;
 
-	showElementData(elementToShow);
+	showElementData(elementAtomicNumber);
 }
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
@@ -205,6 +200,6 @@ document.addEventListener('click', (event) => {
 	}
 });
 
-closeUp.addEventListener('click', function(event) {
-	infoElement();
+closeUp.addEventListener('click', (event) => {
+	infoElement(elementAtomicNumber);
 });
