@@ -1,3 +1,8 @@
+function toNumber(str) {
+  const match = str.match(/-?\d+(\.\d+)?/);
+  return match ? Number(match[0]) : NaN;
+}
+
 function showBlocks() {
     document.documentElement.classList.toggle('blocks');
     if (document.documentElement.classList.contains('blocks')) {
@@ -5,6 +10,38 @@ function showBlocks() {
     } else {
         URL_removeParam("blocks")
     }
+}
+
+function showWeight(useLog = false) {
+    const elements = [...document.querySelectorAll('.element')];
+
+    if (elements.some(el => el.style.backgroundColor)) {
+        elements.forEach(el => el.style.backgroundColor = '');
+        return;
+    }
+
+    const getMass = el => {
+        const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
+        const m = (elementData[key]?.mass || '').match(/-?\d+(\.\d+)?/);
+        return m ? +m[0] : NaN;
+    };
+
+    const data = elements.map(el => ({ el, mass: getMass(el) })).filter(e => !isNaN(e.mass) && (!useLog || e.mass > 0));
+    if (!data.length) return;
+
+    const values = useLog 
+        ? data.map(e => Math.log(e.mass))
+        : data.map(e => e.mass);
+
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const range = max - min || 1;
+
+    data.forEach(({ el, mass }) => {
+        const val = useLog ? Math.log(mass) : mass;
+        const t = (val - min) / range;
+        el.style.backgroundColor = `rgb(${50 + Math.round(205 * t)},${Math.round(50 * (1 - t))},${Math.round(50 * (1 - t))})`;
+    });
 }
 
 function adjustElementsText() {
