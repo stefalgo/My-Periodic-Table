@@ -91,10 +91,10 @@
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
 }
 /**------------------------------------------------**/
-.blocks .s {background-color: var(--s-block);}
-.blocks .p { background-color: var(--p-block); }
-.blocks .d { background-color: var(--d-block); }
-.blocks .f { background-color: var(--f-block); }
+.blocks .s {background: var(--s-block);}
+.blocks .p {background: var(--p-block);}
+.blocks .d {background: var(--d-block);}
+.blocks .f {background: var(--f-block);}
 
 * {
 	box-sizing: border-box;
@@ -465,14 +465,14 @@ html:not([class*="blocks"]) .elementsClassVew .highlightElementBlocks {
 }
 
 /**-----------------------------------------------**/
-.alkali {background-color: var(--alkali);}
-.alkaline {background-color: var(--alkaline);}
-.transition {background-color: var(--transition);}
-.poor {background-color: var(--poor);}
-.lanthanoid {background-color: var(--lanthanoid);}
-.actinoid {background-color: var(--actinoid);}
-.metalloid {background-color: var(--metalloid);}
-.nonmetal {background-color: var(--nonmetal);}
-.halogen {background-color: var(--halogen);}
-.noble {background-color: var(--noble);}
-.unknown {background-color: var(--unknown);}
+.alkali {background: var(--alkali);}
+.alkaline {background: var(--alkaline);}
+.transition {background: var(--transition);}
+.poor {background: var(--poor);}
+.lanthanoid {background: var(--lanthanoid);}
+.actinoid {background: var(--actinoid);}
+.metalloid {background: var(--metalloid);}
+.nonmetal {background: var(--nonmetal);}
+.halogen {background: var(--halogen);}
+.noble {background: var(--noble);}
+.unknown {background: var(--unknown);}
