@@ -241,7 +241,7 @@
         "melt": 933.47,
         "boil": 2743,
         "density": 2.7,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": null,
         "discovered": "",
         "summary": "Aluminium (or aluminum; see different endings) is a chemical element in the boron group with symbol Al and atomic number 13. It is a silvery-white, soft, nonmagnetic, ductile metal. Aluminium is the third most abundant element (after oxygen and silicon), and the most abundant metal, in the Earth's crust."
@@ -268,7 +268,7 @@
     "15": {
         "atomic": "15",
         "symbol": "P",
-        "name": "Φώσφορος",
+        "name": "Φωσφόρος",
         "atomicMass": 30.9737619985,
         "color": "FF8000",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p3",
@@ -583,7 +583,7 @@
         "melt": 302.9146,
         "boil": 2673,
         "density": 5.91,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "Lecoq de Boisbaudran",
         "discovered": "",
         "summary": "Gallium is a chemical element with symbol Ga and atomic number 31. Elemental gallium does not occur in free form in nature, but as the gallium(III) compounds that are in trace amounts in zinc ores and in bauxite. Gallium is a soft, silvery metal, and elemental gallium is a brittle solid at low temperatures, and melts at 29.76 °C (85.57 °F) (slightly above room temperature)."
@@ -667,7 +667,7 @@
     "36": {
         "atomic": "36",
         "symbol": "Kr",
-        "name": "Κρυπτόν",
+        "name": "Κρυπτό",
         "atomicMass": 83.7982,
         "color": "5CB8D1",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6",
@@ -876,7 +876,7 @@
     "47": {
         "atomic": "47",
         "symbol": "Ag",
-        "name": "Ασήμι",
+        "name": "Άργυρος",
         "atomicMass": 107.86822,
         "color": "C0C0C0",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1 4d10",
@@ -925,7 +925,7 @@
         "melt": 429.7485,
         "boil": 2345,
         "density": 7.31,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "Ferdinand Reich",
         "discovered": "",
         "summary": "Indium is a chemical element with symbol In and atomic number 49. It is a post-transition metallic element that is rare in Earth's crust. The metal is very soft, malleable and easily fusible, with a melting point higher than sodium, but lower than lithium or tin."
@@ -944,7 +944,7 @@
         "melt": 505.08,
         "boil": 2875,
         "density": 7.365,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "unknown, before 3500 BC",
         "discovered": "",
         "summary": "Tin is a chemical element with the symbol Sn (for Latin:stannum) and atomic number 50. It is a main group metal in group 14 of the periodic table. Tin shows a chemical similarity to both neighboring group-14 elements, germanium and lead, and has two possible oxidation states, +2 and the slightly more stable +4."
@@ -1009,7 +1009,7 @@
     "54": {
         "atomic": "54",
         "symbol": "Xe",
-        "name": "Ξένον",
+        "name": "Ξένο",
         "atomicMass": 131.2936,
         "color": "429EB0",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6",
@@ -1085,7 +1085,7 @@
     "58": {
         "atomic": "58",
         "symbol": "Ce",
-        "name": "Κήριο",
+        "name": "Δημήτριο",
         "atomicMass": 140.1161,
         "color": "FFFFC7",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 5d1 4f1",
@@ -1104,7 +1104,7 @@
     "59": {
         "atomic": "59",
         "symbol": "Pr",
-        "name": "Πρασεοδύμιο",
+        "name": "Πρασινοδύμιο",
         "atomicMass": 140.907662,
         "color": "D9FFC7",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f3",
@@ -1142,7 +1142,7 @@
     "61": {
         "atomic": "61",
         "symbol": "Pm",
-        "name": "Προμήθειο",
+        "name": "Προμήθιο",
         "atomicMass": 145,
         "color": "A3FFC7",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f5",
@@ -1256,7 +1256,7 @@
     "67": {
         "atomic": "67",
         "symbol": "Ho",
-        "name": "Χόλμιο",
+        "name": "Όλμιο",
         "atomicMass": 164.930332,
         "color": "00FF9C",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f11",
@@ -1332,7 +1332,7 @@
     "71": {
         "atomic": "71",
         "symbol": "Lu",
-        "name": "Λουτέσιο",
+        "name": "Λουτήτιο",
         "atomicMass": 174.96681,
         "color": "00AB24",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d1",
@@ -1351,7 +1351,7 @@
     "72": {
         "atomic": "72",
         "symbol": "Hf",
-        "name": "Χάφνιο",
+        "name": "Άφνιο",
         "atomicMass": 178.492,
         "color": "4DC2FF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d2",
@@ -1533,7 +1533,7 @@
         "melt": 577,
         "boil": 1746,
         "density": 11.85,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "William Crookes",
         "discovered": "",
         "summary": "Thallium is a chemical element with symbol Tl and atomic number 81. This soft gray post-transition metal is not found free in nature. When isolated, it resembles tin, but discolors when exposed to air."
@@ -1552,7 +1552,7 @@
         "melt": 600.61,
         "boil": 2022,
         "density": 11.34,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "Middle East",
         "discovered": "",
         "summary": "Lead (/lɛd/) is a chemical element in the carbon group with symbol Pb (from Latin:plumbum) and atomic number 82. Lead is a soft, malleable and heavy post-transition metal. Metallic lead has a bluish-white color after being freshly cut, but it soon tarnishes to a dull grayish color when exposed to air."
@@ -1571,7 +1571,7 @@
         "melt": 544.7,
         "boil": 1837,
         "density": 9.78,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "Claude François Geoffroy",
         "discovered": "",
         "summary": "Bismuth is a chemical element with symbol Bi and atomic number 83. Bismuth, a pentavalent post-transition metal, chemically resembles arsenic and antimony. Elemental bismuth may occur naturally, although its sulfide and oxide form important commercial ores."
@@ -1590,7 +1590,7 @@
         "melt": 527,
         "boil": 1235,
         "density": 9.196,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "Pierre Curie",
         "discovered": "",
         "summary": "Polonium is a chemical element with symbol Po and atomic number 84, discovered in 1898 by Marie Curie and Pierre Curie. A rare and highly radioactive element with no stable isotopes, polonium is chemically similar to bismuth and tellurium, and it occurs in uranium ores. Applications of polonium are few."
@@ -1598,7 +1598,7 @@
     "85": {
         "atomic": "85",
         "symbol": "At",
-        "name": "Αστατίνιο",
+        "name": "Άστατο",
         "atomicMass": 210,
         "color": "754F45",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p5",
@@ -1636,7 +1636,7 @@
     "87": {
         "atomic": "87",
         "symbol": "Fr",
-        "name": "Φρανσίσιο",
+        "name": "Φράγκιο",
         "atomicMass": 223,
         "color": "420066",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s1",
@@ -1712,7 +1712,7 @@
     "91": {
         "atomic": "91",
         "symbol": "Pa",
-        "name": "Προτακτίνιο",
+        "name": "Πρωτακτίνιο",
         "atomicMass": 231.035882,
         "color": "00A1FF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f2 6d1",
@@ -1750,7 +1750,7 @@
     "93": {
         "atomic": "93",
         "symbol": "Np",
-        "name": "Νεπτούνιο",
+        "name": "Ποσειδώνιο",
         "atomicMass": 237,
         "color": "0080FF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f4 6d1",
@@ -1788,7 +1788,7 @@
     "95": {
         "atomic": "95",
         "symbol": "Am",
-        "name": "Αμερικίσιο",
+        "name": "Αμερίκιο",
         "atomicMass": 243,
         "color": "545CF2",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f7",
@@ -1807,7 +1807,7 @@
     "96": {
         "atomic": "96",
         "symbol": "Cm",
-        "name": "Κούριο",
+        "name": "Κιούριο",
         "atomicMass": 247,
         "color": "785CE3",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f7 6d1",
@@ -1864,7 +1864,7 @@
     "99": {
         "atomic": "99",
         "symbol": "Es",
-        "name": "Αϊνστάνιο",
+        "name": "Αϊνσταΐνιο",
         "atomicMass": 252,
         "color": "B31FD4",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f11",
@@ -1921,7 +1921,7 @@
     "102": {
         "atomic": "102",
         "symbol": "No",
-        "name": "Νόμπελιο",
+        "name": "Νομπέλιο",
         "atomicMass": 259,
         "color": "BD0D87",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14",
@@ -1940,7 +1940,7 @@
     "103": {
         "atomic": "103",
         "symbol": "Lr",
-        "name": "Λαουρένσιο",
+        "name": "Λορένσιο",
         "atomicMass": 266,
         "color": "C70066",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 7p1",
@@ -1959,7 +1959,7 @@
     "104": {
         "atomic": "104",
         "symbol": "Rf",
-        "name": "Ραδερφόρδιο",
+        "name": "Ραδερφόρντιο",
         "atomicMass": 267,
         "color": "CC0059",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d2",
@@ -1997,7 +1997,7 @@
     "106": {
         "atomic": "106",
         "symbol": "Sg",
-        "name": "Σίμποργκιο",
+        "name": "Σιμπόργκιο",
         "atomicMass": 269,
         "color": "D90045",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d4",
@@ -2054,7 +2054,7 @@
     "109": {
         "atomic": "109",
         "symbol": "Mt",
-        "name": "Μάιτνεριο",
+        "name": "Μαϊτνέριο",
         "atomicMass": 278,
         "color": "EB0026",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d7",
@@ -2065,7 +2065,7 @@
         "melt": null,
         "boil": null,
         "density": 37.4,
-        "category": "transition",
+        "category": "unknown",
         "discoveredBy": "Gesellschaft für Schwerionenforschung",
         "discovered": "",
         "summary": "Meitnerium is a chemical element with symbol Mt and atomic number 109. It is an extremely radioactive synthetic element (an element not found in nature that can be created in a laboratory). The most stable known isotope, meitnerium-278, has a half-life of 7.6 seconds."
@@ -2084,7 +2084,7 @@
         "melt": null,
         "boil": null,
         "density": 34.8,
-        "category": "transition",
+        "category": "unknown",
         "discoveredBy": "Gesellschaft für Schwerionenforschung",
         "discovered": "",
         "summary": "Darmstadtium is a chemical element with symbol Ds and atomic number 110. It is an extremely radioactive synthetic element. The most stable known isotope, darmstadtium-281, has a half-life of approximately 10 seconds."
@@ -2092,7 +2092,7 @@
     "111": {
         "atomic": "111",
         "symbol": "Rg",
-        "name": "Ρέντγκενιο",
+        "name": "Ρεντγκένιο",
         "atomicMass": 282,
         "color": "FFFFFF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d9",
@@ -2103,7 +2103,7 @@
         "melt": null,
         "boil": null,
         "density": 28.7,
-        "category": "transition",
+        "category": "unknown",
         "discoveredBy": "Gesellschaft für Schwerionenforschung",
         "discovered": "",
         "summary": "Roentgenium is a chemical element with symbol Rg and atomic number 111. It is an extremely radioactive synthetic element (an element that can be created in a laboratory but is not found in nature); the most stable known isotope, roentgenium-282, has a half-life of 2.1 minutes. Roentgenium was first created in 1994 by the GSI Helmholtz Centre for Heavy Ion Research near Darmstadt, Germany."
@@ -2111,7 +2111,7 @@
     "112": {
         "atomic": "112",
         "symbol": "Cn",
-        "name": "Κοπέρνικιο",
+        "name": "Κοπερνίκιο",
         "atomicMass": 285,
         "color": "FFFFFF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10",
@@ -2141,7 +2141,7 @@
         "melt": 700,
         "boil": 1430,
         "density": 16,
-        "category": "transition",
+        "category": "unknown",
         "discoveredBy": "RIKEN",
         "discovered": "",
         "summary": "Nihonium is a chemical element with atomic number 113. It has a symbol Nh. It is a synthetic element (an element that can be created in a laboratory but is not found in nature) and is extremely radioactive; its most stable known isotope, nihonium-286, has a half-life of 20 seconds."
@@ -2160,7 +2160,7 @@
         "melt": 340,
         "boil": 420,
         "density": 14,
-        "category": "transition",
+        "category": "poor",
         "discoveredBy": "Joint Institute for Nuclear Research",
         "discovered": "",
         "summary": "Flerovium is a superheavy artificial chemical element with symbol Fl and atomic number 114. It is an extremely radioactive synthetic element. The element is named after the Flerov Laboratory of Nuclear Reactions of the Joint Institute for Nuclear Research in Dubna, Russia, where the element was discovered in 1998."
@@ -2179,7 +2179,7 @@
         "melt": 670,
         "boil": 1400,
         "density": 13.5,
-        "category": "transition",
+        "category": "unknown",
         "discoveredBy": "Joint Institute for Nuclear Research",
         "discovered": "",
         "summary": "Moscovium is the name of a synthetic superheavy element in the periodic table that has the symbol Mc and has the atomic number 115. It is an extremely radioactive element; its most stable known isotope, moscovium-289, has a half-life of only 220 milliseconds. It is also known as eka-bismuth or simply element 115."
@@ -2198,7 +2198,7 @@
         "melt": 709,
         "boil": 1085,
         "density": 12.9,
-        "category": "transition",
+        "category": "unknown",
         "discoveredBy": "Joint Institute for Nuclear Research",
         "discovered": "",
         "summary": "Livermorium is a synthetic superheavy element with symbol Lv and atomic number 116. It is an extremely radioactive element that has only been created in the laboratory and has not been observed in nature. The element is named after the Lawrence Livermore National Laboratory in the United States, which collaborated with the Joint Institute for Nuclear Research in Dubna, Russia to discover livermorium in 2000."
@@ -2206,7 +2206,7 @@
     "117": {
         "atomic": "117",
         "symbol": "Ts",
-        "name": "Τενεσίνιο",
+        "name": "Τενέσιο",
         "atomicMass": 294,
         "color": "FFFFFF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p5",
@@ -2217,7 +2217,7 @@
         "melt": 723,
         "boil": 883,
         "density": 7.17,
-        "category": "metalloid",
+        "category": "unknown",
         "discoveredBy": "Joint Institute for Nuclear Research",
         "discovered": "",
         "summary": "Tennessine is a superheavy artificial chemical element with an atomic number of 117 and a symbol of Ts. Also known as eka-astatine or element 117, it is the second-heaviest known element and penultimate element of the 7th period of the periodic table. As of 2016, fifteen tennessine atoms have been observed: six when it was first synthesized in 2010, seven in 2012, and two in 2014."
@@ -2225,7 +2225,7 @@
     "118": {
         "atomic": "118",
         "symbol": "Og",
-        "name": "Ογκανέσον",
+        "name": "Ογκανέσσιο",
         "atomicMass": 294,
         "color": "FFFFFF",
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6",
@@ -2236,7 +2236,7 @@
         "melt": null,
         "boil": 350,
         "density": 4.95,
-        "category": "noble",
+        "category": "unknown",
         "discoveredBy": "Joint Institute for Nuclear Research",
         "discovered": "",
         "summary": "Oganesson is IUPAC's name for the transactinide element with the atomic number 118 and element symbol Og. It is also known as eka-radon or element 118, and on the periodic table of the elements it is a p-block element and the last one of the 7th period. Oganesson is currently the only synthetic member of group 18."
@@ -2255,7 +2255,7 @@
         "melt": null,
         "boil": 630,
         "density": 3,
-        "category": "alkali",
+        "category": "unknown",
         "discoveredBy": "GSI Helmholtz Centre for Heavy Ion Research",
         "discovered": "",
         "summary": "Ununennium, also known as eka-francium or simply element 119, is the hypothetical chemical element with symbol Uue and atomic number 119. Ununennium and Uue are the temporary systematic IUPAC name and symbol respectively, until a permanent name is decided upon. In the periodic table of the elements, it is expected to be an s-block element, an alkali metal, and the first element in the eighth period."
