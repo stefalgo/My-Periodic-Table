@@ -11,11 +11,8 @@ const classes = [
 	{en: "noble", gr: "Ευγενές αέριο"}
 ];
 
-const elementData = {};
-const closeUp = document.getElementById('CloseUp');
-
-let elementAtomicNumber = '1'
-
+//const elementData = {};
+/*
 fetch("JsonData/Elements.json")
 //fetch("https://raw.githubusercontent.com/stefalgo/My-Periodic-Table/main/JsonData/Elements.json")
   .then(response => response.json())
@@ -32,6 +29,35 @@ fetch("JsonData/Elements.json")
 	}
   })
   .catch(error => console.error("Error loading JSON:", error));
+*/
+const closeUp = document.getElementById('CloseUp');
+let elementAtomicNumber = '1'
+
+let elementData;
+
+async function loadElementData(url='JsonData/Elements.json') {
+	try {
+		const res = await fetch(url);
+		if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
+
+		elementData = await res.json();
+		console.log('JSON loaded successfully');
+
+		onDataLoaded();
+
+	} catch (err) {
+		console.error(err);
+	}
+}
+
+function onDataLoaded() {
+	if (!elementData) return;
+	if (URL_readParam('SelectedElement')) {
+		showElementData(URL_readParam('SelectedElement'));
+	} else {
+		showElementData(1);
+	}
+}
 
 function generateAtom(atomicNumber) {
 	const atomContainer = document.getElementById('atom');
@@ -41,7 +67,7 @@ function generateAtom(atomicNumber) {
 
 	atomCore.innerHTML = '';
 
-	atom.energyLevels.forEach((numElectrons, index) => {
+	atom.shells.forEach((numElectrons, index) => {
 		const energyLevelDiv = document.createElement('div');
 		const radius = (index + 2) * 9;
 		const animationSpeed = radius / 2;
@@ -85,7 +111,7 @@ function showElementData(elementAtomicNumber) {
 		closeUp.classList.add(matchingClassObj.en);
 	}
 
-	for (const level of elementData[elementAtomicNumber].energyLevels) {
+	for (const level of elementData[elementAtomicNumber].shells) {
 		let spanElement = document.createElement('span');
 		spanElement.textContent = level;
 		energyLevel.appendChild(spanElement);
@@ -145,7 +171,7 @@ function infoElement(elementAtomicNumber) {
 	
 	name.innerHTML = elementData[element].name;
 	atomic.innerHTML = element;
-	energyLevels.innerHTML = elementData[element].energyLevels.join(', ');
+	energyLevels.innerHTML = elementData[element].shells.join(', ');
 	discovered.innerHTML = elementData[element].discovered;
 	mass.innerHTML = elementData[element].mass;
 	block.innerHTML = elementData[element].block;// + '-τομέας';
