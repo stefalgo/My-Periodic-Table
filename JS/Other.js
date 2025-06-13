@@ -26,8 +26,8 @@ function showWeight(useLog = false) {
         return m ? +m[0] : NaN;
     };
 
-    const minColor = [250, 100, 50, 0];  // dark gray
-    const maxColor = [250, 0, 0, 1];   // red
+    const minColor = [255, 200, 200, 0.2];
+    const maxColor = [200, 30, 30, 1];
 
     const data = elements
         .map(el => ({ el, mass: getMass(el) }))
@@ -43,6 +43,10 @@ function showWeight(useLog = false) {
     const range = max - min || 1;
 
     data.forEach(({ el, mass }) => {
+        if (el.hasAttribute('data-linkedElement')) {
+            el.style.backgroundColor = 'transparent';
+            return;
+        }
         const val = useLog ? Math.log(mass) : mass;
         const t = (val - min) / range;
 
