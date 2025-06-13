@@ -97,19 +97,18 @@ function showElementData(elementAtomicNumber) {
 	const name = closeUp.querySelector('.closeUp-name');
 	const mass = closeUp.querySelector('.closeUp-mass');
 	const energyLevel = closeUp.querySelector('small');
-	const matchingClassObj = classes.find(c => elementData[elementAtomicNumber].class.includes(c.en));
 
 	energyLevel.innerHTML = '';
 	atomic.textContent = elementAtomicNumber;
 	name.textContent = elementData[elementAtomicNumber].name;
 	symbol.textContent = elementData[elementAtomicNumber].shortName;
 	mass.textContent = elementData[elementAtomicNumber].mass;
+	
 
 	closeUp.classList = ["elementStyle"];
-
-	if (matchingClassObj) {
-		closeUp.classList.add(matchingClassObj.en);
-	}
+	closeUp.classList.add(elementData[elementAtomicNumber].class);
+	closeUp.classList.add(elementData[elementAtomicNumber].block);
+	closeUp.setAttribute('data-atomic', elementAtomicNumber)
 
 	for (const level of elementData[elementAtomicNumber].shells) {
 		let spanElement = document.createElement('span');
