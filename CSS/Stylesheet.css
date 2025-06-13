@@ -204,6 +204,10 @@ td {
 	opacity: 1;
 }
 
+.element *, .elementStyle * {
+	pointer-events: none;
+}
+
 .element, .elementStyle:not(.empty) {
 	box-shadow: var(--borderShadowColorEffect);
 }
@@ -226,12 +230,6 @@ td {
     font-weight: 600;
 }
 
-.element b, .elementStyle b,
-.element em, .elementStyle em,
-.element data, .elementStyle data,
-.element abbr, .elementStyle abbr {
-    pointer-events: none;
-}
 /**--------------------**/
 .element:not(.empty),
 .elementStyle:not(.empty) {
