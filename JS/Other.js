@@ -83,6 +83,11 @@ function removeDiacritics(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
 }
 
+function toggleColorScheme() {
+    document.documentElement.classList.toggle('darkMode');
+    document.documentElement.classList.toggle('lightMode');
+}
+
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('darkMode');
     document.documentElement.classList.remove('lightMode');
@@ -96,8 +101,7 @@ if (URL_readParam('blocks') === 'true') {
 }
 
 if (URL_readParam('lighting') === 'other') {
-    document.documentElement.classList.toggle('darkMode');
-    document.documentElement.classList.toggle('lightMode');
+    toggleColorScheme()
 }
 
 adjustElementsText();
