@@ -1,21 +1,28 @@
+const visualizeOption = document.getElementById('visualizeOption')
+
 function toNumber(str) {
     const match = str.match(/-?\d+(\.\d+)?/);
     return match ? Number(match[0]) : NaN;
 }
 
-function showBlocks() {
-    document.documentElement.classList.toggle('blocks');
-    if (document.documentElement.classList.contains('blocks')) {
-        URL_setParam("blocks", 'true');
+function showBlocks(show) {
+    if (show) {
+        document.documentElement.classList.add('blocks');
     } else {
-        URL_removeParam("blocks")
+        document.documentElement.classList.remove('blocks');
     }
+    //document.documentElement.classList.toggle('blocks');
+    //if (document.documentElement.classList.contains('blocks')) {
+    //    URL_setParam("blocks", 'true');
+    //} else {
+    //    URL_removeParam("blocks")
+    //}
 }
 
-function visualize(prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = [...document.querySelectorAll('.element'), ...document.querySelectorAll('#CloseUp')];
 
-    if (elements.some(el => el.style.backgroundColor)) {
+    if (elements.some(el => el.style.backgroundColor) || !show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
@@ -88,6 +95,19 @@ function toggleColorScheme() {
     document.documentElement.classList.toggle('lightMode');
 }
 
+function visualizeOptionFunc() {
+    const value = visualizeOption.value
+    showBlocks(false)
+    visualize(false)
+
+    if (value === 'ElectronConfiguration') {
+        showBlocks(true)
+    }
+    if (value === 'AtomicMass') {
+        visualize(true, 'mass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74])
+    }
+}
+
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('darkMode');
     document.documentElement.classList.remove('lightMode');
@@ -96,15 +116,19 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     document.documentElement.classList.remove('darkMode');
 }
 
-if (URL_readParam('blocks') === 'true') {
-    document.documentElement.classList.toggle('blocks');
-}
-
 if (URL_readParam('lighting') === 'other') {
     toggleColorScheme()
 }
 
+visualizeOption.value = URL_readParam('visualizeOption')
+
 adjustElementsText();
+visualizeOptionFunc();
+
+visualizeOption.addEventListener('change', () => {
+    visualizeOptionFunc();
+    URL_setParam('visualizeOption', visualizeOption.value)
+});
 
 document.getElementById("searchbar").addEventListener("input", function () {
     let searchValue = removeDiacritics(this.value.trim().toLowerCase());
