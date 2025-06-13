@@ -35,9 +35,9 @@ let elementAtomicNumber = '1'
 
 let elementData;
 
-async function loadElementData(url='JsonData/Elements.json') {
+(async () => {
 	try {
-		const res = await fetch(url);
+		const res = await fetch('JsonData/Elements.json');
 		if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
 
 		elementData = await res.json();
@@ -45,10 +45,10 @@ async function loadElementData(url='JsonData/Elements.json') {
 
 		onDataLoaded();
 
-	} catch (err) {
-		console.error(err);
-	}
-}
+		} catch (err) {
+			console.error(err);
+		}
+})();
 
 function onDataLoaded() {
 	if (!elementData) return;
