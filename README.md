@@ -17,7 +17,6 @@ https://stefalgo.github.io/My-Periodic-Table
 
 Επίσης, μπορείτε να πατήσετε το αναπτυσσόμενο πλαίσιο για να επιλέξετε άλλες απεικονίσεις\
 ![image](docs/images/Dropdown.png)\
-![image](docs/images/Blocks.png)\
 ![image](docs/images/Mass.png)
 
 ## Author
