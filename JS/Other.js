@@ -22,7 +22,7 @@ function showBlocks(show) {
 function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = [...document.querySelectorAll('.element'), ...document.querySelectorAll('#CloseUp')];
 
-    if (elements.some(el => el.style.backgroundColor) || !show) {
+    if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
@@ -36,10 +36,10 @@ function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxC
 
     const MIN = minColor;
     const MAX = maxColor;
+    const unknownColor = [128, 128, 128, 0.35];
 
-    const data = elements
-        .map(el => ({ el, val: getValue(el) }))
-        .filter(d => !isNaN(d.val) && (!useLog || d.val > 0));
+    const mapped = elements.map(el => ({ el, val: getValue(el) }));                          // changed
+    const data   = mapped.filter(d => !isNaN(d.val));                                        // added
 
     if (!data.length) return;
 
@@ -48,10 +48,14 @@ function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxC
     const maxVal = Math.max(...vals);
     const span   = maxVal - minVal || 1;
 
-    data.forEach(({ el, val }) => {
+    mapped.forEach(({ el, val }) => {                                                        // changed
         if (el.hasAttribute('data-linkedElement')) {
             el.style.backgroundColor = 'transparent';
             return;
+        }
+        if (isNaN(val)) {                                                                    // added
+            el.style.backgroundColor = `rgba(${unknownColor.join(',')})`;                    // added
+            return;                                                                          // added
         }
         const v = useLog ? Math.log(val) : val;
         const t = (v - minVal) / span;
@@ -60,7 +64,7 @@ function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxC
             ? Math.round(c + t * (MAX[i] - c))
             : c + t * (MAX[3] - c));
 
-        el.style.background = `rgba(${rgba.join(',')})`;
+        el.style.backgroundColor = `rgba(${rgba.join(',')})`;                                // changed
     });
 }
 
@@ -104,7 +108,7 @@ function visualizeOptionFunc() {
         showBlocks(true)
     }
     if (value === 'AtomicMass') {
-        visualize(true, 'mass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74])
+        visualize(true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74])
     }
 }
 
