@@ -52,14 +52,13 @@ let elementData;
 
 function onDataLoaded() {
 	if (!elementData) return;
-
-	visualizeOptionFunc();
-
 	if (URL_readParam('SelectedElement')) {
 		showElementData(URL_readParam('SelectedElement'));
 	} else {
 		showElementData(1);
 	}
+
+	visualizeOptionFunc();
 }
 
 function generateAtom(atomicNumber) {
