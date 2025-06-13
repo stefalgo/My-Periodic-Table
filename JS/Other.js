@@ -26,7 +26,12 @@ function showWeight(useLog = false) {
         return m ? +m[0] : NaN;
     };
 
-    const data = elements.map(el => ({ el, mass: getMass(el) })).filter(e => !isNaN(e.mass) && (!useLog || e.mass > 0));
+    const minColor = [250, 100, 50, 0];  // dark gray
+    const maxColor = [250, 0, 0, 1];   // red
+
+    const data = elements
+        .map(el => ({ el, mass: getMass(el) }))
+        .filter(e => !isNaN(e.mass) && (!useLog || e.mass > 0));
     if (!data.length) return;
 
     const values = useLog 
@@ -40,7 +45,13 @@ function showWeight(useLog = false) {
     data.forEach(({ el, mass }) => {
         const val = useLog ? Math.log(mass) : mass;
         const t = (val - min) / range;
-        el.style.backgroundColor = `rgb(${50 + Math.round(205 * t)},${Math.round(50 * (1 - t))},${Math.round(50 * (1 - t))})`;
+
+        const r = Math.round(minColor[0] + t * (maxColor[0] - minColor[0]));
+        const g = Math.round(minColor[1] + t * (maxColor[1] - minColor[1]));
+        const b = Math.round(minColor[2] + t * (maxColor[2] - minColor[2]));
+        const a = minColor[3] + t * (maxColor[3] - minColor[3]);
+
+        el.style.backgroundColor = `rgba(${r},${g},${b},${a})`;
     });
 }
 
