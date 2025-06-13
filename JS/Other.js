@@ -120,10 +120,11 @@ if (URL_readParam('lighting') === 'other') {
     toggleColorScheme()
 }
 
-visualizeOption.value = URL_readParam('visualizeOption')
+if (URL_readParam('visualizeOption')) {
+    visualizeOption.value = URL_readParam('visualizeOption')
+}
 
 adjustElementsText();
-visualizeOptionFunc();
 
 visualizeOption.addEventListener('change', () => {
     visualizeOptionFunc();
