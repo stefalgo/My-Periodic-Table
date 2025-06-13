@@ -12,7 +12,7 @@ function showBlocks() {
     }
 }
 
-function visualize(prop, useLog = false, minColor = [255, 200, 200, 0.2], maxColor = [200,  30,  30, 1]) {
+function visualize(prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = [...document.querySelectorAll('.element')];
 
     if (elements.some(el => el.style.backgroundColor)) {
