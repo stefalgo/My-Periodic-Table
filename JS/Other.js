@@ -13,6 +13,42 @@ function showBlocks(show) {
     }
 }
 
+function showState(show) {
+    const elements = [
+        ...document.querySelectorAll('.element'),
+        ...document.querySelectorAll('#CloseUp')
+    ];
+
+    if (!show) {
+        elements.forEach(el => (el.style.backgroundColor = ''));
+        return;
+    }
+
+    const getPhase = el => {
+        const key   = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
+        return (elementData[key]?.phase || '').trim().toLowerCase();
+    };
+
+    const phaseColor = {
+        solid: [190, 190, 190, 0.55],
+        liquid: [30, 144, 255, 0.55],
+        gas: [255, 140, 0, 0.55],
+        plasma: [255, 0, 255, 0.55]
+    };
+    const unknownColor = [128, 128, 128, 0.35];
+
+    const mapped = elements.map(el => ({ el, phase: getPhase(el) }));
+
+    mapped.forEach(({ el, phase }) => {
+        if (el.hasAttribute('data-linkedElement')) {
+            el.style.backgroundColor = 'transparent';
+            return;
+        }
+        const rgba = phaseColor[phase] || unknownColor;
+        el.style.backgroundColor = `rgba(${rgba.join(',')})`;
+    });
+}
+
 function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
 
     const elements = [
@@ -105,11 +141,16 @@ function toggleColorScheme() {
 function visualizeOptionFunc() {
     const value = visualizeOption.value
     showBlocks(false)
+    showState(false)
     visualize(false)
 
     if (value === 'ElectronConfiguration') {
         showBlocks(true)
     }
+    if (value === 'State') {
+        showState(true)
+    }
+
     if (value === 'AtomicMass') {
         visualize(true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75])
     }
@@ -128,6 +169,8 @@ function visualizeOptionFunc() {
     if (value === 'Ionization') {
         visualize(true, 'ionizationEnergy', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75])
     }
+
+
 }
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
