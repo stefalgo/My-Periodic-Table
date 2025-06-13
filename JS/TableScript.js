@@ -196,7 +196,7 @@ function openLinkInIframe(rowId) {
 document.addEventListener('click', (event) => {
 	if (event.target.matches('.element')) {
 		elementClicked(event.target);
-		URL_setParam("SelectedElement", event.target.getAttribute('data-atomic') || event.target.getAttribute('data-linkedElement') );
+		URL_setParam("SelectedElement", event.target.getAttribute('data-atomic') || event.target.getAttribute('data-linkedElement'));
 	}
 });
 
