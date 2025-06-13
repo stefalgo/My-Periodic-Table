@@ -1,6 +1,6 @@
 function toNumber(str) {
-  const match = str.match(/-?\d+(\.\d+)?/);
-  return match ? Number(match[0]) : NaN;
+    const match = str.match(/-?\d+(\.\d+)?/);
+    return match ? Number(match[0]) : NaN;
 }
 
 function showBlocks() {
@@ -12,50 +12,48 @@ function showBlocks() {
     }
 }
 
-function showWeight(useLog = false) {
+function visualize(prop, useLog = false, minColor = [255, 200, 200, 0.2], maxColor = [200,  30,  30, 1]) {
     const elements = [...document.querySelectorAll('.element')];
 
     if (elements.some(el => el.style.backgroundColor)) {
-        elements.forEach(el => el.style.backgroundColor = '');
+        elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
 
-    const getMass = el => {
+    const getValue = el => {
         const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
-        const m = (elementData[key]?.mass || '').match(/-?\d+(\.\d+)?/);
-        return m ? +m[0] : NaN;
+        const raw  = elementData[key]?.[prop];
+        const match = (raw || '').toString().match(/-?\d+(\.\d+)?/);
+        return match ? +match[0] : NaN;
     };
 
-    const minColor = [255, 200, 200, 0.2];
-    const maxColor = [200, 30, 30, 1];
+    const MIN = minColor;
+    const MAX = maxColor;
 
     const data = elements
-        .map(el => ({ el, mass: getMass(el) }))
-        .filter(e => !isNaN(e.mass) && (!useLog || e.mass > 0));
+        .map(el => ({ el, val: getValue(el) }))
+        .filter(d => !isNaN(d.val) && (!useLog || d.val > 0));
+
     if (!data.length) return;
 
-    const values = useLog 
-        ? data.map(e => Math.log(e.mass))
-        : data.map(e => e.mass);
+    const vals   = useLog ? data.map(d => Math.log(d.val)) : data.map(d => d.val);
+    const minVal = Math.min(...vals);
+    const maxVal = Math.max(...vals);
+    const span   = maxVal - minVal || 1;
 
-    const min = Math.min(...values);
-    const max = Math.max(...values);
-    const range = max - min || 1;
-
-    data.forEach(({ el, mass }) => {
+    data.forEach(({ el, val }) => {
         if (el.hasAttribute('data-linkedElement')) {
             el.style.backgroundColor = 'transparent';
             return;
         }
-        const val = useLog ? Math.log(mass) : mass;
-        const t = (val - min) / range;
+        const v = useLog ? Math.log(val) : val;
+        const t = (v - minVal) / span;
 
-        const r = Math.round(minColor[0] + t * (maxColor[0] - minColor[0]));
-        const g = Math.round(minColor[1] + t * (maxColor[1] - minColor[1]));
-        const b = Math.round(minColor[2] + t * (maxColor[2] - minColor[2]));
-        const a = minColor[3] + t * (maxColor[3] - minColor[3]);
+        const rgba = MIN.map((c, i) => i < 3
+            ? Math.round(c + t * (MAX[i] - c))
+            : c + t * (MAX[3] - c));
 
-        el.style.backgroundColor = `rgba(${r},${g},${b},${a})`;
+        el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
 
