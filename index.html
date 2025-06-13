@@ -12,10 +12,13 @@
 		<h1 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h1>
 		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
 		<button onclick="toggleColorScheme()" style="position: fixed; top: 1%; right: 1%;">Color Scheme</button>
-		<div><!--add temp view and maybe dynamic in some way-->
-			<button onclick="showBlocks()">Προβολή τομέων</button>
-			<button onclick="visualize('mass', false)">Προβολή Βαρών</button>
-		</div>
+		
+		<label for="visualizeOption">Επιλογή οπτικοποίησης:</label>
+		<select id="visualizeOption">
+			<option value="ChemicalGroupBlock">Μπλοκ Χημικής Ομάδας</option>
+			<option value="ElectronConfiguration">Διαμόρφωση ηλεκτρονίων</option>
+			<option value="AtomicMass">Ατομική Μάζα</option>
+		</select>
 
 		<div style="display: flex; align-items: center;">
 			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;">
