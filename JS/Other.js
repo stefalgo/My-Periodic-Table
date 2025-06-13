@@ -1,4 +1,4 @@
-const visualizeOption = document.getElementById('visualizeOption')
+const visualizeOption = document.getElementById('visualizeOption');
 
 function toNumber(str) {
     const match = str.match(/-?\d+(\.\d+)?/);
@@ -49,7 +49,7 @@ function showState(show) {
     });
 }
 
-function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
 
     const elements = [
         ...document.querySelectorAll('.element'),
@@ -62,10 +62,12 @@ function visualize(show, prop, useLog = false, minColor = [8, 212, 170, 0], maxC
     }
 
     const getValue = el => {
-        const key   = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
-        const raw   = elementData[key]?.[prop];
-        const match = (raw || '').toString().match(/-?\d+(\.\d+)?/);
-        return match ? +match[0] : NaN;
+        const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
+        const raw = array[key]?.[prop];
+
+        if (raw == null || (typeof raw === 'string' && raw.trim() === '')) return NaN;
+        const num = Number(raw);
+        return Number.isFinite(num) ? num : NaN;
     };
 
     const MIN = minColor;
@@ -139,37 +141,49 @@ function toggleColorScheme() {
 }
 
 function visualizeOptionFunc() {
-    const value = visualizeOption.value
-    showBlocks(false)
-    showState(false)
-    visualize(false)
+    const value = visualizeOption.value;
+    showBlocks(false);
+    showState(false);
+    visualize(false);
 
     if (value === 'ElectronConfiguration') {
-        showBlocks(true)
+        showBlocks(true);
     }
     if (value === 'State') {
-        showState(true)
+        showState(true);
     }
 
     if (value === 'AtomicMass') {
-        visualize(true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75])
+        visualize(elementData, true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
     }
     if (value === 'MeltPoint') {
-        visualize(true, 'melt', useLog = false, minColor = [0, 255, 255, 0.01], maxColor = [0, 255, 255, 0.75])
+        visualize(elementData, true, 'melt', useLog = false, minColor = [0, 255, 255, 0.01], maxColor = [0, 255, 255, 0.75]);
     }
     if (value === 'BoilPoint') {
-        visualize(true, 'boil', useLog = false, minColor = [255, 0, 0, 0.01], maxColor = [255, 0, 0, 0.75])
+        visualize(elementData, true, 'boil', useLog = false, minColor = [255, 0, 0, 0.01], maxColor = [255, 0, 0, 0.75]);
     }
     if (value === 'Electronegativity') {
-        visualize(true, 'electronegativity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75])
+        visualize(elementData, true, 'electronegativity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
     }
     if (value === 'ElectronAffinity') {
-        visualize(true, 'electronAffinity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75])
+        visualize(elementData, true, 'electronAffinity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
     }
     if (value === 'Ionization') {
-        visualize(true, 'ionizationEnergy', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75])
+        visualize(elementData, true, 'ionizationEnergy', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
     }
+    if (value === 'EnergyLevels') {
+        const calculated = {};
 
+        Object.entries(elementData).forEach(([key, el]) => {
+            const period  = Number(el.period);
+            const shells  = el.shells ?? [];
+            const idx     = period - 1;
+            const electrons = shells[idx] ?? 0;
+
+            (calculated[key] ??= { Total: 0 }).Total += electrons;
+        });
+        visualize(calculated, true, 'Total', useLog = false, minColor = [133, 173, 49, 0], maxColor = [133, 173, 49, 0.75]);
+    }
 
 }
 
@@ -182,18 +196,18 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 
 if (URL_readParam('lighting') === 'other') {
-    toggleColorScheme()
+    toggleColorScheme();
 }
 
 if (URL_readParam('visualizeOption')) {
-    visualizeOption.value = URL_readParam('visualizeOption')
+    visualizeOption.value = URL_readParam('visualizeOption');
 }
 
 adjustElementsText();
 
 visualizeOption.addEventListener('change', () => {
     visualizeOptionFunc();
-    URL_setParam('visualizeOption', visualizeOption.value)
+    URL_setParam('visualizeOption', visualizeOption.value);
 });
 
 document.getElementById("searchbar").addEventListener("input", function () {
