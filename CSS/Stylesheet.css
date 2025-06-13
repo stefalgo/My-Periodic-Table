@@ -132,7 +132,7 @@ h1 {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /**-----------------------------------------------**/
-button {
+button, #visualizeOption {
 	display: inline-block;
 	background-color: var(--buttonColor);
 	border: none;
@@ -148,7 +148,7 @@ button {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
-button:hover {
+button:hover, #visualizeOption:hover {
 	background-color: var(--buttonHoverColor);
 }
 
