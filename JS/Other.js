@@ -13,7 +13,7 @@ function showBlocks() {
 }
 
 function visualize(prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
-    const elements = [...document.querySelectorAll('.element')];
+    const elements = [...document.querySelectorAll('.element'), ...document.querySelectorAll('#CloseUp')];
 
     if (elements.some(el => el.style.backgroundColor)) {
         elements.forEach(el => (el.style.backgroundColor = ''));
@@ -53,7 +53,7 @@ function visualize(prop, useLog = false, minColor = [8, 212, 170, 0], maxColor =
             ? Math.round(c + t * (MAX[i] - c))
             : c + t * (MAX[3] - c));
 
-        el.style.backgroundColor = `rgba(${rgba.join(',')})`;
+        el.style.background = `rgba(${rgba.join(',')})`;
     });
 }
 
