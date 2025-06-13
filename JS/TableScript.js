@@ -10,34 +10,13 @@ const classes = [
 	{en: "poor", gr: "Φτωχό μέταλλο"},
 	{en: "noble", gr: "Ευγενές αέριο"}
 ];
-
-//const elementData = {};
-/*
-fetch("JsonData/Elements.json")
-//fetch("https://raw.githubusercontent.com/stefalgo/My-Periodic-Table/main/JsonData/Elements.json")
-  .then(response => response.json())
-  .then(jsonData => {
-    Object.assign(elementData, jsonData);
-	console.log("JSON loaded successfully:");
-
-	let urlSelectedElement = URL_readParam("SelectedElement")
-
-	if (urlSelectedElement) {
-		showElementData(urlSelectedElement);
-	} else {
-		showElementData(1);
-	}
-  })
-  .catch(error => console.error("Error loading JSON:", error));
-*/
 const closeUp = document.getElementById('CloseUp');
-let elementAtomicNumber = '1'
 
 let elementData;
 
 (async () => {
 	try {
-		const res = await fetch('JsonData/Elements.json');
+		const res = await fetch('JsonData/ElementsV2.json');
 		if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
 
 		elementData = await res.json();
@@ -61,15 +40,44 @@ function onDataLoaded() {
 	visualizeOptionFunc();
 }
 
+function blockFromConfig(eConfig) {
+	const rank = { s: 0, p: 1, d: 2, f: 3, g: 4 };
+	let best = -1, block = '';
+
+	eConfig.trim().split(/\s+/).forEach(tok => {
+		const m = tok.match(/^[0-9]+([spdfg])/i);
+		if (!m) return;
+		const letter = m[1].toLowerCase();
+		if (rank[letter] > best) {
+			best = rank[letter];
+			block = letter;
+		}
+  });
+
+  return block;
+}
+
+function energyLevels(eConfig) {
+	const totals = {};
+
+	eConfig.trim().split(/\s+/).forEach(tok => {
+		const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
+		if (!m) return;
+	    const n = +m[1];
+	    const e = +m[2];
+	    totals[n] = (totals[n] || 0) + e;
+	});
+
+	const maxN = Math.max(...Object.keys(totals));
+	return Array.from({ length: maxN }, (_, i) => totals[i + 1] || 0);
+}
+
 function generateAtom(atomicNumber) {
 	const atomContainer = document.getElementById('atom');
 	const atomCore = atomContainer.querySelector('.atom');
-	const atom = elementData[atomicNumber];
-	if (!atom) {console.error('Atomic number not found in the data.'); return;}
-
+	if (!elementData[atomicNumber]) {console.error('Atomic number not found in the data.'); return;}
 	atomCore.innerHTML = '';
-
-	atom.shells.forEach((numElectrons, index) => {
+	energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
 		const energyLevelDiv = document.createElement('div');
 		const radius = (index + 2) * 9;
 		const animationSpeed = radius / 2;
@@ -103,18 +111,18 @@ function showElementData(elementAtomicNumber) {
 	energyLevel.innerHTML = '';
 	atomic.textContent = elementAtomicNumber;
 	name.textContent = elementData[elementAtomicNumber].name;
-	symbol.textContent = elementData[elementAtomicNumber].shortName;
-	mass.textContent = elementData[elementAtomicNumber].mass;
+	symbol.textContent = elementData[elementAtomicNumber].symbol;
+	mass.textContent = elementData[elementAtomicNumber].atomicMass;
 	
 
 	closeUp.classList = ["elementStyle"];
-	closeUp.classList.add(elementData[elementAtomicNumber].class);
-	closeUp.classList.add(elementData[elementAtomicNumber].block);
-	closeUp.setAttribute('data-atomic', elementAtomicNumber);
-
+	closeUp.classList.add(elementData[elementAtomicNumber].category);
+	closeUp.classList.add(blockFromConfig(elementData[elementAtomicNumber].electronConfiguration));
+	closeUp.setAttribute('data-atomic', elementAtomicNumber)
+	
 	visualizeOptionFunc();
 
-	for (const level of elementData[elementAtomicNumber].shells) {
+	for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
 		let spanElement = document.createElement('span');
 		spanElement.textContent = level;
 		energyLevel.appendChild(spanElement);
@@ -174,11 +182,11 @@ function infoElement(elementAtomicNumber) {
 	
 	name.innerHTML = elementData[element].name;
 	atomic.innerHTML = element;
-	energyLevels.innerHTML = elementData[element].shells.join(', ');
-	discovered.innerHTML = elementData[element].discovered;
-	mass.innerHTML = elementData[element].mass;
-	block.innerHTML = elementData[element].block;// + '-τομέας';
-	elementClass.innerHTML = classes.find(c => c.en === elementData[element].class)?.gr ?? "Άγνωστη κατηγορία";
+	energyLevels.innerHTML = elementData[element].electronConfiguration;
+	discovered.innerHTML = elementData[element].discoveredBy;
+	mass.innerHTML = elementData[element].atomicMass;
+	block.innerHTML = blockFromConfig(elementData[elementAtomicNumber].electronConfiguration);// + '-τομέας';
+	elementClass.innerHTML = classes.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία";
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
 	infoPopup.querySelector('.close').addEventListener('click', closePopup);
@@ -199,7 +207,6 @@ function openLinkInIframe(rowId) {
 		sitePopup.querySelector('iframe').src = '';
 		sitePopup.style.display = "none";
 		sitePopup.querySelector('.close').removeEventListener('click', closePopup);
-		//document.querySelector('#sitePopup').removeEventListener('click', closePopup);
 	}
 
 	if (elementData[rowId].linkElementName) {
@@ -212,20 +219,18 @@ function openLinkInIframe(rowId) {
 	
 	sitePopup.style.display = "block";
 	sitePopup.querySelector('.close').addEventListener('click', closePopup);
-	//document.querySelector('#sitePopup').addEventListener('click', closePopup);
 }
 
 document.addEventListener('click', (event) => {
 	if (event.target.matches('.element')) {
 		const elementClickedAtomic = event.target.getAttribute('data-linkedElement') || event.target.getAttribute('data-atomic');
 
-		elementAtomicNumber = elementClickedAtomic
-
-		showElementData(elementAtomicNumber);
+		showElementData(elementClickedAtomic);
 		URL_setParam("SelectedElement", elementClickedAtomic);
 	}
 });
 
 closeUp.addEventListener('click', (event) => {
-	infoElement(elementAtomicNumber);
+	const elementClickedAtomic = event.target.getAttribute('data-atomic');
+	infoElement(elementClickedAtomic);
 });
