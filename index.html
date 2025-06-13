@@ -11,7 +11,10 @@
 		<!--<h1>The Periodic Table Of Elements</h1>-->
 		<h1 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h1>
 		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
-		<button onclick="showBlocks()">Προβολή τομέων</button><!--Toggle blocks vew-->
+		<div><!--add temp view and maybe dynamic in some way-->
+			<button onclick="showBlocks()">Προβολή τομέων</button><!--Toggle blocks vew-->
+			<button onclick="showWeight()">Προβολή Βαρών</button><!--Toggle weights vew-->
+		</div>
 
 		<div style="display: flex; align-items: center;">
 			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;"> <b>Ατομικός</b> <abbr>Σύμβολο</abbr> <em>Όνομα</em> <data>Βάρος</data></div>
