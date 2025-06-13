@@ -13,22 +13,27 @@
 		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
 		<button onclick="toggleColorScheme()" style="position: fixed; top: 1%; right: 1%;">Color Scheme</button>
 		<div><!--add temp view and maybe dynamic in some way-->
-			<button onclick="showBlocks()">Προβολή τομέων</button><!--Toggle blocks vew-->
-			<button onclick="visualize('mass', false)">Προβολή Βαρών</button><!--Toggle weights vew-->
+			<button onclick="showBlocks()">Προβολή τομέων</button>
+			<button onclick="visualize('mass', false)">Προβολή Βαρών</button>
 		</div>
 
 		<div style="display: flex; align-items: center;">
-			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;"> <b>Ατομικός</b> <abbr>Σύμβολο</abbr> <em>Όνομα</em> <data>Βάρος</data></div>
+			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;">
+				<b>Ατομικός</b>
+				<abbr>Σύμβολο</abbr>
+				<em>Όνομα</em>
+				<data>Βάρος</data>
+			</div>
 			<div class="elementStyle nonmetal" id="CloseUp" style=" width: 80px; height: 80px; display: flex; flex-direction: row; justify-content: space-between;">
-			<output style="display: flex; flex-direction: column; justify-content: space-between; line-height: 1;">
-				<b class="closeUp-atomic" style=" font-size: 1em;">1</b> 
-				<abbr class="closeUp-shortName" style=" font-size: 1.8em;">H</abbr> 
-				<em class="closeUp-name" style=" font-size: .8em; letter-spacing: -0.050037em;">Υδρογόνο</em> 
-				<data class="closeUp-mass" style=" font-size: .8em;">1.008</data>
-			</output>
-			<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
-				<span>1</span>
-			</small>
+				<output style="display: flex; flex-direction: column; justify-content: space-between; line-height: 1;">
+					<b class="closeUp-atomic" style=" font-size: 1em;">X</b> 
+					<abbr class="closeUp-shortName" style=" font-size: 1.8em;">A</abbr> 
+					<em class="closeUp-name" style="font-size: .8em;">A</em> 
+					<data class="closeUp-mass" style=" font-size: .8em;">X</data>
+				</output>
+				<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
+					<span>X</span>
+				</small>
 			</div>
 			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex;"> <b>Ηλεκτρονική δομή</b></div>
 		</div>
