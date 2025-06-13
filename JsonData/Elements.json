@@ -1,6 +1,6 @@
 {
   "1": {
-    "energyLevels": [
+    "shells": [
       "1"
     ],
     "class": "nonmetal",
@@ -11,7 +11,7 @@
     "discovered": "1766 μ.Χ"
   },
   "2": {
-    "energyLevels": [
+    "shells": [
       "2"
     ],
     "class": "noble",
@@ -22,7 +22,7 @@
     "discovered": "1895 μ.Χ."
   },
   "3": {
-    "energyLevels": [
+    "shells": [
       "2",
       "1"
     ],
@@ -34,7 +34,7 @@
     "discovered": "1817 μ.Χ."
   },
   "4": {
-    "energyLevels": [
+    "shells": [
       "2",
       "2"
     ],
@@ -46,7 +46,7 @@
     "discovered": "1797 μ.Χ."
   },
   "5": {
-    "energyLevels": [
+    "shells": [
       "2",
       "3"
     ],
@@ -58,7 +58,7 @@
     "discovered": "1808 μ.Χ."
   },
   "6": {
-    "energyLevels": [
+    "shells": [
       "2",
       "4"
     ],
@@ -70,7 +70,7 @@
     "discovered": "3750 π.Χ."
   },
   "7": {
-    "energyLevels": [
+    "shells": [
       "2",
       "5"
     ],
@@ -82,7 +82,7 @@
     "discovered": "1772 μ.Χ."
   },
   "8": {
-    "energyLevels": [
+    "shells": [
       "2",
       "6"
     ],
@@ -94,7 +94,7 @@
     "discovered": "1774 μ.Χ."
   },
   "9": {
-    "energyLevels": [
+    "shells": [
       "2",
       "7"
     ],
@@ -106,7 +106,7 @@
     "discovered": "1886 μ.Χ."
   },
   "10": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8"
     ],
@@ -118,7 +118,7 @@
     "discovered": "1898 μ.Χ."
   },
   "11": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "1"
@@ -131,7 +131,7 @@
     "discovered": "1807 μ.Χ."
   },
   "12": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "2"
@@ -144,7 +144,7 @@
     "discovered": "1755 μ.Χ."
   },
   "13": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "3"
@@ -157,7 +157,7 @@
     "discovered": "1825 μ.Χ."
   },
   "14": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "4"
@@ -170,7 +170,7 @@
     "discovered": "1824 μ.Χ."
   },
   "15": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "5"
@@ -183,7 +183,7 @@
     "discovered": "1669 μ.Χ."
   },
   "16": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "6"
@@ -196,7 +196,7 @@
     "discovered": "500 π.Χ."
   },
   "17": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "7"
@@ -209,7 +209,7 @@
     "discovered": "1774 μ.Χ."
   },
   "18": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "8"
@@ -222,7 +222,7 @@
     "discovered": "1894 μ.Χ."
   },
   "19": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "8",
@@ -236,7 +236,7 @@
     "discovered": "1807 μ.Χ."
   },
   "20": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "8",
@@ -250,7 +250,7 @@
     "discovered": "1808 μ.Χ."
   },
   "21": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "9",
@@ -264,7 +264,7 @@
     "discovered": "1879 μ.Χ."
   },
   "22": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "10",
@@ -278,7 +278,7 @@
     "discovered": "1791 μ.Χ."
   },
   "23": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "11",
@@ -292,7 +292,7 @@
     "discovered": "1801 μ.Χ."
   },
   "24": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "13",
@@ -306,7 +306,7 @@
     "discovered": "1797 μ.Χ."
   },
   "25": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "13",
@@ -320,7 +320,7 @@
     "discovered": "1774 μ.Χ."
   },
   "26": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "14",
@@ -334,7 +334,7 @@
     "discovered": "2000 π.Χ."
   },
   "27": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "15",
@@ -348,7 +348,7 @@
     "discovered": "1735 μ.Χ."
   },
   "28": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "16",
@@ -362,7 +362,7 @@
     "discovered": "1751 μ.Χ."
   },
   "29": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -376,7 +376,7 @@
     "discovered": "8000 π.Χ."
   },
   "30": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -390,7 +390,7 @@
     "discovered": "1500 μ.Χ."
   },
   "31": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -404,7 +404,7 @@
     "discovered": "1875 μ.Χ."
   },
   "32": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -418,7 +418,7 @@
     "discovered": "1886 μ.Χ."
   },
   "33": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -432,7 +432,7 @@
     "discovered": "1250 μ.Χ."
   },
   "34": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -446,7 +446,7 @@
     "discovered": "1817 μ.Χ."
   },
   "35": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -460,7 +460,7 @@
     "discovered": "1826 μ.Χ."
   },
   "36": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -474,7 +474,7 @@
     "discovered": "1898 μ.Χ."
   },
   "37": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -489,7 +489,7 @@
     "discovered": "1861 μ.Χ."
   },
   "38": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -504,7 +504,7 @@
     "discovered": "1790 μ.Χ."
   },
   "39": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -519,7 +519,7 @@
     "discovered": "1794 μ.Χ."
   },
   "40": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -534,7 +534,7 @@
     "discovered": "1789 μ.Χ."
   },
   "41": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -549,7 +549,7 @@
     "discovered": "1801 μ.Χ."
   },
   "42": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -564,7 +564,7 @@
     "discovered": "1781 μ.Χ."
   },
   "43": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -579,7 +579,7 @@
     "discovered": "1937 μ.Χ."
   },
   "44": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -594,7 +594,7 @@
     "discovered": "1844 μ.Χ."
   },
   "45": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -609,7 +609,7 @@
     "discovered": "1803 μ.Χ."
   },
   "46": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -623,7 +623,7 @@
     "discovered": "1803 μ.Χ."
   },
   "47": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -638,7 +638,7 @@
     "discovered": "3000 π.Χ."
   },
   "48": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -653,7 +653,7 @@
     "discovered": "1817 μ.Χ."
   },
   "49": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -668,7 +668,7 @@
     "discovered": "1863 μ.Χ."
   },
   "50": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -683,7 +683,7 @@
     "discovered": "3000 π.Χ."
   },
   "51": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -698,7 +698,7 @@
     "discovered": "3000 π.Χ."
   },
   "52": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -713,7 +713,7 @@
     "discovered": "1783 μ.Χ."
   },
   "53": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -728,7 +728,7 @@
     "discovered": "1811 μ.Χ."
   },
   "54": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -743,7 +743,7 @@
     "discovered": "1898 μ.Χ."
   },
   "55": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -759,7 +759,7 @@
     "discovered": "1860 μ.Χ."
   },
   "56": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -775,7 +775,7 @@
     "discovered": "1808 μ.Χ."
   },
   "57": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -791,7 +791,7 @@
     "discovered": "1839 μ.Χ."
   },
   "58": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -807,7 +807,7 @@
     "discovered": "1803 μ.Χ."
   },
   "59": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -823,7 +823,7 @@
     "discovered": "1885 μ.Χ."
   },
   "60": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -839,7 +839,7 @@
     "discovered": "1885 μ.Χ."
   },
   "61": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -855,7 +855,7 @@
     "discovered": "1945 μ.Χ."
   },
   "62": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -871,7 +871,7 @@
     "discovered": "1879 μ.Χ."
   },
   "63": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -887,7 +887,7 @@
     "discovered": "1901 μ.Χ."
   },
   "64": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -903,7 +903,7 @@
     "discovered": "1880 μ.Χ."
   },
   "65": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -919,7 +919,7 @@
     "discovered": "1843 μ.Χ."
   },
   "66": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -935,7 +935,7 @@
     "discovered": "1886 μ.Χ."
   },
   "67": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -951,7 +951,7 @@
     "discovered": "1878 μ.Χ."
   },
   "68": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -967,7 +967,7 @@
     "discovered": "1842 μ.Χ."
   },
   "69": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -983,7 +983,7 @@
     "discovered": "1879 μ.Χ."
   },
   "70": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -999,7 +999,7 @@
     "discovered": "1878 μ.Χ."
   },
   "71": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1015,7 +1015,7 @@
     "discovered": "1907 μ.Χ."
   },
   "72": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1031,7 +1031,7 @@
     "discovered": "1923 μ.Χ."
   },
   "73": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1047,7 +1047,7 @@
     "discovered": "1802 μ.Χ."
   },
   "74": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1063,7 +1063,7 @@
     "discovered": "1783 μ.Χ."
   },
   "75": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1079,7 +1079,7 @@
     "discovered": "1925 μ.Χ."
   },
   "76": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1095,7 +1095,7 @@
     "discovered": "1803 μ.Χ."
   },
   "77": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1111,7 +1111,7 @@
     "discovered": "1803 μ.Χ."
   },
   "78": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1127,7 +1127,7 @@
     "discovered": "1735 μ.Χ."
   },
   "79": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1143,7 +1143,7 @@
     "discovered": "2500 π.Χ."
   },
   "80": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1159,7 +1159,7 @@
     "discovered": "1500 π.Χ."
   },
   "81": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1175,7 +1175,7 @@
     "discovered": "1861 μ.Χ."
   },
   "82": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1191,7 +1191,7 @@
     "discovered": "4000 π.Χ."
   },
   "83": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1207,7 +1207,7 @@
     "discovered": "1400 μ.Χ."
   },
   "84": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1223,7 +1223,7 @@
     "discovered": "1898 μ.Χ."
   },
   "85": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1239,7 +1239,7 @@
     "discovered": "1940 μ.Χ."
   },
   "86": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1255,7 +1255,7 @@
     "discovered": "1900 μ.Χ."
   },
   "87": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1272,7 +1272,7 @@
     "discovered": "1939 μ.Χ."
   },
   "88": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1289,7 +1289,7 @@
     "discovered": "1898 μ.Χ."
   },
   "89": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1307,7 +1307,7 @@
     "linkElementName": "Ακτίνιο (στοιχείο)"
   },
   "90": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1324,7 +1324,7 @@
     "discovered": "1829 μ.Χ."
   },
   "91": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1341,7 +1341,7 @@
     "discovered": "1913 μ.Χ."
   },
   "92": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1358,7 +1358,7 @@
     "discovered": "1789 μ.Χ."
   },
   "93": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1375,7 +1375,7 @@
     "discovered": "1940 μ.Χ."
   },
   "94": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1392,7 +1392,7 @@
     "discovered": "1940 μ.Χ."
   },
   "95": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1409,7 +1409,7 @@
     "discovered": "1944 μ.Χ."
   },
   "96": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1426,7 +1426,7 @@
     "discovered": "1944 μ.Χ."
   },
   "97": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1443,7 +1443,7 @@
     "discovered": "1949 μ.Χ."
   },
   "98": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1460,7 +1460,7 @@
     "discovered": "1950 μ.Χ."
   },
   "99": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1477,7 +1477,7 @@
     "discovered": "1952 μ.Χ."
   },
   "100": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1494,7 +1494,7 @@
     "discovered": "1952 μ.Χ."
   },
   "101": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1511,7 +1511,7 @@
     "discovered": "1955 μ.Χ."
   },
   "102": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1528,7 +1528,7 @@
     "discovered": "1958 μ.Χ."
   },
   "103": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1545,7 +1545,7 @@
     "discovered": "1961 μ.Χ."
   },
   "104": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1562,7 +1562,7 @@
     "discovered": "1964 μ.Χ."
   },
   "105": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1579,7 +1579,7 @@
     "discovered": "1967 μ.Χ."
   },
   "106": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1596,7 +1596,7 @@
     "discovered": "1974 μ.Χ."
   },
   "107": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1613,7 +1613,7 @@
     "discovered": "1981 μ.Χ."
   },
   "108": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1630,7 +1630,7 @@
     "discovered": "1984 μ.Χ."
   },
   "109": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1647,7 +1647,7 @@
     "discovered": "1982 μ.Χ."
   },
   "110": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1664,7 +1664,7 @@
     "discovered": "1994 μ.Χ."
   },
   "111": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1681,7 +1681,7 @@
     "discovered": "1994 μ.Χ."
   },
   "112": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1698,7 +1698,7 @@
     "discovered": "1996 μ.Χ."
   },
   "113": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1715,7 +1715,7 @@
     "discovered": "2004 μ.Χ."
   },
   "114": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1732,7 +1732,7 @@
     "discovered": "1998 μ.Χ."
   },
   "115": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1749,7 +1749,7 @@
     "discovered": "2004 μ.Χ."
   },
   "116": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1766,7 +1766,7 @@
     "discovered": "2000 μ.Χ."
   },
   "117": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
@@ -1783,7 +1783,7 @@
     "discovered": "2010 μ.Χ."
   },
   "118": {
-    "energyLevels": [
+    "shells": [
       "2",
       "8",
       "18",
