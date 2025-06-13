@@ -110,7 +110,9 @@ function showElementData(elementAtomicNumber) {
 	closeUp.classList = ["elementStyle"];
 	closeUp.classList.add(elementData[elementAtomicNumber].class);
 	closeUp.classList.add(elementData[elementAtomicNumber].block);
-	closeUp.setAttribute('data-atomic', elementAtomicNumber)
+	closeUp.setAttribute('data-atomic', elementAtomicNumber);
+
+	visualizeOptionFunc();
 
 	for (const level of elementData[elementAtomicNumber].shells) {
 		let spanElement = document.createElement('span');
@@ -118,7 +120,7 @@ function showElementData(elementAtomicNumber) {
 		energyLevel.appendChild(spanElement);
 	}
 
-	generateAtom(elementAtomicNumber)
+	generateAtom(elementAtomicNumber);
 }
 
 //-----------------------------------------------------------------------------------------------
