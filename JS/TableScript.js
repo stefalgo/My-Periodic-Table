@@ -26,9 +26,9 @@ fetch("JsonData/Elements.json")
 	let urlSelectedElement = URL_readParam("SelectedElement")
 
 	if (urlSelectedElement) {
-		elementClicked(document.querySelector(`[data-atomic="${urlSelectedElement}"]`));
+		showElementData(urlSelectedElement);
 	} else {
-		generateAtom('1');
+		showElementData(1);
 	}
   })
   .catch(error => console.error("Error loading JSON:", error));
@@ -159,12 +159,6 @@ function infoElement(elementAtomicNumber) {
 	infoPopup.style.display = "block";
 }
 
-function elementClicked(clickedElement) {
-	elementAtomicNumber = clickedElement.getAttribute('data-linkedElement') || clickedElement.getAttribute('data-atomic');
-	//const elementToShow = clickedElement.hasAttribute('data-linkedElement') ? document.querySelector(`[data-atomic="${elementAtomicNumber}"]`) : clickedElement;
-
-	showElementData(elementAtomicNumber);
-}
 function openLinkInIframe(rowId) {
 	const sitePopup = document.getElementById('sitePopup');
 	//let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
@@ -192,11 +186,14 @@ function openLinkInIframe(rowId) {
 	//document.querySelector('#sitePopup').addEventListener('click', closePopup);
 }
 
-
 document.addEventListener('click', (event) => {
 	if (event.target.matches('.element')) {
-		elementClicked(event.target);
-		URL_setParam("SelectedElement", event.target.getAttribute('data-atomic') || event.target.getAttribute('data-linkedElement'));
+		const elementClickedAtomic = event.target.getAttribute('data-linkedElement') || event.target.getAttribute('data-atomic');
+
+		elementAtomicNumber = elementClickedAtomic
+
+		showElementData(elementAtomicNumber);
+		URL_setParam("SelectedElement", elementClickedAtomic);
 	}
 });
 
