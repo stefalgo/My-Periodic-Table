@@ -1,6 +1,4 @@
 const visualizeOption = document.getElementById('visualizeOption');
-const tempRangeSlider = document.getElementById('temp')
-const tempNumberInput = document.getElementById('tempNumInput')
 let temp;
 
 const stateEngGr = [
@@ -330,21 +328,33 @@ function visualizeOptionFunc() {
 
 }
 
-function tempChange(e, unit = 'C') {
+function tempChange(e) {
+    const tempNumberInputC = document.getElementById('tempNumInputC');
+    const tempNumberInputK = document.getElementById('tempNumInputK');
+    const tempRangeSlider  = document.getElementById('temp');
+
     const K2C = k => k - 273;
     const C2K = c => c + 273;
 
+    let k, c;
+
     if (e.target === tempRangeSlider) {
-        const k = Number(e.target.value);
-        tempNumberInput.value = K2C(k);
-        temp = k;
-    } else {
-        const c = Number(e.target.value);
-        const k = C2K(c);
+        k = Number(e.target.value);
+        c = K2C(k);
+    } else if (e.target === tempNumberInputK) {
+        k = Number(e.target.value);
+        c = K2C(k);
         tempRangeSlider.value = k;
-        temp = k;
+    } else {
+        c = Number(e.target.value);
+        k = C2K(c);
+        tempRangeSlider.value = k;
     }
 
+    if (document.activeElement !== tempNumberInputK) tempNumberInputK.value = k;
+    if (document.activeElement !== tempNumberInputC) tempNumberInputC.value = c;
+
+    temp = k;
     visualizeOptionFunc();
 }
 
@@ -371,8 +381,9 @@ visualizeOption.addEventListener('change', () => {
     URL_setParam('visualizeOption', visualizeOption.value);
 });
 
-tempRangeSlider.addEventListener('input', tempChange);
-tempNumberInput.addEventListener('input', tempChange);
+document.getElementById('temp').addEventListener('input', tempChange);
+document.getElementById('tempNumInputC').addEventListener('input', tempChange);
+document.getElementById('tempNumInputK').addEventListener('input', tempChange);
 
 document.getElementById("searchbar").addEventListener("input", function () {
     let searchValue = removeDiacritics(this.value.trim().toLowerCase());
