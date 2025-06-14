@@ -100,7 +100,7 @@
 					<td><div class="element nonmetal s" data-atomic="1"> <b>1</b> <abbr>H</abbr> <em>Υδρογόνο</em> <data>1.008</data> </div></td>
 					<td colspan="2"></td>
 					<td colspan="4" rowspan="2">
-						<div class="elementsClassVew">
+						<div class="elementsClassVew highlightElementClasses">
 							<div class="alkali highlightElement hoverEffect"><span>Αλκαλι</span></div>
 							<div class="alkaline highlightElement hoverEffect"><span>Αλκαλικές</span></div>
 							<div class="lanthanoid highlightElement hoverEffect"><span>Λανθανίδες</span></div>
@@ -112,17 +112,21 @@
 							<div class="noble highlightElement hoverEffect"><span>Ευγενή</span></div>
 							<div class="unknown highlightElement hoverEffect"><span>Άγνωστα</span></div>
 						</div>
-					</td>
-					<td colspan="3"></td>
-					<td colspan="2">
-						<div class="elementsClassVew">
-							<div class="s highlightElement highlightElementBlocks hoverEffect"><span>s</span></div>
-							<div class="p highlightElement highlightElementBlocks hoverEffect"><span>p</span></div>
-							<div class="d highlightElement highlightElementBlocks hoverEffect"><span>d</span></div>
-							<div class="f highlightElement highlightElementBlocks hoverEffect"><span>f</span></div>
+						<div class="elementsClassVew highlightElementBlocks">
+							<div class="s highlightElement hoverEffect"><span>s</span></div>
+							<div class="p highlightElement hoverEffect"><span>p</span></div>
+							<div class="d highlightElement hoverEffect"><span>d</span></div>
+							<div class="f highlightElement hoverEffect"><span>f</span></div>
 						</div>
 					</td>
-					<td colspan="5"></td>
+					<td colspan="3"></td>
+					<td colspan="2"></td>
+					<td colspan="5">
+						<label for="temp">Temperature (C)</label>
+						<br>
+						<input id="tempNumInput" type="number" min="-273" max="6727" step="1" value="0">
+						<input id="temp" type="range" min="0" max="7000" step="1" value="273">
+					</td>
 					<td><div class="element noble s" data-atomic="2"> <b>2</b> <abbr>He</abbr> <em>Ήλιο</em> <data>4.0026</data> </div></td>
 				</tr>
 				<tr>
