@@ -60,14 +60,12 @@ function showElementData(elementAtomicNumber) {
 	const atomic = closeUp.querySelector('.closeUp-atomic');
 	const symbol = closeUp.querySelector('.closeUp-shortName');
 	const name = closeUp.querySelector('.closeUp-name');
-	const mass = closeUp.querySelector('.closeUp-mass');
 	const energyLevel = closeUp.querySelector('small');
 
 	energyLevel.innerHTML = '';
 	atomic.textContent = elementAtomicNumber;
 	name.textContent = elementData[elementAtomicNumber].name;
 	symbol.textContent = elementData[elementAtomicNumber].symbol;
-	mass.textContent = elementData[elementAtomicNumber].atomicMass;
 	
 
 	closeUp.classList = ["elementStyle"];
@@ -90,13 +88,7 @@ function showElementData(elementAtomicNumber) {
 
 function infoElement(elementAtomicNumber) {
 	const infoPopup = document.getElementById('infoPopup');
-	const name = infoPopup.querySelector('.popup-name');
-	const atomic = infoPopup.querySelector('.popup-atomic');
-	const energyLevels = infoPopup.querySelector('.popup-energyLevels');
-	const discovered = infoPopup.querySelector('.popup-discovered');
-	const mass = infoPopup.querySelector('.popup-mass');
-	const block = infoPopup.querySelector('.popup-block');
-	const elementClass = infoPopup.querySelector('.popup-class');
+	const popupData = infoPopup.querySelector('.popup-data');
 	const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
 	const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
 	const closeUp2 = copyCloseUp();
@@ -104,6 +96,24 @@ function infoElement(elementAtomicNumber) {
 	let element;
 	let link;
 	let pdf;
+
+	popupData.innerHTML = '';
+
+	function createData(title, data) {
+		const div = document.createElement('div');
+		const h3title = document.createElement('h3');
+		const h3data = document.createElement('h3');
+		const hr = document.createElement('hr');
+
+		h3title.innerHTML = title + ':';
+		h3data.innerHTML = data;
+
+		div.appendChild(h3title);
+		div.appendChild(h3data);
+		popupData.appendChild(div);
+		popupData.appendChild(hr);
+
+	}
 
 	function copyCloseUp() {
 		let clonedElement = closeUp.cloneNode(true);
@@ -134,14 +144,14 @@ function infoElement(elementAtomicNumber) {
 		link = "https://el.wikipedia.org/wiki/" + elementData[element].name;
 		pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].name;
 	}
-	
-	name.innerHTML = elementData[element].name;
-	atomic.innerHTML = element;
-	energyLevels.innerHTML = elementData[element].electronConfiguration;
-	discovered.innerHTML = elementData[element].discoveredBy;
-	mass.innerHTML = elementData[element].atomicMass;
-	block.innerHTML = getBlock(elementData[elementAtomicNumber]);// + '-τομέας';
-	elementClass.innerHTML = classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία";
+
+	createData('Ονομα', elementData[element].name);
+	createData('Ατομικός', elementData[element].atomic);
+	createData('Ηλεκτρονική δομή', elementData[element].electronConfiguration);
+	createData('Βάρος', elementData[element].atomicMass);
+	createData('Ταξινόμηση', classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
+	createData('Тομέας', getBlock(elementData[elementAtomicNumber]));
+	createData('Ανακαλύφθηκε', elementData[element].discoveredBy);
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
 	infoPopup.querySelector('.close').addEventListener('click', closePopup);
