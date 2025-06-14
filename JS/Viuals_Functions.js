@@ -210,7 +210,7 @@ function visualizeOptionFunc() {
 
         Object.entries(elementData).forEach(([key, el]) => {
             const period  = Number(el.period);
-            const shells  = el.shells ?? [];
+            const shells  = energyLevels(el.electronConfiguration) ?? [];
             const idx     = period - 1;
             const electrons = shells[idx] ?? 0;
 
