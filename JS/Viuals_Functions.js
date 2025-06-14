@@ -25,11 +25,79 @@ function toNumber(str) {
     return match ? Number(match[0]) : NaN;
 }
 
-function showBlocks(show) {
-    const elements = [
+function getTableElements() {
+    return elements = [
         ...document.querySelectorAll('.element'),
         ...document.querySelectorAll('#CloseUp')
     ];
+}
+
+function getBlock(el) {
+	const Z = Number(el.atomic);
+	const group = Number(el.group);
+
+	if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
+
+	if (group) {
+		if (Z === 2) return 's';
+		if (group === 1 || group === 2) return 's';
+		if (group >= 13 && group <= 18) return 'p';
+		if (group >= 3 && group <= 12) return 'd';
+	}
+
+	const cfg = el.electronConfiguration ?? '';
+	let block = '';
+
+	cfg.replace(/\[.*?\]/g, '')
+		.trim()
+		.split(/\s+/)
+		.forEach(tok => {
+			const m = tok.match(/^[0-9]+([spdfg])/i);
+			if (m) block = m[1].toLowerCase();
+		});
+
+	return block;
+}
+
+function energyLevels(eConfig) {
+	const totals = {};
+
+	eConfig.trim().split(/\s+/).forEach(tok => {
+		const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
+		if (!m) return;
+	    const n = +m[1];
+	    const e = +m[2];
+	    totals[n] = (totals[n] || 0) + e;
+	});
+
+	const maxN = Math.max(...Object.keys(totals));
+	return Array.from({ length: maxN }, (_, i) => totals[i + 1] || 0);
+}
+
+function showElementColor(show) {
+    const elements = getTableElements();
+
+    if (!show) {
+        elements.forEach(el => (el.style.backgroundColor = ''));
+        return;
+    }
+
+    elements.forEach(el => {
+        if (el.hasAttribute('data-linkedElement')) return;
+
+        const key  = el.getAttribute('data-atomic');
+        const data = elementData[key];
+        if (!data || !data.color) return;
+
+        const val  = data.color;
+
+        el.querySelector('data').textContent = String(val);
+        el.style.backgroundColor = '#'+val;
+    });
+}
+
+function showBlocks(show) {
+    const elements = getTableElements();
 
     if (!show) {
         document.documentElement.classList.remove('blocks');
@@ -45,28 +113,56 @@ function showBlocks(show) {
 
         const val  = getBlock(data);
 
-        const dataTag = el.querySelector('data');
-
-        dataTag.textContent = String(val);
+        el.querySelector('data').textContent = String(val);
     });
 
     document.documentElement.classList.add('blocks');
 }
 
-function showState(show) {
-    const elements = [
-        ...document.querySelectorAll('.element'),
-        ...document.querySelectorAll('#CloseUp')
-    ];
+function showState(show, temp=273) {
+    const elements = getTableElements();
 
     if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
 
-    const getPhase = el => {
-        const key   = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
-        return (elementData[key]?.phase || '').trim().toLowerCase();
+    const getPhase = (el) => {
+        const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
+        const meltTemp = elementData[key]?.melt;
+        const boilTemp = elementData[key]?.boil;
+        const dataPhase = elementData[key]?.phase?.trim().toLowerCase();
+        let phase = dataPhase || 'unknown';
+
+        const validMelt = (typeof meltTemp === 'number') && !isNaN(meltTemp);
+        const validBoil = (typeof boilTemp === 'number') && !isNaN(boilTemp);
+
+        if (!validMelt && !validBoil) {
+            return phase;
+        }
+
+        if (validMelt && validBoil) {
+            if (temp >= boilTemp) {
+                phase = 'gas';
+            } else if (temp >= meltTemp) {
+                phase = 'liquid';
+            } else if (temp < meltTemp) {
+                phase = 'solid';
+            }
+            return phase;
+        }
+
+        if (validMelt) {
+            phase = (temp < meltTemp) ? 'solid' : (dataPhase || 'liquid');
+            return phase;
+        }
+
+        if (validBoil) {
+            phase = (temp >= boilTemp) ? 'gas' : (dataPhase || 'liquid');
+            return phase;
+        }
+
+        return phase;
     };
 
     const phaseColor = {
@@ -85,17 +181,13 @@ function showState(show) {
             return;
         }
         const rgba = phaseColor[phase] || unknownColor;
-        el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη φάση";
+        el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
 
 function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
-
-    const elements = [
-        ...document.querySelectorAll('.element'),
-        ...document.querySelectorAll('#CloseUp')
-    ];
+    const elements = getTableElements();
 
     if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
@@ -218,10 +310,7 @@ function visualizeOptionFunc() {
         });
         visualize(calculated, true, 'Total', useLog = false, minColor = [133, 173, 49, 0], maxColor = [133, 173, 49, 0.75]);
     } else {
-        const elements = [
-            ...document.querySelectorAll('.element'),
-            ...document.querySelectorAll('#CloseUp')
-        ];
+        const elements = getTableElements();
 
         elements.forEach(el => {
             if (el.hasAttribute('data-linkedElement')) return;
