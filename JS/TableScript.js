@@ -73,7 +73,7 @@ function showElementData(elementAtomicNumber) {
 	closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
 	closeUp.setAttribute('data-atomic', elementAtomicNumber)
 	
-	visualizeOptionFunc();
+	visualizeOptionFunc(false);
 
 	for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
 		let spanElement = document.createElement('span');

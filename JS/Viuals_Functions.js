@@ -285,44 +285,57 @@ function toggleColorScheme() {
     document.documentElement.classList.toggle('lightMode');
 }
 
-function visualizeOptionFunc() {
+function visualizeOptionFunc(forceUpdateParams = true) {
 	const value = visualizeOption.value;
-	visualizationParams = null;
+
+	if (forceUpdateParams) {
+		visualizationParams = null;
+	}
 
 	document.documentElement.classList.remove('chemicalGroupBlock');
 	showBlocks(false);
 	showState(false);
 	visualize(false);
 
-	if (value === 'ElectronConfiguration') {
-		showBlocks(true);
-	} else if (value === 'State') {
-		showState(true, temp);
-	} else if (value === 'AtomicMass') {
-		visualizationParams = [elementData, true, 'atomicMass', false, [8, 212, 170, 0], [8, 212, 170, 0.75]];
-	} else if (value === 'MeltPoint') {
-		visualizationParams = [elementData, true, 'melt', false, [0, 255, 255, 0.01], [0, 255, 255, 0.75]];
-	} else if (value === 'BoilPoint') {
-		visualizationParams = [elementData, true, 'boil', false, [255, 0, 0, 0.01], [255, 0, 0, 0.75]];
-	} else if (value === 'Density') {
-		visualizationParams = [elementData, true, 'density', false, [8, 212, 170, 0], [8, 212, 170, 0.75]];
-	} else if (value === 'Electronegativity') {
-		visualizationParams = [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]];
-	} else if (value === 'ElectronAffinity') {
-		visualizationParams = [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]];
-	} else if (value === 'Ionization') {
-		visualizationParams = [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]];
-	} else if (value === 'EnergyLevels') {
-		const calculated = {};
-		Object.entries(elementData).forEach(([key, el]) => {
-			const period = Number(el.period);
-			const shells = energyLevels(el.electronConfiguration) ?? [];
-			const idx = period - 1;
-			const electrons = shells[idx] ?? 0;
-			(calculated[key] ??= { Total: 0 }).Total += electrons;
-		});
-		visualizationParams = [calculated, true, 'Total', false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
-	} else {
+	const config = {
+		'ElectronConfiguration': { action: () => showBlocks(true) },
+		'State': { action: () => showState(true, temp) },
+		'AtomicMass': { params: [elementData, true, 'atomicMass', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'MeltPoint': { params: [elementData, true, 'melt', false, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
+		'BoilPoint': { params: [elementData, true, 'boil', false, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
+		'Density': { params: [elementData, true, 'density', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'Electronegativity': { params: [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
+		'ElectronAffinity': { params: [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
+		'Ionization': { params: [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+		'EnergyLevels': {
+			action: () => {
+				const calculated = {};
+				Object.entries(elementData).forEach(([key, el]) => {
+					const period = Number(el.period);
+					const shells = energyLevels(el.electronConfiguration) ?? [];
+					const idx = period - 1;
+					const electrons = shells[idx] ?? 0;
+					(calculated[key] ??= { Total: 0 }).Total += electrons;
+				});
+				if (forceUpdateParams || !visualizationParams) {
+					visualizationParams = [calculated, true, 'Total', false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+				}
+			}
+		}
+	};
+
+	const selected = config[value];
+
+	if (selected) {
+		if (selected.action) {
+			selected.action();
+		}
+		if (selected.params && (forceUpdateParams || !visualizationParams)) {
+			visualizationParams = selected.params;
+		}
+	}
+
+	if (!visualizationParams && !selected?.action) {
 		const elements = getTableElements();
 		document.documentElement.classList.add('chemicalGroupBlock');
 		elements.forEach(el => {
