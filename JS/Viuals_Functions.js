@@ -1,4 +1,7 @@
 const visualizeOption = document.getElementById('visualizeOption');
+const tempRangeSlider = document.getElementById('temp')
+const tempNumberInput = document.getElementById('tempNumInput')
+let temp;
 
 const stateEngGr = [
     {en: "solid", gr: "Στερεά"},
@@ -277,6 +280,7 @@ function toggleColorScheme() {
 
 function visualizeOptionFunc() {
     const value = visualizeOption.value;
+
     showBlocks(false);
     showState(false);
     visualize(false);
@@ -284,7 +288,7 @@ function visualizeOptionFunc() {
     if (value === 'ElectronConfiguration') {
         showBlocks(true);
     } else if (value === 'State') {
-        showState(true);
+        showState(true, temp);
     } else if (value === 'AtomicMass') {
         visualize(elementData, true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
     } else if (value === 'MeltPoint') {
@@ -326,6 +330,24 @@ function visualizeOptionFunc() {
 
 }
 
+function tempChange(e, unit = 'C') {
+    const K2C = k => k - 273;
+    const C2K = c => c + 273;
+
+    if (e.target === tempRangeSlider) {
+        const k = Number(e.target.value);
+        tempNumberInput.value = K2C(k);
+        temp = k;
+    } else {
+        const c = Number(e.target.value);
+        const k = C2K(c);
+        tempRangeSlider.value = k;
+        temp = k;
+    }
+
+    visualizeOptionFunc();
+}
+
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('darkMode');
     document.documentElement.classList.remove('lightMode');
@@ -348,6 +370,9 @@ visualizeOption.addEventListener('change', () => {
     visualizeOptionFunc();
     URL_setParam('visualizeOption', visualizeOption.value);
 });
+
+tempRangeSlider.addEventListener('input', tempChange);
+tempNumberInput.addEventListener('input', tempChange);
 
 document.getElementById("searchbar").addEventListener("input", function () {
     let searchValue = removeDiacritics(this.value.trim().toLowerCase());
