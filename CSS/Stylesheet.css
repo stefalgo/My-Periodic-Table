@@ -259,6 +259,7 @@ td {
     flex-direction: column;
     align-items: center;
 	box-shadow: var(--borderShadowColorEffect);
+	transition: 0.3s;
 }
 
 html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
@@ -360,7 +361,7 @@ html:not([class*="chemicalGroupBlock"]) .highlightElementClasses {
 	cursor: default;
 }
 /*---------------------*/
-.periodicTable:has(.element.highlight) :is(.element) {
+.periodicTable:has(.element.highlight) :is(.element, .lanth-Act) {
 	opacity: 0.3;
 }
 .periodicTable:has(.element.highlight) :is(.element.highlight) {
@@ -368,7 +369,7 @@ html:not([class*="chemicalGroupBlock"]) .highlightElementClasses {
 	box-shadow: var(--borderShadowColorEffectClick);
 }
 /*---------------------*/
-.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement) {
+.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement, .lanth-Act) {
 	opacity: 0.3;
 }
 .periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
