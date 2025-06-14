@@ -40,21 +40,31 @@ function onDataLoaded() {
 	visualizeOptionFunc();
 }
 
-function blockFromConfig(eConfig) {
-	const rank = { s: 0, p: 1, d: 2, f: 3, g: 4 };
-	let best = -1, block = '';
+function getBlock(el) {
+	const Z = Number(el.atomic);
+	const group = Number(el.group);
 
-	eConfig.trim().split(/\s+/).forEach(tok => {
-		const m = tok.match(/^[0-9]+([spdfg])/i);
-		if (!m) return;
-		const letter = m[1].toLowerCase();
-		if (rank[letter] > best) {
-			best = rank[letter];
-			block = letter;
-		}
-  });
+	if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
 
-  return block;
+	if (group) {
+		if (Z === 2) return 's';
+		if (group === 1 || group === 2) return 's';
+		if (group >= 13 && group <= 18) return 'p';
+		if (group >= 3 && group <= 12) return 'd';
+	}
+
+	const cfg = el.electronConfiguration ?? '';
+	let block = '';
+
+	cfg.replace(/\[.*?\]/g, '')
+		.trim()
+		.split(/\s+/)
+		.forEach(tok => {
+			const m = tok.match(/^[0-9]+([spdfg])/i);
+			if (m) block = m[1].toLowerCase();
+		});
+
+	return block;
 }
 
 function energyLevels(eConfig) {
@@ -117,7 +127,7 @@ function showElementData(elementAtomicNumber) {
 
 	closeUp.classList = ["elementStyle"];
 	closeUp.classList.add(elementData[elementAtomicNumber].category);
-	closeUp.classList.add(blockFromConfig(elementData[elementAtomicNumber].electronConfiguration));
+	closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
 	closeUp.setAttribute('data-atomic', elementAtomicNumber)
 	
 	visualizeOptionFunc();
@@ -185,7 +195,7 @@ function infoElement(elementAtomicNumber) {
 	energyLevels.innerHTML = elementData[element].electronConfiguration;
 	discovered.innerHTML = elementData[element].discoveredBy;
 	mass.innerHTML = elementData[element].atomicMass;
-	block.innerHTML = blockFromConfig(elementData[elementAtomicNumber].electronConfiguration);// + '-τομέας';
+	block.innerHTML = getBlock(elementData[elementAtomicNumber]);// + '-τομέας';
 	elementClass.innerHTML = classes.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία";
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
