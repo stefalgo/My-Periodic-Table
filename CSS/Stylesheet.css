@@ -250,6 +250,20 @@ td {
 	min-width: auto;
 	user-select: none;
 }
+
+.lanth-Act {
+	background: var(--f-block);
+	width: 100%;
+    height: 100%;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	box-shadow: var(--borderShadowColorEffect);
+}
+
+html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
+	background: transparent;
+}
 /**--------------------**/
 .element, .elementStyle {
     line-height: 1;
