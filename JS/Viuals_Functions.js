@@ -1,5 +1,25 @@
 const visualizeOption = document.getElementById('visualizeOption');
 
+const stateEngGr = [
+    {en: "solid", gr: "Στερεά"},
+    {en: "liquid", gr: "Υγρά"},
+    {en: "gas", gr: "Αέρια"},
+    {en: "plasma", gr: "Πλάσμα"},
+];
+
+const classesEngGr = [
+	{en: "alkali", gr: "Αλκαλικά μέταλλα"},
+	{en: "alkaline", gr: "Αλκαλικές γαίες"},
+	{en: "nonmetal", gr: "Αμέταλλο"},
+	{en: "transition", gr: "Μετάλλα μετάπτωσης"},
+	{en: "unknown", gr: "Άγνωστο"},
+	{en: "lanthanoid", gr: "Λανθανίδα"},
+	{en: "actinoid", gr: "Ακτινίδα"},
+	{en: "metalloid", gr: "Μεταλλοειδές"},
+	{en: "poor", gr: "Φτωχό μέταλλο"},
+	{en: "noble", gr: "Ευγενές αέριο"}
+];
+
 function toNumber(str) {
     const match = str.match(/-?\d+(\.\d+)?/);
     return match ? Number(match[0]) : NaN;
@@ -65,7 +85,7 @@ function showState(show) {
             return;
         }
         const rgba = phaseColor[phase] || unknownColor;
-        el.querySelector('data').textContent = phase;
+        el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη φάση";
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
