@@ -1,5 +1,4 @@
 const closeUp = document.getElementById('CloseUp');
-
 let elementData;
 
 (async () => {
@@ -26,48 +25,6 @@ function onDataLoaded() {
 	}
 
 	visualizeOptionFunc();
-}
-
-function getBlock(el) {
-	const Z = Number(el.atomic);
-	const group = Number(el.group);
-
-	if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
-
-	if (group) {
-		if (Z === 2) return 's';
-		if (group === 1 || group === 2) return 's';
-		if (group >= 13 && group <= 18) return 'p';
-		if (group >= 3 && group <= 12) return 'd';
-	}
-
-	const cfg = el.electronConfiguration ?? '';
-	let block = '';
-
-	cfg.replace(/\[.*?\]/g, '')
-		.trim()
-		.split(/\s+/)
-		.forEach(tok => {
-			const m = tok.match(/^[0-9]+([spdfg])/i);
-			if (m) block = m[1].toLowerCase();
-		});
-
-	return block;
-}
-
-function energyLevels(eConfig) {
-	const totals = {};
-
-	eConfig.trim().split(/\s+/).forEach(tok => {
-		const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
-		if (!m) return;
-	    const n = +m[1];
-	    const e = +m[2];
-	    totals[n] = (totals[n] || 0) + e;
-	});
-
-	const maxN = Math.max(...Object.keys(totals));
-	return Array.from({ length: maxN }, (_, i) => totals[i + 1] || 0);
 }
 
 function generateAtom(atomicNumber) {
