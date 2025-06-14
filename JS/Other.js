@@ -6,11 +6,31 @@ function toNumber(str) {
 }
 
 function showBlocks(show) {
-    if (show) {
-        document.documentElement.classList.add('blocks');
-    } else {
+    const elements = [
+        ...document.querySelectorAll('.element'),
+        ...document.querySelectorAll('#CloseUp')
+    ];
+
+    if (!show) {
         document.documentElement.classList.remove('blocks');
+        return;
     }
+
+    elements.forEach(el => {
+        if (el.hasAttribute('data-linkedElement')) return;
+
+        const key  = el.getAttribute('data-atomic');
+        const data = elementData[key];
+        if (!data) return;
+
+        const val  = getBlock(data);
+
+        const dataTag = el.querySelector('data');
+
+        dataTag.textContent = String(val);
+    });
+
+    document.documentElement.classList.add('blocks');
 }
 
 function showState(show) {
@@ -45,6 +65,7 @@ function showState(show) {
             return;
         }
         const rgba = phaseColor[phase] || unknownColor;
+        el.querySelector('data').textContent = phase;
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
@@ -94,6 +115,7 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
             return;
         }
         if (isNaN(val)) {
+            el.querySelector('data').textContent = 'N/A';
             el.style.backgroundColor = `rgba(${unknownColor.join(',')})`;
             return;
         }
@@ -105,6 +127,7 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
             ? Math.round(c + t * (MAX[i] - c))
             : c + t * (MAX[3] - c));
 
+        el.querySelector('data').textContent = String(val).slice(0, 7);
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
@@ -148,30 +171,21 @@ function visualizeOptionFunc() {
 
     if (value === 'ElectronConfiguration') {
         showBlocks(true);
-    }
-    if (value === 'State') {
+    } else if (value === 'State') {
         showState(true);
-    }
-
-    if (value === 'AtomicMass') {
+    } else if (value === 'AtomicMass') {
         visualize(elementData, true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    }
-    if (value === 'MeltPoint') {
+    } else if (value === 'MeltPoint') {
         visualize(elementData, true, 'melt', useLog = false, minColor = [0, 255, 255, 0.01], maxColor = [0, 255, 255, 0.75]);
-    }
-    if (value === 'BoilPoint') {
+    } else if (value === 'BoilPoint') {
         visualize(elementData, true, 'boil', useLog = false, minColor = [255, 0, 0, 0.01], maxColor = [255, 0, 0, 0.75]);
-    }
-    if (value === 'Electronegativity') {
+    } else if (value === 'Electronegativity') {
         visualize(elementData, true, 'electronegativity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    }
-    if (value === 'ElectronAffinity') {
+    } else if (value === 'ElectronAffinity') {
         visualize(elementData, true, 'electronAffinity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    }
-    if (value === 'Ionization') {
+    } else if (value === 'Ionization') {
         visualize(elementData, true, 'ionizationEnergy', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    }
-    if (value === 'EnergyLevels') {
+    } else if (value === 'EnergyLevels') {
         const calculated = {};
 
         Object.entries(elementData).forEach(([key, el]) => {
@@ -183,6 +197,22 @@ function visualizeOptionFunc() {
             (calculated[key] ??= { Total: 0 }).Total += electrons;
         });
         visualize(calculated, true, 'Total', useLog = false, minColor = [133, 173, 49, 0], maxColor = [133, 173, 49, 0.75]);
+    } else {
+        const elements = [
+            ...document.querySelectorAll('.element'),
+            ...document.querySelectorAll('#CloseUp')
+        ];
+
+        elements.forEach(el => {
+            if (el.hasAttribute('data-linkedElement')) return;
+
+            const key  = el.getAttribute('data-atomic');
+            const data = elementData[key];
+            if (!data || !data.category) return;
+            const dataTag = el.querySelector('data');
+
+            dataTag.textContent = String(data.category);
+        });
     }
 
 }
