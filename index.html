@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="el" class="chemicalGroupBlock">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,7 @@
 			<option value="EnergyLevels">Energy Levels</option>
 			<option value="MeltPoint">Σημείο τήξης</option>
 			<option value="BoilPoint">Σημείο ζέσεως</option>
+			<option value="Density">Πυκνότητα</option>
 			<option value="Electronegativity">Ηλεκτραρνητικότητα</option>
 			<option value="ElectronAffinity">Ηλεκτροσυγγένεια</option>
 			<option value="Ionization">Ιονισμός</option>
@@ -115,6 +116,13 @@
 								<div class="p highlightElement hoverEffect"><span>p</span></div>
 								<div class="d highlightElement hoverEffect"><span>d</span></div>
 								<div class="f highlightElement hoverEffect"><span>f</span></div>
+							</div>
+							<div id="PropertyKey">
+								<input id="Linear" type="radio" name="scale" value="lin">
+								<label for="Linear">Linear</label>
+
+								<input id="logarithmic" type="radio" name="scale" value="log">
+								<label for="logarithmic">Λογαριθμική</label>
 							</div>
 						</div>
 					</td>

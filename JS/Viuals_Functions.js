@@ -1,4 +1,5 @@
 const visualizeOption = document.getElementById('visualizeOption');
+let visualizationParams = [];
 let temp;
 
 const stateEngGr = [
@@ -192,7 +193,15 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
 
     if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
+        document.getElementById('PropertyKey').style.display = 'none';
         return;
+    }
+    document.getElementById('PropertyKey').style.display = 'flex';
+
+    if (useLog) {
+        document.getElementById('logarithmic').checked = true;
+    } else {
+        document.getElementById('Linear').checked = true;
     }
 
     const getValue = el => {
@@ -228,7 +237,7 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
             return;
         }
         if (isNaN(val)) {
-            el.querySelector('data').textContent = 'N/A';
+            el.querySelector('data').textContent = '';
             el.style.backgroundColor = `rgba(${unknownColor.join(',')})`;
             return;
         }
@@ -277,55 +286,58 @@ function toggleColorScheme() {
 }
 
 function visualizeOptionFunc() {
-    const value = visualizeOption.value;
+	const value = visualizeOption.value;
+	visualizationParams = null;
 
-    showBlocks(false);
-    showState(false);
-    visualize(false);
+	document.documentElement.classList.remove('chemicalGroupBlock');
+	showBlocks(false);
+	showState(false);
+	visualize(false);
 
-    if (value === 'ElectronConfiguration') {
-        showBlocks(true);
-    } else if (value === 'State') {
-        showState(true, temp);
-    } else if (value === 'AtomicMass') {
-        visualize(elementData, true, 'atomicMass', useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    } else if (value === 'MeltPoint') {
-        visualize(elementData, true, 'melt', useLog = false, minColor = [0, 255, 255, 0.01], maxColor = [0, 255, 255, 0.75]);
-    } else if (value === 'BoilPoint') {
-        visualize(elementData, true, 'boil', useLog = false, minColor = [255, 0, 0, 0.01], maxColor = [255, 0, 0, 0.75]);
-    } else if (value === 'Electronegativity') {
-        visualize(elementData, true, 'electronegativity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    } else if (value === 'ElectronAffinity') {
-        visualize(elementData, true, 'electronAffinity', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    } else if (value === 'Ionization') {
-        visualize(elementData, true, 'ionizationEnergy', useLog = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.75]);
-    } else if (value === 'EnergyLevels') {
-        const calculated = {};
+	if (value === 'ElectronConfiguration') {
+		showBlocks(true);
+	} else if (value === 'State') {
+		showState(true, temp);
+	} else if (value === 'AtomicMass') {
+		visualizationParams = [elementData, true, 'atomicMass', false, [8, 212, 170, 0], [8, 212, 170, 0.75]];
+	} else if (value === 'MeltPoint') {
+		visualizationParams = [elementData, true, 'melt', false, [0, 255, 255, 0.01], [0, 255, 255, 0.75]];
+	} else if (value === 'BoilPoint') {
+		visualizationParams = [elementData, true, 'boil', false, [255, 0, 0, 0.01], [255, 0, 0, 0.75]];
+	} else if (value === 'Density') {
+		visualizationParams = [elementData, true, 'density', false, [8, 212, 170, 0], [8, 212, 170, 0.75]];
+	} else if (value === 'Electronegativity') {
+		visualizationParams = [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]];
+	} else if (value === 'ElectronAffinity') {
+		visualizationParams = [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]];
+	} else if (value === 'Ionization') {
+		visualizationParams = [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]];
+	} else if (value === 'EnergyLevels') {
+		const calculated = {};
+		Object.entries(elementData).forEach(([key, el]) => {
+			const period = Number(el.period);
+			const shells = energyLevels(el.electronConfiguration) ?? [];
+			const idx = period - 1;
+			const electrons = shells[idx] ?? 0;
+			(calculated[key] ??= { Total: 0 }).Total += electrons;
+		});
+		visualizationParams = [calculated, true, 'Total', false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+	} else {
+		const elements = getTableElements();
+		document.documentElement.classList.add('chemicalGroupBlock');
+		elements.forEach(el => {
+			if (el.hasAttribute('data-linkedElement')) return;
+			const key = el.getAttribute('data-atomic');
+			const data = elementData[key];
+			if (!data || !data.category) return;
+			const dataTag = el.querySelector('data');
+			dataTag.textContent = String(data.category);
+		});
+	}
 
-        Object.entries(elementData).forEach(([key, el]) => {
-            const period  = Number(el.period);
-            const shells  = energyLevels(el.electronConfiguration) ?? [];
-            const idx     = period - 1;
-            const electrons = shells[idx] ?? 0;
-
-            (calculated[key] ??= { Total: 0 }).Total += electrons;
-        });
-        visualize(calculated, true, 'Total', useLog = false, minColor = [133, 173, 49, 0], maxColor = [133, 173, 49, 0.75]);
-    } else {
-        const elements = getTableElements();
-
-        elements.forEach(el => {
-            if (el.hasAttribute('data-linkedElement')) return;
-
-            const key  = el.getAttribute('data-atomic');
-            const data = elementData[key];
-            if (!data || !data.category) return;
-            const dataTag = el.querySelector('data');
-
-            dataTag.textContent = String(data.category);
-        });
-    }
-
+	if (visualizationParams) {
+		visualize(...visualizationParams);
+	}
 }
 
 function tempChange(e) {
@@ -375,6 +387,16 @@ if (URL_readParam('visualizeOption')) {
 }
 
 adjustElementsText();
+
+document.getElementById('PropertyKey').addEventListener('change', () => {
+    const selected = document.getElementById('PropertyKey').querySelector('input[name="scale"]:checked');
+    if (selected) {
+        if (visualizationParams) {
+            visualizationParams[3] = selected.value === 'log' && true || false
+            visualize(...visualizationParams);
+        }
+    }
+});
 
 visualizeOption.addEventListener('change', () => {
     visualizeOptionFunc();
