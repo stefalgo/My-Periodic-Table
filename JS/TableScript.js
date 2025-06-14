@@ -1,15 +1,3 @@
-const classes = [
-	{en: "alkali", gr: "Αλκαλικά μέταλλα"},
-	{en: "alkaline", gr: "Αλκαλικές γαίες"},
-	{en: "nonmetal", gr: "Αμέταλλο"},
-	{en: "transition", gr: "Μετάλλα μετάπτωσης"},
-	{en: "unknown", gr: "Άγνωστο"},
-	{en: "lanthanoid", gr: "Λανθανίδα"},
-	{en: "actinoid", gr: "Ακτινίδα"},
-	{en: "metalloid", gr: "Μεταλλοειδές"},
-	{en: "poor", gr: "Φτωχό μέταλλο"},
-	{en: "noble", gr: "Ευγενές αέριο"}
-];
 const closeUp = document.getElementById('CloseUp');
 
 let elementData;
@@ -196,7 +184,7 @@ function infoElement(elementAtomicNumber) {
 	discovered.innerHTML = elementData[element].discoveredBy;
 	mass.innerHTML = elementData[element].atomicMass;
 	block.innerHTML = getBlock(elementData[elementAtomicNumber]);// + '-τομέας';
-	elementClass.innerHTML = classes.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία";
+	elementClass.innerHTML = classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία";
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
 	infoPopup.querySelector('.close').addEventListener('click', closePopup);
