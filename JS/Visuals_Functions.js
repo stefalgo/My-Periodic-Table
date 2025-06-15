@@ -27,6 +27,23 @@ function toNumber(str) {
     return match ? Number(match[0]) : NaN;
 }
 
+function formatGreekDate(yearLike) {
+    if (yearLike == null) return '';
+
+    const raw = String(yearLike).trim();
+
+    const m = raw.match(/^([+-]?\d+)$/);
+    if (!m) return raw;
+
+    let year = Number(m[1]);
+
+    if (year === 0) year = -1;
+
+    return year < 0
+        ? `${Math.abs(year)} π.Χ.`
+        : `${year} μ.Χ.`;
+}
+
 function getTableElements() {
     return elements = [
         ...document.querySelectorAll('.element'),
@@ -62,18 +79,27 @@ function getBlock(el) {
 }
 
 function energyLevels(eConfig) {
-	const totals = {};
+    const cleaned = eConfig.replace(/\[.*?]/g, '').trim();
+    if (!cleaned) return [];
 
-	eConfig.trim().split(/\s+/).forEach(tok => {
-		const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
-		if (!m) return;
-	    const n = +m[1];
-	    const e = +m[2];
-	    totals[n] = (totals[n] || 0) + e;
-	});
+    const totals = new Map();
 
-	const maxN = Math.max(...Object.keys(totals));
-	return Array.from({ length: maxN }, (_, i) => totals[i + 1] || 0);
+    for (const tok of cleaned.split(/\s+/)) {
+        const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
+        if (!m) continue;
+        const n  = Number(m[1]);
+        const e  = Number(m[2]);
+        totals.set(n, (totals.get(n) || 0) + e);
+    }
+
+    if (!totals.size) return [];
+
+    const maxN = Math.max(...totals.keys());
+    const shells = [];
+    for (let n = 1; n <= maxN; n++) {
+        shells.push(totals.get(n) || 0);
+    }
+    return shells;
 }
 
 function showElementColor(show) {
@@ -301,7 +327,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 				Object.entries(elementData).forEach(([key, el]) => {
 					const period = Number(el.period);
 					const shells = energyLevels(el.electronConfiguration) ?? [];
-					const idx = period - 1;
+					const idx = period-1;
 					const electrons = shells[idx] ?? 0;
 					(calculated[key] ??= { Total: 0 }).Total += electrons;
 				});

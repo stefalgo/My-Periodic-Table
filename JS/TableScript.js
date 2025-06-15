@@ -3,7 +3,7 @@ let elementData;
 
 (async () => {
 	try {
-		const res = await fetch('JsonData/ElementsV2.json');
+		const res = await fetch('JsonData/ElementsV3.json');
 		if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
 
 		elementData = await res.json();
@@ -151,7 +151,7 @@ function infoElement(elementAtomicNumber) {
 	createData('Βάρος', elementData[element].atomicMass);
 	createData('Ταξινόμηση', classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
 	createData('Тομέας', getBlock(elementData[elementAtomicNumber]));
-	createData('Ανακαλύφθηκε', elementData[element].discoveredBy);
+	createData('Ανακαλύφθηκε', formatGreekDate(elementData[element].discovered));
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
 	infoPopup.querySelector('.close').addEventListener('click', closePopup);
