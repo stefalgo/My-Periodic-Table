@@ -125,6 +125,18 @@
 								<div class="liquid highlightElement hoverEffect"><span>Υγρά</span></div>
 								<div class="gas highlightElement hoverEffect"><span>Αέρια</span></div>
 								<div class="unknownState highlightElement hoverEffect"><span>Άγνωστα</span></div>
+
+								<div style="width: 100%; height: 100%; overflow: auto; display: flex; flex-direction: column;">
+									<div>
+										<input id="tempNumInputK" type="number" min="0" max="7000" step="1" value="273">
+										<label for="tempNumInputK">K</label>
+									</div>
+									<div>
+										<input id="tempNumInputC" type="number" min="-273" max="6727" step="1" value="0">
+										<label for="tempNumInputC">°C</label>
+									</div>
+									<input id="temp" type="range" min="0" max="7000" step="1" value="273">
+								</div>
 							</div>
 							<div id="propertyKey">
 								<input id="Linear" type="radio" name="scale" value="lin">
@@ -144,14 +156,7 @@
 					<td colspan="3"></td>
 					<td colspan="2"></td>
 					<td colspan="5">
-						<div style="width: 100%; height: 100%; overflow: auto;">
-							<input id="tempNumInputK" type="number" min="0" max="7000" step="1" value="273">
-							<label for="tempNumInputK">K</label>
-
-							<input id="tempNumInputC" type="number" min="-273" max="6727" step="1" value="0">
-							<label for="tempNumInputC">°C</label>
-							<input id="temp" type="range" min="0" max="7000" step="1" value="273">
-						</div>
+						
 					</td>
 					<td><div class="element noble s" data-atomic="2"> <b>2</b> <abbr>He</abbr> <em>Ήλιο</em> <data>4.0026</data> </div></td>
 				</tr>
