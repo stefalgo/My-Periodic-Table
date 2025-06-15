@@ -19,7 +19,12 @@ let elementData;
 function onDataLoaded() {
 	if (!elementData) return;
 	if (URL_readParam('SelectedElement')) {
-		showElementData(URL_readParam('SelectedElement'));
+		if (elementData[URL_readParam('SelectedElement')]) {
+			showElementData(URL_readParam('SelectedElement'));
+		} else {
+			showElementData(1);
+			URL_setParam('SelectedElement', 1)
+		}
 	} else {
 		showElementData(1);
 	}
