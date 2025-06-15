@@ -28,6 +28,11 @@
 	--p-block: #3b5800;
 	--d-block: #5f003f;
 	--f-block: #0023bb;
+
+	--solid: #bebebe8c;
+	--liquid: #1e90ff8c;
+	--gas: #ff8c008c;
+	--unknownState: #80808059;
 			
 	--electron: #4369b3;
 }
@@ -66,6 +71,11 @@
 	--p-block: #93ffda;
 	--d-block: #daf78c;
 	--f-block: #c1d0ff;
+
+	--solid: #bebebe8c;
+	--liquid: #1e90ff8c;
+	--gas: #ff8c008c;
+	--unknownState: #80808059;
 			
 	--electron: #559fef;
 }
@@ -91,11 +101,6 @@
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
 }
 /**------------------------------------------------**/
-.blocks .s {background: var(--s-block);}
-.blocks .p {background: var(--p-block);}
-.blocks .d {background: var(--d-block);}
-.blocks .f {background: var(--f-block);}
-
 * {
 	box-sizing: border-box;
 }
@@ -175,17 +180,19 @@ button:hover, select:hover {
 input[type="text"]:hover, input[type="number"]:hover {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
-
-#PropertyKey {
+/**-----------------------------------------------**/
+#propertyKey {
 	display: none;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+	height: 100%;
 }
 
-#PropertyKey input[type="radio"] {
+#propertyKey input[type="radio"] {
 	display: none;
 }
 
-#PropertyKey label {
+#propertyKey label {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -201,7 +208,7 @@ input[type="text"]:hover, input[type="number"]:hover {
   color: inherit;
 }
 
-#PropertyKey label::before {
+#propertyKey label::before {
 	content: "";
 	display: block;
 	width: 50%;
@@ -213,7 +220,7 @@ input[type="text"]:hover, input[type="number"]:hover {
 	background-size: contain;
 }
 
-#PropertyKey input[type="radio"]:checked + label {
+#propertyKey input[type="radio"]:checked + label {
 	background: var(--buttonColor);
 	color: #ffffff;
 }
@@ -224,6 +231,14 @@ input[type="text"]:hover, input[type="number"]:hover {
 
 [for="logarithmic"]::before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cmarker id='arrow' markerWidth='10' markerHeight='10' refX='5' refY='5' orient='auto'%3E%3Cpolyline points='3,3 5,5 3,7' fill='none' stroke='%23555'/%3E%3C/marker%3E%3C/defs%3E%3Cg stroke='%23555' stroke-width='3'%3E%3Cline x1='10' y1='100' x2='10' y2='10' marker-end='url(%23arrow)'/%3E%3Cline x1='0' y1='90' x2='90' y2='90' marker-end='url(%23arrow)'/%3E%3Cpath d='M10,90 Q20,20 90,20' fill='none'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+#rangeGradient {
+	width: 20px;
+	height: 100px;
+    margin-left: 15px;
+	margin-right: 15px;
+	box-shadow: var(--borderShadowColorEffect);
 }
 
 /**-----------------------------------------------**/
@@ -335,7 +350,7 @@ html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
 	height: 90%;
 }
 /**-----------------------------------------------**/
-.elementsClassVew {
+.elementsClassView {
 	display: flex;
 	width: 100%;
     flex-wrap: wrap;
@@ -343,7 +358,7 @@ html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
 	justify-content: center;
 }
 
-.elementsClassVew .highlightElement {
+.elementsClassView .highlightElement {
 	width: 40%;
 	height: 15%;
 	margin: 3px;
@@ -360,7 +375,11 @@ html:not([class*="chemicalGroupBlock"]) .highlightElementClasses {
 	display: none;
 }
 
-.elementsClassVew div span {
+html:not([class*="state"]) .highlightElementState {
+	display: none;
+}
+
+.elementsClassView div span {
 	cursor: default;
 }
 /*---------------------*/
@@ -389,7 +408,11 @@ html:not([class*="chemicalGroupBlock"]) .highlightElementClasses {
 .periodicTable:has(.highlightElement.s:hover) .s,
 .periodicTable:has(.highlightElement.p:hover) .p,
 .periodicTable:has(.highlightElement.d:hover) .d,
-.periodicTable:has(.highlightElement.f:hover) .f {
+.periodicTable:has(.highlightElement.f:hover) .f,
+.periodicTable:has(.highlightElement.solid:hover) .solid,
+.periodicTable:has(.highlightElement.liquid:hover) .liquid,
+.periodicTable:has(.highlightElement.gas:hover) .gas,
+.periodicTable:has(.highlightElement.unknownState:hover) .unknownState  {
 	opacity: 1;
 	box-shadow: var(--borderShadowColorEffectHover);
 }
@@ -542,3 +565,13 @@ html:not([class*="chemicalGroupBlock"]) .highlightElementClasses {
 .halogen {background: var(--halogen);}
 .noble {background: var(--noble);}
 .unknown {background: var(--unknown);}
+
+.blocks .s {background: var(--s-block);}
+.blocks .p {background: var(--p-block);}
+.blocks .d {background: var(--d-block);}
+.blocks .f {background: var(--f-block);}
+
+.state .solid {background: var(--solid);}
+.state .liquid {background: var(--liquid);}
+.state .gas {background: var(--gas);}
+.state .unknownState {background: var(--unknownState);}

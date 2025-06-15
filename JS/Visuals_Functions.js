@@ -145,9 +145,11 @@ function showBlocks(show) {
 
 function showState(show, temp=273) {
     const elements = getTableElements();
+    const phaseClasses = ['solid', 'liquid', 'gas', 'unknownState'];
 
     if (!show) {
-        elements.forEach(el => (el.style.backgroundColor = ''));
+        document.documentElement.classList.remove('state');
+        //elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
 
@@ -156,7 +158,7 @@ function showState(show, temp=273) {
         const meltTemp = elementData[key]?.melt;
         const boilTemp = elementData[key]?.boil;
         const dataPhase = elementData[key]?.phase?.trim().toLowerCase();
-        let phase = dataPhase || 'unknown';
+        let phase = dataPhase || 'unknownState';
 
         const validMelt = (typeof meltTemp === 'number') && !isNaN(meltTemp);
         const validBoil = (typeof boilTemp === 'number') && !isNaN(boilTemp);
@@ -189,21 +191,25 @@ function showState(show, temp=273) {
         return phase;
     };
 
-    const phaseColor = {
+    /*const phaseColor = {
         solid: [190, 190, 190, 0.55],
         liquid: [30, 144, 255, 0.55],
         gas: [255, 140, 0, 0.55],
         plasma: [255, 0, 255, 0.55]
-    };
+    };*/
     const unknownColor = [128, 128, 128, 0.35];
 
     const mapped = elements.map(el => ({ el, phase: getPhase(el) }));
 
     mapped.forEach(({ el, phase }) => {
-        const rgba = phaseColor[phase] || unknownColor;
+        phaseClasses.forEach(cls => el.classList.remove(cls));
+        //const rgba = phaseColor[phase] || unknownColor;
         el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
-        el.style.backgroundColor = `rgba(${rgba.join(',')})`;
+        //el.style.backgroundColor = `rgba(${rgba.join(',')})`;
+        el.classList.add(phase);
     });
+
+    document.documentElement.classList.add('state');
 }
 
 function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
@@ -211,10 +217,10 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
 
     if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
-        document.getElementById('PropertyKey').style.display = 'none';
+        document.getElementById('propertyKey').style.display = 'none';
         return;
     }
-    document.getElementById('PropertyKey').style.display = 'flex';
+    document.getElementById('propertyKey').style.display = 'flex';
 
     if (useLog) {
         document.getElementById('logarithmic').checked = true;
@@ -244,10 +250,12 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
 
     const toScale = v => useLog ? symlog(v) : v;
 
-    const vals = data.map(d => toScale(d.val));
-    const minVal = Math.min(...vals);
-    const maxVal = Math.max(...vals);
+    const scaledVals = data.map(d => toScale(d.val));
+    const minVal = Math.min(...scaledVals);
+    const maxVal = Math.max(...scaledVals);
     const span = maxVal - minVal || 1;
+
+    document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${MAX.join(',')}), rgba(${MIN.join(',')}))`;
 
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
@@ -321,6 +329,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 		'Electronegativity': { params: [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
 		'ElectronAffinity': { params: [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
 		'Ionization': { params: [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+        'Radius': { params: [elementData, true, 'atomicRadius', false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
 		'EnergyLevels': {
 			action: () => {
 				const calculated = {};
@@ -427,8 +436,8 @@ if (URL_readParam('visualizeOption')) {
 
 adjustElementsText();
 
-document.getElementById('PropertyKey').addEventListener('change', () => {
-    const selected = document.getElementById('PropertyKey').querySelector('input[name="scale"]:checked');
+document.getElementById('propertyKey').addEventListener('change', () => {
+    const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
     if (selected) {
         if (visualizationParams) {
             visualizationParams[3] = selected.value === 'log' && true || false

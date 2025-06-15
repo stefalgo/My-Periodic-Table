@@ -27,6 +27,7 @@
 			<option value="Electronegativity">Ηλεκτραρνητικότητα</option>
 			<option value="ElectronAffinity">Ηλεκτροσυγγένεια</option>
 			<option value="Ionization">Ιονισμός</option>
+			<option value="Radius">Ακτίνα</option>
 
 			<option value="DiscoveryYear">Έτος Ανακάλυψης</option>
 		</select>
@@ -101,7 +102,7 @@
 					<td colspan="2"></td>
 					<td colspan="4" rowspan="3">
 						<div style="width: 100%; height: 100%; overflow: auto;">
-							<div class="elementsClassVew highlightElementClasses">
+							<div class="elementsClassView highlightElementClasses">
 								<div class="alkali highlightElement hoverEffect"><span>Αλκαλι</span></div>
 								<div class="alkaline highlightElement hoverEffect"><span>Αλκαλικές</span></div>
 								<div class="lanthanoid highlightElement hoverEffect"><span>Λανθανίδες</span></div>
@@ -113,18 +114,30 @@
 								<div class="noble highlightElement hoverEffect"><span>Ευγενή</span></div>
 								<div class="unknown highlightElement hoverEffect"><span>Άγνωστα</span></div>
 							</div>
-							<div class="elementsClassVew highlightElementBlocks">
+							<div class="elementsClassView highlightElementBlocks">
 								<div class="s highlightElement hoverEffect"><span>s</span></div>
 								<div class="p highlightElement hoverEffect"><span>p</span></div>
 								<div class="d highlightElement hoverEffect"><span>d</span></div>
 								<div class="f highlightElement hoverEffect"><span>f</span></div>
 							</div>
-							<div id="PropertyKey">
+							<div class="elementsClassView highlightElementState">
+								<div class="solid highlightElement hoverEffect"><span>Στερεά</span></div>
+								<div class="liquid highlightElement hoverEffect"><span>Υγρά</span></div>
+								<div class="gas highlightElement hoverEffect"><span>Αέρια</span></div>
+								<div class="unknownState highlightElement hoverEffect"><span>Άγνωστα</span></div>
+							</div>
+							<div id="propertyKey">
 								<input id="Linear" type="radio" name="scale" value="lin">
-								<label for="Linear">Linear</label>
+								<label for="Linear">Γραμμικός</label>
 
 								<input id="logarithmic" type="radio" name="scale" value="log">
 								<label for="logarithmic">Λογαριθμική</label>
+
+								<div style="display: flex; flex-direction: column; align-items: center;">
+									<b id="rangeGradient-minLabel">Ελάχ.</b>
+									<div id="rangeGradient"></div>
+									<b id="rangeGradient-maxLabel">Μέγ.</b>
+								</div>
 							</div>
 						</div>
 					</td>
