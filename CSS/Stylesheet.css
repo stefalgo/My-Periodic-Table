@@ -287,13 +287,18 @@ html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
 }
 
 .element b, .elementStyle b {
-    font-size: 0.8em;
+    font-size: 0.75em;
 }
 
-.element em, .elementStyle em,
+.element em, .elementStyle em {
+    font-size: 0.75em;
+    font-weight: 500;
+    font-style: normal;
+}
+
 .element data, .elementStyle data {
-    font-size: 0.85em;
-    font-weight: 300;
+    font-size: 0.75em;
+    font-weight: 400;
     font-style: normal;
 }
 

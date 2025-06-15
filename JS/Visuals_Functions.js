@@ -335,7 +335,20 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 					visualizationParams = [calculated, true, 'Total', false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
 				}
 			}
-		}
+		},
+        'DiscoveryYear': {
+            action: () => {
+                const elements = getTableElements();
+                document.documentElement.classList.add('chemicalGroupBlock');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-atomic');
+                    const data = elementData[key];
+                    if (!data || !data.discovered) return;
+                    const dataTag = el.querySelector('data');
+                    dataTag.textContent = formatGreekDate(data.discovered);
+                });
+            }
+        }
 	};
 
 	const selected = config[value];
