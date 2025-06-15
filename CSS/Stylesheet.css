@@ -126,10 +126,8 @@ body {
 
 	background-color: var(--background);
 	color: var(--textColor);
-}
 
-h1 {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 /**-----------------------------------------------**/
 button, select {
