@@ -102,6 +102,39 @@ function energyLevels(eConfig) {
     return shells;
 }
 
+function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
+    const elements = getTableElements();
+
+    elements.forEach(el => {
+        const key =
+            el.getAttribute('data-atomic') ||
+            el.getAttribute('data-linkedElement');
+
+        const cell = el.querySelector('data');
+        if (!cell) return;
+
+        let value = dataMap[key]?.[prop];
+
+        if (value == null) {
+            cell.textContent = '';
+            return;
+        }
+
+        if (sliceNum != null) {
+            if (typeof value === 'string' || Array.isArray(value)) {
+                value = value.slice(0, sliceNum);
+            } else if (typeof value === 'number') {
+                value = parseFloat(String(value).slice(0, sliceNum));
+                if (Number.isNaN(value)) value = 0;
+            }
+        }
+
+        cell.textContent = convertFunc
+            ? convertFunc(value)
+            : value;
+    });
+}
+
 function showElementColor(show) {
     const elements = getTableElements();
 
@@ -257,6 +290,8 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${MAX.join(',')}), rgba(${MIN.join(',')}))`;
 
+    displayDataOnElement(array, prop, 7);
+
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
             el.querySelector('data').textContent = '';
@@ -271,7 +306,7 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
             ? Math.round(c + t * (MAX[i] - c))
             : c + t * (MAX[3] - c));
 
-        el.querySelector('data').textContent = String(val).slice(0, 7);
+        //el.querySelector('data').textContent = String(val).slice(0, 7);
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
@@ -347,15 +382,8 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 		},
         'DiscoveryYear': {
             action: () => {
-                const elements = getTableElements();
                 document.documentElement.classList.add('chemicalGroupBlock');
-                elements.forEach(el => {
-                    const key = el.getAttribute('data-atomic');
-                    const data = elementData[key];
-                    if (!data || !data.discovered) return;
-                    const dataTag = el.querySelector('data');
-                    dataTag.textContent = formatGreekDate(data.discovered);
-                });
+                displayDataOnElement(elementData, 'discovered', null, formatGreekDate);
             }
         }
 	};
@@ -372,15 +400,8 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	}
 
 	if (!visualizationParams && !selected?.action) {
-		const elements = getTableElements();
 		document.documentElement.classList.add('chemicalGroupBlock');
-		elements.forEach(el => {
-			const key = el.getAttribute('data-atomic');
-			const data = elementData[key];
-			if (!data || !data.category) return;
-			const dataTag = el.querySelector('data');
-			dataTag.textContent = String(data.category);
-		});
+        displayDataOnElement(elementData, 'category');
 	}
 
 	if (visualizationParams) {

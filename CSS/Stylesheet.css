@@ -99,6 +99,8 @@
 	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.3);
 	--borderShadowColorEffectHover: inset 0 0 0 2px var(--hoverColor2);
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
+
+	--transitionTime: 0.3s;
 }
 /**------------------------------------------------**/
 * {
@@ -113,7 +115,7 @@
 	color: #5898bf;
 	cursor: pointer;
 	text-decoration: underline;
-	transition: 0.5s;
+	transition: var(--transitionTime);
 }
 
 .linkText:hover, a:hover {
@@ -133,6 +135,8 @@ body {
 	color: var(--textColor);
 
 	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+	transition: background var(--transitionTime);
 }
 /**-----------------------------------------------**/
 button, select {
@@ -147,7 +151,7 @@ button, select {
 	margin: 4px 2px;
 	cursor: pointer;
 	border-radius: 4px;
-	transition: 0.3s;
+	transition: var(--transitionTime);
 	box-shadow: var(--borderShadowColorEffect);
 }
 
@@ -158,7 +162,7 @@ input[type="text"], input[type="number"] {
 	font-size: 14px;
 	border: none;
 	border-radius: 4px;
-	transition: 0.3s;
+	transition: var(--transitionTime);
 	box-shadow: var(--borderShadowColorEffect);
 }
 
@@ -206,6 +210,7 @@ input[type="text"]:hover, input[type="number"]:hover {
   position: relative;
   font-size: 14px;
   color: inherit;
+  transition: var(--transitionTime);
 }
 
 #propertyKey label::before {
@@ -233,12 +238,17 @@ input[type="text"]:hover, input[type="number"]:hover {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cmarker id='arrow' markerWidth='10' markerHeight='10' refX='5' refY='5' orient='auto'%3E%3Cpolyline points='3,3 5,5 3,7' fill='none' stroke='%23555'/%3E%3C/marker%3E%3C/defs%3E%3Cg stroke='%23555' stroke-width='3'%3E%3Cline x1='10' y1='100' x2='10' y2='10' marker-end='url(%23arrow)'/%3E%3Cline x1='0' y1='90' x2='90' y2='90' marker-end='url(%23arrow)'/%3E%3Cpath d='M10,90 Q20,20 90,20' fill='none'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+#propertyKey label:hover {
+	box-shadow: var(--borderShadowColorEffectHover);
+}
+
 #rangeGradient {
 	width: 20px;
 	height: 100px;
     margin-left: 15px;
 	margin-right: 15px;
 	box-shadow: var(--borderShadowColorEffect);
+	transition: var(--transitionTime);
 }
 
 /**-----------------------------------------------**/
@@ -272,7 +282,7 @@ td {
     flex-direction: column;
     align-items: center;
 	box-shadow: var(--borderShadowColorEffect);
-	transition: 0.3s;
+	transition: var(--transitionTime);
 }
 
 html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
@@ -286,7 +296,7 @@ html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
     width: 60px;
     height: 60px;
     padding: 2px;
-    transition: 0.3s;
+    transition: var(--transitionTime);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -363,7 +373,7 @@ html:not([class*="blocks"]):not([class*="chemicalGroupBlock"]) .lanth-Act {
 	height: 15%;
 	margin: 3px;
 	text-align: center;
-	transition: 0.3s;
+	transition: var(--transitionTime);
 	box-shadow: var(--borderShadowColorEffect);
 }
 
@@ -428,7 +438,7 @@ html:not([class*="state"]) .highlightElementState {
 	display: none;
 }
 #sitePopup .infoContainer {
-	transition: 0.2s;
+	transition: var(--transitionTime);
 	position: fixed;
 	z-index: 1;
 	background-color: var(--background);
@@ -453,7 +463,7 @@ html:not([class*="state"]) .highlightElementState {
 	font-size: 28px;
 	font-weight: bold;
 	cursor: pointer;
-	transition: 0.5s;
+	transition: var(--transitionTime);
 }
 #sitePopup .infoContainer .close:hover {
 	color: red;
@@ -498,7 +508,7 @@ html:not([class*="state"]) .highlightElementState {
 	display: none;
 }
 #infoPopup .infoContainer {
-	transition: 0.2s;
+	transition: var(--transitionTime);
 	position: fixed;
 	z-index: 1;
 	background-color: var(--background);
@@ -528,7 +538,7 @@ html:not([class*="state"]) .highlightElementState {
 	font-size: 28px;
 	font-weight: bold;
 	cursor: pointer;
-	transition: 0.5s;
+	transition: var(--transitionTime);
 }
 #infoPopup .infoContainer .close:hover {
 	color: red;
