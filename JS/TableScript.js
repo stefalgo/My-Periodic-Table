@@ -106,14 +106,14 @@ function infoElement(elementAtomicNumber) {
 
 	function createData(title, data) {
 		const div = document.createElement('div');
-		const h3title = document.createElement('h3');
+		const legendtitle = document.createElement('legend');
 		const h3data = document.createElement('h3');
 		const hr = document.createElement('hr');
 
-		h3title.innerHTML = title + ':';
+		legendtitle.innerHTML = '<b>' + title + ':</b>';
 		h3data.innerHTML = data;
 
-		div.appendChild(h3title);
+		div.appendChild(legendtitle);
 		div.appendChild(h3data);
 		popupData.appendChild(div);
 		popupData.appendChild(hr);
@@ -152,10 +152,18 @@ function infoElement(elementAtomicNumber) {
 
 	createData('Ονομα', elementData[element].name);
 	createData('Ατομικός', elementData[element].atomic);
-	createData('Ηλεκτρονική δομή', elementData[element].electronConfiguration);
+	createData('Ηλεκτρονική δομή', energyLevels(elementData[element].electronConfiguration).join(', '));
 	createData('Βάρος', elementData[element].atomicMass);
 	createData('Ταξινόμηση', classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
 	createData('Тομέας', getBlock(elementData[elementAtomicNumber]));
+
+	createData('Σημείο τήξης', elementData[element].melt + ' K');
+	createData('Σημείο ζέσεως', elementData[element].boil + ' K');
+	createData('Ακτίνα', elementData[element].atomicRadius + ' pm');
+	createData('Ηλεκτραρνητικότητα', elementData[element].electronegativity);
+	createData('Ιονισμός', elementData[element].ionizationEnergy + ' kJ/mol');
+	createData('Ηλεκτροσυγγένεια', elementData[element].electronAffinity + ' kJ/mol');
+	createData('Πυκνότητα', elementData[element].density + ' kJ/m<sup>3</sup>');
 	createData('Ανακαλύφθηκε', formatGreekDate(elementData[element].discovered));
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
