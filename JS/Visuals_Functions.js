@@ -159,7 +159,7 @@ function showBlocks(show) {
     const elements = getTableElements();
 
     if (!show) {
-        document.documentElement.classList.remove('blocks');
+        //document.documentElement.classList.remove('blocks');
         return;
     }
 
@@ -173,7 +173,7 @@ function showBlocks(show) {
         el.querySelector('data').textContent = String(val);
     });
 
-    document.documentElement.classList.add('blocks');
+    //document.documentElement.classList.add('blocks');
 }
 
 function showState(show, temp=273) {
@@ -181,7 +181,7 @@ function showState(show, temp=273) {
     const phaseClasses = ['solid', 'liquid', 'gas', 'unknownState'];
 
     if (!show) {
-        document.documentElement.classList.remove('state');
+        //document.documentElement.classList.remove('state');
         //elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
@@ -244,7 +244,7 @@ function showState(show, temp=273) {
         el.classList.add(phase);
     });
 
-    document.documentElement.classList.add('state');
+    //document.documentElement.classList.add('state');
 }
 
 function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
@@ -346,23 +346,19 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 		visualizationParams = null;
 	}
 
-	document.documentElement.classList.remove('chemicalGroupBlock');
-	showBlocks(false);
-	showState(false);
-	visualize(false);
-
 	const config = {
-		'ElectronConfiguration': { action: () => showBlocks(true) },
-		'State': { action: () => showState(true, temp) },
-		'AtomicMass': { params: [elementData, true, 'atomicMass', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'MeltPoint': { params: [elementData, true, 'melt', false, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
-		'BoilPoint': { params: [elementData, true, 'boil', false, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
-		'Density': { params: [elementData, true, 'density', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'Electronegativity': { params: [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
-		'ElectronAffinity': { params: [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
-		'Ionization': { params: [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
-        'Radius': { params: [elementData, true, 'atomicRadius', false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
-		'EnergyLevels': {
+        'chemicalGroupBlock' : {},
+		'blocks': { action: () => showBlocks(true) },
+		'state': { action: () => showState(true, temp) },
+		'atomicMass': { params: [elementData, true, 'atomicMass', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'meltPoint': { params: [elementData, true, 'melt', false, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
+		'boilPoint': { params: [elementData, true, 'boil', false, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
+		'density': { params: [elementData, true, 'density', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'electronegativity': { params: [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
+		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
+		'ionization': { params: [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+        'radius': { params: [elementData, true, 'atomicRadius', false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+		'energyLevels': {
 			action: () => {
 				const calculated = {};
 				Object.entries(elementData).forEach(([key, el]) => {
@@ -377,7 +373,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 				}
 			}
 		},
-        'DiscoveryYear': {
+        'discoveryDate': {
             action: () => {
                 document.documentElement.classList.add('chemicalGroupBlock');
                 displayDataOnElement(elementData, 'discovered', null, formatGreekDate);
@@ -385,7 +381,14 @@ function visualizeOptionFunc(forceUpdateParams = true) {
         }
 	};
 
-	const selected = config[value];
+    const selected = config[value];
+
+    Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
+	showBlocks(false);
+	showState(false);
+	visualize(false);
+
+    if (value) document.documentElement.classList.add(value);
 
 	if (selected) {
 		if (selected.action) {
@@ -397,7 +400,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	}
 
 	if (!visualizationParams && !selected?.action) {
-		document.documentElement.classList.add('chemicalGroupBlock');
+		//document.documentElement.classList.add('chemicalGroupBlock');
         displayDataOnElement(elementData, 'category');
 	}
 
