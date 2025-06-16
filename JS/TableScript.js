@@ -154,7 +154,7 @@ function infoElement(elementAtomicNumber) {
 	createData('Ονομα', elementData[element].name);
 	createData('Ατομικός', elementData[element].atomic);
 	createData('Ηλεκτρονική δομή', energyLevels(elementData[element].electronConfiguration).join(', '));
-	createData('Βάρος', elementData[element].atomicMass);
+	createData('Βάρος', elementData[element].atomicMass + ' u');
 	createData('Ταξινόμηση', classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
 	createData('Тομέας', getBlock(elementData[elementAtomicNumber]));
 
