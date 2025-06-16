@@ -234,6 +234,9 @@ function showState(show, temp=273) {
     const mapped = elements.map(el => ({ el, phase: getPhase(el) }));
 
     mapped.forEach(({ el, phase }) => {
+        if (el.classList.contains(phase)) {
+            return
+        }
         phaseClasses.forEach(cls => el.classList.remove(cls));
         //const rgba = phaseColor[phase] || unknownColor;
         el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
