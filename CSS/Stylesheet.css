@@ -205,7 +205,6 @@ input[type="text"]:hover, input[type="number"]:hover {
   height: 100px;
   text-align: center;
   box-shadow: var(--borderShadowColorEffect);
-  cursor: pointer;
   user-select: none;
   position: relative;
   font-size: 14px;
@@ -307,7 +306,7 @@ td {
 	opacity: 1;
 }
 
-.element *, .elementStyle * {
+.element *, .elementStyle *, #CloseUp * {
 	pointer-events: none;
 }
 
@@ -335,20 +334,64 @@ td {
     font-size: 1.2em;
     font-weight: 600;
 }
-
 /**--------------------**/
-.element:not(.empty),
-.elementStyle:not(.empty) {
-    cursor: crosshair;
+#CloseUp {
+	line-height: 1;
+    font-style: normal;
+    font-weight: normal;
+	padding: 2px;
+    transition: var(--transitionTime);
+	width: 80px;
+	height: 80px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	box-shadow: var(--borderShadowColorEffect);
 }
 
+#CloseUp output {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	line-height: 1;
+	min-width: 0;
+}
+
+#CloseUp b {
+	font-size: 1em;
+}
+
+#CloseUp abbr {
+	font-size: 1.8em;
+	font-weight: 600;
+}
+
+#CloseUp em {
+	font-size: .8em;
+	font-weight: 500;
+    font-style: normal;
+}
+
+#CloseUp data {
+	font-size: .8em;
+	font-weight: 400;
+    font-style: normal;
+}
+/**--------------------**/
+/**.element:not(.empty),
+.elementStyle:not(.empty) {
+    cursor: crosshair;
+}**/
+
 .element:not(.empty):hover,
-.elementStyle:not(.empty):hover {
+.elementStyle:not(.empty):hover,
+#CloseUp:hover {
     box-shadow: var(--borderShadowColorEffectHover);
 }
 
 .element:not(.empty):active,
-.elementStyle:not(.empty):active {
+.elementStyle:not(.empty):active,
+#CloseUp:active {
     box-shadow: var(--borderShadowColorEffectClick);
 }
 
@@ -360,7 +403,7 @@ html:not(.blocks, .chemicalGroupBlock) td:has(> .element, > .lanth-Act) {
 	padding: 0;
 }
 
-html:not(.blocks, .chemicalGroupBlock) td:has(> .element, > .lanth-Act) > :is(.element, .lanth-Act):not(.elementStyle) {
+html:not(.blocks, .chemicalGroupBlock) td:has(> .element, > .lanth-Act) > :is(.element, .lanth-Act):not(.elementStyle):not(:hover):not(:active) {
 	box-shadow: none;
 }
 /**-----------------------------------------------**/

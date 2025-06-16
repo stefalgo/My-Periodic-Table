@@ -73,7 +73,7 @@ function showElementData(elementAtomicNumber) {
 	symbol.textContent = elementData[elementAtomicNumber].symbol;
 	
 
-	closeUp.classList = ["elementStyle"];
+	closeUp.classList = '';
 	closeUp.classList.add(elementData[elementAtomicNumber].category);
 	closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
 	closeUp.setAttribute('data-atomic', elementAtomicNumber)
