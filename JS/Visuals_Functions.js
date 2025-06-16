@@ -190,8 +190,7 @@ function showState(show, temp=273) {
         const key = el.getAttribute('data-atomic')
         const meltTemp = elementData[key]?.melt;
         const boilTemp = elementData[key]?.boil;
-        const dataPhase = elementData[key]?.phase?.trim().toLowerCase();
-        let phase = dataPhase || 'unknownState';
+        let phase = 'unknownState';
 
         const validMelt = (typeof meltTemp === 'number') && !isNaN(meltTemp);
         const validBoil = (typeof boilTemp === 'number') && !isNaN(boilTemp);
@@ -212,12 +211,12 @@ function showState(show, temp=273) {
         }
 
         if (validMelt) {
-            phase = (temp < meltTemp) ? 'solid' : (dataPhase || 'liquid');
+            phase = (temp < meltTemp) ? 'solid' : ('unknownState');
             return phase;
         }
 
         if (validBoil) {
-            phase = (temp >= boilTemp) ? 'gas' : (dataPhase || 'liquid');
+            phase = (temp >= boilTemp) ? 'gas' : ('liquid');
             return phase;
         }
 
@@ -230,7 +229,7 @@ function showState(show, temp=273) {
         gas: [255, 140, 0, 0.55],
         plasma: [255, 0, 255, 0.55]
     };*/
-    const unknownColor = [128, 128, 128, 0.35];
+    //const unknownColor = [128, 128, 128, 0.35];
 
     const mapped = elements.map(el => ({ el, phase: getPhase(el) }));
 
