@@ -87,6 +87,7 @@ function showElementData(elementAtomicNumber) {
 	}
 
 	generateAtom(elementAtomicNumber);
+	adjustElementsText('#CloseUp', 'em', 70);
 }
 
 //-----------------------------------------------------------------------------------------------

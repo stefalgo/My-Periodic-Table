@@ -310,9 +310,8 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
     });
 }
 
-function adjustElementsText () {
-    const width = 60;
-    document.querySelectorAll('.element em').forEach(em => {
+function adjustElementsText(element, child, width) {
+    document.querySelectorAll(`${element} ${child}`).forEach(em => {
         em.style.transform = 'none';
         em.style.letterSpacing = '';
 
@@ -450,7 +449,7 @@ if (URL_readParam('visualizeOption')) {
     visualizeOption.value = URL_readParam('visualizeOption');
 }
 
-adjustElementsText();
+adjustElementsText('.element', 'em', 60);
 
 document.getElementById('propertyKey').addEventListener('change', () => {
     const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
