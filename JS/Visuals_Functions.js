@@ -377,9 +377,20 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 					const electrons = shells[idx] ?? 0;
 					(calculated[key] ??= { Total: 0 }).Total += electrons;
 				});
-				if (forceUpdateParams || !visualizationParams) {
-					visualizationParams = [calculated, true, 'Total', false, true, [133, 173, 49, 0], [133, 173, 49, 0.75]];
-				}
+				visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                displayDataOnElement(
+                elementData,
+                    'electronConfiguration',
+                    null,
+                    x => {
+                    const levels   = energyLevels(x);
+                    const last3    = levels.slice(-3);
+                    return (levels.length > 3
+                    ? ['-'].concat(last3)
+                        : last3)
+                        .join(' ');
+                    }
+                );
 			}
 		},
         'discoveryDate': {
