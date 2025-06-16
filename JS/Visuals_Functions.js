@@ -292,7 +292,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${MAX.join(',')}), rgba(${MIN.join(',')}))`;
 
-    if (displayData) displayDataOnElement(array, prop, 7);
+    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
 
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
