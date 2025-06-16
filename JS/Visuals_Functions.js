@@ -247,7 +247,7 @@ function showState(show, temp=273) {
     //document.documentElement.classList.add('state');
 }
 
-function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = getTableElements();
 
     if (!show) {
@@ -292,7 +292,7 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${MAX.join(',')}), rgba(${MIN.join(',')}))`;
 
-    displayDataOnElement(array, prop, 7);
+    if (displayData) displayDataOnElement(array, prop, 7);
 
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
@@ -346,18 +346,21 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 		visualizationParams = null;
 	}
 
+
+    //<array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
+
 	const config = {
         'chemicalGroupBlock' : {},
 		'blocks': { action: () => showBlocks(true) },
 		'state': { action: () => showState(true, temp) },
-		'atomicMass': { params: [elementData, true, 'atomicMass', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'meltPoint': { params: [elementData, true, 'melt', false, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
-		'boilPoint': { params: [elementData, true, 'boil', false, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
-		'density': { params: [elementData, true, 'density', false, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'electronegativity': { params: [elementData, true, 'electronegativity', true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
-		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
-		'ionization': { params: [elementData, true, 'ionizationEnergy', true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
-        'radius': { params: [elementData, true, 'atomicRadius', false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+		'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'meltPoint': { params: [elementData, true, 'melt', false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
+		'boilPoint': { params: [elementData, true, 'boil', false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
+		'density': { params: [elementData, true, 'density', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
+		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
+		'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+        'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
 		'energyLevels': {
 			action: () => {
 				const calculated = {};
@@ -369,7 +372,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 					(calculated[key] ??= { Total: 0 }).Total += electrons;
 				});
 				if (forceUpdateParams || !visualizationParams) {
-					visualizationParams = [calculated, true, 'Total', false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+					visualizationParams = [calculated, true, 'Total', false, true, [133, 173, 49, 0], [133, 173, 49, 0.75]];
 				}
 			}
 		},
@@ -377,7 +380,8 @@ function visualizeOptionFunc(forceUpdateParams = true) {
             action: () => {
                 document.documentElement.classList.add('chemicalGroupBlock');
                 displayDataOnElement(elementData, 'discovered', null, formatGreekDate);
-            }
+            },
+            //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
         }
 	};
 
