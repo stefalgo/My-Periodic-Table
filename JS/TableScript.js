@@ -151,21 +151,21 @@ function infoElement(elementAtomicNumber) {
 		pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].name;
 	}
 
-	createData('Ονομα', elementData[element].name);
-	createData('Ατομικός', elementData[element].atomic);
-	createData('Ηλεκτρονική δομή', energyLevels(elementData[element].electronConfiguration).join(', '));
-	createData('Βάρος', elementData[element].atomicMass + ' u');
+	createData('Ονομα', elementData[element].name || '--');
+	createData('Ατομικός', elementData[element].atomic || '--');
+	createData('Ηλεκτρονική δομή', energyLevels(elementData[element].electronConfiguration).join(', ') || '--');
+	createData('Βάρος', (elementData[element].atomicMass || '--') + ' u');
 	createData('Ταξινόμηση', classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
-	createData('Тομέας', getBlock(elementData[elementAtomicNumber]));
+	createData('Тομέας', getBlock(elementData[elementAtomicNumber])) || '--';
 
-	createData('Σημείο τήξης', elementData[element].melt + ' K');
-	createData('Σημείο ζέσεως', elementData[element].boil + ' K');
-	createData('Ακτίνα', elementData[element].atomicRadius + ' pm');
-	createData('Ηλεκτραρνητικότητα', elementData[element].electronegativity);
-	createData('Ιονισμός', elementData[element].ionizationEnergy + ' kJ/mol');
-	createData('Ηλεκτροσυγγένεια', elementData[element].electronAffinity + ' kJ/mol');
-	createData('Πυκνότητα', elementData[element].density + ' kJ/m<sup>3</sup>');
-	createData('Ανακαλύφθηκε', formatGreekDate(elementData[element].discovered));
+	createData('Σημείο τήξης', (elementData[element].melt || '--') + ' K');
+	createData('Σημείο ζέσεως', (elementData[element].boil || '--') + ' K');
+	createData('Ακτίνα', (elementData[element].atomicRadius || '--') + ' pm');
+	createData('Ηλεκτραρνητικότητα', elementData[element].electronegativity || '--');
+	createData('Ιονισμός', (elementData[element].ionizationEnergy || '--') + ' kJ/mol');
+	createData('Ηλεκτροσυγγένεια', (elementData[element].electronAffinity || '--') + ' kJ/mol');
+	createData('Πυκνότητα', (elementData[element].density || '--') + ' kJ/m<sup>3</sup>');
+	createData('Ανακαλύφθηκε', formatGreekDate(elementData[element].discovered) || '--');
 				
 	closeUp2.addEventListener('click', wikipediaIframeOpen);
 	infoPopup.querySelector('.close').addEventListener('click', closePopup);
