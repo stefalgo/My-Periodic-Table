@@ -27,6 +27,30 @@ function toNumber(str) {
     return match ? Number(match[0]) : NaN;
 }
 
+function rgbaToHex([r, g, b, a]) {
+    const toHex = c => c.toString(16).padStart(2, '0');
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+function hexToRgba(hex) {
+    hex = hex.replace(/^#/, '');
+    let r, g, b, a = 1;
+    if (hex.length === 6) {
+        r = parseInt(hex.slice(0, 2), 16);
+        g = parseInt(hex.slice(2, 4), 16);
+        b = parseInt(hex.slice(4, 6), 16);
+    } else if (hex.length === 8) {
+        r = parseInt(hex.slice(0, 2), 16);
+        g = parseInt(hex.slice(2, 4), 16);
+        b = parseInt(hex.slice(4, 6), 16);
+        a = parseInt(hex.slice(6, 8), 16) / 255;
+    } else {
+        throw new Error('Invalid hex color');
+    }
+
+    return [r, g, b, a];
+}
+
 function formatGreekDate(yearLike) {
     if (yearLike == null) return '';
 
@@ -159,7 +183,6 @@ function showBlocks(show) {
     const elements = getTableElements();
 
     if (!show) {
-        //document.documentElement.classList.remove('blocks');
         return;
     }
 
@@ -172,8 +195,6 @@ function showBlocks(show) {
 
         el.querySelector('data').textContent = String(val);
     });
-
-    //document.documentElement.classList.add('blocks');
 }
 
 function showState(show, temp=273) {
@@ -181,8 +202,6 @@ function showState(show, temp=273) {
     const phaseClasses = ['solid', 'liquid', 'gas', 'unknownState'];
 
     if (!show) {
-        //document.documentElement.classList.remove('state');
-        //elements.forEach(el => (el.style.backgroundColor = ''));
         return;
     }
 
@@ -223,28 +242,19 @@ function showState(show, temp=273) {
         return phase;
     };
 
-    /*const phaseColor = {
-        solid: [190, 190, 190, 0.55],
-        liquid: [30, 144, 255, 0.55],
-        gas: [255, 140, 0, 0.55],
-        plasma: [255, 0, 255, 0.55]
-    };*/
-    //const unknownColor = [128, 128, 128, 0.35];
-
     const mapped = elements.map(el => ({ el, phase: getPhase(el) }));
 
     mapped.forEach(({ el, phase }) => {
-        if (el.classList.contains(phase)) {
-            return
+        if (el.style.backgroundColor !== `var(--${phase})`) {
+            el.style.backgroundColor = `var(--${phase})`;
         }
-        phaseClasses.forEach(cls => el.classList.remove(cls));
-        //const rgba = phaseColor[phase] || unknownColor;
-        el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
-        //el.style.backgroundColor = `rgba(${rgba.join(',')})`;
-        el.classList.add(phase);
-    });
 
-    //document.documentElement.classList.add('state');
+        if (!el.classList.contains(phase)) {
+            phaseClasses.forEach(cls => el.classList.remove(cls));
+            el.classList.add(phase);
+        }
+        el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
+    });
 }
 
 function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
@@ -272,8 +282,6 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
         return Number.isFinite(num) ? num : NaN;
     };
 
-    const MIN = minColor;
-    const MAX = maxColor;
     const unknownColor = [128, 128, 128, 0.35];
 
     const mapped = elements.map(el => ({ el, val: getValue(el) }));
@@ -290,7 +298,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
     const maxVal = Math.max(...scaledVals);
     const span = maxVal - minVal || 1;
 
-    document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${MAX.join(',')}), rgba(${MIN.join(',')}))`;
+    document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${maxColor.join(',')}), rgba(${minColor.join(',')}))`;
 
     if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
 
@@ -304,11 +312,10 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
         const v = toScale(val);
         const t = (v - minVal) / span;
 
-        const rgba = MIN.map((c, i) => i < 3
-            ? Math.round(c + t * (MAX[i] - c))
-            : c + t * (MAX[3] - c));
-
-        //el.querySelector('data').textContent = String(val).slice(0, 7);
+        const rgba = minColor.map((c, i) => i < 3
+            ? Math.round(c + t * (maxColor[i] - c))
+            : c + t * (maxColor[3] - c));
+        
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
@@ -348,7 +355,6 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 
 
     //<array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
-
 	const config = {
         'chemicalGroupBlock' : {},
 		'blocks': { action: () => showBlocks(true) },
@@ -404,7 +410,6 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	}
 
 	if (!visualizationParams && !selected?.action) {
-		//document.documentElement.classList.add('chemicalGroupBlock');
         displayDataOnElement(elementData, 'category');
 	}
 

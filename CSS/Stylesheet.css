@@ -2,6 +2,21 @@
 	width: 0.5em;
 }
 
+:root {
+	--hoverColor2: #0099ff;
+
+	--hoverShadow: 0 0 10px var(--hoverColor);
+	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
+	
+	--highlightShadow: 0 0 10px var(--hoverColor);
+	
+	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.3);
+	--borderShadowColorEffectHover: inset 0 0 0 2px var(--hoverColor2);
+	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
+
+	--transitionTime: 0.3s;
+}
+/**--------------------------------**/
 .darkMode {
 	--background: #0c0c0c;
 	--textColor: #d1cece;
@@ -32,23 +47,16 @@
 	--solid: #bebebe8c;
 	--liquid: #1e90ff8c;
 	--gas: #ff8c008c;
+	--plasma: #ff00ff;
 	--unknownState: #80808059;
 			
 	--electron: #4369b3;
 }
-
-.darkMode ::-webkit-scrollbar-track {
-	background: #141414;
-}
-	
-.darkMode ::-webkit-scrollbar-thumb {
-	background: #2f3133;
-}
-
+/**--------------------------------**/
 .lightMode {
-	--background: rgb(243, 246, 248);
+	--background: #eff3f5;
 	--textColor: #000000;
-	--hoverColor: rgba(0, 0, 0, 1);
+	--hoverColor: #000000;
 	
 	--elementBorderColor: 0, 0, 0;
 			
@@ -72,14 +80,23 @@
 	--d-block: #daf78c;
 	--f-block: #c1d0ff;
 
-	--solid: #bebebe8c;
-	--liquid: #1e90ff8c;
-	--gas: #ff8c008c;
-	--unknownState: #80808059;
+	--solid: #7777778c;
+	--liquid: #1e47ff8c;
+	--gas: #ff26008c;
+	--plasma: #ff00aa;
+	--unknownState: #EEE;
 			
 	--electron: #559fef;
 }
-
+/**--------------------------------**/
+.darkMode ::-webkit-scrollbar-track {
+	background: #141414;
+}
+	
+.darkMode ::-webkit-scrollbar-thumb {
+	background: #2f3133;
+}
+/**--------------------------------**/
 .lightMode ::-webkit-scrollbar-track {
 	background: #bdc3c9;
 }
@@ -87,41 +104,11 @@
 .lightMode ::-webkit-scrollbar-thumb {
 	background: #585b5e;
 }
-
-:root {
-	--hoverColor2: #0099ff;
-
-	--hoverShadow: 0 0 10px var(--hoverColor);
-	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
-	
-	--highlightShadow: 0 0 10px var(--hoverColor);
-	
-	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.3);
-	--borderShadowColorEffectHover: inset 0 0 0 2px var(--hoverColor2);
-	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
-
-	--transitionTime: 0.3s;
-}
 /**------------------------------------------------**/
 * {
 	box-sizing: border-box;
 }
-/**-----------------------------------------------**/
-.hoverEffect:hover {
-	box-shadow: var(--hoverShadow);
-}
 
-.linkText, a {
-	color: #5898bf;
-	cursor: pointer;
-	text-decoration: underline;
-	transition: var(--transitionTime);
-}
-
-.linkText:hover, a:hover {
-	color: #9d58bf;
-}
-/**-----------------------------------------------**/
 body {
 	display: flex;
 	justify-content: center;
@@ -137,6 +124,21 @@ body {
 	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 
 	transition: background var(--transitionTime);
+}
+/**-----------------------------------------------**/
+.hoverEffect:hover {
+	box-shadow: var(--hoverShadow);
+}
+
+.linkText, a {
+	color: #5898bf;
+	cursor: pointer;
+	text-decoration: underline;
+	transition: var(--transitionTime);
+}
+
+.linkText:hover, a:hover {
+	color: #9d58bf;
 }
 /**-----------------------------------------------**/
 button, select {
@@ -642,7 +644,9 @@ html:not(.state) .highlightElementState {
 .blocks .d {background: var(--d-block);}
 .blocks .f {background: var(--f-block);}
 
+/**
 .state .solid {background: var(--solid);}
 .state .liquid {background: var(--liquid);}
 .state .gas {background: var(--gas);}
 .state .unknownState {background: var(--unknownState);}
+**/
