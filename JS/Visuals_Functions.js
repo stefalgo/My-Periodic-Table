@@ -310,24 +310,20 @@ function visualize(array, show, prop, useLog = false, minColor = [8, 212, 170, 0
     });
 }
 
-function adjustElementsText() {
-    const containerWidth = 57;
-    const elements = document.querySelectorAll('.element');
-    elements.forEach(el => {
-        const emEl = el.querySelector('em');
-        if (emEl) {
+function adjustElementsText () {
+    const width = 60;
+    document.querySelectorAll('.element em').forEach(em => {
+        em.style.transform = 'none';
+        em.style.letterSpacing = '';
 
-            const measuredWidth = emEl.scrollWidth;
+        const natural = em.scrollWidth;
+        const scale   = natural > width ? width / natural : 1;
 
-            const scaleX = containerWidth / measuredWidth;
+        em.style.transformOrigin = 'left center';
+        em.style.transform       = `scaleX(${scale})`;
 
-            const translateX = 50 * (scaleX - 1);
-
-            const wordLength = emEl.textContent.length;
-            const letterSpacing = (wordLength >= 11) ? 0.05 : 0;
-
-            emEl.style.transform = `translateX(${translateX}%) scaleX(${scaleX})`;
-            emEl.style.letterSpacing = `${letterSpacing}em`;
+        if (em.textContent.length >= 10) {
+            em.style.letterSpacing = '-0.05em';
         }
     });
 }
