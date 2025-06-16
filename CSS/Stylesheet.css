@@ -175,7 +175,17 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: var(--buttonColor);
+  background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #FF3800 14%,
+        #FF6D00 28%,
+        #FF9329 42%,
+        #FFC58F 57%,
+        #FFE4CE 71%,
+        #FFF3FF 85%,
+        #D4EBFF 100%
+      );
   box-shadow: var(--borderShadowColorEffect);
 }
 
@@ -643,10 +653,8 @@ html:not(.state) .highlightElementState {
 .blocks .p {background: var(--p-block);}
 .blocks .d {background: var(--d-block);}
 .blocks .f {background: var(--f-block);}
-
-/**
-.state .solid {background: var(--solid);}
-.state .liquid {background: var(--liquid);}
-.state .gas {background: var(--gas);}
-.state .unknownState {background: var(--unknownState);}
-**/
+/**-----------------------------------------------**/
+.highlightElementState .solid {background: var(--solid);}
+.highlightElementState .liquid {background: var(--liquid);}
+.highlightElementState .gas {background: var(--gas);}
+.highlightElementState .unknownState {background: var(--unknownState);}
