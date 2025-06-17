@@ -49,6 +49,13 @@ function hexToRgba(hex) {
     return [r, g, b, a];
 }
 
+function getNestedValue(obj, path) {
+    if (!obj || typeof path !== 'string') return undefined;
+    return path
+        .split('.')
+        .reduce((acc, key) => acc?.[key], obj);
+}
+
 function formatGreekDate(yearLike) {
     if (yearLike == null) return '';
 
@@ -135,7 +142,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         const cell = el.querySelector('data');
         if (!cell) return;
 
-        let value = dataMap[key]?.[prop];
+        let value = getNestedValue(dataMap[key], prop);
 
         if (value == null) {
             cell.textContent = '';
@@ -255,7 +262,7 @@ function showState(show, temp=273) {
     });
 }
 
-function visualize(array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = getTableElements();
 
     if (!show) {
@@ -273,9 +280,7 @@ function visualize(array, show, prop, propKey, useLog = false, displayData = tru
 
     const getValue = el => {
         const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
-        const raw = propKey
-            ? array[key]?.[prop]?.[propKey]
-            : array[key]?.[prop];
+        const raw = getNestedValue(array[key], prop);
 
         if (raw == null || (typeof raw === 'string' && raw.trim() === '')) return NaN;
         const num = Number(raw);
@@ -300,10 +305,7 @@ function visualize(array, show, prop, propKey, useLog = false, displayData = tru
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${maxColor.join(',')}), rgba(${minColor.join(',')}))`;
 
-    if (displayData) {
-        const propLabel = propKey ? `${prop}.${propKey}` : prop;
-        displayDataOnElement(array, propLabel, 7, x => x.toLocaleString('el-GR'));
-    }
+    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
 
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
@@ -362,14 +364,14 @@ function visualizeOptionFunc(forceUpdateParams = true) {
         'chemicalGroupBlock' : {},
 		'blocks': { action: () => showBlocks(true) },
 		'state': { action: () => showState(true, temp) },
-		'atomicMass': { params: [elementData, true, 'atomicMass', null, false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'meltPoint': { params: [elementData, true, 'melt', null, false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
-		'boilPoint': { params: [elementData, true, 'boil', null, false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
-		'density': { params: [elementData, true, 'density', null, false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'electronegativity': { params: [elementData, true, 'electronegativity', null, true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
-		'electronAffinity': { params: [elementData, true, 'electronAffinity', null, true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
-		'ionization': { params: [elementData, true, 'ionizationEnergy', null, true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
-        'radius': { params: [elementData, true, 'atomicRadius', null, false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+		'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'meltPoint': { params: [elementData, true, 'melt', false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
+		'boilPoint': { params: [elementData, true, 'boil', false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
+		'density': { params: [elementData, true, 'density', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
+		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
+		'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+        'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
 		'energyLevels': {
 			action: () => {
 				const calculated = {};
@@ -380,7 +382,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 					const electrons = shells[idx] ?? 0;
 					(calculated[key] ??= { Total: 0 }).Total += electrons;
 				});
-				visualizationParams = [calculated, true, 'Total', null, false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+				visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
                 elementData,
                     'electronConfiguration',
@@ -484,7 +486,7 @@ document.getElementById('propertyKey').addEventListener('change', () => {
     const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
     if (selected) {
         if (visualizationParams) {
-            visualizationParams[4] = selected.value === 'log' && true || false
+            visualizationParams[3] = selected.value === 'log' && true || false
             visualize(...visualizationParams);
         }
     }
