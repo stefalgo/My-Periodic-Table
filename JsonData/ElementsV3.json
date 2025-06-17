@@ -5,20 +5,31 @@
         "name": "Υδρογόνο",
         "atomicMass": 1.008,
         "electronConfiguration": "1s1",
+        "electronStringConf": "1s1",
         "electronegativity": 2.2,
         "atomicRadius": 53,
         "ionizationEnergy": 1312.0,
         "electronAffinity": 72.8,
         "oxidation": "-1c,1c",
-        "phase": "",
         "melt": 14.01,
         "boil": 20.28,
         "density": 0.0899,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 1
+        },
+        "elementAbundance": {
+            "universe": "75",
+            "solar": "75",
+            "meteor": "2.4",
+            "crust": "0.15",
+            "ocean": "11",
+            "human": "10"
+        },
         "category": "nonmetal",
         "period": 1,
-        "group": "",
-        "discovered": "1766",
-        "summary": ""
+        "discovered": "1766"
     },
     "2": {
         "atomic": 2,
@@ -26,20 +37,29 @@
         "name": "Ήλιο",
         "atomicMass": 4.002602,
         "electronConfiguration": "1s2",
+        "electronStringConf": "1s2",
         "electronegativity": "",
         "atomicRadius": 31,
         "ionizationEnergy": 2372.3,
         "electronAffinity": 0,
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": 4.22,
         "density": 0.1785,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 1
+        },
+        "elementAbundance": {
+            "universe": "23",
+            "solar": "23",
+            "crust": "5.5e-7",
+            "ocean": "7.2e-10"
+        },
         "category": "noble",
         "period": 1,
-        "group": "",
-        "discovered": "1895",
-        "summary": ""
+        "discovered": "1895"
     },
     "3": {
         "atomic": 3,
@@ -47,20 +67,31 @@
         "name": "Λίθιο",
         "atomicMass": 6.94,
         "electronConfiguration": "1s2 2s1",
+        "electronStringConf": "[He] 2s1",
         "electronegativity": 0.98,
         "atomicRadius": 167,
         "ionizationEnergy": 520.2,
         "electronAffinity": 59.6,
         "oxidation": "1c",
-        "phase": "",
         "melt": 453.69,
         "boil": 1615.0,
         "density": 535.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "6.0e-7",
+            "solar": "6.0e-9",
+            "meteor": "0.00017",
+            "crust": "0.0017",
+            "ocean": "0.000018",
+            "human": "3.0e-6"
+        },
         "category": "alkali",
         "period": 2,
-        "group": "",
-        "discovered": "1817",
-        "summary": ""
+        "discovered": "1817"
     },
     "4": {
         "atomic": 4,
@@ -68,20 +99,31 @@
         "name": "Βηρύλλιο",
         "atomicMass": 9.0121831,
         "electronConfiguration": "1s2 2s2",
+        "electronStringConf": "[He] 2s2",
         "electronegativity": 1.57,
         "atomicRadius": 112,
         "ionizationEnergy": 899.5,
         "electronAffinity": 0,
         "oxidation": "1,2c",
-        "phase": "",
         "melt": 1560.0,
         "boil": 2743.0,
         "density": 1848.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "1.00e-7",
+            "solar": "1.0e-8",
+            "meteor": "2.9e-6",
+            "crust": "0.00019",
+            "ocean": "6.0e-11",
+            "human": "4.0e-8"
+        },
         "category": "alkaline",
         "period": 2,
-        "group": "",
-        "discovered": "1797",
-        "summary": ""
+        "discovered": "1797"
     },
     "5": {
         "atomic": 5,
@@ -89,20 +131,31 @@
         "name": "Βόριο",
         "atomicMass": 10.81,
         "electronConfiguration": "1s2 2s2 2p1",
+        "electronStringConf": "[He] 2s2 2p1",
         "electronegativity": 2.04,
         "atomicRadius": 87,
         "ionizationEnergy": 800.6,
         "electronAffinity": 26.7,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 2348.0,
         "boil": 4273.0,
         "density": 2460.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "1.00e-7",
+            "solar": "2.0e-7",
+            "meteor": "0.00016",
+            "crust": "0.00086",
+            "ocean": "0.00044",
+            "human": "0.000070"
+        },
         "category": "metalloid",
         "period": 2,
-        "group": "",
-        "discovered": "1808",
-        "summary": ""
+        "discovered": "1808"
     },
     "6": {
         "atomic": 6,
@@ -110,20 +163,31 @@
         "name": "Άνθρακας",
         "atomicMass": 12.011,
         "electronConfiguration": "1s2 2s2 2p2",
+        "electronStringConf": "[He] 2s2 2p2",
         "electronegativity": 2.55,
         "atomicRadius": 67,
         "ionizationEnergy": 1086.5,
         "electronAffinity": 153.9,
         "oxidation": "-4c,-3,-2,-1,1,2,3,4c",
-        "phase": "",
         "melt": 3915.0,
         "boil": 3915.0,
         "density": 2260.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "0.50",
+            "solar": "0.30",
+            "meteor": "1.5",
+            "crust": "0.18",
+            "ocean": "0.0028",
+            "human": "23"
+        },
         "category": "nonmetal",
         "period": 2,
-        "group": "",
-        "discovered": "-3749",
-        "summary": ""
+        "discovered": "-3749"
     },
     "7": {
         "atomic": 7,
@@ -131,20 +195,31 @@
         "name": "Άζωτο",
         "atomicMass": 14.007,
         "electronConfiguration": "1s2 2s2 2p3",
+        "electronStringConf": "[He] 2s2 2p3",
         "electronegativity": 3.04,
         "atomicRadius": 56,
         "ionizationEnergy": 1402.3,
         "electronAffinity": 7,
         "oxidation": "-3c,-2,-1,1,2,3c,4,5c",
-        "phase": "",
         "melt": 63.05,
         "boil": 77.36,
         "density": 1.251,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "0.100",
+            "solar": "0.10",
+            "meteor": "0.14",
+            "crust": "0.0020",
+            "ocean": "0.000050",
+            "human": "2.6"
+        },
         "category": "nonmetal",
         "period": 2,
-        "group": "",
-        "discovered": "1772",
-        "summary": ""
+        "discovered": "1772"
     },
     "8": {
         "atomic": 8,
@@ -152,20 +227,31 @@
         "name": "Οξυγόνο",
         "atomicMass": 15.999,
         "electronConfiguration": "1s2 2s2 2p4",
+        "electronStringConf": "[He] 2s2 2p4",
         "electronegativity": 3.44,
         "atomicRadius": 48,
         "ionizationEnergy": 1313.9,
         "electronAffinity": 141,
         "oxidation": "-2c,-1,1,2",
-        "phase": "",
         "melt": 54.8,
         "boil": 90.2,
         "density": 1.429,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "1.00",
+            "solar": "0.90",
+            "meteor": "40",
+            "crust": "46",
+            "ocean": "86",
+            "human": "61"
+        },
         "category": "nonmetal",
         "period": 2,
-        "group": "",
-        "discovered": "1774",
-        "summary": ""
+        "discovered": "1774"
     },
     "9": {
         "atomic": 9,
@@ -173,20 +259,31 @@
         "name": "Φθόριο",
         "atomicMass": 18.998403162,
         "electronConfiguration": "1s2 2s2 2p5",
+        "electronStringConf": "[He] 2s2 2p5",
         "electronegativity": 3.98,
         "atomicRadius": 42,
         "ionizationEnergy": 1681.0,
         "electronAffinity": 328,
         "oxidation": "-1c",
-        "phase": "",
         "melt": 53.5,
         "boil": 85.03,
         "density": 1.696,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "0.000040",
+            "solar": "0.000050",
+            "meteor": "0.0087",
+            "crust": "0.054",
+            "ocean": "0.00013",
+            "human": "0.0037"
+        },
         "category": "nonmetal",
         "period": 2,
-        "group": "",
-        "discovered": "1886",
-        "summary": ""
+        "discovered": "1886"
     },
     "10": {
         "atomic": 10,
@@ -194,20 +291,29 @@
         "name": "Νέον",
         "atomicMass": 20.1797,
         "electronConfiguration": "1s2 2s2 2p6",
+        "electronStringConf": "[He] 2s2 2p6",
         "electronegativity": "",
         "atomicRadius": 38,
         "ionizationEnergy": 2080.7,
         "electronAffinity": 0,
         "oxidation": "",
-        "phase": "",
         "melt": 24.56,
         "boil": 27.07,
         "density": 0.9,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 2
+        },
+        "elementAbundance": {
+            "universe": "0.13",
+            "solar": "0.10",
+            "crust": "3.0e-7",
+            "ocean": "1.2e-8"
+        },
         "category": "noble",
         "period": 2,
-        "group": "",
-        "discovered": "1898",
-        "summary": ""
+        "discovered": "1898"
     },
     "11": {
         "atomic": 11,
@@ -215,20 +321,31 @@
         "name": "Νάτριο",
         "atomicMass": 22.98976928,
         "electronConfiguration": "1s2 2s2 2p6 3s1",
+        "electronStringConf": "[Ne] 3s1",
         "electronegativity": 0.93,
         "atomicRadius": 190,
         "ionizationEnergy": 495.8,
         "electronAffinity": 52.8,
         "oxidation": "-1,1c",
-        "phase": "",
         "melt": 370.87,
         "boil": 1156.0,
         "density": 968.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.0020",
+            "solar": "0.0040",
+            "meteor": "0.55",
+            "crust": "2.3",
+            "ocean": "1.1",
+            "human": "0.14"
+        },
         "category": "alkali",
         "period": 3,
-        "group": "",
-        "discovered": "1807",
-        "summary": ""
+        "discovered": "1807"
     },
     "12": {
         "atomic": 12,
@@ -236,20 +353,31 @@
         "name": "Μαγνήσιο",
         "atomicMass": 24.305,
         "electronConfiguration": "1s2 2s2 2p6 3s2",
+        "electronStringConf": "[Ne] 3s2",
         "electronegativity": 1.31,
         "atomicRadius": 145,
         "ionizationEnergy": 737.7,
         "electronAffinity": 0,
         "oxidation": "1,2c",
-        "phase": "",
         "melt": 923.0,
         "boil": 1363.0,
         "density": 1738.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.060",
+            "solar": "0.070",
+            "meteor": "12",
+            "crust": "2.9",
+            "ocean": "0.13",
+            "human": "0.027"
+        },
         "category": "alkaline",
         "period": 3,
-        "group": "",
-        "discovered": "1755",
-        "summary": ""
+        "discovered": "1755"
     },
     "13": {
         "atomic": 13,
@@ -257,20 +385,31 @@
         "name": "Αργίλιο",
         "atomicMass": 26.9815384,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p1",
+        "electronStringConf": "[Ne] 3s2 3p1",
         "electronegativity": 1.61,
         "atomicRadius": 118,
         "ionizationEnergy": 577.5,
         "electronAffinity": 42.5,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 933.47,
         "boil": 2792.0,
         "density": 2700.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.0050",
+            "solar": "0.0060",
+            "meteor": "0.91",
+            "crust": "8.1",
+            "ocean": "5.0e-7",
+            "human": "0.000090"
+        },
         "category": "poor",
         "period": 3,
-        "group": "",
-        "discovered": "1825",
-        "summary": ""
+        "discovered": "1825"
     },
     "14": {
         "atomic": 14,
@@ -278,20 +417,31 @@
         "name": "Πυρίτιο",
         "atomicMass": 28.085,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p2",
+        "electronStringConf": "[Ne] 3s2 3p2",
         "electronegativity": 1.9,
         "atomicRadius": 111,
         "ionizationEnergy": 786.5,
         "electronAffinity": 133.6,
         "oxidation": "-4c,-3,-2,-1,1,2,3,4c",
-        "phase": "",
         "melt": 1687.0,
         "boil": 3173.0,
         "density": 2330.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.070",
+            "solar": "0.090",
+            "meteor": "14",
+            "crust": "27",
+            "ocean": "0.00010",
+            "human": "0.026"
+        },
         "category": "metalloid",
         "period": 3,
-        "group": "",
-        "discovered": "1824",
-        "summary": ""
+        "discovered": "1824"
     },
     "15": {
         "atomic": 15,
@@ -299,20 +449,31 @@
         "name": "Φωσφόρος",
         "atomicMass": 30.973761998,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p3",
+        "electronStringConf": "[Ne] 3s2 3p3",
         "electronegativity": 2.19,
         "atomicRadius": 98,
         "ionizationEnergy": 1011.8,
         "electronAffinity": 72,
         "oxidation": "-3c,-2,-1,1,2,3c,4,5c",
-        "phase": "",
         "melt": 317.3,
         "boil": 553.6,
         "density": 1823.0,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.00070",
+            "solar": "0.00070",
+            "meteor": "0.11",
+            "crust": "0.099",
+            "ocean": "7.0e-6",
+            "human": "1.1"
+        },
         "category": "nonmetal",
         "period": 3,
-        "group": "",
-        "discovered": "1669",
-        "summary": ""
+        "discovered": "1669"
     },
     "16": {
         "atomic": 16,
@@ -320,20 +481,31 @@
         "name": "Θείο",
         "atomicMass": 32.06,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p4",
+        "electronStringConf": "[Ne] 3s2 3p4",
         "electronegativity": 2.58,
         "atomicRadius": 88,
         "ionizationEnergy": 999.6,
         "electronAffinity": 200,
         "oxidation": "-2c,-1,1,2c,3,4c,5,6c",
-        "phase": "",
         "melt": 388.36,
         "boil": 717.87,
         "density": 1960.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.050",
+            "solar": "0.040",
+            "meteor": "4.0",
+            "crust": "0.042",
+            "ocean": "0.093",
+            "human": "0.20"
+        },
         "category": "nonmetal",
         "period": 3,
-        "group": "",
-        "discovered": "-499",
-        "summary": ""
+        "discovered": "-499"
     },
     "17": {
         "atomic": 17,
@@ -341,20 +513,31 @@
         "name": "Χλώριο",
         "atomicMass": 35.45,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p5",
+        "electronStringConf": "[Ne] 3s2 3p5",
         "electronegativity": 3.16,
         "atomicRadius": 79,
         "ionizationEnergy": 1251.2,
         "electronAffinity": 349,
         "oxidation": "-1c,1c,2,3c,4,5c,6,7c",
-        "phase": "",
         "melt": 171.6,
         "boil": 239.11,
         "density": 3.214,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.000100",
+            "solar": "0.00080",
+            "meteor": "0.037",
+            "crust": "0.017",
+            "ocean": "2.0",
+            "human": "0.12"
+        },
         "category": "nonmetal",
         "period": 3,
-        "group": "",
-        "discovered": "1774",
-        "summary": ""
+        "discovered": "1774"
     },
     "18": {
         "atomic": 18,
@@ -362,20 +545,29 @@
         "name": "Αργό",
         "atomicMass": 39.948,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6",
+        "electronStringConf": "[Ne] 3s2 3p6",
         "electronegativity": "",
         "atomicRadius": 71,
         "ionizationEnergy": 1520.6,
         "electronAffinity": 0,
         "oxidation": "",
-        "phase": "",
         "melt": 83.8,
         "boil": 87.3,
         "density": 1.784,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.020",
+            "solar": "0.0070",
+            "crust": "0.00015",
+            "ocean": "0.000045"
+        },
         "category": "noble",
         "period": 3,
-        "group": "",
-        "discovered": "1894",
-        "summary": ""
+        "discovered": "1894"
     },
     "19": {
         "atomic": 19,
@@ -383,20 +575,31 @@
         "name": "Κάλιο",
         "atomicMass": 39.0983,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s1",
+        "electronStringConf": "[Ar] 4s1",
         "electronegativity": 0.82,
         "atomicRadius": 243,
         "ionizationEnergy": 418.8,
         "electronAffinity": 48.4,
         "oxidation": "-1,1c",
-        "phase": "",
         "melt": 336.53,
         "boil": 1032.0,
         "density": 856.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "0.00030",
+            "solar": "0.00040",
+            "meteor": "0.070",
+            "crust": "1.5",
+            "ocean": "0.042",
+            "human": "0.20"
+        },
         "category": "alkali",
         "period": 4,
-        "group": "",
-        "discovered": "1807",
-        "summary": ""
+        "discovered": "1807"
     },
     "20": {
         "atomic": 20,
@@ -404,20 +607,31 @@
         "name": "Ασβέστιο",
         "atomicMass": 40.078,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2",
+        "electronStringConf": "[Ar] 4s2",
         "electronegativity": 1.0,
         "atomicRadius": 194,
         "ionizationEnergy": 589.8,
         "electronAffinity": 2.37,
         "oxidation": "1,2c",
-        "phase": "",
         "melt": 1115.0,
         "boil": 1757.0,
         "density": 1550.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "0.0070",
+            "solar": "0.0070",
+            "meteor": "1.1",
+            "crust": "5.0",
+            "ocean": "0.00042",
+            "human": "1.4"
+        },
         "category": "alkaline",
         "period": 4,
-        "group": "",
-        "discovered": "1808",
-        "summary": ""
+        "discovered": "1808"
     },
     "21": {
         "atomic": 21,
@@ -425,20 +639,30 @@
         "name": "Σκάνδιο",
         "atomicMass": 44.955907,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d1",
+        "electronStringConf": "[Ar] 4s2 3d1",
         "electronegativity": 1.36,
         "atomicRadius": 184,
         "ionizationEnergy": 633.1,
         "electronAffinity": 18.1,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 1814.0,
         "boil": 3103.0,
         "density": 2985.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "3.0e-6",
+            "solar": "4.0e-6",
+            "meteor": "0.00064",
+            "crust": "0.0026",
+            "ocean": "1.5e-10"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1879",
-        "summary": ""
+        "discovered": "1879"
     },
     "22": {
         "atomic": 22,
@@ -446,20 +670,30 @@
         "name": "Τιτάνιο",
         "atomicMass": 47.867,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d2",
+        "electronStringConf": "[Ar] 4s2 3d2",
         "electronegativity": 1.54,
         "atomicRadius": 176,
         "ionizationEnergy": 658.8,
         "electronAffinity": 7.6,
         "oxidation": "-1,2,3,4c",
-        "phase": "",
         "melt": 1941.0,
         "boil": 3560.0,
         "density": 4507.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.00030",
+            "solar": "0.00040",
+            "meteor": "0.054",
+            "crust": "0.66",
+            "ocean": "1.0e-7"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1791",
-        "summary": ""
+        "discovered": "1791"
     },
     "23": {
         "atomic": 23,
@@ -467,20 +701,31 @@
         "name": "Βανάδιο",
         "atomicMass": 50.9415,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d3",
+        "electronStringConf": "[Ar] 4s2 3d3",
         "electronegativity": 1.63,
         "atomicRadius": 171,
         "ionizationEnergy": 650.9,
         "electronAffinity": 50.6,
         "oxidation": "-1,1,2,3,4,5c",
-        "phase": "",
         "melt": 2183.0,
         "boil": 3680.0,
         "density": 6110.0,
+        "quantum": {
+            "l": 2,
+            "m": 0,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.000100",
+            "solar": "0.000040",
+            "meteor": "0.0061",
+            "crust": "0.019",
+            "ocean": "1.5e-7",
+            "human": "3.0e-6"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1801",
-        "summary": ""
+        "discovered": "1801"
     },
     "24": {
         "atomic": 24,
@@ -488,20 +733,31 @@
         "name": "Χρώμιο",
         "atomicMass": 51.9961,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s1 3d5",
+        "electronStringConf": "[Ar] 4s1 3d5",
         "electronegativity": 1.66,
         "atomicRadius": 166,
         "ionizationEnergy": 652.9,
         "electronAffinity": 64.3,
         "oxidation": "-2,-1,1,2,3c,4,5,6c",
-        "phase": "",
         "melt": 2180.0,
         "boil": 2944.0,
         "density": 7190.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.0015",
+            "solar": "0.0020",
+            "meteor": "0.30",
+            "crust": "0.014",
+            "ocean": "6.0e-8",
+            "human": "3.0e-6"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1797",
-        "summary": ""
+        "discovered": "1797"
     },
     "25": {
         "atomic": 25,
@@ -509,20 +765,31 @@
         "name": "Μαγγάνιο",
         "atomicMass": 54.938043,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d5",
+        "electronStringConf": "[Ar] 4s2 3d5",
         "electronegativity": 1.55,
         "atomicRadius": 161,
         "ionizationEnergy": 717.3,
         "electronAffinity": 0,
         "oxidation": "-3,-2,-1,1,2c,3,4c,5,6,7c",
-        "phase": "",
         "melt": 1519.0,
         "boil": 2334.0,
         "density": 7470.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.00080",
+            "solar": "0.0010",
+            "meteor": "0.27",
+            "crust": "0.11",
+            "ocean": "2.0e-7",
+            "human": "0.000020"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1774",
-        "summary": ""
+        "discovered": "1774"
     },
     "26": {
         "atomic": 26,
@@ -530,20 +797,31 @@
         "name": "Σίδηρος",
         "atomicMass": 55.845,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d6",
+        "electronStringConf": "[Ar] 4s2 3d6",
         "electronegativity": 1.83,
         "atomicRadius": 156,
         "ionizationEnergy": 762.5,
         "electronAffinity": 15.7,
         "oxidation": "-2,-1,1,2c,3c,4,5,6",
-        "phase": "",
         "melt": 1811.0,
         "boil": 3134.0,
         "density": 7874.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.11",
+            "solar": "0.10",
+            "meteor": "22",
+            "crust": "6.3",
+            "ocean": "3.0e-7",
+            "human": "0.0060"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "-1999",
-        "summary": ""
+        "discovered": "-1999"
     },
     "27": {
         "atomic": 27,
@@ -551,20 +829,31 @@
         "name": "Κοβάλτιο",
         "atomicMass": 58.933194,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d7",
+        "electronStringConf": "[Ar] 4s2 3d7",
         "electronegativity": 1.88,
         "atomicRadius": 152,
         "ionizationEnergy": 760.4,
         "electronAffinity": 63.7,
         "oxidation": "-1,1,2c,3c,4,5",
-        "phase": "",
         "melt": 1768.0,
         "boil": 3200.0,
         "density": 8900.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.00030",
+            "solar": "0.00040",
+            "meteor": "0.059",
+            "crust": "0.0030",
+            "ocean": "8.0e-9",
+            "human": "2.0e-6"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1735",
-        "summary": ""
+        "discovered": "1735"
     },
     "28": {
         "atomic": 28,
@@ -572,20 +861,31 @@
         "name": "Νικέλιο",
         "atomicMass": 58.6934,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d8",
+        "electronStringConf": "[Ar] 4s2 3d8",
         "electronegativity": 1.91,
         "atomicRadius": 149,
         "ionizationEnergy": 737.1,
         "electronAffinity": 112,
         "oxidation": "-1,1,2c,3,4",
-        "phase": "",
         "melt": 1728.0,
         "boil": 3186.0,
         "density": 8908.0,
+        "quantum": {
+            "l": 2,
+            "m": 0,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.0060",
+            "solar": "0.0080",
+            "meteor": "1.3",
+            "crust": "0.0089",
+            "ocean": "2.0e-7",
+            "human": "0.000010"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1751",
-        "summary": ""
+        "discovered": "1751"
     },
     "29": {
         "atomic": 29,
@@ -593,20 +893,31 @@
         "name": "Χαλκός",
         "atomicMass": 63.546,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s1 3d10",
+        "electronStringConf": "[Ar] 4s1 3d10",
         "electronegativity": 1.9,
         "atomicRadius": 145,
         "ionizationEnergy": 745.5,
         "electronAffinity": 118.4,
         "oxidation": "1,2c,3,4",
-        "phase": "",
         "melt": 1357.77,
         "boil": 2835.0,
         "density": 8960.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "6.0e-6",
+            "solar": "0.000070",
+            "meteor": "0.011",
+            "crust": "0.0068",
+            "ocean": "3.0e-7",
+            "human": "0.00010"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "-7999",
-        "summary": ""
+        "discovered": "-7999"
     },
     "30": {
         "atomic": 30,
@@ -614,20 +925,31 @@
         "name": "Ψευδάργυρος",
         "atomicMass": 65.38,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10",
+        "electronStringConf": "[Ar] 4s2 3d10",
         "electronegativity": 1.65,
         "atomicRadius": 142,
         "ionizationEnergy": 906.4,
         "electronAffinity": 0,
         "oxidation": "1,2c",
-        "phase": "",
         "melt": 692.68,
         "boil": 1180.0,
         "density": 7140.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 3
+        },
+        "elementAbundance": {
+            "universe": "0.000030",
+            "solar": "0.00020",
+            "meteor": "0.018",
+            "crust": "0.0078",
+            "ocean": "5.0e-7",
+            "human": "0.0033"
+        },
         "category": "transition",
         "period": 4,
-        "group": "",
-        "discovered": "1500",
-        "summary": ""
+        "discovered": "1500"
     },
     "31": {
         "atomic": 31,
@@ -635,20 +957,30 @@
         "name": "Γάλλιο",
         "atomicMass": 69.723,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p1",
+        "electronStringConf": "[Ar] 4s2 3d10 4p1",
         "electronegativity": 1.81,
         "atomicRadius": 136,
         "ionizationEnergy": 578.8,
         "electronAffinity": 28.9,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 302.91,
         "boil": 2477.0,
         "density": 5904.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "solar": "4.0e-6",
+            "meteor": "0.00076",
+            "crust": "0.0019",
+            "ocean": "3.0e-9"
+        },
         "category": "poor",
         "period": 4,
-        "group": "",
-        "discovered": "1875",
-        "summary": ""
+        "discovered": "1875"
     },
     "32": {
         "atomic": 32,
@@ -656,20 +988,30 @@
         "name": "Γερμάνιο",
         "atomicMass": 72.63,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p2",
+        "electronStringConf": "[Ar] 4s2 3d10 4p2",
         "electronegativity": 2.01,
         "atomicRadius": 125,
         "ionizationEnergy": 762,
         "electronAffinity": 119,
         "oxidation": "-4c,1,2c,3,4c",
-        "phase": "",
         "melt": 1211.4,
         "boil": 3093.0,
         "density": 5323.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "0.000020",
+            "solar": "0.000020",
+            "meteor": "0.0021",
+            "crust": "0.00014",
+            "ocean": "6.0e-9"
+        },
         "category": "metalloid",
         "period": 4,
-        "group": "",
-        "discovered": "1886",
-        "summary": ""
+        "discovered": "1886"
     },
     "33": {
         "atomic": 33,
@@ -677,20 +1019,30 @@
         "name": "Αρσενικό",
         "atomicMass": 74.921595,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p3",
+        "electronStringConf": "[Ar] 4s2 3d10 4p3",
         "electronegativity": 2.18,
         "atomicRadius": 114,
         "ionizationEnergy": 947.0,
         "electronAffinity": 78,
         "oxidation": "-3c,2,3c,5c",
-        "phase": "",
         "melt": 1090.0,
         "boil": 887.0,
         "density": 5727.0,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "8.0e-7",
+            "meteor": "0.00018",
+            "crust": "0.00021",
+            "ocean": "2.3e-7",
+            "human": "5.0e-6"
+        },
         "category": "metalloid",
         "period": 4,
-        "group": "",
-        "discovered": "1250",
-        "summary": ""
+        "discovered": "1250"
     },
     "34": {
         "atomic": 34,
@@ -698,20 +1050,30 @@
         "name": "Σελήνιο",
         "atomicMass": 78.971,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p4",
+        "electronStringConf": "[Ar] 4s2 3d10 4p4",
         "electronegativity": 2.55,
         "atomicRadius": 103,
         "ionizationEnergy": 941.0,
         "electronAffinity": 195,
         "oxidation": "-2c,1,2c,4c,6c",
-        "phase": "",
         "melt": 494.0,
         "boil": 958.0,
         "density": 4819.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "3.0e-6",
+            "meteor": "0.0013",
+            "crust": "5.0e-6",
+            "ocean": "4.5e-8",
+            "human": "5.0e-6"
+        },
         "category": "nonmetal",
         "period": 4,
-        "group": "",
-        "discovered": "1817",
-        "summary": ""
+        "discovered": "1817"
     },
     "35": {
         "atomic": 35,
@@ -719,20 +1081,30 @@
         "name": "Βρώμιο",
         "atomicMass": 79.904,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p5",
+        "electronStringConf": "[Ar] 4s2 3d10 4p5",
         "electronegativity": 2.96,
         "atomicRadius": 94,
         "ionizationEnergy": 1139.9,
         "electronAffinity": 324.6,
         "oxidation": "-1c,1c,3c,4,5c,7",
-        "phase": "",
         "melt": 265.8,
         "boil": 332.0,
         "density": 3120.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "7.0e-7",
+            "meteor": "0.00012",
+            "crust": "0.00030",
+            "ocean": "0.0067",
+            "human": "0.00029"
+        },
         "category": "nonmetal",
         "period": 4,
-        "group": "",
-        "discovered": "1826",
-        "summary": ""
+        "discovered": "1826"
     },
     "36": {
         "atomic": 36,
@@ -740,20 +1112,28 @@
         "name": "Κρυπτό",
         "atomicMass": 83.798,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6",
+        "electronStringConf": "[Ar] 4s2 3d10 4p6",
         "electronegativity": 3.0,
         "atomicRadius": 88,
         "ionizationEnergy": 1350.8,
         "electronAffinity": 0,
         "oxidation": "2c",
-        "phase": "",
         "melt": 115.79,
         "boil": 119.93,
         "density": 3.75,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "4.0e-6",
+            "crust": "1.5e-8",
+            "ocean": "2.1e-8"
+        },
         "category": "noble",
         "period": 4,
-        "group": "",
-        "discovered": "1898",
-        "summary": ""
+        "discovered": "1898"
     },
     "37": {
         "atomic": 37,
@@ -761,20 +1141,31 @@
         "name": "Ρουβίδιο",
         "atomicMass": 85.4678,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1",
+        "electronStringConf": "[Kr] 5s1",
         "electronegativity": 0.82,
         "atomicRadius": 265,
         "ionizationEnergy": 403.0,
         "electronAffinity": 46.9,
         "oxidation": "-1,1c",
-        "phase": "",
         "melt": 312.46,
         "boil": 961.0,
         "density": 1532.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "solar": "3.0e-6",
+            "meteor": "0.00032",
+            "crust": "0.0060",
+            "ocean": "0.000012",
+            "human": "0.00046"
+        },
         "category": "alkali",
         "period": 5,
-        "group": "",
-        "discovered": "1861",
-        "summary": ""
+        "discovered": "1861"
     },
     "38": {
         "atomic": 38,
@@ -782,20 +1173,31 @@
         "name": "Στρόντιο",
         "atomicMass": 87.62,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2",
+        "electronStringConf": "[Kr] 5s2",
         "electronegativity": 0.95,
         "atomicRadius": 219,
         "ionizationEnergy": 549.5,
         "electronAffinity": 5.03,
         "oxidation": "1,2c",
-        "phase": "",
         "melt": 1050.0,
         "boil": 1655.0,
         "density": 2630.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "4.0e-6",
+            "solar": "5.0e-6",
+            "meteor": "0.00087",
+            "crust": "0.036",
+            "ocean": "0.00081",
+            "human": "0.00046"
+        },
         "category": "alkaline",
         "period": 5,
-        "group": "",
-        "discovered": "1790",
-        "summary": ""
+        "discovered": "1790"
     },
     "39": {
         "atomic": 39,
@@ -803,20 +1205,30 @@
         "name": "Ύττριο",
         "atomicMass": 88.905838,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d1",
+        "electronStringConf": "[Kr] 5s2 4d1",
         "electronegativity": 1.22,
         "atomicRadius": 212,
         "ionizationEnergy": 600,
         "electronAffinity": 29.6,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 1799.0,
         "boil": 3618.0,
         "density": 4472.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "7.0e-7",
+            "solar": "1.0e-6",
+            "meteor": "0.00019",
+            "crust": "0.0029",
+            "ocean": "1.3e-9"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1794",
-        "summary": ""
+        "discovered": "1794"
     },
     "40": {
         "atomic": 40,
@@ -824,20 +1236,31 @@
         "name": "Ζιρκόνιο",
         "atomicMass": 91.224,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d2",
+        "electronStringConf": "[Kr] 5s2 4d2",
         "electronegativity": 1.33,
         "atomicRadius": 206,
         "ionizationEnergy": 640.1,
         "electronAffinity": 41.1,
         "oxidation": "1,2,3,4c",
-        "phase": "",
         "melt": 2128.0,
         "boil": 4682.0,
         "density": 6511.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "5.0e-6",
+            "solar": "4.0e-6",
+            "meteor": "0.00066",
+            "crust": "0.013",
+            "ocean": "2.6e-9",
+            "human": "5.0e-6"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1789",
-        "summary": ""
+        "discovered": "1789"
     },
     "41": {
         "atomic": 41,
@@ -845,20 +1268,30 @@
         "name": "Νιόβιο",
         "atomicMass": 92.90637,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1 4d4",
+        "electronStringConf": "[Kr] 5s1 4d4",
         "electronegativity": 1.6,
         "atomicRadius": 198,
         "ionizationEnergy": 652.1,
         "electronAffinity": 86.1,
         "oxidation": "-1,2,3,4,5c",
-        "phase": "",
         "melt": 2750.0,
         "boil": 5017.0,
         "density": 8570.0,
+        "quantum": {
+            "l": 2,
+            "m": 1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "4.0e-7",
+            "meteor": "0.000019",
+            "crust": "0.0017",
+            "ocean": "1.0e-10"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1801",
-        "summary": ""
+        "discovered": "1801"
     },
     "42": {
         "atomic": 42,
@@ -866,20 +1299,31 @@
         "name": "Μολυβδαίνιο",
         "atomicMass": 95.95,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1 4d5",
+        "electronStringConf": "[Kr] 5s1 4d5",
         "electronegativity": 2.16,
         "atomicRadius": 190,
         "ionizationEnergy": 684.3,
         "electronAffinity": 71.9,
         "oxidation": "-2,-1,1,2,3,4c,5,6c",
-        "phase": "",
         "melt": 2896.0,
         "boil": 4912.0,
         "density": 10280.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "5.0e-7",
+            "solar": "9.0e-7",
+            "meteor": "0.00012",
+            "crust": "0.00011",
+            "ocean": "1.0e-6",
+            "human": "0.000010"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1781",
-        "summary": ""
+        "discovered": "1781"
     },
     "43": {
         "atomic": 43,
@@ -887,20 +1331,31 @@
         "name": "Τεχνήτιο",
         "atomicMass": 98,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d5",
+        "electronStringConf": "[Kr] 5s2 4d5",
         "electronegativity": 1.9,
         "atomicRadius": 183,
         "ionizationEnergy": 702,
         "electronAffinity": 53,
         "oxidation": "-3,-1,1,2,3,4c,5,6,7c",
-        "phase": "",
         "melt": 2430.0,
         "boil": 4538.0,
         "density": 11500.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1937",
-        "summary": ""
+        "discovered": "1937"
     },
     "44": {
         "atomic": 44,
@@ -908,20 +1363,30 @@
         "name": "Ρουθήνιο",
         "atomicMass": 101.07,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1 4d7",
+        "electronStringConf": "[Kr] 5s1 4d7",
         "electronegativity": 2.2,
         "atomicRadius": 178,
         "ionizationEnergy": 710.2,
         "electronAffinity": 101.3,
         "oxidation": "-2,1,2,3c,4c,5,6,7,8",
-        "phase": "",
         "melt": 2607.0,
         "boil": 4423.0,
         "density": 12370.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "4.0e-7",
+            "solar": "5.0e-7",
+            "meteor": "0.000081",
+            "crust": "9.9e-8",
+            "ocean": "7.0e-11"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1844",
-        "summary": ""
+        "discovered": "1844"
     },
     "45": {
         "atomic": 45,
@@ -929,20 +1394,29 @@
         "name": "Ρόδιο",
         "atomicMass": 102.90549,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1 4d8",
+        "electronStringConf": "[Kr] 5s1 4d8",
         "electronegativity": 2.28,
         "atomicRadius": 173,
         "ionizationEnergy": 719.7,
         "electronAffinity": 109.7,
         "oxidation": "-1,1,2,3c,4,5,6",
-        "phase": "",
         "melt": 2237.0,
         "boil": 3968.0,
         "density": 12450.0,
+        "quantum": {
+            "l": 2,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "6.0e-8",
+            "solar": "2.0e-7",
+            "meteor": "0.000018",
+            "crust": "7.0e-8"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1803",
-        "summary": ""
+        "discovered": "1803"
     },
     "46": {
         "atomic": 46,
@@ -950,20 +1424,29 @@
         "name": "Παλλάδιο",
         "atomicMass": 106.42,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 4d10",
+        "electronStringConf": "[Kr] 4d10",
         "electronegativity": 2.2,
         "atomicRadius": 169,
         "ionizationEnergy": 804.4,
         "electronAffinity": 53.7,
         "oxidation": "2c,4c",
-        "phase": "",
         "melt": 1828.05,
         "boil": 3236.0,
         "density": 12023.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "3.0e-7",
+            "meteor": "0.000066",
+            "crust": "6.3e-7"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1803",
-        "summary": ""
+        "discovered": "1803"
     },
     "47": {
         "atomic": 47,
@@ -971,20 +1454,30 @@
         "name": "Άργυρος",
         "atomicMass": 107.8682,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s1 4d10",
+        "electronStringConf": "[Kr] 5s1 4d10",
         "electronegativity": 1.93,
         "atomicRadius": 165,
         "ionizationEnergy": 731.0,
         "electronAffinity": 125.6,
         "oxidation": "1c,2,3,4",
-        "phase": "",
         "melt": 1234.93,
         "boil": 2435.0,
         "density": 10490.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "6.0e-8",
+            "solar": "1.0e-7",
+            "meteor": "0.000014",
+            "crust": "7.9e-6",
+            "ocean": "1.0e-8"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "-2999",
-        "summary": ""
+        "discovered": "-2999"
     },
     "48": {
         "atomic": 48,
@@ -992,20 +1485,31 @@
         "name": "Κάδμιο",
         "atomicMass": 112.414,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10",
+        "electronStringConf": "[Kr] 5s2 4d10",
         "electronegativity": 1.69,
         "atomicRadius": 161,
         "ionizationEnergy": 867.8,
         "electronAffinity": 0,
         "oxidation": "1,2c",
-        "phase": "",
         "melt": 594.22,
         "boil": 1040.0,
         "density": 8650.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "6.0e-7",
+            "meteor": "0.000044",
+            "crust": "0.000015",
+            "ocean": "5.0e-9",
+            "human": "0.000070"
+        },
         "category": "transition",
         "period": 5,
-        "group": "",
-        "discovered": "1817",
-        "summary": ""
+        "discovered": "1817"
     },
     "49": {
         "atomic": 49,
@@ -1013,20 +1517,30 @@
         "name": "Ίνδιο",
         "atomicMass": 114.818,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p1",
+        "electronStringConf": "[Kr] 5s2 4d10 5p1",
         "electronegativity": 1.78,
         "atomicRadius": 156,
         "ionizationEnergy": 558.3,
         "electronAffinity": 28.9,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 429.75,
         "boil": 2345.0,
         "density": 7310.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "3.0e-8",
+            "solar": "4.0e-7",
+            "meteor": "4.4e-6",
+            "crust": "0.000016",
+            "ocean": "1.0e-11"
+        },
         "category": "poor",
         "period": 5,
-        "group": "",
-        "discovered": "1863",
-        "summary": ""
+        "discovered": "1863"
     },
     "50": {
         "atomic": 50,
@@ -1034,20 +1548,31 @@
         "name": "Κασσίτερος",
         "atomicMass": 118.71,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p2",
+        "electronStringConf": "[Kr] 5s2 4d10 5p2",
         "electronegativity": 1.96,
         "atomicRadius": 145,
         "ionizationEnergy": 708.6,
         "electronAffinity": 107.3,
         "oxidation": "-4c,2c,4c",
-        "phase": "",
         "melt": 505.08,
         "boil": 2875.0,
         "density": 7310.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "4.0e-7",
+            "solar": "9.0e-7",
+            "meteor": "0.00012",
+            "crust": "0.00022",
+            "ocean": "1.0e-9",
+            "human": "0.000020"
+        },
         "category": "poor",
         "period": 5,
-        "group": "",
-        "discovered": "-2999",
-        "summary": ""
+        "discovered": "-2999"
     },
     "51": {
         "atomic": 51,
@@ -1055,20 +1580,30 @@
         "name": "Αντιμόνιο",
         "atomicMass": 121.76,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p3",
+        "electronStringConf": "[Kr] 5s2 4d10 5p3",
         "electronegativity": 2.05,
         "atomicRadius": 133,
         "ionizationEnergy": 834,
         "electronAffinity": 103.2,
         "oxidation": "-3c,3c,5c",
-        "phase": "",
         "melt": 903.78,
         "boil": 1860.0,
         "density": 6697.0,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "4.0e-8",
+            "solar": "1.0e-7",
+            "meteor": "0.000012",
+            "crust": "0.000020",
+            "ocean": "2.0e-8"
+        },
         "category": "metalloid",
         "period": 5,
-        "group": "",
-        "discovered": "-2999",
-        "summary": ""
+        "discovered": "-2999"
     },
     "52": {
         "atomic": 52,
@@ -1076,20 +1611,28 @@
         "name": "Τελλούριο",
         "atomicMass": 127.6,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p4",
+        "electronStringConf": "[Kr] 5s2 4d10 5p4",
         "electronegativity": 2.1,
         "atomicRadius": 123,
         "ionizationEnergy": 869.3,
         "electronAffinity": 190.2,
         "oxidation": "-2c,2c,4c,5,6c",
-        "phase": "",
         "melt": 722.66,
         "boil": 1261.0,
         "density": 6240.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "9.0e-7",
+            "meteor": "0.00021",
+            "crust": "9.9e-8"
+        },
         "category": "metalloid",
         "period": 5,
-        "group": "",
-        "discovered": "1783",
-        "summary": ""
+        "discovered": "1783"
     },
     "53": {
         "atomic": 53,
@@ -1097,20 +1640,30 @@
         "name": "Ιώδιο",
         "atomicMass": 126.90447,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p5",
+        "electronStringConf": "[Kr] 5s2 4d10 5p5",
         "electronegativity": 2.66,
         "atomicRadius": 115,
         "ionizationEnergy": 1008.4,
         "electronAffinity": 295.2,
         "oxidation": "-1c,1c,3c,4,5c,7c",
-        "phase": "",
         "melt": 386.85,
         "boil": 457.4,
         "density": 4940.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "1.00e-7",
+            "meteor": "0.000025",
+            "crust": "0.000049",
+            "ocean": "6.0e-6",
+            "human": "0.000020"
+        },
         "category": "nonmetal",
         "period": 5,
-        "group": "",
-        "discovered": "1811",
-        "summary": ""
+        "discovered": "1811"
     },
     "54": {
         "atomic": 54,
@@ -1118,20 +1671,28 @@
         "name": "Ξένο",
         "atomicMass": 131.293,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6",
+        "electronStringConf": "[Kr] 5s2 4d10 5p6",
         "electronegativity": 2.6,
         "atomicRadius": 108,
         "ionizationEnergy": 1170.4,
         "electronAffinity": 0,
         "oxidation": "2c,4c,6c,8",
-        "phase": "",
         "melt": 161.3,
         "boil": 165.1,
         "density": 5.9,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "crust": "2.0e-9",
+            "ocean": "5.0e-10"
+        },
         "category": "noble",
         "period": 5,
-        "group": "",
-        "discovered": "1898",
-        "summary": ""
+        "discovered": "1898"
     },
     "55": {
         "atomic": 55,
@@ -1139,20 +1700,31 @@
         "name": "Καίσιο",
         "atomicMass": 132.90545196,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s1",
+        "electronStringConf": "[Xe] 6s1",
         "electronegativity": 0.79,
         "atomicRadius": 298,
         "ionizationEnergy": 375.7,
         "electronAffinity": 45.5,
         "oxidation": "-1,1c",
-        "phase": "",
         "melt": 301.59,
         "boil": 944.0,
         "density": 1879.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "8.0e-8",
+            "solar": "8.0e-7",
+            "meteor": "0.000014",
+            "crust": "0.00019",
+            "ocean": "5.0e-8",
+            "human": "2.0e-6"
+        },
         "category": "alkali",
         "period": 6,
-        "group": "",
-        "discovered": "1860",
-        "summary": ""
+        "discovered": "1860"
     },
     "56": {
         "atomic": 56,
@@ -1160,20 +1732,31 @@
         "name": "Βάριο",
         "atomicMass": 137.327,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2",
+        "electronStringConf": "[Xe] 6s2",
         "electronegativity": 0.89,
         "atomicRadius": 253,
         "ionizationEnergy": 502.9,
         "electronAffinity": 13.95,
         "oxidation": "2c",
-        "phase": "",
         "melt": 1000.0,
         "boil": 2143.0,
         "density": 3510.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "solar": "1.0e-6",
+            "meteor": "0.00027",
+            "crust": "0.034",
+            "ocean": "3.0e-6",
+            "human": "0.000030"
+        },
         "category": "alkaline",
         "period": 6,
-        "group": "",
-        "discovered": "1808",
-        "summary": ""
+        "discovered": "1808"
     },
     "57": {
         "atomic": 57,
@@ -1181,20 +1764,30 @@
         "name": "Λανθάνιο",
         "atomicMass": 138.90547,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 5d1",
+        "electronStringConf": "[Xe] 6s2 5d1",
         "electronegativity": 1.1,
         "atomicRadius": "",
         "ionizationEnergy": 538.1,
         "electronAffinity": 48,
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1193.0,
         "boil": 3737.0,
         "density": 6146.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "2.0e-7",
+            "meteor": "0.000028",
+            "crust": "0.0034",
+            "ocean": "3.4e-10"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1839",
-        "summary": ""
+        "discovered": "1839"
     },
     "58": {
         "atomic": 58,
@@ -1202,20 +1795,30 @@
         "name": "Δημήτριο",
         "atomicMass": 140.116,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f1 5d1",
+        "electronStringConf": "[Xe] 6s2 4f1 5d1",
         "electronegativity": 1.12,
         "atomicRadius": "",
         "ionizationEnergy": 534.4,
         "electronAffinity": 50,
         "oxidation": "2,3c,4c",
-        "phase": "",
         "melt": 1071.0,
         "boil": 3633.0,
         "density": 6689.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "solar": "4.0e-7",
+            "meteor": "0.000075",
+            "crust": "0.0060",
+            "ocean": "1.2e-10"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1803",
-        "summary": ""
+        "discovered": "1803"
     },
     "59": {
         "atomic": 59,
@@ -1223,20 +1826,30 @@
         "name": "Πρασεοδύμιο",
         "atomicMass": 140.90766,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f3",
+        "electronStringConf": "[Xe] 6s2 4f3",
         "electronegativity": 1.13,
         "atomicRadius": 247,
         "ionizationEnergy": 527,
         "electronAffinity": 50,
         "oxidation": "2,3c,4",
-        "phase": "",
         "melt": 1204.0,
         "boil": 3563.0,
         "density": 6640.0,
+        "quantum": {
+            "l": 3,
+            "m": -1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "1.0e-7",
+            "meteor": "9.8e-6",
+            "crust": "0.00086",
+            "ocean": "6.0e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1885",
-        "summary": ""
+        "discovered": "1885"
     },
     "60": {
         "atomic": 60,
@@ -1244,20 +1857,30 @@
         "name": "Νεοδύμιο",
         "atomicMass": 144.242,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f4",
+        "electronStringConf": "[Xe] 6s2 4f4",
         "electronegativity": 1.14,
         "atomicRadius": 206,
         "ionizationEnergy": 533.1,
         "electronAffinity": 50,
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1294.0,
         "boil": 3373.0,
         "density": 7010.0,
+        "quantum": {
+            "l": 3,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "solar": "3.0e-7",
+            "meteor": "0.000050",
+            "crust": "0.0033",
+            "ocean": "2.8e-10"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1885",
-        "summary": ""
+        "discovered": "1885"
     },
     "61": {
         "atomic": 61,
@@ -1265,20 +1888,31 @@
         "name": "Προμήθειο",
         "atomicMass": 145,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f5",
+        "electronStringConf": "[Xe] 6s2 4f5",
         "electronegativity": "",
         "atomicRadius": 205,
         "ionizationEnergy": 540,
         "electronAffinity": 50,
         "oxidation": "3c",
-        "phase": "",
         "melt": 1373.0,
         "boil": 3273.0,
         "density": 7264.0,
+        "quantum": {
+            "l": 3,
+            "m": 1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1945",
-        "summary": ""
+        "discovered": "1945"
     },
     "62": {
         "atomic": 62,
@@ -1286,20 +1920,30 @@
         "name": "Σαμάριο",
         "atomicMass": 150.36,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f6",
+        "electronStringConf": "[Xe] 6s2 4f6",
         "electronegativity": 1.17,
         "atomicRadius": 238,
         "ionizationEnergy": 544.5,
         "electronAffinity": 50,
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1345.0,
         "boil": 2076.0,
         "density": 7353.0,
+        "quantum": {
+            "l": 3,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "5.0e-7",
+            "solar": "1.0e-7",
+            "meteor": "0.000017",
+            "crust": "0.00060",
+            "ocean": "4.5e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1879",
-        "summary": ""
+        "discovered": "1879"
     },
     "63": {
         "atomic": 63,
@@ -1307,20 +1951,30 @@
         "name": "Ευρώπιο",
         "atomicMass": 151.964,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f7",
+        "electronStringConf": "[Xe] 6s2 4f7",
         "electronegativity": "",
         "atomicRadius": 231,
         "ionizationEnergy": 547.1,
         "electronAffinity": 50,
         "oxidation": "2c,3c",
-        "phase": "",
         "melt": 1095.0,
         "boil": 1800.0,
         "density": 5244.0,
+        "quantum": {
+            "l": 3,
+            "m": 3,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "5.0e-8",
+            "solar": "5.0e-8",
+            "meteor": "5.9e-6",
+            "crust": "0.00018",
+            "ocean": "1.3e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1901",
-        "summary": ""
+        "discovered": "1901"
     },
     "64": {
         "atomic": 64,
@@ -1328,20 +1982,30 @@
         "name": "Γαδολίνιο",
         "atomicMass": 157.25,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f7 5d1",
+        "electronStringConf": "[Xe] 6s2 4f7 5d1",
         "electronegativity": 1.2,
         "atomicRadius": 233,
         "ionizationEnergy": 593.4,
         "electronAffinity": 50,
         "oxidation": "1,2,3c",
-        "phase": "",
         "melt": 1586.0,
         "boil": 3523.0,
         "density": 7901.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "2.0e-7",
+            "meteor": "0.000023",
+            "crust": "0.00052",
+            "ocean": "7.0e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1880",
-        "summary": ""
+        "discovered": "1880"
     },
     "65": {
         "atomic": 65,
@@ -1349,20 +2013,30 @@
         "name": "Τέρβιο",
         "atomicMass": 158.925354,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f9",
+        "electronStringConf": "[Xe] 6s2 4f9",
         "electronegativity": "",
         "atomicRadius": 225,
         "ionizationEnergy": 565.8,
         "electronAffinity": 50,
         "oxidation": "1,3c,4",
-        "phase": "",
         "melt": 1629.0,
         "boil": 3503.0,
         "density": 8219.0,
+        "quantum": {
+            "l": 3,
+            "m": -2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "5.0e-8",
+            "solar": "1.0e-8",
+            "meteor": "3.9e-6",
+            "crust": "0.000093",
+            "ocean": "1.4e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1843",
-        "summary": ""
+        "discovered": "1843"
     },
     "66": {
         "atomic": 66,
@@ -1370,20 +2044,30 @@
         "name": "Δυσπρόσιο",
         "atomicMass": 162.5,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f10",
+        "electronStringConf": "[Xe] 6s2 4f10",
         "electronegativity": 1.22,
         "atomicRadius": 228,
         "ionizationEnergy": 573.0,
         "electronAffinity": 50,
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1685.0,
         "boil": 2840.0,
         "density": 8551.0,
+        "quantum": {
+            "l": 3,
+            "m": -1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "2.0e-7",
+            "meteor": "0.000027",
+            "crust": "0.00062",
+            "ocean": "9.1e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1886",
-        "summary": ""
+        "discovered": "1886"
     },
     "67": {
         "atomic": 67,
@@ -1391,20 +2075,30 @@
         "name": "Όλμιο",
         "atomicMass": 164.930329,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f11",
+        "electronStringConf": "[Xe] 6s2 4f11",
         "electronegativity": 1.23,
         "atomicRadius": 226,
         "ionizationEnergy": 581.0,
         "electronAffinity": 50,
         "oxidation": "3c",
-        "phase": "",
         "melt": 1747.0,
         "boil": 2973.0,
         "density": 8795.0,
+        "quantum": {
+            "l": 3,
+            "m": 0,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "5.0e-8",
+            "solar": "0",
+            "meteor": "5.9e-6",
+            "crust": "0.00012",
+            "ocean": "2.2e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1878",
-        "summary": ""
+        "discovered": "1878"
     },
     "68": {
         "atomic": 68,
@@ -1412,20 +2106,30 @@
         "name": "Έρβιο",
         "atomicMass": 167.259,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f12",
+        "electronStringConf": "[Xe] 6s2 4f12",
         "electronegativity": 1.24,
         "atomicRadius": 226,
         "ionizationEnergy": 589.3,
         "electronAffinity": 50,
         "oxidation": "3c",
-        "phase": "",
         "melt": 1770.0,
         "boil": 3141.0,
         "density": 9066.0,
+        "quantum": {
+            "l": 3,
+            "m": 1,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "1.0e-7",
+            "meteor": "0.000018",
+            "crust": "0.00030",
+            "ocean": "9.0e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1842",
-        "summary": ""
+        "discovered": "1842"
     },
     "69": {
         "atomic": 69,
@@ -1433,20 +2137,30 @@
         "name": "Θούλιο",
         "atomicMass": 168.934219,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f13",
+        "electronStringConf": "[Xe] 6s2 4f13",
         "electronegativity": 1.25,
         "atomicRadius": 222,
         "ionizationEnergy": 596.7,
         "electronAffinity": 50,
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1818.0,
         "boil": 2223.0,
         "density": 9320.0,
+        "quantum": {
+            "l": 3,
+            "m": 2,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "1.00e-8",
+            "solar": "2.0e-8",
+            "meteor": "2.9e-6",
+            "crust": "0.000045",
+            "ocean": "2.0e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1879",
-        "summary": ""
+        "discovered": "1879"
     },
     "70": {
         "atomic": 70,
@@ -1454,20 +2168,30 @@
         "name": "Υττέρβιο",
         "atomicMass": 173.045,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14",
+        "electronStringConf": "[Xe] 6s2 4f14",
         "electronegativity": "",
         "atomicRadius": 222,
         "ionizationEnergy": 603.4,
         "electronAffinity": 50,
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1092.0,
         "boil": 1469.0,
         "density": 6570.0,
+        "quantum": {
+            "l": 3,
+            "m": 3,
+            "n": 4
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "1.0e-7",
+            "meteor": "0.000018",
+            "crust": "0.00028",
+            "ocean": "8.0e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1878",
-        "summary": ""
+        "discovered": "1878"
     },
     "71": {
         "atomic": 71,
@@ -1475,20 +2199,30 @@
         "name": "Λουτήτιο",
         "atomicMass": 174.9668,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d1",
+        "electronStringConf": "[Xe] 6s2 4f14 5d1",
         "electronegativity": 1.27,
         "atomicRadius": 217,
         "ionizationEnergy": 523.5,
         "electronAffinity": 50,
         "oxidation": "3c",
-        "phase": "",
         "melt": 1936.0,
         "boil": 3675.0,
         "density": 9841.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "1.00e-8",
+            "solar": "1.0e-7",
+            "meteor": "2.9e-6",
+            "crust": "0.000056",
+            "ocean": "1.5e-11"
+        },
         "category": "lanthanoid",
         "period": 6,
-        "group": "",
-        "discovered": "1907",
-        "summary": ""
+        "discovered": "1907"
     },
     "72": {
         "atomic": 72,
@@ -1496,20 +2230,30 @@
         "name": "Άφνιο",
         "atomicMass": 178.486,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d2",
+        "electronStringConf": "[Xe] 6s2 4f14 5d2",
         "electronegativity": 1.3,
         "atomicRadius": 208,
         "ionizationEnergy": 658.5,
         "electronAffinity": 0,
         "oxidation": "2,3,4c",
-        "phase": "",
         "melt": 2506.0,
         "boil": 4876.0,
         "density": 13310.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "7.0e-8",
+            "solar": "1.0e-7",
+            "meteor": "0.000017",
+            "crust": "0.00033",
+            "ocean": "8.0e-10"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1923",
-        "summary": ""
+        "discovered": "1923"
     },
     "73": {
         "atomic": 73,
@@ -1517,20 +2261,29 @@
         "name": "Ταντάλιο",
         "atomicMass": 180.94788,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d3",
+        "electronStringConf": "[Xe] 6s2 4f14 5d3",
         "electronegativity": 1.5,
         "atomicRadius": 200,
         "ionizationEnergy": 761,
         "electronAffinity": 31,
         "oxidation": "-1,2,3,4,5c",
-        "phase": "",
         "melt": 3290.0,
         "boil": 5731.0,
         "density": 16650.0,
+        "quantum": {
+            "l": 2,
+            "m": 0,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "8.0e-9",
+            "meteor": "2.0e-6",
+            "crust": "0.00017",
+            "ocean": "2.0e-10"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1802",
-        "summary": ""
+        "discovered": "1802"
     },
     "74": {
         "atomic": 74,
@@ -1538,20 +2291,30 @@
         "name": "Βολφράμιο",
         "atomicMass": 183.84,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d4",
+        "electronStringConf": "[Xe] 6s2 4f14 5d4",
         "electronegativity": 2.36,
         "atomicRadius": 193,
         "ionizationEnergy": 770,
         "electronAffinity": 78.6,
         "oxidation": "-2,-1,1,2,3,4c,5,6c",
-        "phase": "",
         "melt": 3695.0,
         "boil": 5828.0,
         "density": 19250.0,
+        "quantum": {
+            "l": 2,
+            "m": 1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "5.0e-8",
+            "solar": "4.0e-7",
+            "meteor": "0.000012",
+            "crust": "0.00011",
+            "ocean": "1.2e-8"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1783",
-        "summary": ""
+        "discovered": "1783"
     },
     "75": {
         "atomic": 75,
@@ -1559,20 +2322,30 @@
         "name": "Ρήνιο",
         "atomicMass": 186.207,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d5",
+        "electronStringConf": "[Xe] 6s2 4f14 5d5",
         "electronegativity": 1.9,
         "atomicRadius": 188,
         "ionizationEnergy": 760,
         "electronAffinity": 14.5,
         "oxidation": "-3,-1,1,2,3,4c,5,6,7",
-        "phase": "",
         "melt": 3459.0,
         "boil": 5869.0,
         "density": 21020.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "2.0e-8",
+            "solar": "1.0e-8",
+            "meteor": "4.9e-6",
+            "crust": "2.6e-7",
+            "ocean": "1.0e-10"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1925",
-        "summary": ""
+        "discovered": "1925"
     },
     "76": {
         "atomic": 76,
@@ -1580,20 +2353,29 @@
         "name": "Όσμιο",
         "atomicMass": 190.23,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d6",
+        "electronStringConf": "[Xe] 6s2 4f14 5d6",
         "electronegativity": 2.2,
         "atomicRadius": 185,
         "ionizationEnergy": 840,
         "electronAffinity": 106.1,
         "oxidation": "-2,1,2,3,4c,5,6,7,8",
-        "phase": "",
         "melt": 3306.0,
         "boil": 5285.0,
         "density": 22590.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "3.0e-7",
+            "solar": "2.0e-7",
+            "meteor": "0.000066",
+            "crust": "1.8e-7"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1803",
-        "summary": ""
+        "discovered": "1803"
     },
     "77": {
         "atomic": 77,
@@ -1601,20 +2383,29 @@
         "name": "Ιρίδιο",
         "atomicMass": 192.217,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d7",
+        "electronStringConf": "[Xe] 6s2 4f14 5d7",
         "electronegativity": 2.2,
         "atomicRadius": 180,
         "ionizationEnergy": 880,
         "electronAffinity": 151,
         "oxidation": "-3,-1,1,2,3c,4c,5,6,7,8",
-        "phase": "",
         "melt": 2739.0,
         "boil": 4701.0,
         "density": 22560.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "2.0e-7",
+            "solar": "2.0e-7",
+            "meteor": "0.000054",
+            "crust": "4.0e-8"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1803",
-        "summary": ""
+        "discovered": "1803"
     },
     "78": {
         "atomic": 78,
@@ -1622,20 +2413,29 @@
         "name": "Λευκόχρυσος",
         "atomicMass": 195.084,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s1 4f14 5d9",
+        "electronStringConf": "[Xe] 6s1 4f14 5d9",
         "electronegativity": 2.28,
         "atomicRadius": 177,
         "ionizationEnergy": 870,
         "electronAffinity": 205.3,
         "oxidation": "2c,4c,5,6",
-        "phase": "",
         "melt": 2041.4,
         "boil": 4098.0,
         "density": 21450.0,
+        "quantum": {
+            "l": 2,
+            "m": 1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "5.0e-7",
+            "solar": "9.0e-7",
+            "meteor": "0.000098",
+            "crust": "3.7e-6"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "1735",
-        "summary": ""
+        "discovered": "1735"
     },
     "79": {
         "atomic": 79,
@@ -1643,20 +2443,31 @@
         "name": "Χρυσός",
         "atomicMass": 196.96657,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s1 4f14 5d10",
+        "electronStringConf": "[Xe] 6s1 4f14 5d10",
         "electronegativity": 2.54,
         "atomicRadius": 174,
         "ionizationEnergy": 890.1,
         "electronAffinity": 222.8,
         "oxidation": "-1,1,2,3c,5",
-        "phase": "",
         "melt": 1337.33,
         "boil": 3129.0,
         "density": 19300.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "6.0e-8",
+            "solar": "1.0e-7",
+            "meteor": "0.000017",
+            "crust": "3.1e-7",
+            "ocean": "5.0e-9",
+            "human": "0.000010"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "-2499",
-        "summary": ""
+        "discovered": "-2499"
     },
     "80": {
         "atomic": 80,
@@ -1664,20 +2475,30 @@
         "name": "Υδράργυρος",
         "atomicMass": 200.59,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10",
         "electronegativity": 2.0,
         "atomicRadius": 171,
         "ionizationEnergy": 1007.1,
         "electronAffinity": 0,
         "oxidation": "1c,2c,4",
-        "phase": "",
         "melt": 234.32,
         "boil": 629.88,
         "density": 13534.0,
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "1.00e-7",
+            "solar": "2.0e-6",
+            "meteor": "0.000025",
+            "crust": "6.7e-6",
+            "ocean": "5.0e-9"
+        },
         "category": "transition",
         "period": 6,
-        "group": "",
-        "discovered": "-1499",
-        "summary": ""
+        "discovered": "-1499"
     },
     "81": {
         "atomic": 81,
@@ -1685,20 +2506,30 @@
         "name": "Θάλλιο",
         "atomicMass": 204.38,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p1",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10 6p1",
         "electronegativity": 1.62,
         "atomicRadius": 156,
         "ionizationEnergy": 589.4,
         "electronAffinity": 19.2,
         "oxidation": "1c,3c",
-        "phase": "",
         "melt": 577.0,
         "boil": 1746.0,
         "density": 11850.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "5.0e-8",
+            "solar": "1.0e-7",
+            "meteor": "7.8e-6",
+            "crust": "0.000053",
+            "ocean": "1.0e-10"
+        },
         "category": "poor",
         "period": 6,
-        "group": "",
-        "discovered": "1861",
-        "summary": ""
+        "discovered": "1861"
     },
     "82": {
         "atomic": 82,
@@ -1706,20 +2537,31 @@
         "name": "Μόλυβδος",
         "atomicMass": 207.2,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p2",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10 6p2",
         "electronegativity": 2.33,
         "atomicRadius": 154,
         "ionizationEnergy": 715.6,
         "electronAffinity": 35.1,
         "oxidation": "-4,2c,4c",
-        "phase": "",
         "melt": 600.61,
         "boil": 2022.0,
         "density": 11340.0,
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "1.00e-6",
+            "solar": "1.0e-6",
+            "meteor": "0.00014",
+            "crust": "0.00099",
+            "ocean": "3.0e-9",
+            "human": "0.00017"
+        },
         "category": "poor",
         "period": 6,
-        "group": "",
-        "discovered": "-3999",
-        "summary": ""
+        "discovered": "-3999"
     },
     "83": {
         "atomic": 83,
@@ -1727,20 +2569,30 @@
         "name": "Βισμούθιο",
         "atomicMass": 208.9804,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p3",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10 6p3",
         "electronegativity": 2.02,
         "atomicRadius": 143,
         "ionizationEnergy": 703,
         "electronAffinity": 91.2,
         "oxidation": "-3,3c,5",
-        "phase": "",
         "melt": 544.4,
         "boil": 1837.0,
         "density": 9780.0,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "7.0e-8",
+            "solar": "1.0e-6",
+            "meteor": "6.9e-6",
+            "crust": "2.5e-6",
+            "ocean": "2.0e-9"
+        },
         "category": "poor",
         "period": 6,
-        "group": "",
-        "discovered": "1400",
-        "summary": ""
+        "discovered": "1400"
     },
     "84": {
         "atomic": 84,
@@ -1748,20 +2600,28 @@
         "name": "Πολώνιο",
         "atomicMass": 209,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p4",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10 6p4",
         "electronegativity": 2.0,
         "atomicRadius": 135,
         "ionizationEnergy": 812.1,
         "electronAffinity": 183.3,
         "oxidation": "-2c,2c,4c,6",
-        "phase": "",
         "melt": 528.0,
         "boil": 1235.0,
         "density": 9196.0,
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "ocean": "2.0e-18",
+            "human": "0"
+        },
         "category": "poor",
         "period": 6,
-        "group": "",
-        "discovered": "1898",
-        "summary": ""
+        "discovered": "1898"
     },
     "85": {
         "atomic": 85,
@@ -1769,20 +2629,30 @@
         "name": "Άστατο",
         "atomicMass": 210,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p5",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10 6p5",
         "electronegativity": 2.2,
         "atomicRadius": 127,
         "ionizationEnergy": 890,
         "electronAffinity": 270.1,
         "oxidation": "-1c,1c,3,5,7",
-        "phase": "",
         "melt": 575.0,
         "boil": 623.0,
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "metalloid",
         "period": 6,
-        "group": "",
-        "discovered": "1940",
-        "summary": ""
+        "discovered": "1940"
     },
     "86": {
         "atomic": 86,
@@ -1790,20 +2660,27 @@
         "name": "Ραδόνιο",
         "atomicMass": 222,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6",
+        "electronStringConf": "[Xe] 6s2 4f14 5d10 6p6",
         "electronegativity": "",
         "atomicRadius": 120,
         "ionizationEnergy": 1037,
         "electronAffinity": 0,
         "oxidation": "2c",
-        "phase": "",
         "melt": 202.0,
         "boil": 211.3,
         "density": 9.73,
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "ocean": "6.0e-20"
+        },
         "category": "noble",
         "period": 6,
-        "group": "",
-        "discovered": "1900",
-        "summary": ""
+        "discovered": "1900"
     },
     "87": {
         "atomic": 87,
@@ -1811,20 +2688,27 @@
         "name": "Φράγκιο",
         "atomicMass": 223,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s1",
+        "electronStringConf": "[Rn] 7s1",
         "electronegativity": 0.7,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 380,
         "electronAffinity": "",
         "oxidation": "1c",
-        "phase": "",
         "melt": 294.0,
         "boil": 923.0,
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "human": "0"
+        },
         "category": "alkali",
         "period": 7,
-        "group": "",
-        "discovered": "1939",
-        "summary": ""
+        "discovered": "1939"
     },
     "88": {
         "atomic": 88,
@@ -1832,20 +2716,29 @@
         "name": "Ράδιο",
         "atomicMass": 226,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2",
+        "electronStringConf": "[Rn] 7s2",
         "electronegativity": 0.9,
         "atomicRadius": "",
         "ionizationEnergy": 509.3,
         "electronAffinity": "",
         "oxidation": "2c",
-        "phase": "",
         "melt": 973.0,
         "boil": 2010.0,
         "density": 5000.0,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "crust": "9.9e-12",
+            "ocean": "1.0e-15",
+            "human": "1.0e-13"
+        },
         "category": "alkaline",
         "period": 7,
-        "group": "",
-        "discovered": "1898",
-        "summary": ""
+        "discovered": "1898"
     },
     "89": {
         "atomic": 89,
@@ -1853,20 +2746,28 @@
         "name": "Ακτίνιο",
         "atomicMass": 227,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 6d1",
+        "electronStringConf": "[Rn] 7s2 6d1",
         "electronegativity": 1.1,
         "atomicRadius": "",
         "ionizationEnergy": 499,
         "electronAffinity": "",
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1323.0,
         "boil": 3473.0,
         "density": 10070.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1899",
-        "summary": ""
+        "discovered": "1899"
     },
     "90": {
         "atomic": 90,
@@ -1874,20 +2775,31 @@
         "name": "Θόριο",
         "atomicMass": 232.0377,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 6d2",
+        "electronStringConf": "[Rn] 7s2 6d2",
         "electronegativity": 1.3,
         "atomicRadius": "",
         "ionizationEnergy": 587,
         "electronAffinity": "",
         "oxidation": "2,3,4c",
-        "phase": "",
         "melt": 2023.0,
         "boil": 5093.0,
         "density": 11724.0,
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "4.0e-8",
+            "solar": "3.0e-8",
+            "meteor": "3.9e-6",
+            "crust": "0.00060",
+            "ocean": "4.0e-12",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1829",
-        "summary": ""
+        "discovered": "1829"
     },
     "91": {
         "atomic": 91,
@@ -1895,20 +2807,29 @@
         "name": "Πρωτακτίνιο",
         "atomicMass": 231.03588,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f2 6d1",
+        "electronStringConf": "[Rn] 7s2 5f2 6d1",
         "electronegativity": 1.5,
         "atomicRadius": "",
         "ionizationEnergy": 568,
         "electronAffinity": "",
         "oxidation": "2,3,4,5c",
-        "phase": "",
         "melt": 1845.0,
         "boil": 4273.0,
         "density": 15370.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "crust": "9.9e-13",
+            "ocean": "2.0e-23",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1913",
-        "summary": ""
+        "discovered": "1913"
     },
     "92": {
         "atomic": 92,
@@ -1916,20 +2837,31 @@
         "name": "Ουράνιο",
         "atomicMass": 238.02891,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f3 6d1",
+        "electronStringConf": "[Rn] 7s2 5f3 6d1",
         "electronegativity": 1.38,
         "atomicRadius": "",
         "ionizationEnergy": 597.6,
         "electronAffinity": "",
         "oxidation": "2,3,4,5,6c",
-        "phase": "",
         "melt": 1408.0,
         "boil": 4200.0,
         "density": 19050.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "2.0e-8",
+            "solar": "1.0e-7",
+            "meteor": "9.8e-7",
+            "crust": "0.00018",
+            "ocean": "3.3e-7",
+            "human": "1.0e-7"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1789",
-        "summary": ""
+        "discovered": "1789"
     },
     "93": {
         "atomic": 93,
@@ -1937,20 +2869,31 @@
         "name": "Ποσειδώνιο",
         "atomicMass": 237,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f4 6d1",
+        "electronStringConf": "[Rn] 7s2 5f4 6d1",
         "electronegativity": 1.36,
         "atomicRadius": "",
         "ionizationEnergy": 604.5,
         "electronAffinity": "",
         "oxidation": "3,4,5c,6,7",
-        "phase": "",
         "melt": 917.0,
         "boil": 4273.0,
         "density": 20450.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1940",
-        "summary": ""
+        "discovered": "1940"
     },
     "94": {
         "atomic": 94,
@@ -1958,20 +2901,31 @@
         "name": "Πλουτώνιο",
         "atomicMass": 244,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f6",
+        "electronStringConf": "[Rn] 7s2 5f6",
         "electronegativity": 1.28,
         "atomicRadius": "",
         "ionizationEnergy": 584.7,
         "electronAffinity": "",
         "oxidation": "3,4c,5,6,7,8",
-        "phase": "",
         "melt": 913.0,
         "boil": 3503.0,
         "density": 19816.0,
+        "quantum": {
+            "l": 3,
+            "m": 2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1940",
-        "summary": ""
+        "discovered": "1940"
     },
     "95": {
         "atomic": 95,
@@ -1979,20 +2933,31 @@
         "name": "Αμερίκιο",
         "atomicMass": 243,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f7",
+        "electronStringConf": "[Rn] 7s2 5f7",
         "electronegativity": 1.3,
         "atomicRadius": "",
         "ionizationEnergy": 578,
         "electronAffinity": "",
         "oxidation": "2,3c,4,5,6",
-        "phase": "",
         "melt": 1449.0,
         "boil": 2284.0,
         "density": 13670.0,
+        "quantum": {
+            "l": 3,
+            "m": 3,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1944",
-        "summary": ""
+        "discovered": "1944"
     },
     "96": {
         "atomic": 96,
@@ -2000,20 +2965,31 @@
         "name": "Κιούριο",
         "atomicMass": 247,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f7 6d1",
+        "electronStringConf": "[Rn] 7s2 5f7 6d1",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 581,
         "electronAffinity": "",
         "oxidation": "3c,4",
-        "phase": "",
         "melt": 1618.0,
         "boil": 3383.0,
         "density": 13510.0,
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1944",
-        "summary": ""
+        "discovered": "1944"
     },
     "97": {
         "atomic": 97,
@@ -2021,20 +2997,31 @@
         "name": "Μπερκέλιο",
         "atomicMass": 247,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f9",
+        "electronStringConf": "[Rn] 7s2 5f9",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 601,
         "electronAffinity": "",
         "oxidation": "3c,4",
-        "phase": "",
         "melt": 1323.0,
         "boil": "",
         "density": 14780.0,
+        "quantum": {
+            "l": 3,
+            "m": -2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1949",
-        "summary": ""
+        "discovered": "1949"
     },
     "98": {
         "atomic": 98,
@@ -2042,20 +3029,31 @@
         "name": "Καλιφόρνιο",
         "atomicMass": 251,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f10",
+        "electronStringConf": "[Rn] 7s2 5f10",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 608,
         "electronAffinity": "",
         "oxidation": "2,3c,4",
-        "phase": "",
         "melt": 1173.0,
         "boil": "",
         "density": 15100.0,
+        "quantum": {
+            "l": 3,
+            "m": -1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1950",
-        "summary": ""
+        "discovered": "1950"
     },
     "99": {
         "atomic": 99,
@@ -2063,20 +3061,31 @@
         "name": "Αϊνσταΐνιο",
         "atomicMass": 252,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f11",
+        "electronStringConf": "[Rn] 7s2 5f11",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 619,
         "electronAffinity": "",
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1133.0,
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 3,
+            "m": 0,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1952",
-        "summary": ""
+        "discovered": "1952"
     },
     "100": {
         "atomic": 100,
@@ -2084,20 +3093,31 @@
         "name": "Φέρμιο",
         "atomicMass": 257,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f12",
+        "electronStringConf": "[Rn] 7s2 5f12",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 627,
         "electronAffinity": "",
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1800.0,
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 3,
+            "m": 1,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1952",
-        "summary": ""
+        "discovered": "1952"
     },
     "101": {
         "atomic": 101,
@@ -2105,20 +3125,31 @@
         "name": "Μεντελέβιο",
         "atomicMass": 258,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f13",
+        "electronStringConf": "[Rn] 7s2 5f13",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 635,
         "electronAffinity": "",
         "oxidation": "2,3c",
-        "phase": "",
         "melt": 1100.0,
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 3,
+            "m": 2,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1955",
-        "summary": ""
+        "discovered": "1955"
     },
     "102": {
         "atomic": 102,
@@ -2126,20 +3157,31 @@
         "name": "Νομπέλιο",
         "atomicMass": 259,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14",
+        "electronStringConf": "[Rn] 7s2 5f14",
         "electronegativity": 1.3,
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 642,
         "electronAffinity": "",
         "oxidation": "2c,3",
-        "phase": "",
         "melt": 1100.0,
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 3,
+            "m": 3,
+            "n": 5
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1958",
-        "summary": ""
+        "discovered": "1958"
     },
     "103": {
         "atomic": 103,
@@ -2147,20 +3189,31 @@
         "name": "Λωρένσιο",
         "atomicMass": 266,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 7p1",
+        "electronStringConf": "[Rn] 7s2 5f14 7p1",
         "electronegativity": "",
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 470,
         "electronAffinity": "",
         "oxidation": "3c",
-        "phase": "",
         "melt": 1900.0,
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "actinoid",
         "period": 7,
-        "group": "",
-        "discovered": "1961",
-        "summary": ""
+        "discovered": "1961"
     },
     "104": {
         "atomic": 104,
@@ -2168,20 +3221,31 @@
         "name": "Ραδερφόρντιο",
         "atomicMass": 267,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d2",
+        "electronStringConf": "[Rn] 7s2 5f14 6d2",
         "electronegativity": "",
-        "atomicRadius": null,
+        "atomicRadius": "",
         "ionizationEnergy": 580,
         "electronAffinity": "",
         "oxidation": "4c",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "transition",
         "period": 7,
-        "group": "",
-        "discovered": "1964",
-        "summary": ""
+        "discovered": "1964"
     },
     "105": {
         "atomic": 105,
@@ -2189,20 +3253,31 @@
         "name": "Ντούμπνιο",
         "atomicMass": 268,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d3",
+        "electronStringConf": "[Rn] 7s2 5f14 6d3",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "5c",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": 0,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "transition",
         "period": 7,
-        "group": "",
-        "discovered": "1967",
-        "summary": ""
+        "discovered": "1967"
     },
     "106": {
         "atomic": 106,
@@ -2210,20 +3285,31 @@
         "name": "Σιμπόργκιο",
         "atomicMass": 269,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d4",
+        "electronStringConf": "[Rn] 7s2 5f14 6d4",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "6c",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": 1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "transition",
         "period": 7,
-        "group": "",
-        "discovered": "1974",
-        "summary": ""
+        "discovered": "1974"
     },
     "107": {
         "atomic": 107,
@@ -2231,20 +3317,31 @@
         "name": "Μπόριο",
         "atomicMass": 270,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d5",
+        "electronStringConf": "[Rn] 7s2 5f14 6d5",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "7c",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "transition",
         "period": 7,
-        "group": "",
-        "discovered": "1981",
-        "summary": ""
+        "discovered": "1981"
     },
     "108": {
         "atomic": 108,
@@ -2252,20 +3349,31 @@
         "name": "Χάσιο",
         "atomicMass": 270,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d6",
+        "electronStringConf": "[Rn] 7s2 5f14 6d6",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "8c",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": -2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "transition",
         "period": 7,
-        "group": "",
-        "discovered": "1984",
-        "summary": ""
+        "discovered": "1984"
     },
     "109": {
         "atomic": 109,
@@ -2273,20 +3381,31 @@
         "name": "Μαϊτνέριο",
         "atomicMass": 278,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d7",
+        "electronStringConf": "[Rn] 7s2 5f14 6d7",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": -1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "1982",
-        "summary": ""
+        "discovered": "1982"
     },
     "110": {
         "atomic": 110,
@@ -2294,20 +3413,31 @@
         "name": "Νταρμστάντιο",
         "atomicMass": 281,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s1 5f14 6d9",
+        "electronStringConf": "[Rn] 7s1 5f14 6d9",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": 1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "1994",
-        "summary": ""
+        "discovered": "1994"
     },
     "111": {
         "atomic": 111,
@@ -2315,20 +3445,31 @@
         "name": "Ρεντγκένιο",
         "atomicMass": 282,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d9",
+        "electronStringConf": "[Rn] 7s2 5f14 6d9",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": 1,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "1994",
-        "summary": ""
+        "discovered": "1994"
     },
     "112": {
         "atomic": 112,
@@ -2336,20 +3477,31 @@
         "name": "Κοπερνίκιο",
         "atomicMass": 285,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 2,
+            "m": 2,
+            "n": 6
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "1996",
-        "summary": ""
+        "discovered": "1996"
     },
     "113": {
         "atomic": 113,
@@ -2357,20 +3509,31 @@
         "name": "Νιχόνιο",
         "atomicMass": 286,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p1",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10 7p1",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "2004",
-        "summary": ""
+        "discovered": "2004"
     },
     "114": {
         "atomic": 114,
@@ -2378,20 +3541,31 @@
         "name": "Φλερόβιο",
         "atomicMass": 289,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p2",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10 7p2",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "1998",
-        "summary": ""
+        "discovered": "1998"
     },
     "115": {
         "atomic": 115,
@@ -2399,20 +3573,31 @@
         "name": "Μοσκόβιο",
         "atomicMass": 290,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p3",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10 7p3",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "2004",
-        "summary": ""
+        "discovered": "2004"
     },
     "116": {
         "atomic": 116,
@@ -2420,20 +3605,31 @@
         "name": "Λιβερμόριο",
         "atomicMass": 293,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p4",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10 7p4",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": -1,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "2000",
-        "summary": ""
+        "discovered": "2000"
     },
     "117": {
         "atomic": 117,
@@ -2441,20 +3637,31 @@
         "name": "Τενέσιο",
         "atomicMass": 294,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p5",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10 7p5",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": 0,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "2010",
-        "summary": ""
+        "discovered": "2010"
     },
     "118": {
         "atomic": 118,
@@ -2462,19 +3669,30 @@
         "name": "Ογκανέσσιο",
         "atomicMass": 294,
         "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6",
+        "electronStringConf": "[Rn] 7s2 5f14 6d10 7p6",
         "electronegativity": "",
-        "atomicRadius": null,
-        "ionizationEnergy": null,
+        "atomicRadius": "",
+        "ionizationEnergy": "",
         "electronAffinity": "",
         "oxidation": "",
-        "phase": "",
         "melt": "",
         "boil": "",
-        "density": null,
+        "density": "",
+        "quantum": {
+            "l": 1,
+            "m": 1,
+            "n": 7
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
         "category": "unknown",
         "period": 7,
-        "group": "",
-        "discovered": "2006",
-        "summary": ""
+        "discovered": "2006"
     }
 }

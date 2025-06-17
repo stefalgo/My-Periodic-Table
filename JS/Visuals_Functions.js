@@ -255,7 +255,7 @@ function showState(show, temp=273) {
     });
 }
 
-function visualize(array, show, prop, propKey = false, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = getTableElements();
 
     if (!show) {
