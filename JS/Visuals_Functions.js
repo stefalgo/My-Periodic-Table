@@ -2,15 +2,13 @@ const visualizeOption = document.getElementById('visualizeOption');
 let visualizationParams = [];
 let temp;
 
-const stateEngGr = [
+const engToGr = [
     {en: "solid", gr: "Στερεά"},
     {en: "liquid", gr: "Υγρά"},
     {en: "gas", gr: "Αέρια"},
     {en: "plasma", gr: "Πλάσμα"},
-];
 
-const classesEngGr = [
-	{en: "alkali", gr: "Αλκαλικά μέταλλα"},
+    {en: "alkali", gr: "Αλκαλικά μέταλλα"},
 	{en: "alkaline", gr: "Αλκαλικές γαίες"},
 	{en: "nonmetal", gr: "Αμέταλλο"},
 	{en: "transition", gr: "Μετάλλα μετάπτωσης"},
@@ -253,11 +251,11 @@ function showState(show, temp=273) {
             phaseClasses.forEach(cls => el.classList.remove(cls));
             el.classList.add(phase);
         }
-        el.querySelector('data').textContent = stateEngGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
+        el.querySelector('data').textContent = engToGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
     });
 }
 
-function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(array, show, prop, propKey = false, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
     const elements = getTableElements();
 
     if (!show) {
@@ -275,7 +273,9 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     const getValue = el => {
         const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
-        const raw = array[key]?.[prop];
+        const raw = propKey
+            ? array[key]?.[prop]?.[propKey]
+            : array[key]?.[prop];
 
         if (raw == null || (typeof raw === 'string' && raw.trim() === '')) return NaN;
         const num = Number(raw);
@@ -300,7 +300,10 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${maxColor.join(',')}), rgba(${minColor.join(',')}))`;
 
-    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
+    if (displayData) {
+        const propLabel = propKey ? `${prop}.${propKey}` : prop;
+        displayDataOnElement(array, propLabel, 7, x => x.toLocaleString('el-GR'));
+    }
 
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
@@ -354,19 +357,19 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	}
 
 
-    //<array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
+    //<array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
 	const config = {
         'chemicalGroupBlock' : {},
 		'blocks': { action: () => showBlocks(true) },
 		'state': { action: () => showState(true, temp) },
-		'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'meltPoint': { params: [elementData, true, 'melt', false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
-		'boilPoint': { params: [elementData, true, 'boil', false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
-		'density': { params: [elementData, true, 'density', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
-		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
-		'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
-        'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+		'atomicMass': { params: [elementData, true, 'atomicMass', null, false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'meltPoint': { params: [elementData, true, 'melt', null, false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
+		'boilPoint': { params: [elementData, true, 'boil', null, false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
+		'density': { params: [elementData, true, 'density', null, false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+		'electronegativity': { params: [elementData, true, 'electronegativity', null, true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
+		'electronAffinity': { params: [elementData, true, 'electronAffinity', null, true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
+		'ionization': { params: [elementData, true, 'ionizationEnergy', null, true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+        'radius': { params: [elementData, true, 'atomicRadius', null, false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
 		'energyLevels': {
 			action: () => {
 				const calculated = {};
@@ -377,7 +380,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 					const electrons = shells[idx] ?? 0;
 					(calculated[key] ??= { Total: 0 }).Total += electrons;
 				});
-				visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+				visualizationParams = [calculated, true, 'Total', null, false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
                 elementData,
                     'electronConfiguration',
@@ -481,7 +484,7 @@ document.getElementById('propertyKey').addEventListener('change', () => {
     const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
     if (selected) {
         if (visualizationParams) {
-            visualizationParams[3] = selected.value === 'log' && true || false
+            visualizationParams[4] = selected.value === 'log' && true || false
             visualize(...visualizationParams);
         }
     }

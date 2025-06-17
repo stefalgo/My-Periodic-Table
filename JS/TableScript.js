@@ -155,7 +155,7 @@ function infoElement(elementAtomicNumber) {
 	createData('Ατομικός', elementData[element].atomic || '--');
 	createData('Ηλεκτρονική δομή', energyLevels(elementData[element].electronConfiguration).join(', ') || '--');
 	createData('Βάρος', (elementData[element].atomicMass || '--') + ' u');
-	createData('Ταξινόμηση', classesEngGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
+	createData('Ταξινόμηση', engToGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
 	createData('Тομέας', getBlock(elementData[elementAtomicNumber])) || '--';
 
 	createData('Σημείο τήξης', (elementData[element].melt || '--') + ' K');
