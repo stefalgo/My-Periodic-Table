@@ -408,15 +408,15 @@ td {
     box-shadow: var(--borderShadowColorEffectClick);
 }
 
-html:not(.blocks, .chemicalGroupBlock) .lanth-Act {
+html:not(.blocks, .category) .lanth-Act {
 	background: transparent;
 }
 
-html:not(.blocks, .chemicalGroupBlock) td:has(> .element) {
+html:not(.blocks, .category) td:has(> .element) {
 	padding: 0;
 }
 
-html:not(.blocks, .chemicalGroupBlock) td:has(> .element) > :is(.element):not(.elementStyle):not(:hover):not(:active) {
+html:not(.blocks, .category) td:has(> .element) > :is(.element):not(.elementStyle):not(:hover):not(:active) {
 	box-shadow: none;
 	padding: 4px;
 }
@@ -454,7 +454,7 @@ html:not(.blocks) .highlightElementBlocks {
 	display: none;
 }
 
-html:not(.chemicalGroupBlock) .highlightElementClasses {
+html:not(.category) .highlightElementClasses {
 	display: none;
 }
 

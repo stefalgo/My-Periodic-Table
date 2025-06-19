@@ -154,9 +154,10 @@ function infoElement(elementAtomicNumber) {
 	createData('Ονομα', elementData[element].name || '--');
 	createData('Ατομικός', elementData[element].atomic || '--');
 	createData('Ηλεκτρονική δομή', energyLevels(elementData[element].electronConfiguration).join(', ') || '--');
+	createData('Διαμόρφωση', elementData[element].electronStringConf) || '--';
 	createData('Βάρος', (elementData[element].atomicMass || '--') + ' u');
 	createData('Ταξινόμηση', engToGr.find(c => c.en === elementData[element].category)?.gr ?? "Άγνωστη κατηγορία");
-	createData('Тομέας', getBlock(elementData[elementAtomicNumber])) || '--';
+	createData('Μπλοκ', getBlock(elementData[elementAtomicNumber]) || '--');
 
 	createData('Σημείο τήξης', (elementData[element].melt || '--') + ' K');
 	createData('Σημείο ζέσεως', (elementData[element].boil || '--') + ' K');

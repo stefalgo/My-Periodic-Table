@@ -361,7 +361,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 
     //<array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
 	const config = {
-        'chemicalGroupBlock' : {},
+        'category' : {},
 		'blocks': { action: () => showBlocks(true) },
 		'state': { action: () => showState(true, temp) },
 		'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
@@ -400,7 +400,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 		},
         'discoveryDate': {
             action: () => {
-                document.documentElement.classList.add('chemicalGroupBlock');
+                document.documentElement.classList.add('category');
                 displayDataOnElement(elementData, 'discovered', null, formatGreekDate);
             },
             //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
