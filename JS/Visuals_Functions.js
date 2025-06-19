@@ -250,15 +250,18 @@ function showState(show, temp=273) {
     const mapped = elements.map(el => ({ el, phase: getPhase(el) }));
 
     mapped.forEach(({ el, phase }) => {
+        const dataText = el.querySelector('data');
+        const text = engToGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
         if (el.style.backgroundColor !== `var(--${phase})`) {
             el.style.backgroundColor = `var(--${phase})`;
         }
-
         if (!el.classList.contains(phase)) {
             phaseClasses.forEach(cls => el.classList.remove(cls));
             el.classList.add(phase);
         }
-        el.querySelector('data').textContent = engToGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
+        if (dataText.textContent !== text) {
+            dataText.textContent = text;
+        }
     });
 }
 
@@ -409,12 +412,13 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 
     const selected = config[value];
 
-    Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
+    if (!document.documentElement.classList.contains(value)) {
+        Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
+        document.documentElement.classList.add(value);
+    };
 	showBlocks(false);
 	showState(false);
 	visualize(false);
-
-    if (value) document.documentElement.classList.add(value);
 
 	if (selected) {
 		if (selected.action) {
@@ -497,9 +501,9 @@ visualizeOption.addEventListener('change', () => {
     URL_setParam('visualizeOption', visualizeOption.value);
 });
 
-document.getElementById('temp').addEventListener('input', tempChange);
-document.getElementById('tempNumInputC').addEventListener('input', tempChange);
-document.getElementById('tempNumInputK').addEventListener('input', tempChange);
+['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>
+    document.getElementById(id).addEventListener('input', tempChange)
+);
 
 document.getElementById("searchbar").addEventListener("input", function () {
     let searchValue = removeDiacritics(this.value.trim().toLowerCase());
