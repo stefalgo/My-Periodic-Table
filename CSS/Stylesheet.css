@@ -126,19 +126,11 @@ body {
 	transition: background var(--transitionTime);
 }
 /**-----------------------------------------------**/
-.hoverEffect:hover {
-	box-shadow: var(--hoverShadow);
-}
-
 .linkText, a {
 	color: #5898bf;
 	cursor: pointer;
 	text-decoration: underline;
 	transition: var(--transitionTime);
-}
-
-.linkText:hover, a:hover {
-	color: #9d58bf;
 }
 /**-----------------------------------------------**/
 button, select {
@@ -187,14 +179,6 @@ input[type="range"]::-webkit-slider-runnable-track {
         #D4EBFF 100%
       );
   box-shadow: var(--borderShadowColorEffect);
-}
-
-button:hover, select:hover {
-	background-color: var(--buttonHoverColor);
-}
-
-input[type="text"]:hover, input[type="number"]:hover {
-	box-shadow: var(--borderShadowColorEffectHover);
 }
 /**-----------------------------------------------**/
 #propertyKey {
@@ -247,10 +231,6 @@ input[type="text"]:hover, input[type="number"]:hover {
 
 [for="logarithmic"]::before {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3Cmarker id='arrow' markerWidth='10' markerHeight='10' refX='5' refY='5' orient='auto'%3E%3Cpolyline points='3,3 5,5 3,7' fill='none' stroke='%23555'/%3E%3C/marker%3E%3C/defs%3E%3Cg stroke='%23555' stroke-width='3'%3E%3Cline x1='10' y1='100' x2='10' y2='10' marker-end='url(%23arrow)'/%3E%3Cline x1='0' y1='90' x2='90' y2='90' marker-end='url(%23arrow)'/%3E%3Cpath d='M10,90 Q20,20 90,20' fill='none'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-#propertyKey label:hover {
-	box-shadow: var(--borderShadowColorEffectHover);
 }
 
 #rangeGradient {
@@ -396,29 +376,12 @@ td {
     cursor: crosshair;
 }**/
 
-.element:not(.empty):hover,
-.elementStyle:not(.empty):hover,
-#CloseUp:hover {
-    box-shadow: var(--borderShadowColorEffectHover);
-}
-
-.element:not(.empty):active,
-.elementStyle:not(.empty):active,
-#CloseUp:active {
-    box-shadow: var(--borderShadowColorEffectClick);
-}
-
 html:not(.blocks, .category) .lanth-Act {
 	background: transparent;
 }
 
 html:not(.blocks, .category) td:has(> .element) {
 	padding: 0;
-}
-
-html:not(.blocks, .category) td:has(> .element) > :is(.element):not(.elementStyle):not(:hover):not(:active) {
-	box-shadow: none;
-	padding: 4px;
 }
 /**-----------------------------------------------**/
 .periodicTable {
@@ -474,31 +437,7 @@ html:not(.state) .highlightElementState {
 	box-shadow: var(--borderShadowColorEffectClick);
 }
 /*---------------------*/
-.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement, .lanth-Act) {
-	opacity: 0.3;
-}
-.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
-.periodicTable:has(.highlightElement.alkali:hover) .alkali,
-.periodicTable:has(.highlightElement.alkaline:hover) .alkaline,
-.periodicTable:has(.highlightElement.transition:hover) .transition,
-.periodicTable:has(.highlightElement.poor:hover) .poor,
-.periodicTable:has(.highlightElement.lanthanoid:hover) .lanthanoid,
-.periodicTable:has(.highlightElement.actinoid:hover) .actinoid,
-.periodicTable:has(.highlightElement.metalloid:hover) .metalloid,
-.periodicTable:has(.highlightElement.nonmetal:hover) .nonmetal,
-.periodicTable:has(.highlightElement.noble:hover) .noble,
-.periodicTable:has(.highlightElement.unknown:hover) .unknown,
-.periodicTable:has(.highlightElement.s:hover) .s,
-.periodicTable:has(.highlightElement.p:hover) .p,
-.periodicTable:has(.highlightElement.d:hover) .d,
-.periodicTable:has(.highlightElement.f:hover) .f,
-.periodicTable:has(.highlightElement.solid:hover) .solid,
-.periodicTable:has(.highlightElement.liquid:hover) .liquid,
-.periodicTable:has(.highlightElement.gas:hover) .gas,
-.periodicTable:has(.highlightElement.unknownState:hover) .unknownState  {
-	opacity: 1;
-	box-shadow: var(--borderShadowColorEffectHover);
-}
+
 /**-----------------------------------------------**/
 #sitePopup {
 	position: fixed;
@@ -528,19 +467,6 @@ html:not(.state) .highlightElementState {
 #sitePopup .infoContainer iframe{
 	width: 100%;
 	height: 95%;
-}
-
-#sitePopup .infoContainer .close {
-	color: gray;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: var(--transitionTime);
-}
-#sitePopup .infoContainer .close:hover {
-	color: red;
-	text-decoration: none;
 }
 /**-----------------------------------------------**/
 #atom .atom {
@@ -605,7 +531,7 @@ html:not(.state) .highlightElementState {
 	display: flex;
 	justify-content: space-between;
 }
-#infoPopup .infoContainer .close {
+.close {
 	color: gray;
 	float: right;
 	font-size: 28px;
@@ -613,7 +539,72 @@ html:not(.state) .highlightElementState {
 	cursor: pointer;
 	transition: var(--transitionTime);
 }
-#infoPopup .infoContainer .close:hover {
+
+/**-----------------------------------------------**/
+.hoverEffect:hover {
+	box-shadow: var(--hoverShadow);
+}
+
+.linkText:hover, a:hover {
+	color: #9d58bf;
+}
+
+button:hover, select:hover {
+	background-color: var(--buttonHoverColor);
+}
+
+input[type="text"]:hover, input[type="number"]:hover {
+	box-shadow: var(--borderShadowColorEffectHover);
+}
+
+#propertyKey label:hover {
+	box-shadow: var(--borderShadowColorEffectHover);
+}
+/**-----------------**/
+html:not(.blocks, .category) td:has(> :where(.element)) > :where(.element) {
+	box-shadow: none;
+	padding: 4px;
+}
+/**-----------------**/
+.element:not(.empty):hover,
+.elementStyle:not(.empty):hover,
+#CloseUp:hover {
+    box-shadow: var(--borderShadowColorEffectHover);
+}
+
+.element:not(.empty):active,
+.elementStyle:not(.empty):active,
+#CloseUp:active {
+    box-shadow: var(--borderShadowColorEffectClick);
+}
+
+.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement, .lanth-Act) {
+	opacity: 0.3;
+}
+.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
+.periodicTable:has(.highlightElement.alkali:hover) .alkali,
+.periodicTable:has(.highlightElement.alkaline:hover) .alkaline,
+.periodicTable:has(.highlightElement.transition:hover) .transition,
+.periodicTable:has(.highlightElement.poor:hover) .poor,
+.periodicTable:has(.highlightElement.lanthanoid:hover) .lanthanoid,
+.periodicTable:has(.highlightElement.actinoid:hover) .actinoid,
+.periodicTable:has(.highlightElement.metalloid:hover) .metalloid,
+.periodicTable:has(.highlightElement.nonmetal:hover) .nonmetal,
+.periodicTable:has(.highlightElement.noble:hover) .noble,
+.periodicTable:has(.highlightElement.unknown:hover) .unknown,
+.periodicTable:has(.highlightElement.s:hover) .s,
+.periodicTable:has(.highlightElement.p:hover) .p,
+.periodicTable:has(.highlightElement.d:hover) .d,
+.periodicTable:has(.highlightElement.f:hover) .f,
+.periodicTable:has(.highlightElement.solid:hover) .solid,
+.periodicTable:has(.highlightElement.liquid:hover) .liquid,
+.periodicTable:has(.highlightElement.gas:hover) .gas,
+.periodicTable:has(.highlightElement.unknownState:hover) .unknownState  {
+	opacity: 1;
+	box-shadow: var(--borderShadowColorEffectHover);
+}
+/**-----------------**/
+.close:hover {
 	color: red;
 	text-decoration: none;
 }
