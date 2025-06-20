@@ -181,6 +181,8 @@ function openLinkInIframe(rowId) {
 	//let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
 	//let link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
 	//let link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
+
+	//https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/ + + "#view=Fit"
 	let link;
 
 	function closePopup(event) {
@@ -190,9 +192,9 @@ function openLinkInIframe(rowId) {
 	}
 
 	if (elementData[rowId].linkElementName) {
-		link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].linkElementName + "#view=Fit";
+		link = 'Files/ElementsPDF' + elementData[rowId].linkElementName + '.pdf';
 	} else {
-		link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit";
+		link = 'Files/ElementsPDF' + elementData[rowId].name + '.pdf';
 	}
 	
 	sitePopup.querySelector('iframe').src = link;
