@@ -192,9 +192,9 @@ function openLinkInIframe(rowId) {
 	}
 
 	if (elementData[rowId].linkElementName) {
-		link = 'Files/ElementsPDF' + elementData[rowId].linkElementName + '.pdf';
+		link = 'Files/ElementsPDF/' + elementData[rowId].linkElementName + '.pdf';
 	} else {
-		link = 'Files/ElementsPDF' + elementData[rowId].name + '.pdf';
+		link = 'Files/ElementsPDF/' + elementData[rowId].name + '.pdf';
 	}
 	
 	sitePopup.querySelector('iframe').src = link;
