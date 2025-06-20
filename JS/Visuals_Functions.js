@@ -512,11 +512,14 @@ document.getElementById("searchbar").addEventListener("input", function () {
     items.forEach(item => {
         let atomicValue = removeDiacritics(item.getAttribute("data-atomic") || "");
         let emElement = item.querySelector("em");
+        let abbrElement = item.querySelector("abbr");
+
+        let abbrElementText = abbrElement ? removeDiacritics(abbrElement.textContent.trim().toLowerCase()) : "";
         let emText = emElement ? removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
 
         if (searchValue === "") {
             item.classList.remove("highlight");
-        } else if (atomicValue === searchValue || emText.includes(searchValue)) {
+        } else if (atomicValue === searchValue || emText.includes(searchValue) || abbrElementText === searchValue) {
             item.classList.add("highlight");
         } else {
             item.classList.remove("highlight");
