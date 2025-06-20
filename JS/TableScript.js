@@ -131,8 +131,8 @@ function infoElement(elementAtomicNumber) {
 
 	function closePopup(event) {
 		infoPopup.style.display = "none";
-		wikipediaLink.href = "";
-		downloadPDF.href = "";
+		wikipediaLink.href = '';
+		downloadPDF.href = '';
 		closeUp2.removeEventListener('click', wikipediaIframeOpen);
 		infoPopup.querySelector('.close').removeEventListener('click', closePopup);
 	}
@@ -144,11 +144,11 @@ function infoElement(elementAtomicNumber) {
 	element = elementAtomicNumber;
 	
 	if (elementData[element].linkElementName) {
-		link = "https://el.wikipedia.org/wiki/" + elementData[element].linkElementName;
-		pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].linkElementName;
+		link = 'https://el.wikipedia.org/wiki/' + elementData[element].linkElementName;
+		pdf = 'https://el.wikipedia.org/api/rest_v1/page/pdf/' + elementData[element].linkElementName;
 	} else {
-		link = "https://el.wikipedia.org/wiki/" + elementData[element].name;
-		pdf = "https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[element].name;
+		link = 'https://el.wikipedia.org/wiki/' + elementData[element].name;
+		pdf = 'https://el.wikipedia.org/api/rest_v1/page/pdf/' + elementData[element].name;
 	}
 
 	createData('Ονομα', elementData[element].name || '--');
@@ -192,11 +192,10 @@ function openLinkInIframe(rowId) {
 	}
 
 	if (elementData[rowId].linkElementName) {
-		link = 'Files/ElementsPDF/' + elementData[rowId].linkElementName + '.pdf';
+		link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].linkElementName + '?withgadget=dark-mode';
 	} else {
-		link = 'Files/ElementsPDF/' + elementData[rowId].name + '.pdf';
+		link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].name + '?withgadget=dark-mode';
 	}
-	
 	sitePopup.querySelector('iframe').src = link;
 	
 	sitePopup.style.display = "block";
