@@ -143,7 +143,6 @@ button, select {
 	text-decoration: none;
 	font-size: 16px;
 	margin: 4px 2px;
-	cursor: pointer;
 	border-radius: 4px;
 	transition: var(--transitionTime);
 	box-shadow: var(--borderShadowColorEffect);
@@ -179,6 +178,81 @@ input[type="range"]::-webkit-slider-runnable-track {
         #D4EBFF 100%
       );
   box-shadow: var(--borderShadowColorEffect);
+}
+/**---------------------------**/
+.dropdown {
+	position: relative;
+	width: 220px;
+	color: #ffffff;
+	margin: 4px 2px;
+}
+
+.dropdown .list input[type="radio"] {
+	display: none;
+}
+
+.dropdown #dropdown-toggle {
+	display: none;
+}
+
+.dropdown .dropdown-current {
+	display: block;
+	padding: 4px;
+	box-shadow: var(--borderShadowColorEffect);
+	background: var(--buttonColor);
+	user-select: none;
+	font-size: 14px;
+	border: none;
+	border-radius: 4px;
+	position: relative;
+	transition: var(--transitionTime);
+	z-index: 1;
+}
+
+.dropdown .list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	box-shadow: var(--borderShadowColorEffect);
+	background: var(--buttonColor);
+	display: none;
+	/**max-height: 300px;**/
+	overflow-y: auto;
+	font-size: 14px;
+	z-index: 1;
+	min-height: 100%;
+}
+
+.dropdown .list label {
+	display: block;
+	padding: 4px;
+	transition: var(--transitionTime);
+}
+
+.dropdown .dropdown-current::after {
+	content: "";
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 6px solid currentColor;
+	transition: transform var(--transitionTime);
+}
+
+.dropdown #dropdown-toggle:checked ~ .list {
+	display: block;
+}
+
+.dropdown .list label:has(> input[type="radio"]:checked) {
+	box-shadow: var(--borderShadowColorEffectClick);
+}
+.dropdown #dropdown-toggle:checked + .dropdown-current::after {
+	transform: translateY(-50%) rotate(180deg);
 }
 /**-----------------------------------------------**/
 #propertyKey {
@@ -541,6 +615,7 @@ html:not(.state) .highlightElementState {
 }
 
 /**-----------------------------------------------**/
+
 .hoverEffect:hover {
 	box-shadow: var(--hoverShadow);
 }
@@ -559,6 +634,14 @@ input[type="text"]:hover, input[type="number"]:hover {
 
 #propertyKey label:hover {
 	box-shadow: var(--borderShadowColorEffectHover);
+}
+/**-----------------**/
+.dropdown .list label:hover {
+	box-shadow: var(--borderShadowColorEffectHover);
+}
+
+.dropdown .dropdown-current:hover {
+	background: var(--buttonHoverColor);
 }
 /**-----------------**/
 html:not(.blocks, .category) td:has(> :where(.element)) > :where(.element) {

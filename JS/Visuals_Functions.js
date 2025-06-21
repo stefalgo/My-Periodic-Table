@@ -297,9 +297,12 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     if (!data.length) return;
 
-    const symlog = v => v === 0 ? 0 : Math.sign(v) * Math.log10(Math.abs(v));
+    const symlog = (v, minLog) => v === 0 ? 0 : Math.sign(v) * (Math.log10(Math.abs(v)) - minLog);
 
-    const toScale = v => useLog ? symlog(v) : v;
+    const rawVals = data.map(d => d.val);
+    const logs = rawVals.filter(v => v !== 0).map(v => Math.sign(v) * Math.log10(Math.abs(v)));
+    const minLog = Math.min(...logs);
+    const toScale = v => useLog ? symlog(v, minLog) : v;
 
     const scaledVals = data.map(d => toScale(d.val));
     const minVal = Math.min(...scaledVals);
@@ -355,7 +358,8 @@ function toggleColorScheme() {
 }
 
 function visualizeOptionFunc(forceUpdateParams = true) {
-	const value = visualizeOption.value;
+	const value = visualizeOption.dataset.selected.split('.')[0];
+    const value2 = visualizeOption.dataset.selected.split('.')[1];
 
 	if (forceUpdateParams) {
 		visualizationParams = null;
@@ -375,7 +379,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
 		'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
         'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
-		'energyLevels': {
+        'energyLevels': {
 			action: () => {
 				const calculated = {};
 				Object.entries(elementData).forEach(([key, el]) => {
@@ -407,11 +411,20 @@ function visualizeOptionFunc(forceUpdateParams = true) {
                 displayDataOnElement(elementData, 'discovered', null, formatGreekDate);
             },
             //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
-        }
+        },
+        'abundance': { params: [elementData, true, 'elementAbundance', true, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
 	};
 
     const selected = config[value];
 
+    if (value2) {
+        for (const key in config) {
+            const entry = config[key];
+            if (entry.params && typeof entry.params[2] === 'string') {
+                entry.params[2] = `${entry.params[2]}.${value2}`;
+            }
+        }
+    }
     if (!document.documentElement.classList.contains(value)) {
         Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
         document.documentElement.classList.add(value);
@@ -481,7 +494,7 @@ if (URL_readParam('lighting') === 'other') {
 }
 
 if (URL_readParam('visualizeOption')) {
-    visualizeOption.value = URL_readParam('visualizeOption');
+    visualizeOption.dataset.selected = URL_readParam('visualizeOption');
 }
 
 adjustElementsText('.element', 'em', 60);
@@ -498,12 +511,64 @@ document.getElementById('propertyKey').addEventListener('change', () => {
 
 visualizeOption.addEventListener('change', () => {
     visualizeOptionFunc();
-    URL_setParam('visualizeOption', visualizeOption.value);
+    URL_setParam('visualizeOption', visualizeOption.dataset.selected);
 });
 
 ['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>
     document.getElementById(id).addEventListener('input', tempChange)
 );
+
+document.querySelectorAll('.dropdown').forEach(drop => {
+	const current = drop.querySelector('.dropdown-current');
+	const toggle  = drop.querySelector('#dropdown-toggle');
+	const radios  = drop.querySelectorAll('input[type=radio]');
+
+	const valueOf = r => {
+		const sub = r.parentElement.querySelector('select');
+		return sub ? `${r.value}.${sub.value}` : r.value;
+	};
+
+	const labelOf = r => {
+		const labelText = [...r.parentElement.childNodes]
+			.filter(n => n.nodeType === 3 && n.textContent.trim())[0]
+			.textContent.trim();
+		const sub = r.parentElement.querySelector('select');
+		return sub
+			? `${labelText} > ${sub.options[sub.selectedIndex].textContent.trim()}`
+			: labelText;
+	};
+
+	const setCurrent = r => {
+		drop.dataset.selected = valueOf(r);
+		current.textContent   = labelOf(r);
+		toggle.checked        = false;
+	};
+
+	const [wantRadio, wantSub] = (drop.dataset.selected || "").split(".");
+	let init = [...radios].find(r => r.value === wantRadio);
+
+	if (init) {
+		const s = init.parentElement.querySelector('select');
+		if (s && wantSub) s.value = wantSub;
+	} else {
+		init = radios[0];
+	}
+
+	init.checked = true;
+	setCurrent(init);
+
+	radios.forEach(r => {
+		r.addEventListener('change', () => setCurrent(r));
+		r.addEventListener('click',  () => setCurrent(r));
+
+		const sub = r.parentElement.querySelector('select');
+		if (sub) sub.addEventListener('change', () => r.checked && setCurrent(r));
+	});
+
+	document.addEventListener('click', e => {
+		if (!drop.contains(e.target)) toggle.checked = false;
+	});
+});
 
 document.getElementById("searchbar").addEventListener("input", function () {
     let searchValue = removeDiacritics(this.value.trim().toLowerCase());

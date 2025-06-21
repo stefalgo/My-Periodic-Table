@@ -13,24 +13,42 @@
 		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
 		<button onclick="toggleColorScheme()" style="position: fixed; top: 1%; right: 1%;">Color Scheme</button>
 		
-		<label for="visualizeOption">Επιλογή οπτικοποίησης:</label>
-		<select id="visualizeOption">
-			<option value="category">Κατηγορία</option>
-			<option value="blocks">Μπλοκ ηλεκτρονιακής διάταξης</option>
-			<option value="state">Κατάσταση</option>
-			
-			<option value="atomicMass">Ατομική Μάζα (u)</option>
-			<option value="energyLevels">Ηλεκτρονική δομή</option>
-			<option value="meltPoint">Σημείο τήξης (K)</option>
-			<option value="boilPoint">Σημείο ζέσεως (K)</option>
-			<option value="density">Πυκνότητα (kJ/m<sup>3</sup>)</option>
-			<option value="electronegativity">Ηλεκτραρνητικότητα</option>
-			<option value="electronAffinity">Ηλεκτροσυγγένεια (kJ/mol)</option>
-			<option value="ionization">Ιονισμός (kJ/mol)</option>
-			<option value="radius">Ακτίνα (pm)</option>
+		<span>Επιλογή οπτικοποίησης:</span>
 
-			<option value="discoveryDate">Έτος Ανακάλυψης</option>
-		</select>
+		<div class="dropdown" id="visualizeOption" data-selected="category">
+			<input type="checkbox" id="dropdown-toggle">
+			<label for="dropdown-toggle" class="dropdown-current">---</label>
+			<div class="list">
+				<label><input type="radio" name="visOption" value="category">Κατηγορία</label>
+				<label><input type="radio" name="visOption" value="blocks">Μπλοκ ηλεκτρονιακής διάταξης</label>
+				<label><input type="radio" name="visOption" value="state">Κατάσταση</label>
+
+				<label><input type="radio" name="visOption" value="atomicMass">Ατομική Μάζα (u)</label>
+				<label><input type="radio" name="visOption" value="energyLevels">Ηλεκτρονική δομή</label>
+				<label><input type="radio" name="visOption" value="meltPoint">Σημείο τήξης (K)</label>
+				<label><input type="radio" name="visOption" value="boilPoint">Σημείο ζέσεως (K)</label>
+				<label><input type="radio" name="visOption" value="density">Πυκνότητα (kJ/m3)</label>
+				<label><input type="radio" name="visOption" value="electronegativity">Ηλεκτραρνητικότητα</label>
+				<label><input type="radio" name="visOption" value="electronAffinity">Ηλεκτροσυγγένεια (kJ/mol)</label>
+				<label><input type="radio" name="visOption" value="ionization">Ιονισμός (kJ/mol)</label>
+				<label><input type="radio" name="visOption" value="radius">Ακτίνα (pm)</label>
+
+				<label>
+					<input type="radio" name="visOption" value="abundance">
+					Αφθονία
+					<select>
+						<option value="universe">Σύμπαν</option>
+						<option value="solar">Ηλιακό</option>
+						<option value="meteor">Μετεωρίτες</option>
+						<option value="crust">Φλοιός</option>
+						<option value="ocean">Ωκεανός</option>
+						<option value="human">Άνθρωπος</option>
+					</select>
+				</label>
+
+				<label><input type="radio" name="visOption" value="discoveryDate">Έτος Ανακάλυψης</label>
+			</div>
+		</div>
 
 		<div style="display: flex; align-items: center;">
 			<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;">
