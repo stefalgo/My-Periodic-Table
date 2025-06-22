@@ -532,7 +532,7 @@ document.querySelectorAll('.dropdown').forEach(drop => {
 		const labelText = [...r.parentElement.childNodes]
 			.filter(n => n.nodeType === 3 && n.textContent.trim())[0]
 			.textContent.trim();
-		const sub = r.parentElement.querySelector('select');
+		const sub = r.parentElement.querySelector('#subOptions');
 		return sub
 			? `${labelText} > ${sub.options[sub.selectedIndex].textContent.trim()}`
 			: labelText;
@@ -548,7 +548,7 @@ document.querySelectorAll('.dropdown').forEach(drop => {
 	let init = [...radios].find(r => r.value === wantRadio);
 
 	if (init) {
-		const s = init.parentElement.querySelector('select');
+		const s = init.parentElement.querySelector('#subOptions');
 		if (s && wantSub) s.value = wantSub;
 	} else {
 		init = radios[0];
@@ -561,7 +561,7 @@ document.querySelectorAll('.dropdown').forEach(drop => {
 		r.addEventListener('change', () => setCurrent(r));
 		r.addEventListener('click',  () => setCurrent(r));
 
-		const sub = r.parentElement.querySelector('select');
+		const sub = r.parentElement.querySelector('#subOptions');
 		if (sub) sub.addEventListener('change', () => r.checked && setCurrent(r));
 	});
 
