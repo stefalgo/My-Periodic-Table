@@ -391,16 +391,16 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 				});
 				visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
-                elementData,
+                    elementData,
                     'electronConfiguration',
                     null,
                     x => {
-                    const levels   = energyLevels(x);
-                    const last3    = levels.slice(-3);
-                    return (levels.length > 3
-                    ? ['-'].concat(last3)
-                        : last3)
-                        .join(' ');
+                        const levels   = energyLevels(x);
+                        const last3    = levels.slice(-3);
+                        return (levels.length > 3
+                            ? ['-'].concat(last3)
+                                : last3)
+                                .join(' ');
                     }
                 );
 			}
@@ -412,7 +412,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
             },
             //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
         },
-        'abundance': { params: [elementData, true, 'elementAbundance', true, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+        'abundance': { params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
 	};
 
     const selected = config[value];
@@ -422,6 +422,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
             const entry = config[key];
             if (entry.params && typeof entry.params[2] === 'string') {
                 entry.params[2] = `${entry.params[2]}.${value2}`;
+                displayDataOnElement(elementData, entry.params[2], null, x => `${x}%`);
             }
         }
     }
