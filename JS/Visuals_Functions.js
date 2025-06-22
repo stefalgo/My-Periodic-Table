@@ -270,10 +270,10 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
-        document.getElementById('propertyKey').style.display = 'none';
+        //document.getElementById('propertyKey').style.display = 'none';
         return;
     }
-    document.getElementById('propertyKey').style.display = 'flex';
+    //document.getElementById('propertyKey').style.display = 'flex';
 
     if (useLog) {
         document.getElementById('logarithmic').checked = true;
@@ -540,8 +540,8 @@ document.querySelectorAll('.dropdown').forEach(drop => {
 
 	const setCurrent = r => {
 		drop.dataset.selected = valueOf(r);
-		current.textContent   = labelOf(r);
-		toggle.checked        = false;
+		current.textContent = labelOf(r);
+		toggle.checked = false;
 	};
 
 	const [wantRadio, wantSub] = (drop.dataset.selected || "").split(".");

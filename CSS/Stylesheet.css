@@ -256,10 +256,8 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 /**-----------------------------------------------**/
 #propertyKey {
-	display: none;
     flex-direction: row;
     align-items: center;
-	height: 100%;
 }
 
 #propertyKey input[type="radio"] {
@@ -473,30 +471,32 @@ html:not(.blocks, .category) td:has(> .element) {
 .elementsClassView {
 	display: flex;
 	width: 100%;
+	height: 100%;
     flex-wrap: wrap;
 	align-content: flex-start;
 	justify-content: center;
+	transform: translateY(calc(-3 * 100%));
+	transition: var(--transitionTime);
 }
 
 .elementsClassView .highlightElement {
 	width: 40%;
-	height: 15%;
 	margin: 3px;
 	text-align: center;
 	transition: var(--transitionTime);
 	box-shadow: var(--borderShadowColorEffect);
 }
 
-html:not(.blocks) .highlightElementBlocks {
-	display: none;
+html:is(.category) .elementsClassView {
+	transform: translateY(calc(0 * 100%));
 }
 
-html:not(.category) .highlightElementClasses {
-	display: none;
+html:is(.blocks) .elementsClassView {
+	transform: translateY(calc(-1 * 100%));
 }
 
-html:not(.state) .highlightElementState {
-	display: none;
+html:is(.state) .elementsClassView {
+	transform: translateY(calc(-2 * 100%));
 }
 
 .elementsClassView div span {

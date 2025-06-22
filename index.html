@@ -119,7 +119,7 @@
 					<td><div class="element nonmetal s" data-atomic="1"> <b>1</b> <abbr>H</abbr> <em>Υδρογόνο</em> <data>1.008</data> </div></td>
 					<td colspan="2"></td>
 					<td colspan="4" rowspan="3">
-						<div style="width: 100%; height: 100%; overflow: auto;">
+						<div style="width: 100%; height: 100%; overflow: hidden; contain: size;">
 							<div class="elementsClassView highlightElementClasses">
 								<div class="alkali highlightElement hoverEffect"><span>Αλκαλι</span></div>
 								<div class="alkaline highlightElement hoverEffect"><span>Αλκαλικές</span></div>
@@ -144,7 +144,7 @@
 								<div class="gas highlightElement hoverEffect"><span>Αέρια</span></div>
 								<div class="unknownState highlightElement hoverEffect"><span>Άγνωστα</span></div>
 
-								<div style="width: 100%; height: 100%; overflow: auto; display: flex; flex-direction: column;">
+								<div style="width: 100%; overflow: auto; display: flex; flex-direction: column;">
 									<div>
 										<input id="tempNumInputK" type="number" min="0" max="7000" step="1" value="273">
 										<label for="tempNumInputK">K</label>
@@ -156,7 +156,7 @@
 									<input id="temp" type="range" min="0" max="7000" step="1" value="273">
 								</div>
 							</div>
-							<div id="propertyKey">
+							<div class="elementsClassView" id="propertyKey">
 								<input id="Linear" type="radio" name="scale" value="lin">
 								<label for="Linear">Γραμμικός</label>
 
