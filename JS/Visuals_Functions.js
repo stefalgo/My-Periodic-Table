@@ -572,7 +572,12 @@ document.querySelectorAll('.dropdown').forEach(drop => {
 });
 
 document.getElementById("searchbar").addEventListener("input", function () {
-    let searchValue = removeDiacritics(this.value.trim().toLowerCase());
+    let rawInput = this.value.trim().toLowerCase();
+    let searchTerms = rawInput
+        .split(/\s*(?:,)\s*/i) // Split by "," or "and"
+        .filter(term => term !== "")
+        .map(term => removeDiacritics(term));
+
     let items = document.querySelectorAll(".element");
 
     items.forEach(item => {
@@ -583,9 +588,18 @@ document.getElementById("searchbar").addEventListener("input", function () {
         let abbrElementText = abbrElement ? removeDiacritics(abbrElement.textContent.trim().toLowerCase()) : "";
         let emText = emElement ? removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
 
-        if (searchValue === "") {
+        if (searchTerms.length === 0) {
             item.classList.remove("highlight");
-        } else if (atomicValue === searchValue || emText.includes(searchValue) || abbrElementText === searchValue) {
+            return;
+        }
+
+        let matched = searchTerms.some(term =>
+            atomicValue === term ||
+            abbrElementText === term ||
+            emText.includes(term)
+        );
+
+        if (matched) {
             item.classList.add("highlight");
         } else {
             item.classList.remove("highlight");
