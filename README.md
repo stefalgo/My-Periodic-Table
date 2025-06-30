@@ -1,5 +1,5 @@
 # My Periodic Table
-This is a Periodic Table that I made a while ago, and I just uploaded it here as a page:\
+Some Periodic table i made bc i was bored\
 https://stefalgo.github.io/My-Periodic-Table
 
 ## Όλα τα 118 στοιχεία
