@@ -435,7 +435,7 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	visualize(false);
 
 	if (selected) {
-		if (selected.action) {
+		if (selected.action && (forceUpdateParams || !visualizationParams)) {
 			selected.action();
 		}
 		if (selected.params && (forceUpdateParams || !visualizationParams)) {
