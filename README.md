@@ -1,3 +1,5 @@
+[![by-nc-nd](docs/images/by_nc_nd_4_0.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 # My Periodic Table
 Some Periodic table i made bc i was bored\
 https://stefalgo.github.io/My-Periodic-Table
@@ -19,6 +21,10 @@ https://stefalgo.github.io/My-Periodic-Table
 ![image](docs/images/Dropdown.png)\
 ![image](docs/images/Mass.png)
 
+## Πηγές δεδομένων στοιχείων
+[https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)\
+[https://ptable.com](https://ptable.com)\
+[https://el.wikipedia.org/](https://el.wikipedia.org) for some elements
+
 ## Author
-[![by-nc-nd](docs/images/by_nc_nd_4_0.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)\
 &copy; 2025 [@stefalgo](https://github.com/stefalgo) **All Rights Reserved.**
