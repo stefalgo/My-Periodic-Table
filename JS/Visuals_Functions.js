@@ -357,13 +357,12 @@ function toggleColorScheme() {
     document.documentElement.classList.toggle('lightMode');
 }
 
-function visualizeOptionFunc(forceUpdateParams = true) {
-	const value = visualizeOption.dataset.selected.split('.')[0];
+function visualizeOptionFunc(setLogMode = true) {
+    const value = visualizeOption.dataset.selected.split('.')[0];
     const value2 = visualizeOption.dataset.selected.split('.')[1];
+    const logState = Array.isArray(visualizationParams) ? visualizationParams[3] : undefined;
 
-	if (forceUpdateParams) {
-		visualizationParams = null;
-	}
+    visualizationParams = null;
 
 
     //<array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
@@ -435,10 +434,10 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	visualize(false);
 
 	if (selected) {
-		if (selected.action && (forceUpdateParams || !visualizationParams)) {
+		if (selected.action && (!visualizationParams)) {
 			selected.action();
 		}
-		if (selected.params && (forceUpdateParams || !visualizationParams)) {
+		if (selected.params && (!visualizationParams)) {
 			visualizationParams = selected.params;
 		}
 	}
@@ -448,6 +447,9 @@ function visualizeOptionFunc(forceUpdateParams = true) {
 	}
 
 	if (visualizationParams) {
+        if (!setLogMode && logState) {
+            visualizationParams[3] = logState;
+        }
 		visualize(...visualizationParams);
 	}
 }
