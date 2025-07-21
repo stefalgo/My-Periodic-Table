@@ -23,7 +23,7 @@ https://stefalgo.github.io/My-Periodic-Table
 ## Πηγές δεδομένων στοιχείων
 [https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)\
 [https://ptable.com](https://ptable.com)\
-[https://wikipedia.org](https://wikipedia.org) for some elements
+[https://wikipedia.org](https://wikipedia.org)
 
 ## Author
 &copy; 2025 [@stefalgo](https://github.com/stefalgo) **All Rights Reserved.**
