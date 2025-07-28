@@ -1,4 +1,8 @@
+const closeUp = document.getElementById('CloseUp');
 const visualizeOption = document.getElementById('visualizeOption');
+
+let elementData;
+
 let visualizationParams = [];
 let temp;
 
@@ -19,6 +23,22 @@ const engToGr = [
 	{en: "poor", gr: "Φτωχό μέταλλο"},
 	{en: "noble", gr: "Ευγενές αέριο"}
 ];
+
+function onDataLoaded() {
+	if (!elementData) return;
+	if (URL_readParam('SelectedElement')) {
+		if (elementData[URL_readParam('SelectedElement')]) {
+			showElementData(URL_readParam('SelectedElement'));
+		} else {
+			showElementData(1);
+			URL_setParam('SelectedElement', 1)
+		}
+	} else {
+		showElementData(1);
+	}
+
+	visualizeOptionFunc();
+}
 
 function toNumber(str) {
     const match = str.match(/-?\d+(\.\d+)?/);
@@ -71,6 +91,32 @@ function formatGreekDate(yearLike) {
     return year < 0
         ? `${Math.abs(year)} π.Χ.`
         : `${year} μ.Χ.`;
+}
+
+function openLinkInIframe(rowId) {
+	const sitePopup = document.getElementById('sitePopup');
+	//let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
+	//let link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
+	//let link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
+
+	//https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/ + + "#view=Fit"
+	let link;
+
+	function closePopup(event) {
+		sitePopup.querySelector('iframe').src = '';
+		sitePopup.style.display = "none";
+		sitePopup.querySelector('.close').removeEventListener('click', closePopup);
+	}
+
+	if (elementData[rowId].linkElementName) {
+		link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].linkElementName + '?withgadget=dark-mode';
+	} else {
+		link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].name + '?withgadget=dark-mode';
+	}
+	sitePopup.querySelector('iframe').src = link;
+	
+	sitePopup.style.display = "block";
+	sitePopup.querySelector('.close').addEventListener('click', closePopup);
 }
 
 function getTableElements() {
@@ -454,6 +500,35 @@ function visualizeOptionFunc(setLogMode = true) {
 	}
 }
 
+function generateAtom(atomicNumber) {
+	const atomContainer = document.getElementById('atom');
+	const atomCore = atomContainer.querySelector('.atom');
+	if (!elementData[atomicNumber]) {console.error('Atomic number not found in the data.'); return;}
+	atomCore.innerHTML = '';
+	energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
+		const energyLevelDiv = document.createElement('div');
+		const radius = (index + 2) * 9;
+		const animationSpeed = radius / 2;
+
+		energyLevelDiv.classList.add('energy-level');
+		energyLevelDiv.style.width = radius * 2 + 'px';
+		energyLevelDiv.style.height = radius * 2 + 'px';
+		energyLevelDiv.style.animation = `spin ${animationSpeed}s linear infinite`;
+		atomCore.appendChild(energyLevelDiv);
+
+		for (let i = 0; i < numElectrons; i++) {
+			const angle = (360 / numElectrons) * i - 90;
+			const electron = document.createElement('div');
+			electron.classList.add('electron');
+			const electronX = radius * Math.cos(angle * Math.PI / 180) + radius - 5;
+			const electronY = radius * Math.sin(angle * Math.PI / 180) + radius - 5;
+			electron.style.top = electronY + 'px';
+			electron.style.left = electronX + 'px';
+			energyLevelDiv.appendChild(electron);
+		}
+	});
+}
+
 function tempChange(e) {
     const tempNumberInputC = document.getElementById('tempNumInputC');
     const tempNumberInputK = document.getElementById('tempNumInputK');
@@ -484,6 +559,101 @@ function tempChange(e) {
     visualizeOptionFunc();
 }
 
+function showElementData(elementAtomicNumber) {
+	const atomic = closeUp.querySelector('.closeUp-atomic');
+	const symbol = closeUp.querySelector('.closeUp-shortName');
+	const name = closeUp.querySelector('.closeUp-name');
+	const energyLevel = closeUp.querySelector('small');
+
+	energyLevel.innerHTML = '';
+	atomic.textContent = elementAtomicNumber;
+	name.textContent = elementData[elementAtomicNumber].name;
+	symbol.textContent = elementData[elementAtomicNumber].symbol;
+	
+
+	closeUp.classList = '';
+	closeUp.classList.add(elementData[elementAtomicNumber].category);
+	closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
+	closeUp.setAttribute('data-atomic', elementAtomicNumber)
+	
+	visualizeOptionFunc(false);
+
+	for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
+		let spanElement = document.createElement('span');
+		spanElement.textContent = level;
+		energyLevel.appendChild(spanElement);
+	}
+
+	generateAtom(elementAtomicNumber);
+	adjustElementsText('#CloseUp', 'em', 70);
+}
+
+function infoElement(elementAtomicNumber) {
+    const infoPopup = document.getElementById('infoPopup');
+    const popupData = infoPopup.querySelector('.popup-data');
+    const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
+    const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
+    const closeUp2 = copyCloseUp();
+    
+    const element = elementAtomicNumber;
+    const data = elementData[element];
+    const name = data.linkElementName || data.name;
+
+    popupData.innerHTML = '';
+
+    const createData = (title, value) => {
+        popupData.insertAdjacentHTML('beforeend', `
+            <div>
+                <legend><b>${title}:</b></legend>
+                <h3>${value}</h3>
+            </div>
+            <hr>
+        `);
+    };
+
+    function copyCloseUp() {
+        const clone = closeUp.cloneNode(true);
+        document.getElementById('CloseUp2').innerHTML = '';
+        document.getElementById('CloseUp2').appendChild(clone);
+        return clone;
+    }
+
+    function closePopup() {
+        infoPopup.style.display = "none";
+        wikipediaLink.href = downloadPDF.href = '';
+        closeUp2.removeEventListener('click', wikipediaIframeOpen);
+        infoPopup.querySelector('.close').removeEventListener('click', closePopup);
+    }
+
+    const wikipediaIframeOpen = () => openLinkInIframe(element);
+
+    wikipediaLink.href = `https://el.wikipedia.org/wiki/${name}`;
+    downloadPDF.href = `https://el.wikipedia.org/api/rest_v1/page/pdf/${name}`;
+
+    const fields = [
+        ['Ονομα', data.name || '--'],
+        ['Ατομικός', data.atomic || '--'],
+        ['Ηλεκτρονική δομή', energyLevels(data.electronConfiguration).join(', ') || '--'],
+        ['Διαμόρφωση', data.electronStringConf || '--'],
+        ['Βάρος', `${data.atomicMass || '--'} u`],
+        ['Ταξινόμηση', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
+        ['Μπλοκ', getBlock(data) || '--'],
+        ['Σημείο τήξης', `${data.melt || '--'} K`],
+        ['Σημείο ζέσεως', `${data.boil || '--'} K`],
+        ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
+        ['Ηλεκτραρνητικότητα', data.electronegativity || '--'],
+        ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
+        ['Ηλεκτροσυγγένεια', `${data.electronAffinity || '--'} kJ/mol`],
+        ['Πυκνότητα', `${data.density || '--'} kJ/m<sup>3</sup>`],
+        ['Ανακαλύφθηκε', formatGreekDate(data.discovered) || '--']
+    ];
+    fields.forEach(([t, v]) => createData(t, v));
+
+    closeUp2.addEventListener('click', wikipediaIframeOpen);
+    infoPopup.querySelector('.close').addEventListener('click', closePopup);
+    infoPopup.style.display = "block";
+}
+
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('darkMode');
     document.documentElement.classList.remove('lightMode');
@@ -501,110 +671,3 @@ if (URL_readParam('visualizeOption')) {
 }
 
 adjustElementsText('.element', 'em', 60);
-
-document.getElementById('propertyKey').addEventListener('change', () => {
-    const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
-    if (selected) {
-        if (visualizationParams) {
-            visualizationParams[3] = selected.value === 'log' && true || false
-            visualize(...visualizationParams);
-        }
-    }
-});
-
-visualizeOption.addEventListener('change', () => {
-    visualizeOptionFunc();
-    URL_setParam('visualizeOption', visualizeOption.dataset.selected);
-});
-
-['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>
-    document.getElementById(id).addEventListener('input', tempChange)
-);
-
-document.querySelectorAll('.dropdown').forEach(drop => {
-	const current = drop.querySelector('.dropdown-current');
-	const toggle  = drop.querySelector('#dropdown-toggle');
-	const radios  = drop.querySelectorAll('input[type=radio]');
-
-	const valueOf = r => {
-		const sub = r.parentElement.querySelector('select');
-		return sub ? `${r.value}.${sub.value}` : r.value;
-	};
-
-	const labelOf = r => {
-		const labelText = [...r.parentElement.childNodes]
-			.filter(n => n.nodeType === 3 && n.textContent.trim())[0]
-			.textContent.trim();
-		const sub = r.parentElement.querySelector('#subOptions');
-		return sub
-			? `${labelText} > ${sub.options[sub.selectedIndex].textContent.trim()}`
-			: labelText;
-	};
-
-	const setCurrent = r => {
-		drop.dataset.selected = valueOf(r);
-		current.textContent = labelOf(r);
-		toggle.checked = false;
-	};
-
-	const [wantRadio, wantSub] = (drop.dataset.selected || "").split(".");
-	let init = [...radios].find(r => r.value === wantRadio);
-
-	if (init) {
-		const s = init.parentElement.querySelector('#subOptions');
-		if (s && wantSub) s.value = wantSub;
-	} else {
-		init = radios[0];
-	}
-
-	init.checked = true;
-	setCurrent(init);
-
-	radios.forEach(r => {
-		r.addEventListener('change', () => setCurrent(r));
-		r.addEventListener('click',  () => setCurrent(r));
-
-		const sub = r.parentElement.querySelector('#subOptions');
-		if (sub) sub.addEventListener('change', () => r.checked && setCurrent(r));
-	});
-
-	document.addEventListener('click', e => {
-		if (!drop.contains(e.target)) toggle.checked = false;
-	});
-});
-
-document.getElementById("searchbar").addEventListener("input", function () {
-    let rawInput = this.value.trim().toLowerCase();
-    let searchTerms = rawInput
-        .split(/\s*(?:,)\s*/i) // Split by "," or "and"
-        .filter(term => term !== "")
-        .map(term => removeDiacritics(term));
-
-    let items = document.querySelectorAll(".element");
-
-    items.forEach(item => {
-        let atomicValue = removeDiacritics(item.getAttribute("data-atomic") || "");
-        let emElement = item.querySelector("em");
-        let abbrElement = item.querySelector("abbr");
-
-        let abbrElementText = abbrElement ? removeDiacritics(abbrElement.textContent.trim().toLowerCase()) : "";
-        let emText = emElement ? removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
-
-        if (searchTerms.length === 0) {
-            item.classList.remove("highlight");
-            return;
-        }
-
-        let matched = searchTerms.some(term =>
-            atomicValue === term ||
-            abbrElementText === term ||
-            emText.includes(term)
-        );
-
-        if (matched) {
-            item.classList.add("highlight");
-        } else {
-            item.classList.remove("highlight");
-        }
-    });
-});
