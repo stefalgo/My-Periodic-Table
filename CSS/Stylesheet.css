@@ -580,14 +580,14 @@ html:is(.state) .elementsClassView {
 	z-index: 1;
 	display: none;
 }
+
 #infoPopup .infoContainer {
 	transition: var(--transitionTime);
 	position: fixed;
 	z-index: 1;
 	background-color: var(--background);
-	padding: 1rem;
 	border: 1px solid #888;
-	width: 500px;
+	padding: 1rem;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -596,6 +596,7 @@ html:is(.state) .elementsClassView {
 	width: 25%;
 	height: 55%;
 }
+
 #infoPopup .infoContainer hr {
 	margin: 10px 0;
 	border: none;
@@ -605,6 +606,7 @@ html:is(.state) .elementsClassView {
 	display: flex;
 	justify-content: space-between;
 }
+
 .close {
 	color: gray;
 	float: right;
@@ -692,7 +694,7 @@ html:not(.blocks, .category) td:has(> :where(.element)) > :where(.element) {
 	text-decoration: none;
 }
 /**-----------------------------------------------**/
-@media only screen and (max-width: 450px), only screen and (max-height: 550px) {
+@media only screen and (max-width: 500px), only screen and (max-height: 550px) {
 	#infoPopup .infoContainer {
 		width: 100%;
 		height: 100%;
