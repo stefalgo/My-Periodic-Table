@@ -7,37 +7,37 @@ let visualizationParams = [];
 let temp;
 
 const engToGr = [
-    {en: "solid", gr: "Στερεά"},
-    {en: "liquid", gr: "Υγρά"},
-    {en: "gas", gr: "Αέρια"},
-    {en: "plasma", gr: "Πλάσμα"},
+    { en: "solid", gr: "Στερεά" },
+    { en: "liquid", gr: "Υγρά" },
+    { en: "gas", gr: "Αέρια" },
+    { en: "plasma", gr: "Πλάσμα" },
 
-    {en: "alkali", gr: "Αλκαλικά μέταλλα"},
-	{en: "alkaline", gr: "Αλκαλικές γαίες"},
-	{en: "nonmetal", gr: "Αμέταλλο"},
-	{en: "transition", gr: "Μετάλλα μετάπτωσης"},
-	{en: "unknown", gr: "Άγνωστο"},
-	{en: "lanthanoid", gr: "Λανθανίδα"},
-	{en: "actinoid", gr: "Ακτινίδα"},
-	{en: "metalloid", gr: "Μεταλλοειδές"},
-	{en: "poor", gr: "Φτωχό μέταλλο"},
-	{en: "noble", gr: "Ευγενές αέριο"}
+    { en: "alkali", gr: "Αλκαλικά μέταλλα" },
+    { en: "alkaline", gr: "Αλκαλικές γαίες" },
+    { en: "nonmetal", gr: "Αμέταλλο" },
+    { en: "transition", gr: "Μετάλλα μετάπτωσης" },
+    { en: "unknown", gr: "Άγνωστο" },
+    { en: "lanthanoid", gr: "Λανθανίδα" },
+    { en: "actinoid", gr: "Ακτινίδα" },
+    { en: "metalloid", gr: "Μεταλλοειδές" },
+    { en: "poor", gr: "Φτωχό μέταλλο" },
+    { en: "noble", gr: "Ευγενές αέριο" }
 ];
 
 function onDataLoaded() {
-	if (!elementData) return;
-	if (URL_readParam('SelectedElement')) {
-		if (elementData[URL_readParam('SelectedElement')]) {
-			showElementData(URL_readParam('SelectedElement'));
-		} else {
-			showElementData(1);
-			URL_setParam('SelectedElement', 1)
-		}
-	} else {
-		showElementData(1);
-	}
+    if (!elementData) return;
+    if (URL_readParam('SelectedElement')) {
+        if (elementData[URL_readParam('SelectedElement')]) {
+            showElementData(URL_readParam('SelectedElement'));
+        } else {
+            showElementData(1);
+            URL_setParam('SelectedElement', 1)
+        }
+    } else {
+        showElementData(1);
+    }
 
-	visualizeOptionFunc();
+    visualizeOptionFunc();
 }
 
 function toNumber(str) {
@@ -94,29 +94,29 @@ function formatGreekDate(yearLike) {
 }
 
 function openLinkInIframe(rowId) {
-	const sitePopup = document.getElementById('sitePopup');
-	//let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
-	//let link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
-	//let link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
+    const sitePopup = document.getElementById('sitePopup');
+    //let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
+    //let link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
+    //let link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
 
-	//https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/ + + "#view=Fit"
-	let link;
+    //https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/ + + "#view=Fit"
+    let link;
 
-	function closePopup(event) {
-		sitePopup.querySelector('iframe').src = '';
-		sitePopup.style.display = "none";
-		sitePopup.querySelector('.close').removeEventListener('click', closePopup);
-	}
+    function closePopup(event) {
+        sitePopup.querySelector('iframe').src = '';
+        sitePopup.style.display = "none";
+        sitePopup.querySelector('.close').removeEventListener('click', closePopup);
+    }
 
-	if (elementData[rowId].linkElementName) {
-		link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].linkElementName + '?withgadget=dark-mode';
-	} else {
-		link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].name + '?withgadget=dark-mode';
-	}
-	sitePopup.querySelector('iframe').src = link;
-	
-	sitePopup.style.display = "block";
-	sitePopup.querySelector('.close').addEventListener('click', closePopup);
+    if (elementData[rowId].linkElementName) {
+        link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].linkElementName + '?withgadget=dark-mode';
+    } else {
+        link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].name + '?withgadget=dark-mode';
+    }
+    sitePopup.querySelector('iframe').src = link;
+
+    sitePopup.style.display = "block";
+    sitePopup.querySelector('.close').addEventListener('click', closePopup);
 }
 
 function getTableElements() {
@@ -127,30 +127,30 @@ function getTableElements() {
 }
 
 function getBlock(el) {
-	const Z = Number(el.atomic);
-	const group = Number(el.group);
+    const Z = Number(el.atomic);
+    const group = Number(el.group);
 
-	if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
+    if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
 
-	if (group) {
-		if (Z === 2) return 's';
-		if (group === 1 || group === 2) return 's';
-		if (group >= 13 && group <= 18) return 'p';
-		if (group >= 3 && group <= 12) return 'd';
-	}
+    if (group) {
+        if (Z === 2) return 's';
+        if (group === 1 || group === 2) return 's';
+        if (group >= 13 && group <= 18) return 'p';
+        if (group >= 3 && group <= 12) return 'd';
+    }
 
-	const cfg = el.electronConfiguration ?? '';
-	let block = '';
+    const cfg = el.electronConfiguration ?? '';
+    let block = '';
 
-	cfg.replace(/\[.*?\]/g, '')
-		.trim()
-		.split(/\s+/)
-		.forEach(tok => {
-			const m = tok.match(/^[0-9]+([spdfg])/i);
-			if (m) block = m[1].toLowerCase();
-		});
+    cfg.replace(/\[.*?\]/g, '')
+        .trim()
+        .split(/\s+/)
+        .forEach(tok => {
+            const m = tok.match(/^[0-9]+([spdfg])/i);
+            if (m) block = m[1].toLowerCase();
+        });
 
-	return block;
+    return block;
 }
 
 function energyLevels(eConfig) {
@@ -162,8 +162,8 @@ function energyLevels(eConfig) {
     for (const tok of cleaned.split(/\s+/)) {
         const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
         if (!m) continue;
-        const n  = Number(m[1]);
-        const e  = Number(m[2]);
+        const n = Number(m[1]);
+        const e = Number(m[2]);
         totals.set(n, (totals.get(n) || 0) + e);
     }
 
@@ -219,14 +219,14 @@ function showElementColor(show) {
     }
 
     elements.forEach(el => {
-        const key  = el.getAttribute('data-atomic');
+        const key = el.getAttribute('data-atomic');
         const data = elementData[key];
         if (!data || !data.color) return;
 
-        const val  = data.color;
+        const val = data.color;
 
         el.querySelector('data').textContent = String(val);
-        el.style.backgroundColor = '#'+val;
+        el.style.backgroundColor = '#' + val;
     });
 }
 
@@ -238,17 +238,17 @@ function showBlocks(show) {
     }
 
     elements.forEach(el => {
-        const key  = el.getAttribute('data-atomic');
+        const key = el.getAttribute('data-atomic');
         const data = elementData[key];
         if (!data) return;
 
-        const val  = getBlock(data);
+        const val = getBlock(data);
 
         el.querySelector('data').textContent = String(val);
     });
 }
 
-function showState(show, temp=273) {
+function showState(show, temp = 273) {
     const elements = getTableElements();
     const phaseClasses = ['solid', 'liquid', 'gas', 'unknownState'];
 
@@ -372,7 +372,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
         const rgba = minColor.map((c, i) => i < 3
             ? Math.round(c + t * (maxColor[i] - c))
             : c + t * (maxColor[3] - c));
-        
+
         el.style.backgroundColor = `rgba(${rgba.join(',')})`;
     });
 }
@@ -383,10 +383,10 @@ function adjustElementsText(element, child, width) {
         em.style.letterSpacing = '';
 
         const natural = em.scrollWidth;
-        const scale   = natural > width ? width / natural : 1;
+        const scale = natural > width ? width / natural : 1;
 
         em.style.transformOrigin = 'left center';
-        em.style.transform       = `scaleX(${scale})`;
+        em.style.transform = `scaleX(${scale})`;
 
         if (em.textContent.length >= 10) {
             em.style.letterSpacing = '-0.05em';
@@ -395,7 +395,7 @@ function adjustElementsText(element, child, width) {
 }
 
 function removeDiacritics(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function toggleColorScheme() {
@@ -404,52 +404,52 @@ function toggleColorScheme() {
 }
 
 function visualizeOptionFunc(setLogMode = true) {
-    const value = visualizeOption.dataset.selected.split('.')[0];
-    const value2 = visualizeOption.dataset.selected.split('.')[1];
+    const value = visualizeOption.dataset.selected.split('-')[0];
+    const value2 = visualizeOption.dataset.selected.split('-')[1];
     const logState = Array.isArray(visualizationParams) ? visualizationParams[3] : undefined;
 
     visualizationParams = null;
 
 
     //<array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
-	const config = {
-        'category' : {},
-		'blocks': { action: () => showBlocks(true) },
-		'state': { action: () => showState(true, temp) },
-		'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'meltPoint': { params: [elementData, true, 'melt', false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
-		'boilPoint': { params: [elementData, true, 'boil', false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
-		'density': { params: [elementData, true, 'density', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-		'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
-		'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
-		'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
+    const config = {
+        'category': {},
+        'blocks': { action: () => showBlocks(true) },
+        'state': { action: () => showState(true, temp) },
+        'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+        'meltPoint': { params: [elementData, true, 'melt', false, true, [0, 255, 255, 0.01], [0, 255, 255, 0.75]] },
+        'boilPoint': { params: [elementData, true, 'boil', false, true, [255, 0, 0, 0.01], [255, 0, 0, 0.75]] },
+        'density': { params: [elementData, true, 'density', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
+        'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
+        'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
+        'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
         'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
         'energyLevels': {
-			action: () => {
-				const calculated = {};
-				Object.entries(elementData).forEach(([key, el]) => {
-					const period = Number(el.period);
-					const shells = energyLevels(el.electronConfiguration) ?? [];
-					const idx = period-1;
-					const electrons = shells[idx] ?? 0;
-					(calculated[key] ??= { Total: 0 }).Total += electrons;
-				});
-				visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+            action: () => {
+                const calculated = {};
+                Object.entries(elementData).forEach(([key, el]) => {
+                    const period = Number(el.period);
+                    const shells = energyLevels(el.electronConfiguration) ?? [];
+                    const idx = period - 1;
+                    const electrons = shells[idx] ?? 0;
+                    (calculated[key] ??= { Total: 0 }).Total += electrons;
+                });
+                visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
                     elementData,
                     'electronConfiguration',
                     null,
                     x => {
-                        const levels   = energyLevels(x);
-                        const last3    = levels.slice(-3);
+                        const levels = energyLevels(x);
+                        const last3 = levels.slice(-3);
                         return (levels.length > 3
                             ? ['-'].concat(last3)
-                                : last3)
-                                .join(' ');
+                            : last3)
+                            .join(' ');
                     }
                 );
-			}
-		},
+            }
+        },
         'discoveryDate': {
             action: () => {
                 document.documentElement.classList.add('category');
@@ -458,7 +458,7 @@ function visualizeOptionFunc(setLogMode = true) {
             //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
         },
         'abundance': { params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
-	};
+    };
 
     const selected = config[value];
 
@@ -475,117 +475,87 @@ function visualizeOptionFunc(setLogMode = true) {
         Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
         document.documentElement.classList.add(value);
     };
-	showBlocks(false);
-	showState(false);
-	visualize(false);
+    showBlocks(false);
+    showState(false);
+    visualize(null, false);
 
-	if (selected) {
-		if (selected.action && (!visualizationParams)) {
-			selected.action();
-		}
-		if (selected.params && (!visualizationParams)) {
-			visualizationParams = selected.params;
-		}
-	}
+    if (selected) {
+        if (selected.action && (!visualizationParams)) {
+            selected.action();
+        }
+        if (selected.params && (!visualizationParams)) {
+            visualizationParams = selected.params;
+        }
+    }
 
-	if (!visualizationParams && !selected?.action) {
+    if (!visualizationParams && !selected?.action) {
         displayDataOnElement(elementData, 'category');
-	}
+    }
 
-	if (visualizationParams) {
+    if (visualizationParams) {
         if (!setLogMode && logState) {
             visualizationParams[3] = logState;
         }
-		visualize(...visualizationParams);
-	}
+        visualize(...visualizationParams);
+    }
 }
 
 function generateAtom(atomicNumber) {
-	const atomContainer = document.getElementById('atom');
-	const atomCore = atomContainer.querySelector('.atom');
-	if (!elementData[atomicNumber]) {console.error('Atomic number not found in the data.'); return;}
-	atomCore.innerHTML = '';
-	energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
-		const energyLevelDiv = document.createElement('div');
-		const radius = (index + 2) * 9;
-		const animationSpeed = radius / 2;
+    const atomContainer = document.getElementById('atom');
+    const atomCore = atomContainer.querySelector('.atom');
+    if (!elementData[atomicNumber]) { console.error('Atomic number not found in the data.'); return; }
+    atomCore.innerHTML = '';
+    energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
+        const energyLevelDiv = document.createElement('div');
+        const radius = (index + 2) * 9;
+        const animationSpeed = radius / 2;
 
-		energyLevelDiv.classList.add('energy-level');
-		energyLevelDiv.style.width = radius * 2 + 'px';
-		energyLevelDiv.style.height = radius * 2 + 'px';
-		energyLevelDiv.style.animation = `spin ${animationSpeed}s linear infinite`;
-		atomCore.appendChild(energyLevelDiv);
+        energyLevelDiv.classList.add('energy-level');
+        energyLevelDiv.style.width = radius * 2 + 'px';
+        energyLevelDiv.style.height = radius * 2 + 'px';
+        energyLevelDiv.style.animation = `spin ${animationSpeed}s linear infinite`;
+        atomCore.appendChild(energyLevelDiv);
 
-		for (let i = 0; i < numElectrons; i++) {
-			const angle = (360 / numElectrons) * i - 90;
-			const electron = document.createElement('div');
-			electron.classList.add('electron');
-			const electronX = radius * Math.cos(angle * Math.PI / 180) + radius - 5;
-			const electronY = radius * Math.sin(angle * Math.PI / 180) + radius - 5;
-			electron.style.top = electronY + 'px';
-			electron.style.left = electronX + 'px';
-			energyLevelDiv.appendChild(electron);
-		}
-	});
-}
-
-function tempChange(e) {
-    const tempNumberInputC = document.getElementById('tempNumInputC');
-    const tempNumberInputK = document.getElementById('tempNumInputK');
-    const tempRangeSlider  = document.getElementById('temp');
-
-    const K2C = k => k - 273;
-    const C2K = c => c + 273;
-
-    let k, c;
-
-    if (e.target === tempRangeSlider) {
-        k = Number(e.target.value);
-        c = K2C(k);
-    } else if (e.target === tempNumberInputK) {
-        k = Number(e.target.value);
-        c = K2C(k);
-        tempRangeSlider.value = k;
-    } else {
-        c = Number(e.target.value);
-        k = C2K(c);
-        tempRangeSlider.value = k;
-    }
-
-    if (document.activeElement !== tempNumberInputK) tempNumberInputK.value = k;
-    if (document.activeElement !== tempNumberInputC) tempNumberInputC.value = c;
-
-    temp = k;
-    visualizeOptionFunc();
+        for (let i = 0; i < numElectrons; i++) {
+            const angle = (360 / numElectrons) * i - 90;
+            const electron = document.createElement('div');
+            electron.classList.add('electron');
+            const electronX = radius * Math.cos(angle * Math.PI / 180) + radius - 5;
+            const electronY = radius * Math.sin(angle * Math.PI / 180) + radius - 5;
+            electron.style.top = electronY + 'px';
+            electron.style.left = electronX + 'px';
+            energyLevelDiv.appendChild(electron);
+        }
+    });
 }
 
 function showElementData(elementAtomicNumber) {
-	const atomic = closeUp.querySelector('.closeUp-atomic');
-	const symbol = closeUp.querySelector('.closeUp-shortName');
-	const name = closeUp.querySelector('.closeUp-name');
-	const energyLevel = closeUp.querySelector('small');
+    const atomic = closeUp.querySelector('.closeUp-atomic');
+    const symbol = closeUp.querySelector('.closeUp-shortName');
+    const name = closeUp.querySelector('.closeUp-name');
+    const energyLevel = closeUp.querySelector('small');
 
-	energyLevel.innerHTML = '';
-	atomic.textContent = elementAtomicNumber;
-	name.textContent = elementData[elementAtomicNumber].name;
-	symbol.textContent = elementData[elementAtomicNumber].symbol;
-	
+    energyLevel.innerHTML = '';
+    atomic.textContent = elementAtomicNumber;
+    name.textContent = elementData[elementAtomicNumber].name;
+    symbol.textContent = elementData[elementAtomicNumber].symbol;
 
-	closeUp.classList = '';
-	closeUp.classList.add(elementData[elementAtomicNumber].category);
-	closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
-	closeUp.setAttribute('data-atomic', elementAtomicNumber)
-	
-	visualizeOptionFunc(false);
 
-	for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
-		let spanElement = document.createElement('span');
-		spanElement.textContent = level;
-		energyLevel.appendChild(spanElement);
-	}
+    closeUp.classList = '';
+    closeUp.classList.add(elementData[elementAtomicNumber].category);
+    closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
+    closeUp.setAttribute('data-atomic', elementAtomicNumber)
 
-	generateAtom(elementAtomicNumber);
-	adjustElementsText('#CloseUp', 'em', 70);
+    visualizeOptionFunc(false);
+
+    for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
+        let spanElement = document.createElement('span');
+        spanElement.textContent = level;
+        energyLevel.appendChild(spanElement);
+    }
+
+    generateAtom(elementAtomicNumber);
+    adjustElementsText('#CloseUp', 'em', 70);
 }
 
 function infoElement(elementAtomicNumber) {
@@ -594,7 +564,7 @@ function infoElement(elementAtomicNumber) {
     const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
     const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
     const closeUp2 = copyCloseUp();
-    
+
     const element = elementAtomicNumber;
     const data = elementData[element];
     const name = data.linkElementName || data.name;
