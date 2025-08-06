@@ -342,26 +342,7 @@
 				</tr>
 			</table>
 		</div>
-		<script language="javascript" src="js/chart.js" type="text/javascript"></script>
-		<script language="javascript" src="js/UrlParamsUtils.js" type="text/javascript"></script>
-
-		<script language="javascript" src="js/Main.js" type="text/javascript"></script>
-		<script language="javascript" src="js/Events.js" type="text/javascript"></script>
-		<script>
-			(async () => {
-				try {
-					const res = await fetch('JsonData/ElementsV3.json');
-					if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
-
-					elementData = await res.json();
-					console.log('JSON loaded successfully');
-
-					onDataLoaded();
-
-					} catch (err) {
-						console.error(err);
-					}
-			})();
-		</script>
+		<script src="js/Events.js" type="module"></script>
+		<script type="module" src="js/index.js"></script>
 	</body>
 </html>

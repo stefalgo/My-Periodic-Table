@@ -1,4 +1,4 @@
-function drawLineChartSVG({ svgID, data, labelFormat = "{label}: {value}", showLabels = true, showDots = true, duration = 1000 }) {
+export function drawLineChartSVG({ svgID, data, labelFormat = "{label}: {value}", showLabels = true, showDots = true, duration = 1000 }) {
     const svg = document.getElementById(svgID), NS = "http://www.w3.org/2000/svg";
     const w = svg.clientWidth, h = svg.clientHeight, pad = showLabels ? 30 : 0,
         cW = w - pad * 2, cH = h - pad * 2,

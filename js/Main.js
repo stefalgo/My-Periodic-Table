@@ -1,10 +1,13 @@
+import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js'
+import * as helpers from './UtilsAndLib/helpers.js'
+
 const closeUp = document.getElementById('CloseUp');
 const visualizeOption = document.getElementById('visualizeOption');
 
 let elementData;
 
 let visualizationParams = [];
-let temp;
+let temp = 273;
 
 const engToGr = [
     { en: "solid", gr: "Στερεά" },
@@ -24,73 +27,23 @@ const engToGr = [
     { en: "noble", gr: "Ευγενές αέριο" }
 ];
 
-function onDataLoaded() {
-    if (!elementData) return;
-    if (URL_readParam('SelectedElement')) {
-        if (elementData[URL_readParam('SelectedElement')]) {
-            showElementData(URL_readParam('SelectedElement'));
+function onDataLoaded(data) {
+    elementData = data
+    if (!data) return;
+    if (URLUtils.readParam('SelectedElement')) {
+        if (elementData[URLUtils.readParam('SelectedElement')]) {
+            showElementData(URLUtils.readParam('SelectedElement'));
         } else {
             showElementData(1);
-            URL_setParam('SelectedElement', 1)
+            URLUtils.setParam('SelectedElement', 1)
         }
     } else {
         showElementData(1);
     }
 
     visualizeOptionFunc();
-}
 
-function toNumber(str) {
-    const match = str.match(/-?\d+(\.\d+)?/);
-    return match ? Number(match[0]) : NaN;
-}
-
-function rgbaToHex([r, g, b, a]) {
-    const toHex = c => c.toString(16).padStart(2, '0');
-    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-}
-
-function hexToRgba(hex) {
-    hex = hex.replace(/^#/, '');
-    let r, g, b, a = 1;
-    if (hex.length === 6) {
-        r = parseInt(hex.slice(0, 2), 16);
-        g = parseInt(hex.slice(2, 4), 16);
-        b = parseInt(hex.slice(4, 6), 16);
-    } else if (hex.length === 8) {
-        r = parseInt(hex.slice(0, 2), 16);
-        g = parseInt(hex.slice(2, 4), 16);
-        b = parseInt(hex.slice(4, 6), 16);
-        a = parseInt(hex.slice(6, 8), 16) / 255;
-    } else {
-        throw new Error('Invalid hex color');
-    }
-
-    return [r, g, b, a];
-}
-
-function getNestedValue(obj, path) {
-    if (!obj || typeof path !== 'string') return undefined;
-    return path
-        .split('.')
-        .reduce((acc, key) => acc?.[key], obj);
-}
-
-function formatGreekDate(yearLike) {
-    if (yearLike == null) return '';
-
-    const raw = String(yearLike).trim();
-
-    const m = raw.match(/^([+-]?\d+)$/);
-    if (!m) return raw;
-
-    let year = Number(m[1]);
-
-    if (year === 0) year = -1;
-
-    return year < 0
-        ? `${Math.abs(year)} π.Χ.`
-        : `${year} μ.Χ.`;
+    adjustElementsText('.element', 'em', 60);
 }
 
 function openLinkInIframe(rowId) {
@@ -120,7 +73,7 @@ function openLinkInIframe(rowId) {
 }
 
 function getTableElements() {
-    return elements = [
+    return [
         ...document.querySelectorAll('.element'),
         ...document.querySelectorAll('#CloseUp')
     ];
@@ -188,7 +141,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         const cell = el.querySelector('data');
         if (!cell) return;
 
-        let value = getNestedValue(dataMap[key], prop);
+        let value = helpers.getNestedValue(dataMap[key], prop);
 
         if (value == null) {
             cell.textContent = '';
@@ -329,7 +282,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     const getValue = el => {
         const key = el.getAttribute('data-atomic') || el.getAttribute('data-linkedElement');
-        const raw = getNestedValue(array[key], prop);
+        const raw = helpers.getNestedValue(array[key], prop);
 
         if (raw == null || (typeof raw === 'string' && raw.trim() === '')) return NaN;
         const num = Number(raw);
@@ -403,6 +356,11 @@ function toggleColorScheme() {
     document.documentElement.classList.toggle('lightMode');
 }
 
+function tempChanged(k) {
+    temp = k;
+    visualizeOptionFunc();
+}
+
 function visualizeOptionFunc(setLogMode = true) {
     const value = visualizeOption.dataset.selected.split('-')[0];
     const value2 = visualizeOption.dataset.selected.split('-')[1];
@@ -453,7 +411,7 @@ function visualizeOptionFunc(setLogMode = true) {
         'discoveryDate': {
             action: () => {
                 document.documentElement.classList.add('category');
-                displayDataOnElement(elementData, 'discovered', null, formatGreekDate);
+                displayDataOnElement(elementData, 'discovered', null, helpers.formatGreekDate);
             },
             //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
         },
@@ -615,7 +573,7 @@ function infoElement(elementAtomicNumber) {
         ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
         ['Ηλεκτροσυγγένεια', `${data.electronAffinity || '--'} kJ/mol`],
         ['Πυκνότητα', `${data.density || '--'} kJ/m<sup>3</sup>`],
-        ['Ανακαλύφθηκε', formatGreekDate(data.discovered) || '--']
+        ['Ανακαλύφθηκε', helpers.formatGreekDate(data.discovered) || '--']
     ];
     fields.forEach(([t, v]) => createData(t, v));
 
@@ -632,12 +590,22 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     document.documentElement.classList.remove('darkMode');
 }
 
-if (URL_readParam('lighting') === 'other') {
+if (URLUtils.readParam('lighting') === 'other') {
     toggleColorScheme();
 }
 
-if (URL_readParam('visualizeOption')) {
-    visualizeOption.dataset.selected = URL_readParam('visualizeOption');
+if (URLUtils.readParam('visualizeOption')) {
+    visualizeOption.dataset.selected = URLUtils.readParam('visualizeOption');
 }
 
-adjustElementsText('.element', 'em', 60);
+export {
+    onDataLoaded,
+    visualize,
+    visualizeOptionFunc,
+    showElementData,
+    infoElement,
+    toggleColorScheme,
+    tempChanged,
+    visualizationParams,
+    closeUp
+};
