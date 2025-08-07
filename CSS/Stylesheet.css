@@ -148,6 +148,11 @@ button, select {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
+button:disabled {
+	color: gray;
+	background-color: var(--buttonHoverColor);
+}
+
 input[type="text"], input[type="number"] {
 	background-color: transparent;
 	color: var(--textColor);
@@ -178,6 +183,21 @@ input[type="range"]::-webkit-slider-runnable-track {
         #D4EBFF 100%
       );
   box-shadow: var(--borderShadowColorEffect);
+}
+/**---------------------------**/
+.header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 60px;
+	justify-content: center;
+}
+
+.vertical-line {
+	width: 1px;
+	height: 90%;
+	background-color: gray;
+	margin: 0 10px;
 }
 /**---------------------------**/
 .dropdown {

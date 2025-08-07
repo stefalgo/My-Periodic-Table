@@ -10,12 +10,15 @@
 	</head>
 	<body>
 		<!--<h1>The Periodic Table Of Elements</h1>-->
-		<h1 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h1>
-		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
-		<button onclick="toggleColorScheme()" style="position: fixed; top: 1%; right: 1%;">Color Scheme</button>
-		
-		<span>Επιλογή οπτικοποίησης:</span>
+		<div class="header">
+			<h2 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h2>
+			<div class="vertical-line"></div>
+			<button disabled>Graphs</button>
+			<button onclick="toggleColorScheme()">Color Scheme</button>
+		</div>
 
+		<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
+		<lable for="visualizeOption">Επιλογή οπτικοποίησης:</lable>
 		<div class="dropdown" id="visualizeOption" data-selected="category">
 			<input type="checkbox" id="dropdown-toggle">
 			<label for="dropdown-toggle" class="dropdown-current">---</label>

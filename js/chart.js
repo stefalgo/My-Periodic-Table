@@ -130,3 +130,162 @@ export function drawLineChartSVG({ svgID, data, labelFormat = "{label}: {value}"
         tooltipGroup.setAttribute("visibility", "hidden");
     });
 }
+
+export function drawSimpleLineChartSVG(svgID, data, title) {
+    const svg = document.getElementById(svgID);
+    const NS = "http://www.w3.org/2000/svg";
+    const w = svg.clientWidth, h = svg.clientHeight;
+    const pad = 30, cW = w - pad * 2, cH = h - pad * 2;
+    const validData = data.filter(d => d.value != null);
+    const max = Math.max(...validData.map(d => d.value));
+    const min = Math.min(...validData.map(d => d.value));
+    const spacing = cW / (data.length - 1);
+    svg.innerHTML = '';
+
+
+
+    const makeEl = (tag, attrs) => {
+        const el = document.createElementNS(NS, tag);
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        return el;
+    };
+
+    function addChartTitle(svg, titleText) {
+        const title = makeEl("text", {
+            x: "10px",
+            y: 20,
+            "font-size": 18,
+            "font-family": "sans-serif",
+            fill: "#e5e7eb"
+        });
+        title.textContent = titleText;
+        svg.appendChild(title);
+    }
+
+    addChartTitle(svg, title);
+
+    const coords = data.map((d, i) => {
+        const x = pad + i * spacing;
+        if (d.value == null) return null;
+        const y = h - pad - ((d.value - min) / (max - min)) * cH;
+        return { x, y, label: d.xLabel, value: d.value, i };
+    });
+
+    for (let i = 0; i <= 5; i++) {
+        const y = h - pad - cH * i / 5;
+        svg.appendChild(makeEl("line", { x1: pad, x2: w - pad, y1: y, y2: y, stroke: "#374151" }));
+        const label = makeEl("text", { x: pad - 8, y, "text-anchor": "end", "dominant-baseline": "middle", fill: "#9ca3af", "font-size": 10 });
+        label.textContent = (min + (max - min) * i / 5).toFixed(0);
+        svg.appendChild(label);
+    }
+
+    let pathD = '';
+    for (let i = 0; i < coords.length; i++) {
+        if (!coords[i]) continue;
+        pathD += (pathD === '' || !coords[i - 1] ? 'M' : 'L') + coords[i].x + ',' + coords[i].y;
+    }
+    svg.appendChild(makeEl("path", { d: pathD, fill: "none", stroke: "#60a5fa", "stroke-width": 2 }));
+
+    for (let i = 1; i < coords.length; i++) {
+        if (!coords[i] && coords[i - 1]) {
+            for (let j = i + 1; j < coords.length; j++) {
+                if (coords[j]) {
+                    svg.appendChild(makeEl("line", {
+                        x1: coords[i - 1].x, y1: coords[i - 1].y,
+                        x2: coords[j].x, y2: coords[j].y,
+                        stroke: "#60a5fa", "stroke-dasharray": "4,2", "stroke-width": 1
+                    }));
+                    break;
+                }
+            }
+        }
+    }
+
+    coords.forEach(c => {
+        if (!c) return;
+        svg.appendChild(makeEl("circle", { cx: c.x, cy: c.y, r: 2, fill: "#60a5fa" }));
+    });
+
+    const labelStep = Math.ceil(data.length / 12);
+    data.forEach((d, i) => {
+        if (i % labelStep === 0 || i === data.length - 1) {
+            const text = makeEl("text", {
+                x: pad + i * spacing,
+                y: h - 5,
+                "text-anchor": "middle",
+                fill: "#9ca3af",
+                "font-size": 9
+            });
+            text.textContent = d.xLabel;
+            svg.appendChild(text);
+        }
+    });
+
+    const guideLine = makeEl("line", {
+        stroke: "#9ca3af",
+        "stroke-dasharray": "3,2",
+        y1: pad,
+        y2: h - pad,
+        visibility: "hidden"
+    });
+
+    const hoverDot = makeEl("circle", {
+        r: 4,
+        fill: "#9ca3af",
+        stroke: "#fff",
+        "stroke-width": 1,
+        visibility: "hidden"
+    });
+
+    const hoverLabel = makeEl("text", {
+        x: "50%",
+        y: 16,
+        "text-anchor": "middle",
+        "font-size": 14,
+        "font-family": "sans-serif",
+        fill: "#e5e7eb",
+        visibility: "hidden"
+    });
+
+    svg.appendChild(guideLine);
+    svg.appendChild(hoverDot);
+    svg.appendChild(hoverLabel);
+
+    svg.addEventListener("mousemove", e => {
+        const rect = svg.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        let closest = null;
+        let minDist = Infinity;
+        let closestIndex = -1;
+
+        coords.forEach((c, i) => {
+            if (!c) return;
+            const dist = Math.abs(c.x - mouseX);
+            if (dist < minDist) {
+                minDist = dist;
+                closest = c;
+                closestIndex = i;
+            }
+        });
+
+        if (closest) {
+            guideLine.setAttribute("x1", closest.x);
+            guideLine.setAttribute("x2", closest.x);
+            guideLine.setAttribute("visibility", "visible");
+
+            hoverDot.setAttribute("cx", closest.x);
+            hoverDot.setAttribute("cy", closest.y);
+            hoverDot.setAttribute("visibility", "visible");
+
+            const label = `${data[closestIndex].xLabel}: ${data[closestIndex].value ?? "N/A"}`;
+            hoverLabel.textContent = label;
+            hoverLabel.setAttribute("visibility", "visible");
+        }
+    });
+
+    svg.addEventListener("mouseleave", () => {
+        guideLine.setAttribute("visibility", "hidden");
+        hoverDot.setAttribute("visibility", "hidden");
+        hoverLabel.setAttribute("visibility", "hidden");
+    });
+}
