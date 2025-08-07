@@ -14,8 +14,8 @@ const tempNumberInputC = document.getElementById('tempNumInputC');
 const tempNumberInputK = document.getElementById('tempNumInputK');
 const tempRangeSlider = document.getElementById('temp');
 
-const K2C = k => k - 273.15;
-const C2K = c => c + 273.15;
+const K2C = k => k - 273;
+const C2K = c => c + 273;
 
 export function initEvents() {
 	document.getElementById('propertyKey').addEventListener('change', () => {
