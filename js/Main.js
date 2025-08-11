@@ -451,7 +451,7 @@ function visualizeOptionFunc(setLogMode = true) {
     }
 
     if (visualizationParams) {
-        if (!setLogMode && logState) {
+        if (!setLogMode) {
             visualizationParams[3] = logState;
         }
         visualize(...visualizationParams);
