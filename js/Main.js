@@ -362,8 +362,8 @@ function tempChanged(k) {
 }
 
 function visualizeOptionFunc(setLogMode = true) {
-    const value = visualizeOption.dataset.selected.split('-')[0];
-    const value2 = visualizeOption.dataset.selected.split('-')[1];
+    const value = visualizeOption.value.split('-')[0];
+    const value2 = visualizeOption.value.split('-')[1];
     const logState = Array.isArray(visualizationParams) ? visualizationParams[3] : undefined;
 
     visualizationParams = null;
@@ -595,7 +595,7 @@ if (URLUtils.readParam('lighting') === 'other') {
 }
 
 if (URLUtils.readParam('visualizeOption')) {
-    visualizeOption.dataset.selected = URLUtils.readParam('visualizeOption');
+    visualizeOption.value = URLUtils.readParam('visualizeOption');
 }
 
 export {

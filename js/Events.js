@@ -30,7 +30,7 @@ export function initEvents() {
 
 	visualizeOption.addEventListener('change', () => {
 		visualizeOptionFunc();
-		URLUtils.setParam('visualizeOption', visualizeOption.dataset.selected);
+		URLUtils.setParam('visualizeOption', visualizeOption.value);
 	});
 
 	['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>
@@ -103,58 +103,6 @@ export function initEvents() {
 			} else {
 				item.classList.remove("highlight");
 			}
-		});
-	});
-
-	document.querySelectorAll('.dropdown').forEach(drop => {
-		const current = drop.querySelector('.dropdown-current');
-		const toggle = drop.querySelector('#dropdown-toggle');
-		const radios = drop.querySelectorAll('input[type=radio]');
-
-		const valueOf = r => {
-			const sub = r.parentElement.querySelector('select');
-			return sub ? `${r.value}-${sub.value}` : r.value;
-		};
-
-		const labelOf = r => {
-			const labelText = [...r.parentElement.childNodes]
-				.filter(n => n.nodeType === 3 && n.textContent.trim())[0]
-				.textContent.trim();
-			const sub = r.parentElement.querySelector('#subOptions');
-			return sub
-				? `${labelText} > ${sub.options[sub.selectedIndex].textContent.trim()}`
-				: labelText;
-		};
-
-		const setCurrent = r => {
-			drop.dataset.selected = valueOf(r);
-			current.textContent = labelOf(r);
-			toggle.checked = false;
-		};
-
-		const [wantRadio, wantSub] = (drop.dataset.selected || "").split("-");
-		let init = [...radios].find(r => r.value === wantRadio);
-
-		if (init) {
-			const s = init.parentElement.querySelector('#subOptions');
-			if (s && wantSub) s.value = wantSub;
-		} else {
-			init = radios[0];
-		}
-
-		init.checked = true;
-		setCurrent(init);
-
-		radios.forEach(r => {
-			r.addEventListener('change', () => setCurrent(r));
-			r.addEventListener('click', () => setCurrent(r));
-
-			const sub = r.parentElement.querySelector('#subOptions');
-			if (sub) sub.addEventListener('change', () => r.checked && setCurrent(r));
-		});
-
-		document.addEventListener('click', e => {
-			if (!drop.contains(e.target)) toggle.checked = false;
 		});
 	});
 };

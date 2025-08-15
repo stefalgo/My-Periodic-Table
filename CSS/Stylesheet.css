@@ -7,23 +7,24 @@
 
 	--hoverShadow: 0 0 10px var(--hoverColor);
 	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
-	
+
 	--highlightShadow: 0 0 10px var(--hoverColor);
-	
+
 	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.3);
 	--borderShadowColorEffectHover: inset 0 0 0 2px var(--hoverColor2);
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
 
 	--transitionTime: 0.3s;
 }
+
 /**--------------------------------**/
 .darkMode {
 	--background: #0c0c0c;
 	--textColor: #d1cece;
 	--hoverColor: #ffffff;
-	
+
 	--elementBorderColor: 209, 206, 206;
-			
+
 	--buttonColor: #333;
 	--buttonHoverColor: #222;
 
@@ -38,7 +39,7 @@
 	--halogen: #d4d4ab;
 	--noble: #3a2151;
 	--unknown: #222;
-			
+
 	--s-block: #004c52;
 	--p-block: #3b5800;
 	--d-block: #5f003f;
@@ -49,17 +50,18 @@
 	--gas: #ff8c008c;
 	--plasma: #ff00ff;
 	--unknownState: #80808059;
-			
+
 	--electron: #4369b3;
 }
+
 /**--------------------------------**/
 .lightMode {
 	--background: #eff3f5;
 	--textColor: #000000;
 	--hoverColor: #000000;
-	
+
 	--elementBorderColor: 0, 0, 0;
-			
+
 	--buttonColor: #6876bb;
 	--buttonHoverColor: #3c4369;
 
@@ -74,7 +76,7 @@
 	--halogen: #d4d4ab;
 	--noble: hsl(300deg, 44%, 82%);
 	--unknown: #EEE;
-			
+
 	--s-block: #ffb3c9;
 	--p-block: #93ffda;
 	--d-block: #daf78c;
@@ -85,17 +87,19 @@
 	--gas: #ff26008c;
 	--plasma: #ff00aa;
 	--unknownState: #EEE;
-			
+
 	--electron: #559fef;
 }
+
 /**--------------------------------**/
 .darkMode ::-webkit-scrollbar-track {
 	background: #141414;
 }
-	
+
 .darkMode ::-webkit-scrollbar-thumb {
 	background: #2f3133;
 }
+
 /**--------------------------------**/
 .lightMode ::-webkit-scrollbar-track {
 	background: #bdc3c9;
@@ -104,6 +108,7 @@
 .lightMode ::-webkit-scrollbar-thumb {
 	background: #585b5e;
 }
+
 /**------------------------------------------------**/
 * {
 	box-sizing: border-box;
@@ -125,15 +130,18 @@ body {
 
 	transition: background var(--transitionTime);
 }
+
 /**-----------------------------------------------**/
-.linkText, a {
+.linkText,
+a {
 	color: #5898bf;
 	cursor: pointer;
 	text-decoration: underline;
 	transition: var(--transitionTime);
 }
+
 /**-----------------------------------------------**/
-button, select {
+button {
 	display: inline-block;
 	background-color: var(--buttonColor);
 	border: none;
@@ -153,7 +161,8 @@ button:disabled {
 	background-color: var(--buttonHoverColor);
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
 	background-color: transparent;
 	color: var(--textColor);
 	padding: 8px;
@@ -171,19 +180,51 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: linear-gradient(
-        90deg,
-        #000000 0%,
-        #FF3800 14%,
-        #FF6D00 28%,
-        #FF9329 42%,
-        #FFC58F 57%,
-        #FFE4CE 71%,
-        #FFF3FF 85%,
-        #D4EBFF 100%
-      );
-  box-shadow: var(--borderShadowColorEffect);
+	background: linear-gradient(90deg,
+			#000000 0%,
+			#FF3800 14%,
+			#FF6D00 28%,
+			#FF9329 42%,
+			#FFC58F 57%,
+			#FFE4CE 71%,
+			#FFF3FF 85%,
+			#D4EBFF 100%);
+	box-shadow: var(--borderShadowColorEffect);
 }
+
+select,
+::picker(select) {
+	appearance: base-select;
+	background: var(--buttonColor);
+	color: #ffffff;
+	box-shadow: var(--borderShadowColorEffect);
+	border: none;
+	text-align: center;
+	font-size: 16px;
+	margin: 4px 2px;
+	border-radius: 4px;
+}
+
+option::checkmark {
+	display: none;
+}
+
+option:checked {
+	box-shadow: var(--borderShadowColorEffectClick);
+}
+
+select::picker-icon {
+	transition: var(--transitionTime);
+}
+
+select:open::picker-icon {
+	rotate: 180deg;
+}
+
+optgroup {
+	background: #00000040;
+}
+
 /**---------------------------**/
 .header {
 	display: flex;
@@ -199,6 +240,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 	background-color: gray;
 	margin: 0 10px;
 }
+
 /**---------------------------**/
 .dropdown {
 	position: relative;
@@ -264,20 +306,22 @@ input[type="range"]::-webkit-slider-runnable-track {
 	transition: transform var(--transitionTime);
 }
 
-.dropdown #dropdown-toggle:checked ~ .list {
+.dropdown #dropdown-toggle:checked~.list {
 	display: block;
 }
 
 .dropdown .list label:has(> input[type="radio"]:checked) {
 	box-shadow: var(--borderShadowColorEffectClick);
 }
-.dropdown #dropdown-toggle:checked + .dropdown-current::after {
+
+.dropdown #dropdown-toggle:checked+.dropdown-current::after {
 	transform: translateY(-50%) rotate(180deg);
 }
+
 /**-----------------------------------------------**/
 #propertyKey {
-    flex-direction: row;
-    align-items: center;
+	flex-direction: row;
+	align-items: center;
 }
 
 #propertyKey input[type="radio"] {
@@ -285,19 +329,19 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 #propertyKey label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  box-shadow: var(--borderShadowColorEffect);
-  user-select: none;
-  position: relative;
-  font-size: 14px;
-  color: inherit;
-  transition: var(--transitionTime);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	box-shadow: var(--borderShadowColorEffect);
+	user-select: none;
+	position: relative;
+	font-size: 14px;
+	color: inherit;
+	transition: var(--transitionTime);
 }
 
 #propertyKey label::before {
@@ -312,7 +356,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 	background-size: contain;
 }
 
-#propertyKey input[type="radio"]:checked + label {
+#propertyKey input[type="radio"]:checked+label {
 	background: var(--buttonColor);
 	color: #ffffff;
 }
@@ -328,7 +372,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 #rangeGradient {
 	width: 20px;
 	height: 100px;
-    margin-left: 15px;
+	margin-left: 15px;
 	margin-right: 15px;
 	box-shadow: var(--borderShadowColorEffect);
 	transition: var(--transitionTime);
@@ -369,64 +413,74 @@ td {
 .lanth-Act {
 	background: var(--f-block);
 	width: 100%;
-    height: 100%;
+	height: 100%;
 	display: flex;
-    flex-direction: column;
-    align-items: center;
+	flex-direction: column;
+	align-items: center;
 	box-shadow: var(--borderShadowColorEffect);
 	transition: var(--transitionTime);
 }
+
 /**--------------------**/
-.element, .elementStyle {
-    line-height: 1;
-    font-style: normal;
-    font-weight: normal;
-    width: 100%;
-    height: 100%;
-    padding: 2px;
-    transition: var(--transitionTime);
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.element,
+.elementStyle {
+	line-height: 1;
+	font-style: normal;
+	font-weight: normal;
+	width: 100%;
+	height: 100%;
+	padding: 2px;
+	transition: var(--transitionTime);
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 	opacity: 1;
 }
 
-.element *, .elementStyle *, #CloseUp * {
+.element *,
+.elementStyle *,
+#CloseUp * {
 	pointer-events: none;
 	user-select: none;
 }
 
-.element, .elementStyle:not(.empty) {
+.element,
+.elementStyle:not(.empty) {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
-.element b, .elementStyle b {
-    font-size: 0.75em;
+.element b,
+.elementStyle b {
+	font-size: 0.75em;
 }
 
-.element em, .elementStyle em {
-    font-size: 0.75em;
-    font-weight: 500;
-    font-style: normal;
+.element em,
+.elementStyle em {
+	font-size: 0.75em;
+	font-weight: 500;
+	font-style: normal;
 }
 
-.element data, .elementStyle data {
-    font-size: 0.75em;
-    font-weight: 400;
-    font-style: normal;
+.element data,
+.elementStyle data {
+	font-size: 0.75em;
+	font-weight: 400;
+	font-style: normal;
 }
 
-.element abbr, .elementStyle abbr {
-    font-size: 1.2em;
-    font-weight: 600;
+.element abbr,
+.elementStyle abbr {
+	font-size: 1.2em;
+	font-weight: 600;
 }
+
 /**--------------------**/
 #CloseUp {
 	line-height: 1;
-    font-style: normal;
-    font-weight: normal;
+	font-style: normal;
+	font-weight: normal;
 	padding: 2px;
-    transition: var(--transitionTime);
+	transition: var(--transitionTime);
 	width: 80px;
 	height: 80px;
 	display: flex;
@@ -455,14 +509,15 @@ td {
 #CloseUp em {
 	font-size: .8em;
 	font-weight: 500;
-    font-style: normal;
+	font-style: normal;
 }
 
 #CloseUp data {
 	font-size: .8em;
 	font-weight: 400;
-    font-style: normal;
+	font-style: normal;
 }
+
 /**--------------------**/
 /**.element:not(.empty),
 .elementStyle:not(.empty) {
@@ -476,6 +531,7 @@ html:not(.blocks, .category) .lanth-Act {
 html:not(.blocks, .category) td:has(> .element) {
 	padding: 0;
 }
+
 /**-----------------------------------------------**/
 .periodicTable {
 	display: flex;
@@ -488,6 +544,7 @@ html:not(.blocks, .category) td:has(> .element) {
 	width: 90%;
 	height: 90%;
 }
+
 /**-----------------------------------------------**/
 .highlightElement {
 	user-select: none;
@@ -497,7 +554,7 @@ html:not(.blocks, .category) td:has(> .element) {
 	display: flex;
 	width: 100%;
 	height: 100%;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 	align-content: flex-start;
 	justify-content: center;
 	transform: translateY(calc(-3 * 100%));
@@ -527,14 +584,17 @@ html:is(.state) .elementsClassView {
 .elementsClassView div span {
 	cursor: default;
 }
+
 /*---------------------*/
 .periodicTable:has(.element.highlight) :is(.element, .lanth-Act) {
 	opacity: 0.3;
 }
+
 .periodicTable:has(.element.highlight) :is(.element.highlight) {
 	opacity: 1;
 	box-shadow: var(--borderShadowColorEffectClick);
 }
+
 /*---------------------*/
 
 /**-----------------------------------------------**/
@@ -548,6 +608,7 @@ html:is(.state) .elementsClassView {
 	z-index: 2;
 	display: none;
 }
+
 #sitePopup .infoContainer {
 	transition: var(--transitionTime);
 	position: fixed;
@@ -563,10 +624,11 @@ html:is(.state) .elementsClassView {
 	height: 85%;
 }
 
-#sitePopup .infoContainer iframe{
+#sitePopup .infoContainer iframe {
 	width: 100%;
 	height: 95%;
 }
+
 /**-----------------------------------------------**/
 #atom .atom {
 	position: relative;
@@ -578,22 +640,27 @@ html:is(.state) .elementsClassView {
 	background-color: #888;
 	transform: translate(-50%);
 }
+
 #atom .energy-level {
 	position: absolute;
 	border: 1px solid #77868b;
 	border-radius: 50%;
 	top: 50%;
-    left: 50%;
+	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
 #atom .electron {
 	position: absolute;
 	width: 5px;
 	height: 5px;
-	background-color: var(--electron)/*#77868b*/;
+	background-color: var(--electron)
+		/*#77868b*/
+	;
 	border-radius: 50%;
 	transform: translate(40%, 40%);
 }
+
 /**-----------------------------------------------**/
 #infoPopup {
 	position: fixed;
@@ -627,6 +694,7 @@ html:is(.state) .elementsClassView {
 	border: none;
 	border-top: 1px solid #676666;
 }
+
 #infoPopup .infoContainer div {
 	display: flex;
 	justify-content: space-between;
@@ -647,21 +715,25 @@ html:is(.state) .elementsClassView {
 	box-shadow: var(--hoverShadow);
 }
 
-.linkText:hover, a:hover {
+.linkText:hover,
+a:hover {
 	color: #9d58bf;
 }
 
-button:hover, select:hover {
+button:hover,
+select:hover {
 	background-color: var(--buttonHoverColor);
 }
 
-input[type="text"]:hover, input[type="number"]:hover {
+input[type="text"]:hover,
+input[type="number"]:hover {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
 
 #propertyKey label:hover {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
+
 /**-----------------**/
 .dropdown .list label:hover {
 	box-shadow: var(--borderShadowColorEffectHover);
@@ -670,27 +742,30 @@ input[type="text"]:hover, input[type="number"]:hover {
 .dropdown .dropdown-current:hover {
 	background: var(--buttonHoverColor);
 }
+
 /**-----------------**/
-html:not(.blocks, .category) td:has(> :where(.element)) > :where(.element) {
+html:not(.blocks, .category) td:has(> :where(.element))> :where(.element) {
 	box-shadow: none;
 	padding: 4px;
 }
+
 /**-----------------**/
 .element:not(.empty):hover,
 .elementStyle:not(.empty):hover,
 #CloseUp:hover {
-    box-shadow: var(--borderShadowColorEffectHover);
+	box-shadow: var(--borderShadowColorEffectHover);
 }
 
 .element:not(.empty):active,
 .elementStyle:not(.empty):active,
 #CloseUp:active {
-    box-shadow: var(--borderShadowColorEffectClick);
+	box-shadow: var(--borderShadowColorEffectClick);
 }
 
 .periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement, .lanth-Act) {
 	opacity: 0.3;
 }
+
 .periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
 .periodicTable:has(.highlightElement.alkali:hover) .alkali,
 .periodicTable:has(.highlightElement.alkaline:hover) .alkaline,
@@ -709,53 +784,114 @@ html:not(.blocks, .category) td:has(> :where(.element)) > :where(.element) {
 .periodicTable:has(.highlightElement.solid:hover) .solid,
 .periodicTable:has(.highlightElement.liquid:hover) .liquid,
 .periodicTable:has(.highlightElement.gas:hover) .gas,
-.periodicTable:has(.highlightElement.unknownState:hover) .unknownState  {
+.periodicTable:has(.highlightElement.unknownState:hover) .unknownState {
 	opacity: 1;
 	box-shadow: var(--borderShadowColorEffectHover);
 }
+
 /**-----------------**/
 .close:hover {
 	color: red;
 	text-decoration: none;
 }
+
 /**-----------------------------------------------**/
-@media only screen and (max-width: 500px), only screen and (max-height: 550px) {
+@media only screen and (max-width: 500px),
+only screen and (max-height: 550px) {
 	#infoPopup .infoContainer {
 		width: 100%;
 		height: 100%;
 	}
 }
 
-@media only screen and (max-width: 1000px), only screen and (max-height: 650px) {
+@media only screen and (max-width: 1000px),
+only screen and (max-height: 650px) {
 	#sitePopup .infoContainer {
 		width: 100%;
 		height: 100%;
 	}
 }
-		
+
 @keyframes spin {
-	100% { transform: translate(-50%, -50%) rotate(360deg); }
+	100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
 }
 
 /**-----------------------------------------------**/
-.alkali {background: var(--alkali);}
-.alkaline {background: var(--alkaline);}
-.transition {background: var(--transition);}
-.poor {background: var(--poor);}
-.lanthanoid {background: var(--lanthanoid);}
-.actinoid {background: var(--actinoid);}
-.metalloid {background: var(--metalloid);}
-.nonmetal {background: var(--nonmetal);}
-.halogen {background: var(--halogen);}
-.noble {background: var(--noble);}
-.unknown {background: var(--unknown);}
+.alkali {
+	background: var(--alkali);
+}
 
-.blocks .s {background: var(--s-block);}
-.blocks .p {background: var(--p-block);}
-.blocks .d {background: var(--d-block);}
-.blocks .f {background: var(--f-block);}
+.alkaline {
+	background: var(--alkaline);
+}
+
+.transition {
+	background: var(--transition);
+}
+
+.poor {
+	background: var(--poor);
+}
+
+.lanthanoid {
+	background: var(--lanthanoid);
+}
+
+.actinoid {
+	background: var(--actinoid);
+}
+
+.metalloid {
+	background: var(--metalloid);
+}
+
+.nonmetal {
+	background: var(--nonmetal);
+}
+
+.halogen {
+	background: var(--halogen);
+}
+
+.noble {
+	background: var(--noble);
+}
+
+.unknown {
+	background: var(--unknown);
+}
+
+.blocks .s {
+	background: var(--s-block);
+}
+
+.blocks .p {
+	background: var(--p-block);
+}
+
+.blocks .d {
+	background: var(--d-block);
+}
+
+.blocks .f {
+	background: var(--f-block);
+}
+
 /**-----------------------------------------------**/
-.highlightElementState .solid {background: var(--solid);}
-.highlightElementState .liquid {background: var(--liquid);}
-.highlightElementState .gas {background: var(--gas);}
-.highlightElementState .unknownState {background: var(--unknownState);}
+.highlightElementState .solid {
+	background: var(--solid);
+}
+
+.highlightElementState .liquid {
+	background: var(--liquid);
+}
+
+.highlightElementState .gas {
+	background: var(--gas);
+}
+
+.highlightElementState .unknownState {
+	background: var(--unknownState);
+}
