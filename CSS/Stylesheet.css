@@ -393,6 +393,7 @@ td {
 
 .element *, .elementStyle *, #CloseUp * {
 	pointer-events: none;
+	user-select: none;
 }
 
 .element, .elementStyle:not(.empty) {
@@ -488,6 +489,10 @@ html:not(.blocks, .category) td:has(> .element) {
 	height: 90%;
 }
 /**-----------------------------------------------**/
+.highlightElement {
+	user-select: none;
+}
+
 .elementsClassView {
 	display: flex;
 	width: 100%;
