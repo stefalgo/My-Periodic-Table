@@ -50,3 +50,7 @@ export function formatGreekDate(yearLike) {
         ? `${Math.abs(year)} π.Χ.`
         : `${year} μ.Χ.`;
 }
+
+export function removeDiacritics(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}

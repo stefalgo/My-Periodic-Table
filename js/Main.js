@@ -347,10 +347,6 @@ function adjustElementsText(element, child, width) {
     });
 }
 
-function removeDiacritics(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
 function toggleColorScheme() {
     document.documentElement.classList.toggle('darkMode');
     document.documentElement.classList.toggle('lightMode');

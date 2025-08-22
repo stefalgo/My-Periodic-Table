@@ -9,6 +9,7 @@ import {
 } from './Main.js'
 
 import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js'
+import * as helpers from './UtilsAndLib/helpers.js'
 
 const tempNumberInputC = document.getElementById('tempNumInputC');
 const tempNumberInputK = document.getElementById('tempNumInputK');
@@ -75,17 +76,17 @@ export function initEvents() {
 		let searchTerms = rawInput
 			.split(/\s*(?:,)\s*/i) // Split by "," or "and"
 			.filter(term => term !== "")
-			.map(term => removeDiacritics(term));
+			.map(term => helpers.removeDiacritics(term));
 
 		let items = document.querySelectorAll(".element");
 
 		items.forEach(item => {
-			let atomicValue = removeDiacritics(item.getAttribute("data-atomic") || "");
+			let atomicValue = helpers.removeDiacritics(item.getAttribute("data-atomic") || "");
 			let emElement = item.querySelector("em");
 			let abbrElement = item.querySelector("abbr");
 
-			let abbrElementText = abbrElement ? removeDiacritics(abbrElement.textContent.trim().toLowerCase()) : "";
-			let emText = emElement ? removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
+			let abbrElementText = abbrElement ? helpers.removeDiacritics(abbrElement.textContent.trim().toLowerCase()) : "";
+			let emText = emElement ? helpers.removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
 
 			if (searchTerms.length === 0) {
 				item.classList.remove("highlight");
