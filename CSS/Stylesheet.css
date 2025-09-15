@@ -203,6 +203,11 @@ select,
 	font-size: 16px;
 	margin: 4px 2px;
 	border-radius: 4px;
+	transition: var(--transitionTime);
+}
+
+option {
+	transition: var(--transitionTime);
 }
 
 option::checkmark {
