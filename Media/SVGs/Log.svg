@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+            <polyline points="3,3 5,5 3,7" fill="none" stroke="#555" />
+        </marker>
+    </defs>
+    <g stroke="#555" stroke-width="3">
+        <line x1="10" y1="100" x2="10" y2="10" marker-end="url(#arrow)" />
+        <line x1="0" y1="90" x2="90" y2="90" marker-end="url(#arrow)" />
+        <path d="M10,90 Q20,20 90,20" fill="none" stroke-dasharray="3" />
+    </g>
+</svg>

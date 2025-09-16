@@ -20,10 +20,52 @@ https://stefalgo.github.io/My-Periodic-Table
 ![image](docs/images/Dropdown.png)\
 ![image](docs/images/Mass.png)
 
+# JSON Data
 ## Πηγές δεδομένων στοιχείων
 [https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)\
 [https://ptable.com](https://ptable.com)\
 [https://wikipedia.org](https://wikipedia.org)
 
-## Author
+Data are combined into 1 file.\
+Current: `JsonData/ElementsV3.json`
+## Format
+```json
+{
+    "1": {
+        "atomic": 1,
+        "symbol": "H",
+        "name": "Υδρογόνο",
+        "atomicMass": 1.008,
+        "electronConfiguration": "1s1",
+        "electronStringConf": "1s1",
+        "electronegativity": 2.2,
+        "atomicRadius": 53,
+        "ionizationEnergy": 1312.0,
+        "electronAffinity": 72.8,
+        "oxidation": "-1c,1c",
+        "melt": 14.01,
+        "boil": 20.28,
+        "density": 0.0899,
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 1
+        },
+        "elementAbundance": {
+            "universe": "75",
+            "solar": "75",
+            "meteor": "2.4",
+            "crust": "0.15",
+            "ocean": "11",
+            "human": "10"
+        },
+        "category": "nonmetal",
+        "period": 1,
+        "discovered": "1766"
+    },
+    ...
+}
+```
+
+# Author
 &copy; 2025 [@stefalgo](https://github.com/stefalgo) **All Rights Reserved.**
