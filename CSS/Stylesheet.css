@@ -63,12 +63,12 @@
 .lightMode {
 	--borderShadowColorEffect: inset 0 0 0 1px hsla(0, 0%, 10%, 0.3);
 
-	--background_A: #f2f2f2;
+	--background_A: #d9d9d9;
 	--background_B: #e6e6e6;
-	--background_C: #d9d9d9;
-	--textColor_A: #1a1a1a;
+	--background_C: #f2f2f2;
+	--textColor_A: #4d4d4d;
 	--textColor_B: #333333;
-	--textColor_C: #4d4d4d;
+	--textColor_C: #1a1a1a;
 
 	--border: #808080;
 
