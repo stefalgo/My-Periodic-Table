@@ -7,13 +7,13 @@ async function bootstrap() {
         if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
         const data = await res.json();
         onDataLoaded(data);
+        initEvents();
     } catch (err) {
         console.error(err);
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initEvents();
     bootstrap();
     window.toggleColorScheme = toggleColorScheme;
 });

@@ -3,30 +3,35 @@
 }
 
 :root {
-	--hoverColor2: #0099ff;
-
 	--hoverShadow: 0 0 10px var(--hoverColor);
-	--clickShadow: 0 0 10px rgba(255, 0, 0, 1);
 
-	--highlightShadow: 0 0 10px var(--hoverColor);
-
-	--borderShadowColorEffect: inset 0 0 0 1px rgba(var(--elementBorderColor), 0.3);
-	--borderShadowColorEffectHover: inset 0 0 0 2px var(--hoverColor2);
+	--borderShadowColorEffectHover: inset 0 0 0 2px #0099ff;;
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
 
 	--transitionTime: 0.3s;
 }
 
 /**--------------------------------**/
+
 .darkMode {
-	--background: #0c0c0c;
-	--textColor: #d1cece;
-	--hoverColor: #ffffff;
+	--borderShadowColorEffect: inset 0 0 0 1px hsla(0, 0%, 90%, 0.3);
 
-	--elementBorderColor: 209, 206, 206;
+	--background_A: #0c0c0c;
+	--background_B: #1a1a1a;
+	--background_C: #262626;
+	--textColor_A: #e6e6e6;
+	--textColor_B: #cccccc;
+	--textColor_C: #b3b3b3;
 
-	--buttonColor: #333;
-	--buttonHoverColor: #222;
+	--border: #808080;
+
+	--primary_A: hsl(0, 0%, 15%);
+	--primary_B: hsl(0, 0%, 10%);
+
+	--success: #59a659;
+	--warning: #bfbf40;
+	--danger: #bf4040;
+	--info: #4080bf;
 
 	--alkali: #6c3b01;
 	--alkaline: #846011;
@@ -56,31 +61,41 @@
 
 /**--------------------------------**/
 .lightMode {
-	--background: #eff3f5;
-	--textColor: #000000;
-	--hoverColor: #000000;
+	--borderShadowColorEffect: inset 0 0 0 1px hsla(0, 0%, 10%, 0.3);
 
-	--elementBorderColor: 0, 0, 0;
+	--background_A: #f2f2f2;
+	--background_B: #e6e6e6;
+	--background_C: #d9d9d9;
+	--textColor_A: #1a1a1a;
+	--textColor_B: #333333;
+	--textColor_C: #4d4d4d;
 
-	--buttonColor: #6876bb;
-	--buttonHoverColor: #3c4369;
+	--border: #808080;
 
-	--alkali: hsl(48deg, 77%, 64%);
-	--alkaline: hsl(60deg, 83%, 67%);
-	--transition: hsl(12deg, 87%, 85%);
+	--primary_A: #666f99;
+	--primary_B: #52587a;
+
+	--success: #59a659;
+	--warning: #bfbf40;
+	--danger: #bf4040;
+	--info: #4080bf;
+
+	--alkali: hsl(48, 77%, 80%);
+	--alkaline: hsl(60, 83%, 80%);
+	--transition: hsl(13, 87%, 80%);
 	--poor: hsl(192deg, 62%, 80%);
-	--lanthanoid: hsl(42deg, 62%, 76%);
-	--actinoid: hsl(340deg, 67%, 88%);
-	--metalloid: hsl(165deg, 58%, 76%);
-	--nonmetal: hsl(120deg, 73%, 74%);
+	--lanthanoid: hsl(42deg, 62%, 80%);
+	--actinoid: hsl(340deg, 67%, 80%);
+	--metalloid: hsl(165deg, 58%, 80%);
+	--nonmetal: hsl(120deg, 73%, 80%);
 	--halogen: #d4d4ab;
-	--noble: hsl(300deg, 44%, 82%);
-	--unknown: #EEE;
+	--noble: hsl(300deg, 44%, 80%);
+	--unknown: hsl(0, 0%, 80%);
 
-	--s-block: #ffb3c9;
-	--p-block: #93ffda;
-	--d-block: #daf78c;
-	--f-block: #c1d0ff;
+	--s-block: hsl(343, 100%, 80%);
+	--p-block: hsl(159, 100%, 80%);
+	--d-block: hsl(76, 87%, 80%);
+	--f-block: hsl(225, 100%, 80%);
 
 	--solid: #7777778c;
 	--liquid: #1e47ff8c;
@@ -123,8 +138,8 @@ body {
 	margin: 0;
 	padding: 0;
 
-	background-color: var(--background);
-	color: var(--textColor);
+	background-color: var(--background_A);
+	color: var(--textColor_A);
 
 	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 
@@ -143,7 +158,7 @@ a {
 /**-----------------------------------------------**/
 button {
 	display: inline-block;
-	background-color: var(--buttonColor);
+	background-color: var(--primary_A);
 	border: none;
 	color: white;
 	padding: 4px 10px;
@@ -158,13 +173,13 @@ button {
 
 button:disabled {
 	color: gray;
-	background-color: var(--buttonHoverColor);
+	background-color: var(--primary_B);
 }
 
 input[type="text"],
 input[type="number"] {
 	background-color: transparent;
-	color: var(--textColor);
+	color: var(--textColor_A);
 	padding: 8px;
 	font-size: 14px;
 	border: none;
@@ -195,7 +210,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 select,
 ::picker(select) {
 	appearance: base-select;
-	background: var(--buttonColor);
+	background: var(--primary_A);
 	color: #ffffff;
 	box-shadow: var(--borderShadowColorEffect);
 	border: none;
@@ -285,7 +300,7 @@ optgroup {
 }
 
 #propertyKey input[type="radio"]:checked+label {
-	background: var(--buttonColor);
+	background: var(--primary_A);
 	color: #ffffff;
 }
 
@@ -363,6 +378,7 @@ td {
 	justify-content: space-between;
 	flex-direction: column;
 	opacity: 1;
+	color: var(--textColor_B);
 }
 
 .element *,
@@ -541,7 +557,7 @@ html:is(.state) .elementsClassView {
 	transition: var(--transitionTime);
 	position: fixed;
 	z-index: 1;
-	background-color: var(--background);
+	background-color: var(--background_B);
 	padding: 1rem;
 	border: 1px solid #888;
 	top: 50%;
@@ -605,7 +621,7 @@ html:is(.state) .elementsClassView {
 	transition: var(--transitionTime);
 	position: fixed;
 	z-index: 1;
-	background-color: var(--background);
+	background-color: var(--background_B);
 	border: 1px solid #888;
 	padding: 1rem;
 	top: 50%;
@@ -650,7 +666,7 @@ a:hover {
 
 button:hover,
 select:hover {
-	background-color: var(--buttonHoverColor);
+	background-color: var(--primary_B);
 }
 
 input[type="text"]:hover,
@@ -715,7 +731,7 @@ html:not(.blocks, .category) td:has(> :where(.element))> :where(.element) {
 
 /**-----------------**/
 .close:hover {
-	color: red;
+	color: var(--danger);
 	text-decoration: none;
 }
 
