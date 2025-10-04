@@ -18,6 +18,8 @@ const tempRangeSlider = document.getElementById('temp');
 const K2C = k => k - 273;
 const C2K = c => c + 273;
 
+const visOption = document.getElementById('visualizeOption');
+
 export function initEvents() {
 	document.getElementById('propertyKey').addEventListener('change', () => {
 		const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
@@ -29,9 +31,9 @@ export function initEvents() {
 		}
 	});
 
-	visualizeOption.addEventListener('change', () => {
+	visOption.addEventListener('change', () => {
 		visualizeOptionFunc();
-		URLUtils.setParam('visualizeOption', visualizeOption.value);
+		URLUtils.setParam('visualizeOption', visOption.value);
 	});
 
 	['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>

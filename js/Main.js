@@ -357,9 +357,10 @@ function tempChanged(k) {
     visualizeOptionFunc();
 }
 
-function visualizeOptionFunc(setLogMode = true) {
-    const value = visualizeOption.value.split('-')[0];
-    const value2 = visualizeOption.value.split('-')[1];
+function visualizeOptionFunc(setLogMode = true, option="") {
+    const rawValue = (typeof visualizeOption !== "undefined" && visualizeOption?.value) || option;
+
+    const [value, value2] = rawValue.split("-");
     const logState = Array.isArray(visualizationParams) ? visualizationParams[3] : undefined;
 
     visualizationParams = null;
