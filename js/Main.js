@@ -264,11 +264,11 @@ function showState(show, temp = 273) {
     });
 }
 
-function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]) {
+function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74], radial=false) {
     const elements = getTableElements();
 
     if (!show) {
-        elements.forEach(el => (el.style.backgroundColor = ''));
+        elements.forEach(el => (el.style.background = ''));
         return;
     }
 
@@ -313,7 +313,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
             el.querySelector('data').textContent = '';
-            el.style.backgroundColor = `rgba(${unknownColor.join(',')})`;
+            el.style.background = `rgba(${unknownColor.join(',')})`;
             return;
         }
 
@@ -324,7 +324,18 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
             ? Math.round(c + t * (maxColor[i] - c))
             : c + t * (maxColor[3] - c));
 
-        el.style.backgroundColor = `rgba(${rgba.join(',')})`;
+        if (!radial) {
+            el.style.background = `rgba(${rgba.join(',')})`;
+        } else {
+            const max = Math.max(...data.map(d => d.val))
+            el.style.background = `
+                radial-gradient(
+                    circle,
+                    rgba(${maxColor.join(',')}) ${((val / max) * 50)}%,
+                    rgba(241, 241, 241, 0.1) ${((val / max) * 50) + 10}%
+                )
+            `;
+        }
     });
 }
 
@@ -344,7 +355,7 @@ function visualizeOptionFunc(option) {
         'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
         'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
         'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
-        'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+        'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75], true] },
         'energyLevels': {
             action: () => {
                 const calculated = {};
@@ -592,7 +603,6 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 
 export {
     onDataLoaded,
-    visualize,
     visualizeOptionFunc,
     updateVisualizer,
     showElementData,
