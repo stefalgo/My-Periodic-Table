@@ -1,10 +1,9 @@
 import {
-	visualize,
 	visualizeOptionFunc,
+	updateVisualizer,
 	showElementData,
 	infoElement,
 	tempChanged,
-	visualizationParams,
 	closeUp
 } from './Main.js'
 
@@ -24,15 +23,12 @@ export function initEvents() {
 	document.getElementById('propertyKey').addEventListener('change', () => {
 		const selected = document.getElementById('propertyKey').querySelector('input[name="scale"]:checked');
 		if (selected) {
-			if (visualizationParams) {
-				visualizationParams[3] = selected.value === 'log' && true || false
-				visualize(...visualizationParams);
-			}
+			updateVisualizer(selected.value === 'log' && true || false);
 		}
 	});
 
 	visOption.addEventListener('change', () => {
-		visualizeOptionFunc();
+		visualizeOptionFunc(visOption.value);
 		URLUtils.setParam('visualizeOption', visOption.value);
 	});
 

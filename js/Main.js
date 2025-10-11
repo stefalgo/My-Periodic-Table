@@ -6,7 +6,11 @@ const visualizeOption = document.getElementById('visualizeOption');
 
 let elementData;
 
-let visualizationParams = [];
+let currentVisualizer = {
+    params: null,
+    action: null
+};
+
 let temp = 273;
 
 const engToGr = [
@@ -41,18 +45,14 @@ function onDataLoaded(data) {
         showElementData(1);
     }
 
-    visualizeOptionFunc();
+    visualizeOptionFunc(URLUtils.readParam('visualizeOption') || "category");
+    visualizeOption.value = URLUtils.readParam('visualizeOption') || "category";
 
     adjustElementsText('.element', 'em', 60);
 }
 
 function openLinkInIframe(rowId) {
     const sitePopup = document.getElementById('sitePopup');
-    //let link = "Files/ElementsPDF/" + elementData[rowId].name + ".pdf#zoom=100&navpanes=0&page=1";
-    //let link = "https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/" + elementData[rowId].name + "#view=Fit"
-    //let link = "https://el.wikipedia.org/wiki/" + elementData[rowId].name;
-
-    //https://mozilla.github.io/pdf.js/web/viewer.html?file=https://el.wikipedia.org/api/rest_v1/page/pdf/ + + "#view=Fit"
     let link;
 
     function closePopup(event) {
@@ -269,10 +269,8 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     if (!show) {
         elements.forEach(el => (el.style.backgroundColor = ''));
-        //document.getElementById('propertyKey').style.display = 'none';
         return;
     }
-    //document.getElementById('propertyKey').style.display = 'flex';
 
     if (useLog) {
         document.getElementById('logarithmic').checked = true;
@@ -330,41 +328,9 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
     });
 }
 
-function adjustElementsText(element, child, width) {
-    document.querySelectorAll(`${element} ${child}`).forEach(em => {
-        em.style.transform = 'none';
-        em.style.letterSpacing = '';
-
-        const natural = em.scrollWidth;
-        const scale = natural > width ? width / natural : 1;
-
-        em.style.transformOrigin = 'left center';
-        em.style.transform = `scaleX(${scale})`;
-
-        if (em.textContent.length >= 10) {
-            em.style.letterSpacing = '-0.05em';
-        }
-    });
-}
-
-function toggleColorScheme() {
-    document.documentElement.classList.toggle('darkMode');
-    document.documentElement.classList.toggle('lightMode');
-}
-
-function tempChanged(k) {
-    temp = k;
-    visualizeOptionFunc();
-}
-
-function visualizeOptionFunc(setLogMode = true, option="") {
-    const rawValue = (typeof visualizeOption !== "undefined" && visualizeOption?.value) || option;
-
-    const [value, value2] = rawValue.split("-");
-    const logState = Array.isArray(visualizationParams) ? visualizationParams[3] : undefined;
-
-    visualizationParams = null;
-
+function visualizeOptionFunc(option) {
+    const [value, value2] = option.split("-");
+    currentVisualizer = { params: null, action: null };
 
     //<array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
     const config = {
@@ -389,7 +355,7 @@ function visualizeOptionFunc(setLogMode = true, option="") {
                     const electrons = shells[idx] ?? 0;
                     (calculated[key] ??= { Total: 0 }).Total += electrons;
                 });
-                visualizationParams = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                currentVisualizer.params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
                     elementData,
                     'electronConfiguration',
@@ -417,14 +383,13 @@ function visualizeOptionFunc(setLogMode = true, option="") {
 
     const selected = config[value];
 
-    if (value2) {
-        for (const key in config) {
-            const entry = config[key];
-            if (entry.params && typeof entry.params[2] === 'string') {
-                entry.params[2] = `${entry.params[2]}.${value2}`;
-                displayDataOnElement(elementData, entry.params[2], null, x => `${x}%`);
-            }
+    if (value2 && selected?.params) {
+        const clonedParams = [...selected.params];
+        if (typeof clonedParams[2] === 'string') {
+            clonedParams[2] = `${clonedParams[2]}.${value2}`;
         }
+        currentVisualizer.params = clonedParams;
+        displayDataOnElement(elementData, clonedParams[2], null, x => `${x}%`);
     }
     if (!document.documentElement.classList.contains(value)) {
         Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
@@ -435,23 +400,34 @@ function visualizeOptionFunc(setLogMode = true, option="") {
     visualize(null, false);
 
     if (selected) {
-        if (selected.action && (!visualizationParams)) {
+        currentVisualizer.action = selected.action || null;
+
+        if (selected.action && !currentVisualizer.params) {
             selected.action();
         }
-        if (selected.params && (!visualizationParams)) {
-            visualizationParams = selected.params;
+        if (selected.params && !currentVisualizer.params) {
+            currentVisualizer.params = selected.params;
         }
     }
 
-    if (!visualizationParams && !selected?.action) {
+    if (!currentVisualizer.params && !selected?.action) {
         displayDataOnElement(elementData, 'category');
     }
 
-    if (visualizationParams) {
-        if (!setLogMode) {
-            visualizationParams[3] = logState;
+    if (currentVisualizer.params) {
+        visualize(...currentVisualizer.params);
+    }
+}
+
+function updateVisualizer(LogMode) {
+    if (!currentVisualizer.params && currentVisualizer.action) {
+        currentVisualizer.action();
+    }
+    if (currentVisualizer.params) {
+        if (LogMode != null) {
+            currentVisualizer.params[3] = LogMode;
         }
-        visualize(...visualizationParams);
+        visualize(...currentVisualizer.params);
     }
 }
 
@@ -501,7 +477,7 @@ function showElementData(elementAtomicNumber) {
     closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
     closeUp.setAttribute('data-atomic', elementAtomicNumber)
 
-    visualizeOptionFunc(false);
+    updateVisualizer();
 
     for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
         let spanElement = document.createElement('span');
@@ -579,6 +555,33 @@ function infoElement(elementAtomicNumber) {
     infoPopup.style.display = "block";
 }
 
+function adjustElementsText(element, child, width) {
+    document.querySelectorAll(`${element} ${child}`).forEach(em => {
+        em.style.transform = 'none';
+        em.style.letterSpacing = '';
+
+        const natural = em.scrollWidth;
+        const scale = natural > width ? width / natural : 1;
+
+        em.style.transformOrigin = 'left center';
+        em.style.transform = `scaleX(${scale})`;
+
+        if (em.textContent.length >= 10) {
+            em.style.letterSpacing = '-0.05em';
+        }
+    });
+}
+
+function toggleColorScheme() {
+    document.documentElement.classList.toggle('darkMode');
+    document.documentElement.classList.toggle('lightMode');
+}
+
+function tempChanged(k) {
+    temp = k;
+    updateVisualizer();
+}
+
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('darkMode');
     document.documentElement.classList.remove('lightMode');
@@ -587,22 +590,14 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
     document.documentElement.classList.remove('darkMode');
 }
 
-if (URLUtils.readParam('lighting') === 'other') {
-    toggleColorScheme();
-}
-
-if (URLUtils.readParam('visualizeOption')) {
-    visualizeOption.value = URLUtils.readParam('visualizeOption');
-}
-
 export {
     onDataLoaded,
     visualize,
     visualizeOptionFunc,
+    updateVisualizer,
     showElementData,
     infoElement,
     toggleColorScheme,
     tempChanged,
-    visualizationParams,
     closeUp
 };
