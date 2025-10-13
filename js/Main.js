@@ -130,6 +130,15 @@ function energyLevels(eConfig) {
     return shells;
 }
 
+function lastElectronCount(eConfig) {
+    const match = eConfig.trim().match(/(\d+[spdfg]\d+)\s*$/);
+    if (!match) return null;
+
+    const lastPart = match[1];
+    const countMatch = lastPart.match(/\d+$/);
+    return countMatch ? Number(countMatch[0]) : null;
+}
+
 function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
     const elements = getTableElements();
 
@@ -382,12 +391,20 @@ function visualizeOptionFunc(option) {
                 );
             }
         },
+        'configuration': {
+            action: () => {
+                const calculated = {};
+                Object.entries(elementData).forEach(([key, el]) => {
+                    (calculated[key] ??= { Total: 0 }).Total += lastElectronCount(el.electronConfiguration);
+                });
+                currentVisualizer.params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+            }
+        },
         'discoveryDate': {
             action: () => {
                 document.documentElement.classList.add('category');
                 displayDataOnElement(elementData, 'discovered', null, helpers.formatGreekDate);
             },
-            //params: [elementData, true, 'discovered', false, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
         },
         'abundance': { params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
     };
