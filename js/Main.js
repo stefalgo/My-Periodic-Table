@@ -431,7 +431,7 @@ function visualizeOptionFunc(option) {
 }
 
 function updateVisualizer(LogMode) {
-    if (!currentVisualizer.params && currentVisualizer.action) {
+    if (currentVisualizer.action) {
         currentVisualizer.action();
     }
     if (currentVisualizer.params) {
