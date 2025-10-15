@@ -3,6 +3,7 @@ import * as helpers from './UtilsAndLib/helpers.js'
 
 const closeUp = document.getElementById('CloseUp');
 const visualizeOption = document.getElementById('visualizeOption');
+const periodicTable = document.getElementById('periodicTable');
 
 let elementData;
 
@@ -402,7 +403,7 @@ function visualizeOptionFunc(option) {
         },
         'discoveryDate': {
             action: () => {
-                document.documentElement.classList.add('category');
+                periodicTable.classList.add('category');
                 displayDataOnElement(elementData, 'discovered', null, helpers.formatGreekDate);
             },
         },
@@ -419,9 +420,9 @@ function visualizeOptionFunc(option) {
         currentVisualizer.params = clonedParams;
         displayDataOnElement(elementData, clonedParams[2], null, x => `${x}%`);
     }
-    if (!document.documentElement.classList.contains(value)) {
-        Object.keys(config).forEach(cls => document.documentElement.classList.remove(cls));
-        document.documentElement.classList.add(value);
+    if (!periodicTable.classList.contains(value)) {
+        periodicTable.classList = '';
+        periodicTable.classList.add(value);
     };
     showBlocks(false);
     showState(false);

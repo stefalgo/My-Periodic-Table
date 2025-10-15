@@ -147,6 +147,12 @@ optgroup {
 	background-color: gray;
 	margin: 0 10px;
 }
+/**-----------------------------------------------**/
+#PeriodicTablePanel {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 /**-----------------------------------------------**/
 #propertyKey {
@@ -355,16 +361,16 @@ td {
     cursor: crosshair;
 }**/
 
-html:not(.blocks, .category) .lanth-Act {
+#periodicTable:not(.blocks, .category) .lanth-Act {
 	background: transparent;
 }
 
-html:not(.blocks, .category) td:has(> .element) {
+#periodicTable:not(.blocks, .category) td:has(> .element) {
 	padding: 0;
 }
 
 /**-----------------------------------------------**/
-.periodicTable {
+#periodicTable {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -400,15 +406,15 @@ html:not(.blocks, .category) td:has(> .element) {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
-html:is(.category) .elementsClassView {
+#periodicTable:is(.category) .elementsClassView {
 	transform: translateY(calc(0 * 100%));
 }
 
-html:is(.blocks) .elementsClassView {
+#periodicTable:is(.blocks) .elementsClassView {
 	transform: translateY(calc(-1 * 100%));
 }
 
-html:is(.state) .elementsClassView {
+#periodicTable:is(.state) .elementsClassView {
 	transform: translateY(calc(-2 * 100%));
 }
 
@@ -417,11 +423,11 @@ html:is(.state) .elementsClassView {
 }
 
 /*---------------------*/
-.periodicTable:has(.element.highlight) :is(.element, .lanth-Act) {
+#periodicTable:has(.element.highlight) :is(.element, .lanth-Act) {
 	opacity: 0.3;
 }
 
-.periodicTable:has(.element.highlight) :is(.element.highlight) {
+#periodicTable:has(.element.highlight) :is(.element.highlight) {
 	opacity: 1;
 	box-shadow: var(--borderShadowColorEffectClick);
 }
@@ -571,47 +577,47 @@ option:hover {
 }
 
 /**-----------------**/
-html:not(.blocks, .category) td:has(> :where(.element))> :where(.element) {
+#periodicTable:not(.blocks, .category) td:has(> :where(.element))> :where(.element) {
 	box-shadow: none;
 	padding: 4px;
 }
 
 /**-----------------**/
-.element:not(.empty):hover,
+#periodicTable .element:not(.empty):hover,
 .elementStyle:not(.empty):hover,
 #CloseUp:hover {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
 
-.element:not(.empty):active,
+#periodicTable .element:not(.empty):active,
 .elementStyle:not(.empty):active,
 #CloseUp:active {
 	box-shadow: var(--borderShadowColorEffectClick);
 }
 
-.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement, .lanth-Act) {
+#periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement, .lanth-Act) {
 	opacity: 0.3;
 }
 
-.periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
-.periodicTable:has(.highlightElement.alkali:hover) .alkali,
-.periodicTable:has(.highlightElement.alkaline:hover) .alkaline,
-.periodicTable:has(.highlightElement.transition:hover) .transition,
-.periodicTable:has(.highlightElement.poor:hover) .poor,
-.periodicTable:has(.highlightElement.lanthanoid:hover) .lanthanoid,
-.periodicTable:has(.highlightElement.actinoid:hover) .actinoid,
-.periodicTable:has(.highlightElement.metalloid:hover) .metalloid,
-.periodicTable:has(.highlightElement.nonmetal:hover) .nonmetal,
-.periodicTable:has(.highlightElement.noble:hover) .noble,
-.periodicTable:has(.highlightElement.unknown:hover) .unknown,
-.periodicTable:has(.highlightElement.s:hover) .s,
-.periodicTable:has(.highlightElement.p:hover) .p,
-.periodicTable:has(.highlightElement.d:hover) .d,
-.periodicTable:has(.highlightElement.f:hover) .f,
-.periodicTable:has(.highlightElement.solid:hover) .solid,
-.periodicTable:has(.highlightElement.liquid:hover) .liquid,
-.periodicTable:has(.highlightElement.gas:hover) .gas,
-.periodicTable:has(.highlightElement.unknownState:hover) .unknownState {
+#periodicTable:has(.highlightElement:hover) :is(.element, .highlightElement):hover,
+#periodicTable:has(.highlightElement.alkali:hover) .alkali,
+#periodicTable:has(.highlightElement.alkaline:hover) .alkaline,
+#periodicTable:has(.highlightElement.transition:hover) .transition,
+#periodicTable:has(.highlightElement.poor:hover) .poor,
+#periodicTable:has(.highlightElement.lanthanoid:hover) .lanthanoid,
+#periodicTable:has(.highlightElement.actinoid:hover) .actinoid,
+#periodicTable:has(.highlightElement.metalloid:hover) .metalloid,
+#periodicTable:has(.highlightElement.nonmetal:hover) .nonmetal,
+#periodicTable:has(.highlightElement.noble:hover) .noble,
+#periodicTable:has(.highlightElement.unknown:hover) .unknown,
+#periodicTable:has(.highlightElement.s:hover) .s,
+#periodicTable:has(.highlightElement.p:hover) .p,
+#periodicTable:has(.highlightElement.d:hover) .d,
+#periodicTable:has(.highlightElement.f:hover) .f,
+#periodicTable:has(.highlightElement.solid:hover) .solid,
+#periodicTable:has(.highlightElement.liquid:hover) .liquid,
+#periodicTable:has(.highlightElement.gas:hover) .gas,
+#periodicTable:has(.highlightElement.unknownState:hover) .unknownState {
 	opacity: 1;
 	box-shadow: var(--borderShadowColorEffectHover);
 }
