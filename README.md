@@ -45,6 +45,7 @@ Current: `JsonData/ElementsV3.json`
         "oxidation": "-1c,1c",
         "melt": 14.01,
         "boil": 20.28,
+        "valence": 1,
         "density": 0.0899,
         "quantum": {
             "l": 0,
@@ -63,7 +64,7 @@ Current: `JsonData/ElementsV3.json`
         "period": 1,
         "discovered": "1766"
     },
-    ...
+    //...
 }
 ```
 

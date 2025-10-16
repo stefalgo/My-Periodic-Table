@@ -366,6 +366,7 @@ function visualizeOptionFunc(option) {
         'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
         'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
         'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75], true] },
+        'valence': { params: [elementData, true, 'valence', false, true, [100, 125, 255, 0.75], [255, 16, 16, 0.75]] },
         'energyLevels': {
             action: () => {
                 const calculated = {};
