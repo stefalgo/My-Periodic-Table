@@ -27,7 +27,7 @@ https://stefalgo.github.io/My-Periodic-Table
 [https://wikipedia.org](https://wikipedia.org)
 
 Data are combined into 1 file.\
-Current: `JsonData/ElementsV3.json`
+Current: `JsonData/ElementsV4.json`
 ## Format
 ```json
 {
