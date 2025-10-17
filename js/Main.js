@@ -140,6 +140,15 @@ function lastElectronCount(eConfig) {
     return countMatch ? Number(countMatch[0]) : null;
 }
 
+function getRepresentativeOxidation(oxStr) {
+    return oxStr
+        .split(",")
+        .map(s => s.trim())
+        .filter(s => s.endsWith("c"))
+        .map(s => s.replace(/c$/, ""))
+        .join(" ");
+}
+
 function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
     const elements = getTableElements();
 
@@ -400,6 +409,28 @@ function visualizeOptionFunc(option) {
                     (calculated[key] ??= { Total: 0 }).Total += lastElectronCount(el.electronConfiguration);
                 });
                 currentVisualizer.params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                displayDataOnElement(
+                    elementData,
+                    'electronConfiguration',
+                    null,
+                    x => {
+                        const last3 = x.slice(-8);
+                        return (last3);
+                    }
+                );
+            }
+        },
+        'oxidationStates': {
+            action: () => {
+                periodicTable.classList.add('blocks');
+                displayDataOnElement(
+                    elementData,
+                    'oxidation',
+                    null,
+                    x => {
+                        return getRepresentativeOxidation(x);
+                    }
+                );
             }
         },
         'discoveryDate': {
@@ -516,7 +547,7 @@ function showElementData(elementAtomicNumber) {
     }
 
     generateAtom(elementAtomicNumber);
-    adjustElementsText('#CloseUp', 'em', 70);
+    adjustElementsText('#CloseUp', 'em', 65);
 }
 
 function infoElement(elementAtomicNumber) {
@@ -566,6 +597,7 @@ function infoElement(elementAtomicNumber) {
         ['Ατομικός', data.atomic || '--'],
         ['Ηλεκτρονική δομή', energyLevels(data.electronConfiguration).join(', ') || '--'],
         ['Διαμόρφωση', data.electronStringConf || '--'],
+        ['Κατάσταση οξείδωσης', `${data.oxidation.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
         ['Βάρος', `${data.atomicMass || '--'} u`],
         ['Ταξινόμηση', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
         ['Μπλοκ', getBlock(data) || '--'],

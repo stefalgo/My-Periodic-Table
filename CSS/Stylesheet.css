@@ -147,12 +147,6 @@ optgroup {
 	background-color: gray;
 	margin: 0 10px;
 }
-/**-----------------------------------------------**/
-#PeriodicTablePanel {
-	display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 /**-----------------------------------------------**/
 #propertyKey {

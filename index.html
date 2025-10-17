@@ -40,57 +40,58 @@
 		</div>
 
 		<article id="PeriodicTablePanel">
-			<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
+			<div style="display: flex; flex-direction: column; align-items: center;">
+				<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
+				<lable for="visualizeOption">Επιλογή οπτικοποίησης:</lable>
+				<select id="visualizeOption">
+					<option value="category">Κατηγορία</option>
+					<option value="blocks">Μπλοκ ηλεκτρονιακής διάταξης</option>
+					<option value="state">Κατάσταση</option>
 
-			<lable for="visualizeOption">Επιλογή οπτικοποίησης:</lable>
-			<select id="visualizeOption">
-				<option value="category">Κατηγορία</option>
-				<option value="blocks">Μπλοκ ηλεκτρονιακής διάταξης</option>
-				<option value="state">Κατάσταση</option>
+					<option value="atomicMass">Ατομική Μάζα (u)</option>
+					<option value="energyLevels">Ηλεκτρονική δομή</option>
+					<option value="configuration">Ηλεκτρονική διαμόρφωση</option>
+					<option value="meltPoint">Σημείο τήξης (K)</option>
+					<option value="boilPoint">Σημείο ζέσεως (K)</option>
+					<option value="density">Πυκνότητα (kJ/m3)</option>
+					<option value="electronegativity">Ηλεκτραρνητικότητα</option>		
+					<option value="electronAffinity">Ηλεκτροσυγγένεια (kJ/mol)</option>
+					<option value="ionization">Ιονισμός (kJ/mol)</option>
+					<option value="valence">Σθενότητα</option>
+					<option value="oxidationStates">Κατάσταση οξείδωσης</option>
+					<option value="radius">Ακτίνα (pm)</option>
+					<option value="discoveryDate">Ανακαλύφθηκε</option>
+					
+					<optgroup label="Αφθονία">
+						<option value="abundance-universe">Σύμπαν</option>
+						<option value="abundance-solar">Ηλιακό</option>
+						<option value="abundance-meteor">Μετεωρίτες</option>
+						<option value="abundance-crust">Φλοιός</option>
+						<option value="abundance-ocean">Ωκεανός</option>
+						<option value="abundance-human">Άνθρωπος</option>
+					</optgroup>
+				</select>
 
-				<option value="atomicMass">Ατομική Μάζα (u)</option>
-				<option value="energyLevels">Ηλεκτρονική δομή</option>
-				<option value="configuration">Ηλεκτρονική διαμόρφωση</option>
-				<option value="meltPoint">Σημείο τήξης (K)</option>
-				<option value="boilPoint">Σημείο ζέσεως (K)</option>
-				<option value="density">Πυκνότητα (kJ/m3)</option>
-				<option value="electronegativity">Ηλεκτραρνητικότητα</option>		
-				<option value="electronAffinity">Ηλεκτροσυγγένεια (kJ/mol)</option>
-				<option value="ionization">Ιονισμός (kJ/mol)</option>
-				<option value="valence">Σθενότητα</option>
-				<option value="radius">Ακτίνα (pm)</option>
-
-				<option value="discoveryDate">Ανακαλύφθηκε</option>
-				
-				<optgroup label="Αφθονία">
-					<option value="abundance-universe">Σύμπαν</option>
-					<option value="abundance-solar">Ηλιακό</option>
-					<option value="abundance-meteor">Μετεωρίτες</option>
-					<option value="abundance-crust">Φλοιός</option>
-					<option value="abundance-ocean">Ωκεανός</option>
-					<option value="abundance-human">Άνθρωπος</option>
-				</optgroup>
-			</select>
-
-			<div style="display: flex; align-items: center;">
-				<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;">
-					<b>Ατομικός</b>
-					<abbr>Σύμβολο</abbr>
-					<em>Όνομα</em>
-					<data>Δεδομένα</data>
+				<div style="display: flex; align-items: center;">
+					<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;">
+						<b>Ατομικός</b>
+						<abbr>Σύμβολο</abbr>
+						<em>Όνομα</em>
+						<data>Δεδομένα</data>
+					</div>
+					<div class="nonmetal" id="CloseUp">
+						<output>
+							<b class="closeUp-atomic">X</b> 
+							<abbr class="closeUp-shortName">A</abbr> 
+							<em class="closeUp-name">A</em> 
+							<data class="closeUp-mass">X</data>
+						</output>
+						<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
+							<span>X</span>
+						</small>
+					</div>
+					<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex;"> <b>Ηλεκτρονική δομή</b></div>
 				</div>
-				<div class="nonmetal" id="CloseUp">
-					<output>
-						<b class="closeUp-atomic">X</b> 
-						<abbr class="closeUp-shortName">A</abbr> 
-						<em class="closeUp-name">A</em> 
-						<data class="closeUp-mass">X</data>
-					</output>
-					<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
-						<span>X</span>
-					</small>
-				</div>
-				<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex;"> <b>Ηλεκτρονική δομή</b></div>
 			</div>
 		</article>
 		
