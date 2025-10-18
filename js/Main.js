@@ -162,8 +162,8 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
 
         let value = helpers.getNestedValue(dataMap[key], prop);
 
-        if (value == null) {
-            cell.textContent = '';
+        if (value == '') {
+            cell.textContent = '--';
             return;
         }
 
@@ -331,7 +331,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
 
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
-            el.querySelector('data').textContent = '';
+            //el.querySelector('data').textContent = '';
             el.style.background = `rgba(${unknownColor.join(',')})`;
             return;
         }
@@ -422,7 +422,19 @@ function visualizeOptionFunc(option) {
         },
         'oxidationStates': {
             action: () => {
-                periodicTable.classList.add('blocks');
+                const calculated = {};
+                Object.entries(elementData).forEach(([key, el]) => {
+                    const ox = el.oxidation
+                        .replaceAll('c', '')
+                        .split(',')
+                        .map(val => val === '' ? '' : Number(val));
+
+                    const oxidationState = ox.includes('') ? '' : ox.reduce((acc, val) => acc + val, 0);
+
+                    (calculated[key] ??= { Total: '' }).Total += (oxidationState);
+                });
+
+                currentVisualizer.params = [calculated, true, 'Total', false, false, [100, 125, 255, 0.75], [255, 16, 16, 0.75]];
                 displayDataOnElement(
                     elementData,
                     'oxidation',
