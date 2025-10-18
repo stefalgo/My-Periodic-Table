@@ -161,8 +161,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         if (!cell) return;
 
         let value = helpers.getNestedValue(dataMap[key], prop);
-
-        if (value == '') {
+        if (value === '') {
             cell.textContent = '--';
             return;
         }
