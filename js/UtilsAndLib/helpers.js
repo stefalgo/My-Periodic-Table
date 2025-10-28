@@ -54,3 +54,17 @@ export function formatGreekDate(yearLike) {
 export function removeDiacritics(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
+
+export function sharePage() {
+    const data = {
+        title: "Periodic table",
+        text: "Check out stefalgo's periodic table",
+        url: "https://stefalgo.github.io/My-Periodic-Table/"
+    }
+
+    try {
+        navigator.share(data);
+    } catch (err) {
+        console.log(`Failed to share: ${err}`);
+    }
+}

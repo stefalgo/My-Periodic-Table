@@ -1,5 +1,6 @@
 import { initEvents } from './Events.js';
 import { onDataLoaded, toggleColorScheme } from './Main.js';
+import { sharePage } from './UtilsAndLib/helpers.js';
 
 async function bootstrap() {
     try {
@@ -16,4 +17,5 @@ async function bootstrap() {
 document.addEventListener('DOMContentLoaded', () => {
     bootstrap();
     window.toggleColorScheme = toggleColorScheme;
+    window.sharePage = sharePage;
 });
