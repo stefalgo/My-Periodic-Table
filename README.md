@@ -29,7 +29,7 @@ https://stefalgo.github.io/My-Periodic-Table
 Data are combined into 1 file.\
 Current: `JsonData/ElementsV4.json`
 ## Format
-```json
+```jsonc
 {
     "1": {
         "atomic": 1,
