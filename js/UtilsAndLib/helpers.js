@@ -59,12 +59,14 @@ export function sharePage() {
     const data = {
         title: "Periodic table",
         text: "Check out stefalgo's periodic table",
-        url: "https://stefalgo.github.io/My-Periodic-Table/"
-    }
+        url: window.location.href
+    };
 
-    try {
-        navigator.share(data);
-    } catch (err) {
-        console.log(`Failed to share: ${err}`);
+    if (navigator.share) {
+        navigator.share(data)
+            .then(() => console.log("Shared successfully"))
+            .catch(err => console.error("Share failed:", err));
+    } else {
+        console.warn("Web Share API not supported in this browser.");
     }
 }
