@@ -282,7 +282,7 @@ function showState(show, temp = 273) {
     });
 }
 
-function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74], radial=false) {
+function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74], radial = false) {
     const elements = getTableElements();
 
     if (!show) {
@@ -454,29 +454,33 @@ function visualizeOptionFunc(option) {
             action: () => {
                 displayDataOnElement(elementData, `elementAbundance.${value2}`, null, x => `${x}%`);
             },
-            params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+            params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
+        },
     };
 
     const selected = config[value];
-    
     periodicTable.classList = '';
     periodicTable.classList.add(value);
     showBlocks(false);
     showState(false);
     visualize(null, false);
 
-    if (selected?.params) {
+    if (value2 && selected?.params) {
         const clonedParams = [...selected.params];
         if (typeof clonedParams[2] === 'string') {
-            clonedParams[2] = `${clonedParams[2]}.${value2 || value}`;
+            clonedParams[2] = `${clonedParams[2]}.${value2}`;
         }
         currentVisualizer.params = clonedParams;
     }
 
     if (selected) {
         currentVisualizer.action = selected.action || null;
+
         if (selected.action) {
             selected.action();
+        }
+        if (selected.params && !currentVisualizer.params) {
+            currentVisualizer.params = selected.params;
         }
     }
 
