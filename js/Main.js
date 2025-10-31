@@ -161,7 +161,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         if (!cell) return;
 
         let value = helpers.getNestedValue(dataMap[key], prop);
-        if (value === '') {
+        if (value === '' || value === undefined) {
             cell.textContent = '--';
             return;
         }
@@ -450,35 +450,33 @@ function visualizeOptionFunc(option) {
                 displayDataOnElement(elementData, 'discovered', null, helpers.formatGreekDate);
             },
         },
-        'abundance': { params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
+        'abundance': {
+            action: () => {
+                displayDataOnElement(elementData, `elementAbundance.${value2}`, null, x => `${x}%`);
+            },
+            params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]] },
     };
 
     const selected = config[value];
-
-    if (value2 && selected?.params) {
-        const clonedParams = [...selected.params];
-        if (typeof clonedParams[2] === 'string') {
-            clonedParams[2] = `${clonedParams[2]}.${value2}`;
-        }
-        currentVisualizer.params = clonedParams;
-        displayDataOnElement(elementData, clonedParams[2], null, x => `${x}%`);
-    }
-    if (!periodicTable.classList.contains(value)) {
-        periodicTable.classList = '';
-        periodicTable.classList.add(value);
-    };
+    
+    periodicTable.classList = '';
+    periodicTable.classList.add(value);
     showBlocks(false);
     showState(false);
     visualize(null, false);
 
+    if (selected?.params) {
+        const clonedParams = [...selected.params];
+        if (typeof clonedParams[2] === 'string') {
+            clonedParams[2] = `${clonedParams[2]}.${value2 || value}`;
+        }
+        currentVisualizer.params = clonedParams;
+    }
+
     if (selected) {
         currentVisualizer.action = selected.action || null;
-
-        if (selected.action && !currentVisualizer.params) {
+        if (selected.action) {
             selected.action();
-        }
-        if (selected.params && !currentVisualizer.params) {
-            currentVisualizer.params = selected.params;
         }
     }
 

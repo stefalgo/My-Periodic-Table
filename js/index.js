@@ -9,6 +9,7 @@ async function bootstrap() {
         const data = await res.json();
         onDataLoaded(data);
         initEvents();
+        console.log("loaded successfully");
     } catch (err) {
         console.error(err);
     }
