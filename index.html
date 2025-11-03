@@ -40,6 +40,26 @@
 			<button onclick="toggleColorScheme()">Color Scheme</button>
 		</div>
 
+		<div id="sitePopup" class="popup widePopup">
+			<div class="infoContainer">
+				<span class="close-btn">X</span>
+				<iframe></iframe>
+			</div>
+		</div>
+			
+		<div id="infoPopup" class="popup">
+			<div class="infoContainer" style="overflow: auto;">
+				<span class="close-btn">X</span>
+				<div id="CloseUp2"></div>
+				<div>
+					<a class="popup-pdfDownload">Λήψη αρχείου PDF</a>
+					<a class="popup-wikipediaLink" target="_blank">Ανοιγμα στη Βικιπαίδεια</a>
+				</div>
+				<hr>
+				<span class="popup-data"></span>
+			</div>
+		</div>
+
 		<article id="PeriodicTablePanel">
 			<div style="display: flex; flex-direction: column; align-items: center;">
 				<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
@@ -95,26 +115,6 @@
 				</div>
 			</div>
 		</article>
-		
-		<div id="sitePopup">
-			<div class="infoContainer">
-				<span class="close">X</span>
-				<iframe></iframe>
-			</div>
-		</div>
-			
-		<div id="infoPopup">
-			<div class="infoContainer">
-				<span class="close">X</span>
-				<div id="CloseUp2"></div>
-				<div>
-					<a class="popup-pdfDownload">Λήψη αρχείου PDF</a>
-					<a class="popup-wikipediaLink" target="_blank">Ανοιγμα στη Βικιπαίδεια</a>
-				</div>
-				<hr>
-				<span class="popup-data"></span>
-			</div>
-		</div>
 
 		<div id="periodicTable" class="category">
 			<table id="elements">

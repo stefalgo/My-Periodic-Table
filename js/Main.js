@@ -59,7 +59,7 @@ function openLinkInIframe(rowId) {
     function closePopup(event) {
         sitePopup.querySelector('iframe').src = '';
         sitePopup.style.display = "none";
-        sitePopup.querySelector('.close').removeEventListener('click', closePopup);
+        sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
 
     if (elementData[rowId].linkElementName) {
@@ -70,7 +70,12 @@ function openLinkInIframe(rowId) {
     sitePopup.querySelector('iframe').src = link;
 
     sitePopup.style.display = "block";
-    sitePopup.querySelector('.close').addEventListener('click', closePopup);
+    sitePopup.querySelector('.close-btn').addEventListener('click', closePopup);
+    sitePopup.addEventListener('click', (e) => {
+        if (e.target === sitePopup) {
+            closePopup();
+        }
+    });
 }
 
 function getTableElements() {
@@ -574,6 +579,8 @@ function infoElement(elementAtomicNumber) {
     const data = elementData[element];
     const name = data.linkElementName || data.name;
 
+    const wikipediaIframeOpen = () => openLinkInIframe(element);
+
     popupData.innerHTML = '';
 
     const createData = (title, value) => {
@@ -597,10 +604,8 @@ function infoElement(elementAtomicNumber) {
         infoPopup.style.display = "none";
         wikipediaLink.href = downloadPDF.href = '';
         closeUp2.removeEventListener('click', wikipediaIframeOpen);
-        infoPopup.querySelector('.close').removeEventListener('click', closePopup);
+        infoPopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
-
-    const wikipediaIframeOpen = () => openLinkInIframe(element);
 
     wikipediaLink.href = `https://el.wikipedia.org/wiki/${name}`;
     downloadPDF.href = `https://el.wikipedia.org/api/rest_v1/page/pdf/${name}`;
@@ -626,7 +631,12 @@ function infoElement(elementAtomicNumber) {
     fields.forEach(([t, v]) => createData(t, v));
 
     closeUp2.addEventListener('click', wikipediaIframeOpen);
-    infoPopup.querySelector('.close').addEventListener('click', closePopup);
+    infoPopup.querySelector('.close-btn').addEventListener('click', closePopup);
+    infoPopup.addEventListener('click', (e) => {
+        if (e.target === infoPopup) {
+            closePopup();
+        }
+    });
     infoPopup.style.display = "block";
 }
 
