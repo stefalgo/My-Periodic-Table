@@ -585,11 +585,10 @@ function infoElement(elementAtomicNumber) {
 
     const createData = (title, value) => {
         popupData.insertAdjacentHTML('beforeend', `
-            <div>
-                <legend><b>${title}:</b></legend>
+            <fieldset>
+                <legend><b>${title}</b></legend>
                 <h3>${value}</h3>
-            </div>
-            <hr>
+            </fieldset>
         `);
     };
 
@@ -616,6 +615,7 @@ function infoElement(elementAtomicNumber) {
         ['Ηλεκτρονική δομή', energyLevels(data.electronConfiguration).join(', ') || '--'],
         ['Διαμόρφωση', data.electronStringConf || '--'],
         ['Κατάσταση οξείδωσης', `${data.oxidation.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
+        ['Σθενότητα', `${data.valence || '--'}`],
         ['Βάρος', `${data.atomicMass || '--'} u`],
         ['Ταξινόμηση', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
         ['Μπλοκ', getBlock(data) || '--'],

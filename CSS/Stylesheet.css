@@ -485,9 +485,11 @@ td {
 	border-top: 1px solid #676666;
 }
 
-#infoPopup > .infoContainer div {
+#infoPopup > .infoContainer fieldset {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
+	border-radius: 5px;
+	border-color: var(--textColor_C);
 }
 
 .close-btn {
