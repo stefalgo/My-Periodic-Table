@@ -3814,5 +3814,40 @@
         "category": "unknown",
         "period": 7,
         "discovered": "2006"
+    },
+
+
+    "119": {
+        "atomic": 119,
+        "symbol": "Uue",
+        "name": "Ουνουνέννιο",
+        "atomicMass": 315,
+        "electronConfiguration": "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p6 7s2 5f14 6d10 7p6 8s1",
+        "electronStringConf": "[Og] 8s1",
+        "electronegativity": "",
+        "atomicRadius": "",
+        "ionizationEnergy": "",
+        "electronAffinity": "",
+        "oxidation": "",
+        "melt": "",
+        "boil": "",
+        "valence": "",
+        "density": "",
+        "quantum": {
+            "l": 0,
+            "m": 0,
+            "n": 8
+        },
+        "elementAbundance": {
+            "universe": "0",
+            "solar": "0",
+            "meteor": "0",
+            "crust": "0",
+            "ocean": "0",
+            "human": "0"
+        },
+        "category": "unknown",
+        "period": 8,
+        "discovered": ""
     }
 }

@@ -32,31 +32,11 @@ const engToGr = [
     { en: "noble", gr: "Ευγενές αέριο" }
 ];
 
-function onDataLoaded(data) {
-    elementData = data
-    if (!data) return;
-    if (URLUtils.readParam('SelectedElement')) {
-        if (elementData[URLUtils.readParam('SelectedElement')]) {
-            showElementData(URLUtils.readParam('SelectedElement'));
-        } else {
-            showElementData(1);
-            URLUtils.setParam('SelectedElement', 1)
-        }
-    } else {
-        showElementData(1);
-    }
-
-    visualizeOptionFunc(URLUtils.readParam('visualizeOption') || "category");
-    visualizeOption.value = URLUtils.readParam('visualizeOption') || "category";
-
-    adjustElementsText('.element', 'em', 60);
-}
-
 function openLinkInIframe(rowId) {
     const sitePopup = document.getElementById('sitePopup');
     let link;
 
-    function closePopup(event) {
+    function closePopup() {
         sitePopup.querySelector('iframe').src = '';
         sitePopup.style.display = "none";
         sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
@@ -83,75 +63,6 @@ function getTableElements() {
         ...document.querySelectorAll('.element'),
         ...document.querySelectorAll('#CloseUp')
     ];
-}
-
-function getBlock(el) {
-    const Z = Number(el.atomic);
-    const group = Number(el.group);
-
-    if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
-
-    if (group) {
-        if (Z === 2) return 's';
-        if (group === 1 || group === 2) return 's';
-        if (group >= 13 && group <= 18) return 'p';
-        if (group >= 3 && group <= 12) return 'd';
-    }
-
-    const cfg = el.electronConfiguration ?? '';
-    let block = '';
-
-    cfg.replace(/\[.*?\]/g, '')
-        .trim()
-        .split(/\s+/)
-        .forEach(tok => {
-            const m = tok.match(/^[0-9]+([spdfg])/i);
-            if (m) block = m[1].toLowerCase();
-        });
-
-    return block;
-}
-
-function energyLevels(eConfig) {
-    const cleaned = eConfig.replace(/\[.*?]/g, '').trim();
-    if (!cleaned) return [];
-
-    const totals = new Map();
-
-    for (const tok of cleaned.split(/\s+/)) {
-        const m = tok.match(/^(\d+)[spdfg](\d+)$/i);
-        if (!m) continue;
-        const n = Number(m[1]);
-        const e = Number(m[2]);
-        totals.set(n, (totals.get(n) || 0) + e);
-    }
-
-    if (!totals.size) return [];
-
-    const maxN = Math.max(...totals.keys());
-    const shells = [];
-    for (let n = 1; n <= maxN; n++) {
-        shells.push(totals.get(n) || 0);
-    }
-    return shells;
-}
-
-function lastElectronCount(eConfig) {
-    const match = eConfig.trim().match(/(\d+[spdfg]\d+)\s*$/);
-    if (!match) return null;
-
-    const lastPart = match[1];
-    const countMatch = lastPart.match(/\d+$/);
-    return countMatch ? Number(countMatch[0]) : null;
-}
-
-function getRepresentativeOxidation(oxStr) {
-    return oxStr
-        .split(",")
-        .map(s => s.trim())
-        .filter(s => s.endsWith("c"))
-        .map(s => s.replace(/c$/, ""))
-        .join(" ");
 }
 
 function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
@@ -218,7 +129,7 @@ function showBlocks(show) {
         const data = elementData[key];
         if (!data) return;
 
-        const val = getBlock(data);
+        const val = helpers.getBlock(data);
 
         el.querySelector('data').textContent = String(val);
     });
@@ -385,7 +296,7 @@ function visualizeOptionFunc(option) {
                 const calculated = {};
                 Object.entries(elementData).forEach(([key, el]) => {
                     const period = Number(el.period);
-                    const shells = energyLevels(el.electronConfiguration) ?? [];
+                    const shells = helpers.energyLevels(el.electronConfiguration) ?? [];
                     const idx = period - 1;
                     const electrons = shells[idx] ?? 0;
                     (calculated[key] ??= { Total: 0 }).Total += electrons;
@@ -396,7 +307,7 @@ function visualizeOptionFunc(option) {
                     'electronConfiguration',
                     null,
                     x => {
-                        const levels = energyLevels(x);
+                        const levels = helpers.energyLevels(x);
                         const last3 = levels.slice(-3);
                         return (levels.length > 3
                             ? ['-'].concat(last3)
@@ -410,7 +321,7 @@ function visualizeOptionFunc(option) {
             action: () => {
                 const calculated = {};
                 Object.entries(elementData).forEach(([key, el]) => {
-                    (calculated[key] ??= { Total: 0 }).Total += lastElectronCount(el.electronConfiguration);
+                    (calculated[key] ??= { Total: 0 }).Total += helpers.lastElectronCount(el.electronConfiguration);
                 });
                 currentVisualizer.params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
@@ -444,7 +355,7 @@ function visualizeOptionFunc(option) {
                     'oxidation',
                     null,
                     x => {
-                        return getRepresentativeOxidation(x);
+                        return helpers.getRepresentativeOxidation(x);
                     }
                 );
             }
@@ -515,7 +426,7 @@ function generateAtom(atomicNumber) {
     const atomCore = atomContainer.querySelector('.atom');
     if (!elementData[atomicNumber]) { console.error('Atomic number not found in the data.'); return; }
     atomCore.innerHTML = '';
-    energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
+    helpers.energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
         const energyLevelDiv = document.createElement('div');
         const radius = (index + 2) * 9;
         const animationSpeed = radius / 2;
@@ -553,19 +464,19 @@ function showElementData(elementAtomicNumber) {
 
     closeUp.classList = '';
     closeUp.classList.add(elementData[elementAtomicNumber].category);
-    closeUp.classList.add(getBlock(elementData[elementAtomicNumber]));
+    closeUp.classList.add(helpers.getBlock(elementData[elementAtomicNumber]));
     closeUp.setAttribute('data-atomic', elementAtomicNumber)
 
     updateVisualizer();
 
-    for (const level of energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
+    for (const level of helpers.energyLevels(elementData[elementAtomicNumber].electronConfiguration)) {
         let spanElement = document.createElement('span');
         spanElement.textContent = level;
         energyLevel.appendChild(spanElement);
     }
 
     generateAtom(elementAtomicNumber);
-    adjustElementsText('#CloseUp', 'em', 65);
+    helpers.adjustElementsText('#CloseUp', 'em', 65);
 }
 
 function infoElement(elementAtomicNumber) {
@@ -573,7 +484,12 @@ function infoElement(elementAtomicNumber) {
     const popupData = infoPopup.querySelector('.popup-data');
     const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
     const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
-    const closeUp2 = copyCloseUp();
+    const closeUp2 = () => {
+        const clone = closeUp.cloneNode(true);
+        document.getElementById('CloseUp2').innerHTML = '';
+        document.getElementById('CloseUp2').appendChild(clone);
+        return clone;
+    };
 
     const element = elementAtomicNumber;
     const data = elementData[element];
@@ -592,17 +508,10 @@ function infoElement(elementAtomicNumber) {
         `);
     };
 
-    function copyCloseUp() {
-        const clone = closeUp.cloneNode(true);
-        document.getElementById('CloseUp2').innerHTML = '';
-        document.getElementById('CloseUp2').appendChild(clone);
-        return clone;
-    }
-
     function closePopup() {
         infoPopup.style.display = "none";
         wikipediaLink.href = downloadPDF.href = '';
-        closeUp2.removeEventListener('click', wikipediaIframeOpen);
+        closeUp2().removeEventListener('click', wikipediaIframeOpen);
         infoPopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
 
@@ -612,25 +521,25 @@ function infoElement(elementAtomicNumber) {
     const fields = [
         ['Ονομα', data.name || '--'],
         ['Ατομικός', data.atomic || '--'],
-        ['Ηλεκτρονική δομή', energyLevels(data.electronConfiguration).join(', ') || '--'],
+        ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
         ['Διαμόρφωση', data.electronStringConf || '--'],
+        ['Βάρος', `${data.atomicMass || '--'} u`],
+        ['Κατηγορία', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
+        ['Τομέας', helpers.getBlock(data) || '--'],
         ['Κατάσταση οξείδωσης', `${data.oxidation.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
         ['Σθενότητα', `${data.valence || '--'}`],
-        ['Βάρος', `${data.atomicMass || '--'} u`],
-        ['Ταξινόμηση', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
-        ['Μπλοκ', getBlock(data) || '--'],
         ['Σημείο τήξης', `${data.melt || '--'} K`],
         ['Σημείο ζέσεως', `${data.boil || '--'} K`],
         ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
         ['Ηλεκτραρνητικότητα', data.electronegativity || '--'],
         ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
         ['Ηλεκτροσυγγένεια', `${data.electronAffinity || '--'} kJ/mol`],
-        ['Πυκνότητα', `${data.density || '--'} kJ/m<sup>3</sup>`],
+        ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
         ['Ανακαλύφθηκε', helpers.formatGreekDate(data.discovered) || '--']
     ];
     fields.forEach(([t, v]) => createData(t, v));
 
-    closeUp2.addEventListener('click', wikipediaIframeOpen);
+    closeUp2().addEventListener('click', wikipediaIframeOpen);
     infoPopup.querySelector('.close-btn').addEventListener('click', closePopup);
     infoPopup.addEventListener('click', (e) => {
         if (e.target === infoPopup) {
@@ -638,23 +547,6 @@ function infoElement(elementAtomicNumber) {
         }
     });
     infoPopup.style.display = "block";
-}
-
-function adjustElementsText(element, child, width) {
-    document.querySelectorAll(`${element} ${child}`).forEach(em => {
-        em.style.transform = 'none';
-        em.style.letterSpacing = '';
-
-        const natural = em.scrollWidth;
-        const scale = natural > width ? width / natural : 1;
-
-        em.style.transformOrigin = 'left center';
-        em.style.transform = `scaleX(${scale})`;
-
-        if (em.textContent.length >= 10) {
-            em.style.letterSpacing = '-0.05em';
-        }
-    });
 }
 
 function toggleColorScheme() {
@@ -665,6 +557,26 @@ function toggleColorScheme() {
 function tempChanged(k) {
     temp = k;
     updateVisualizer();
+}
+
+function onDataLoaded(data) {
+    elementData = data
+    if (!data) return;
+    if (URLUtils.readParam('SelectedElement')) {
+        if (elementData[URLUtils.readParam('SelectedElement')]) {
+            showElementData(URLUtils.readParam('SelectedElement'));
+        } else {
+            showElementData(1);
+            URLUtils.setParam('SelectedElement', 1)
+        }
+    } else {
+        showElementData(1);
+    }
+
+    visualizeOptionFunc(URLUtils.readParam('visualizeOption') || "category");
+    visualizeOption.value = URLUtils.readParam('visualizeOption') || "category";
+
+    helpers.adjustElementsText('.element', 'em', 60);
 }
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -682,6 +594,5 @@ export {
     showElementData,
     infoElement,
     toggleColorScheme,
-    tempChanged,
-    closeUp
+    tempChanged
 };

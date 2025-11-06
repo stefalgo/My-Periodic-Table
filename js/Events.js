@@ -4,7 +4,6 @@ import {
 	showElementData,
 	infoElement,
 	tempChanged,
-	closeUp
 } from './Main.js'
 
 import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js'
@@ -14,8 +13,7 @@ const tempNumberInputC = document.getElementById('tempNumInputC');
 const tempNumberInputK = document.getElementById('tempNumInputK');
 const tempRangeSlider = document.getElementById('temp');
 
-const K2C = k => k - 273;
-const C2K = c => c + 273;
+const closeUp = document.getElementById('CloseUp');
 
 const visOption = document.getElementById('visualizeOption');
 
@@ -38,14 +36,14 @@ export function initEvents() {
 
 			if (e.target === tempRangeSlider) {
 				k = Number(e.target.value);
-				c = K2C(k);
+				c = helpers.KelvinToCelcius(k);
 			} else if (e.target === tempNumberInputK) {
 				k = Number(e.target.value);
-				c = K2C(k);
+				c = helpers.KelvinToCelcius(k);
 				tempRangeSlider.value = k;
 			} else {
 				c = Number(e.target.value);
-				k = C2K(c);
+				k = helpers.CelciusToKelvin(c);
 				tempRangeSlider.value = k;
 			}
 
@@ -55,17 +53,17 @@ export function initEvents() {
 		})
 	);
 
-	document.addEventListener('click', (event) => {
-		if (event.target.matches('.element')) {
-			const elementClickedAtomic = event.target.getAttribute('data-linkedElement') || event.target.getAttribute('data-atomic');
+	document.querySelectorAll('.element').forEach(el => {
+		el.addEventListener('click', () => {
+			const elementClickedAtomic = el.getAttribute('data-linkedElement') || el.getAttribute('data-atomic');
 
 			showElementData(elementClickedAtomic);
 			URLUtils.setParam("SelectedElement", elementClickedAtomic);
-		}
+		});
 	});
 
-	closeUp.addEventListener('click', (event) => {
-		const elementClickedAtomic = event.target.getAttribute('data-atomic');
+	closeUp.addEventListener('click', () => {
+		const elementClickedAtomic = closeUp.getAttribute('data-atomic');
 		infoElement(elementClickedAtomic);
 	});
 
