@@ -254,12 +254,10 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
         const v = toScale(val);
         const t = (v - minVal) / span;
 
-        const rgba = minColor.map((c, i) => i < 3
-            ? Math.round(c + t * (maxColor[i] - c))
-            : c + t * (maxColor[3] - c));
+        const rgba = helpers.lerpColor(`rgba(${minColor.join(',')})`, `rgba(${maxColor.join(',')})`, t);
 
         if (!radial) {
-            el.style.background = `rgba(${rgba.join(',')})`;
+            el.style.background = rgba;
         } else {
             const max = Math.max(...data.map(d => d.val))
             el.style.background = `

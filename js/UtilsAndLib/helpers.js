@@ -1,14 +1,19 @@
 //----------------------------General utilities----------------------------
-export function toNumber(str) {
-    const match = str.match(/-?\d+(\.\d+)?/);
-    return match ? Number(match[0]) : NaN;
-}
-
+/**
+ * Hex to RGBA colors.
+ * @param {string} hex - RGBA string (e.g. "rgba(255, 0, 0, 1)" or "rgb(255,0,0)"
+ * @returns {string} Converted RGBA to HEX color string
+ */
 export function rgbaToHex([r, g, b, a]) {
     const toHex = c => c.toString(16).padStart(2, '0');
     return `#${toHex(r)}${toHex(g)}${toHex(b)}${toHex(a)}`;
 }
 
+/**
+ * Hex to RGBA colors.
+ * @param {string} hex - HEX string (e.g. "#ff0000" or "#bbeeffaa")
+ * @returns {string} Converted HEX to RGBA color string
+ */
 export function hexToRgba(hex) {
     hex = hex.replace(/^#/, '');
     let r, g, b, a = 1;
@@ -25,9 +30,36 @@ export function hexToRgba(hex) {
         throw new Error('Invalid hex color');
     }
 
-    return [r, g, b, a];
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
+/**
+ * Linearly interpolates between two RGBA colors.
+ * @param {string} color1 - RGBA or RGB string (e.g. "rgba(255, 0, 0, 1)" or "rgb(255,0,0)")
+ * @param {string} color2 - RGBA or RGB string (e.g. "rgba(0, 0, 255, 0.5)")
+ * @param {number} t - Interpolation factor between 0 and 1
+ * @returns {string} The interpolated RGBA color string
+ */
+export function lerpColor(color1, color2, t) {
+    const parse = color => color.match(/[\d.]+/g).map(Number);
+
+    const [r1, g1, b1, a1 = 1] = parse(color1);
+    const [r2, g2, b2, a2 = 1] = parse(color2);
+
+    const r = Math.round(r1 + (r2 - r1) * t);
+    const g = Math.round(g1 + (g2 - g1) * t);
+    const b = Math.round(b1 + (b2 - b1) * t);
+    const a = a1 + (a2 - a1) * t;
+
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+/**
+ * Gets nested value in a array.
+ * @param {string} obj - The array to search for value
+ * @param {string} path - The path to the value (e.g. "car.engine.type")
+ * @returns {any} The value followed from the path
+ */
 export function getNestedValue(obj, path) {
     if (!obj || typeof path !== 'string') return undefined;
     return path
@@ -35,6 +67,11 @@ export function getNestedValue(obj, path) {
         .reduce((acc, key) => acc?.[key], obj);
 }
 
+/**
+ * Formats a year to the Greek notation.
+ * @param {number} year - The year (e.g., 1930 → "1930 μ.Χ.", -2300 → "2300 π.Χ.")
+ * @returns {string} The formatted year in Greek notation, handling BC and AD
+ */
 export function formatGreekDate(yearLike) {
     if (yearLike == null) return '';
 
@@ -52,10 +89,18 @@ export function formatGreekDate(yearLike) {
         : `${year} μ.Χ.`;
 }
 
+/**
+ * Removes accent/diacritical marks from letters.
+ * @param {string} str - The string to normalize (e.g., "é" becomes "e", "ύ" becomes "υ")
+ * @returns {string} The normalized string without diacritics
+ */
 export function removeDiacritics(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
+/**
+ * Shares this current page (FULL URL).
+ */
 export function sharePage() {
     const data = {
         title: "Periodic table",
