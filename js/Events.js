@@ -14,8 +14,38 @@ const tempNumberInputK = document.getElementById('tempNumInputK');
 const tempRangeSlider = document.getElementById('temp');
 
 const closeUp = document.getElementById('CloseUp');
-
 const visOption = document.getElementById('visualizeOption');
+
+export function updateTemperature(from, value) {
+    let k, c;
+
+    if (from === "slider") {
+        k = Number(value);
+        c = helpers.KelvinToCelsius(k);
+        tempNumberInputK.value = k;
+        tempNumberInputC.value = c;
+    } 
+    else if (from === "kelvin") {
+        k = Number(value);
+        c = helpers.KelvinToCelsius(k);
+        tempRangeSlider.value = k;
+        tempNumberInputC.value = c;
+    } 
+    else if (from === "celcius") {
+        c = Number(value);
+        k = helpers.CelsiusToKelvin(c);
+        tempRangeSlider.value = k;
+        tempNumberInputK.value = k;
+    } else {
+		k = Number(value);
+		c = helpers.KelvinToCelsius(k);
+		tempRangeSlider.value = k;
+        tempNumberInputK.value = k;
+        tempNumberInputC.value = c;
+	}
+
+    tempChanged(k);
+}
 
 export function initEvents() {
 	document.getElementById('propertyKey').addEventListener('change', () => {
@@ -32,27 +62,22 @@ export function initEvents() {
 
 	['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>
 		document.getElementById(id).addEventListener('input', (e) => {
-			let k, c;
+			URLUtils.setParam(
+				"temp",
+				((e.target === tempRangeSlider) || (e.target === tempNumberInputK))
+					? e.target.value || 0
+					: helpers.CelsiusToKelvin(e.target.value)
+			)
 
 			if (e.target === tempRangeSlider) {
-				k = Number(e.target.value);
-				c = helpers.KelvinToCelcius(k);
+				updateTemperature("slider", e.target.value);
 			} else if (e.target === tempNumberInputK) {
-				k = Number(e.target.value);
-				c = helpers.KelvinToCelcius(k);
-				tempRangeSlider.value = k;
+				updateTemperature("kelvin", e.target.value);
 			} else {
-				c = Number(e.target.value);
-				k = helpers.CelciusToKelvin(c);
-				tempRangeSlider.value = k;
+				updateTemperature("celcius", e.target.value);
 			}
-
-			if (document.activeElement !== tempNumberInputK) tempNumberInputK.value = k;
-			if (document.activeElement !== tempNumberInputC) tempNumberInputC.value = c;
-			tempChanged(k);
 		})
 	);
-
 	document.querySelectorAll('.element').forEach(el => {
 		el.addEventListener('click', () => {
 			const elementClickedAtomic = el.getAttribute('data-linkedElement') || el.getAttribute('data-atomic');

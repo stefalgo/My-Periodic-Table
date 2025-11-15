@@ -1,5 +1,6 @@
 import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js'
 import * as helpers from './UtilsAndLib/helpers.js'
+import {updateTemperature} from './Events.js';
 
 const closeUp = document.getElementById('CloseUp');
 const visualizeOption = document.getElementById('visualizeOption');
@@ -560,16 +561,14 @@ function tempChanged(k) {
 function onDataLoaded(data) {
     elementData = data
     if (!data) return;
-    if (URLUtils.readParam('SelectedElement')) {
-        if (elementData[URLUtils.readParam('SelectedElement')]) {
-            showElementData(URLUtils.readParam('SelectedElement'));
-        } else {
-            showElementData(1);
-            URLUtils.setParam('SelectedElement', 1)
-        }
-    } else {
-        showElementData(1);
-    }
+    showElementData(
+        elementData[URLUtils.readParam('SelectedElement')]
+            ? URLUtils.readParam('SelectedElement')
+            : 1
+    );
+
+    temp = URLUtils.readParam('temp') ? URLUtils.readParam('temp') : temp
+    updateTemperature(null, temp)
 
     visualizeOptionFunc(URLUtils.readParam('visualizeOption') || "category");
     visualizeOption.value = URLUtils.readParam('visualizeOption') || "category";

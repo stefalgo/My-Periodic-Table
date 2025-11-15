@@ -134,8 +134,8 @@ export function adjustElementsText(element, child, width) {
     });
 }
 //------------------------------Table helpers------------------------------
-export const KelvinToCelcius = k => k - 273;
-export const CelciusToKelvin = c => c + 273;
+export const KelvinToCelsius = k => Number(k) - 273;
+export const CelsiusToKelvin = c => Number(c) + 273;
 
 export function lastElectronCount(eConfig) {
     const match = eConfig.trim().match(/(\d+[spdfg]\d+)\s*$/);
