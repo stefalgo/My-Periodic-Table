@@ -16,6 +16,14 @@ const tempRangeSlider = document.getElementById('temp');
 const closeUp = document.getElementById('CloseUp');
 const visOption = document.getElementById('visualizeOption');
 
+const debouncedTempSetParam = ((delay) => {
+    let t;
+    return (value) => {
+        clearTimeout(t);
+        t = setTimeout(() => URLUtils.setParam("temp", value), delay);
+    };
+})(300);
+
 export function updateTemperature(from, value) {
     let k, c;
 
@@ -62,22 +70,24 @@ export function initEvents() {
 
 	['temp', 'tempNumInputC', 'tempNumInputK'].forEach(id =>
 		document.getElementById(id).addEventListener('input', (e) => {
-			URLUtils.setParam(
-				"temp",
-				((e.target === tempRangeSlider) || (e.target === tempNumberInputK))
-					? e.target.value || 0
-					: helpers.CelsiusToKelvin(e.target.value)
-			)
+
+			const rawValue = e.target.value || 0;
+			debouncedTempSetParam(
+				(e.target === tempRangeSlider || e.target === tempNumberInputK)
+					? rawValue
+					: helpers.CelsiusToKelvin(rawValue)
+			);
 
 			if (e.target === tempRangeSlider) {
-				updateTemperature("slider", e.target.value);
+				updateTemperature("slider", rawValue);
 			} else if (e.target === tempNumberInputK) {
-				updateTemperature("kelvin", e.target.value);
+				updateTemperature("kelvin", rawValue);
 			} else {
-				updateTemperature("celcius", e.target.value);
+				updateTemperature("celcius", rawValue);
 			}
 		})
 	);
+
 	document.querySelectorAll('.element').forEach(el => {
 		el.addEventListener('click', () => {
 			const elementClickedAtomic = el.getAttribute('data-linkedElement') || el.getAttribute('data-atomic');
