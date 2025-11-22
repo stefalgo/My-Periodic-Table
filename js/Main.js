@@ -300,7 +300,7 @@ function visualizeOptionFunc(option) {
                     const electrons = shells[idx] ?? 0;
                     (calculated[key] ??= { Total: 0 }).Total += electrons;
                 });
-                currentVisualizer.params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                let params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
                     elementData,
                     'electronConfiguration',
@@ -314,6 +314,7 @@ function visualizeOptionFunc(option) {
                             .join(' ');
                     }
                 );
+                return params;
             }
         },
         'configuration': {
@@ -322,7 +323,7 @@ function visualizeOptionFunc(option) {
                 Object.entries(elementData).forEach(([key, el]) => {
                     (calculated[key] ??= { Total: 0 }).Total += helpers.lastElectronCount(el.electronConfiguration);
                 });
-                currentVisualizer.params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                let params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
                 displayDataOnElement(
                     elementData,
                     'electronConfiguration',
@@ -332,6 +333,7 @@ function visualizeOptionFunc(option) {
                         return (last3);
                     }
                 );
+                return params;
             }
         },
         'oxidationStates': {
@@ -348,7 +350,7 @@ function visualizeOptionFunc(option) {
                     (calculated[key] ??= { Total: '' }).Total += (oxidationState);
                 });
 
-                currentVisualizer.params = [calculated, true, 'Total', false, false, [100, 125, 255, 0.75], [255, 16, 16, 0.75]];
+                let params = [calculated, true, 'Total', false, false, [100, 125, 255, 0.75], [255, 16, 16, 0.75]];
                 displayDataOnElement(
                     elementData,
                     'oxidation',
@@ -357,6 +359,7 @@ function visualizeOptionFunc(option) {
                         return helpers.getRepresentativeOxidation(x);
                     }
                 );
+                return params;
             }
         },
         'discoveryDate': {
@@ -392,7 +395,10 @@ function visualizeOptionFunc(option) {
         currentVisualizer.action = selected.action || null;
 
         if (selected.action) {
-            selected.action();
+            let params = selected.action();
+            if (params) {
+                currentVisualizer.params = params
+            }
         }
         if (selected.params && !currentVisualizer.params) {
             currentVisualizer.params = selected.params;
