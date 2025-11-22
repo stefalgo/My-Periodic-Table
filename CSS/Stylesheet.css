@@ -270,7 +270,8 @@ td {
 
 .element *,
 .elementStyle *,
-#CloseUp * {
+#CloseUp *,
+.lanth-Act * {
 	pointer-events: none;
 	user-select: none;
 }

@@ -24,7 +24,7 @@ const debouncedTempSetParam = ((delay) => {
     };
 })(300);
 
-export function updateTemperature(from, value) {
+export function updateTemperatureInputs(from, value) {
     let k, c;
 
     if (from === "slider") {
@@ -79,11 +79,11 @@ export function initEvents() {
 			);
 
 			if (e.target === tempRangeSlider) {
-				updateTemperature("slider", rawValue);
+				updateTemperatureInputs("slider", rawValue);
 			} else if (e.target === tempNumberInputK) {
-				updateTemperature("kelvin", rawValue);
+				updateTemperatureInputs("kelvin", rawValue);
 			} else {
-				updateTemperature("celcius", rawValue);
+				updateTemperatureInputs("celcius", rawValue);
 			}
 		})
 	);
@@ -95,6 +95,11 @@ export function initEvents() {
 			showElementData(elementClickedAtomic);
 			URLUtils.setParam("SelectedElement", elementClickedAtomic);
 		});
+
+		el.addEventListener('dblclick', () => {
+			const elementClickedAtomic = closeUp.getAttribute('data-atomic');
+			infoElement(elementClickedAtomic);
+		})
 	});
 
 	closeUp.addEventListener('click', () => {
