@@ -530,11 +530,12 @@ td {
 #infoPopup > .infoContainer > .popup-data .radioactive::before {
 	background: repeating-linear-gradient(
 		-45deg,
-		transparent,
-		transparent 6px,
+		#ffa6003b,
+		#ffa6003b 6px,
 		#ffa60080 6px,
 		#ffa60080 12px
 	);
+	border-radius: 5px;
 }
 
 .close-btn {
