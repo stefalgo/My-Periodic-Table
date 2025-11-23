@@ -27,7 +27,7 @@ https://stefalgo.github.io/My-Periodic-Table
 [https://wikipedia.org](https://wikipedia.org)
 
 Data are combined into 1 file.\
-The spectrum.json is from the [https://pse-info.de](https://pse-info.de) and is it used as its own file
+The spectrum.json is from the [https://pse-info.de](https://pse-info.de) and is it used as its own file.\
 Current in use: `JsonData/ElementsV5.json` and `JsonData/spectrum.json`
 ## Format ElementsV5.json
 ```jsonc
