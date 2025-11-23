@@ -1,12 +1,12 @@
 import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js'
 import * as helpers from './UtilsAndLib/helpers.js'
-import {updateTemperatureInputs} from './Events.js';
+import { updateTemperatureInputs } from './Events.js';
 
 const closeUp = document.getElementById('CloseUp');
 const visualizeOption = document.getElementById('visualizeOption');
 const periodicTable = document.getElementById('periodicTable');
 
-let elementData;
+let elementData, spectrumData;
 
 let currentVisualizer = {
     params: null,
@@ -43,11 +43,7 @@ function openLinkInIframe(rowId) {
         sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
 
-    if (elementData[rowId].linkElementName) {
-        link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].linkElementName + '?withgadget=dark-mode';
-    } else {
-        link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].name + '?withgadget=dark-mode';
-    }
+    link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].wiki + '?withgadget=dark-mode';
     sitePopup.querySelector('iframe').src = link;
 
     sitePopup.style.display = "block";
@@ -341,11 +337,11 @@ function visualizeOptionFunc(option) {
                 const calculated = {};
                 Object.entries(elementData).forEach(([key, el]) => {
                     const ox = el.oxidation
-                        .replaceAll('c', '')
+                        ?.replaceAll('c', '')
                         .split(',')
-                        .map(val => val === '' ? '' : Number(val));
+                        .map(val => val === '' ? '' : Number(val)) ?? [];
 
-                    const oxidationState = ox.includes('') ? '' : ox.reduce((acc, val) => acc + val, 0);
+                    const oxidationState = (!ox || ox.length === 0 || ox.includes('')) ? '' : ox.reduce((acc, val) => acc + val, 0);
 
                     (calculated[key] ??= { Total: '' }).Total += (oxidationState);
                 });
@@ -418,6 +414,9 @@ function updateVisualizer(LogMode) {
     if (currentVisualizer.action) {
         currentVisualizer.action();
     }
+    if (!currentVisualizer.params && !currentVisualizer?.action) {
+        displayDataOnElement(elementData, 'category');
+    }
     if (currentVisualizer.params) {
         if (LogMode != null) {
             currentVisualizer.params[3] = LogMode;
@@ -470,6 +469,7 @@ function showElementData(elementAtomicNumber) {
     closeUp.classList = '';
     closeUp.classList.add(elementData[elementAtomicNumber].category);
     closeUp.classList.add(helpers.getBlock(elementData[elementAtomicNumber]));
+    elementData[elementAtomicNumber].radioactive ? closeUp.classList.add('radioactive') : '';
     closeUp.setAttribute('data-atomic', elementAtomicNumber)
 
     updateVisualizer();
@@ -498,17 +498,21 @@ function infoElement(elementAtomicNumber) {
 
     const element = elementAtomicNumber;
     const data = elementData[element];
-    const name = data.linkElementName || data.name;
+    const spectrumImg = spectrumData[data.symbol.toLowerCase()] || '';
 
     const wikipediaIframeOpen = () => openLinkInIframe(element);
 
+    wikipediaLink.href = `https://el.wikipedia.org/wiki/${data.wiki}`;
+    downloadPDF.href = `https://el.wikipedia.org/api/rest_v1/page/pdf/${data.wiki}`;
+
     popupData.innerHTML = '';
 
-    const createData = (title, value) => {
+    const createData = (title, value, customValueTag) => {
+        const dataTag = customValueTag ? value : `<h3>${value}</h3>`
         popupData.insertAdjacentHTML('beforeend', `
             <fieldset>
                 <legend><b>${title}</b></legend>
-                <h3>${value}</h3>
+                ${dataTag}
             </fieldset>
         `);
     };
@@ -520,29 +524,39 @@ function infoElement(elementAtomicNumber) {
         infoPopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
 
-    wikipediaLink.href = `https://el.wikipedia.org/wiki/${name}`;
-    downloadPDF.href = `https://el.wikipedia.org/api/rest_v1/page/pdf/${name}`;
-
     const fields = [
         ['Ονομα', data.name || '--'],
         ['Ατομικός', data.atomic || '--'],
-        ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
-        ['Διαμόρφωση', data.electronStringConf || '--'],
         ['Βάρος', `${data.atomicMass || '--'} u`],
         ['Κατηγορία', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
         ['Τομέας', helpers.getBlock(data) || '--'],
-        ['Κατάσταση οξείδωσης', `${data.oxidation.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
-        ['Σθενότητα', `${data.valence || '--'}`],
+        ['Φασματική ανάλυση', spectrumImg ? `<img src='${spectrumImg}'>` : '--', spectrumImg ? true : false],
+
         ['Σημείο τήξης', `${data.melt || '--'} K`],
         ['Σημείο ζέσεως', `${data.boil || '--'} K`],
         ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
+        ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
+
+        ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
+        ['Διαμόρφωση', data.electronStringConf || '--'],
+        ['Σθενότητα', `${data.valence || '--'}`],
+        ['Κατάσταση οξείδωσης', `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
         ['Ηλεκτραρνητικότητα', data.electronegativity || '--'],
         ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
         ['Ηλεκτροσυγγένεια', `${data.electronAffinity || '--'} kJ/mol`],
-        ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
+
         ['Ανακαλύφθηκε', helpers.formatGreekDate(data.discovered) || '--']
     ];
-    fields.forEach(([t, v]) => createData(t, v));
+
+    if (data.radioactive) {
+        popupData.insertAdjacentHTML('beforeend', `
+            <div class="radioactive">
+                <h3><b>Ραδιενεργό</b></h3>
+            </div>
+        `);
+    }
+
+    fields.forEach(([i, j, k]) => createData(i, j, k));
 
     closeUp2().addEventListener('click', wikipediaIframeOpen);
     infoPopup.querySelector('.close-btn').addEventListener('click', closePopup);
@@ -564,9 +578,10 @@ function tempChanged(k) {
     updateVisualizer();
 }
 
-function onDataLoaded(data) {
-    elementData = data
-    if (!data) return;
+function onDataLoaded(element, spectrum) {
+    elementData = element
+    spectrumData = spectrum
+    if (!element) return;
     showElementData(
         elementData[URLUtils.readParam('SelectedElement')]
             ? URLUtils.readParam('SelectedElement')

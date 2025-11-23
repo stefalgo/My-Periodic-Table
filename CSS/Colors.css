@@ -42,6 +42,8 @@
 	--unknownState: #80808059;
 
 	--electron: #4369b3;
+
+	--radioactive: #00000080;
 }
 
 /**--------------------------------**/
@@ -89,6 +91,8 @@
 	--unknownState: #EEE;
 
 	--electron: #559fef;
+
+	--radioactive: #ffffff80;
 }
 
 /**--------------------------------**/

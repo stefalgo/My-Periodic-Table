@@ -2,13 +2,23 @@ import { initEvents } from './Events.js';
 import { onDataLoaded, toggleColorScheme } from './Main.js';
 import { sharePage } from './UtilsAndLib/helpers.js';
 
+async function loadJson(path) {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+    return await res.json();
+}
+
 async function bootstrap() {
     try {
-        const res = await fetch('JsonData/ElementsV4.json');
-        if (!res.ok) throw new Error(`Failed to fetch JSON: ${res.status}`);
-        const data = await res.json();
-        onDataLoaded(data);
+        const [elements, spectrumIMG] = await Promise.all([
+            //loadJson("HelperScriptsAndDev/new_periodic_table.json"),
+            loadJson("JsonData/ElementsV5.json"),
+            loadJson("JsonData/spectrum.json")
+        ]);
+
+        onDataLoaded(elements, spectrumIMG);
         initEvents();
+
         console.log("loaded successfully");
     } catch (err) {
         console.error(err);
