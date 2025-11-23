@@ -532,6 +532,9 @@ function infoElement(elementAtomicNumber) {
         ['Τομέας', helpers.getBlock(data) || '--'],
         ['Φασματική ανάλυση', spectrumImg ? `<img src='${spectrumImg}'>` : '--', spectrumImg ? true : false],
 
+        ['Ομάδα', data.group || '--'],
+        ['Περίοδος', data.period || '--'],
+
         ['Σημείο τήξης', `${data.melt || '--'} K`],
         ['Σημείο ζέσεως', `${data.boil || '--'} K`],
         ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
