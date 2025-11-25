@@ -117,12 +117,16 @@ export function initEvents() {
 		let items = document.querySelectorAll(".element");
 
 		items.forEach(item => {
+			const contains = el => el ? helpers.removeDiacritics(el.textContent.trim().toLowerCase()) : "";
+
 			let atomicValue = helpers.removeDiacritics(item.getAttribute("data-atomic") || "");
 			let emElement = item.querySelector("em");
 			let abbrElement = item.querySelector("abbr");
+			let dataElement = item.querySelector("data");
 
-			let abbrElementText = abbrElement ? helpers.removeDiacritics(abbrElement.textContent.trim().toLowerCase()) : "";
-			let emText = emElement ? helpers.removeDiacritics(emElement.textContent.trim().toLowerCase()) : "";
+			let abbrElementText = contains(abbrElement);
+			let emText = contains(emElement);
+			let dataText = contains(dataElement);
 
 			if (searchTerms.length === 0) {
 				item.classList.remove("highlight");
@@ -132,6 +136,7 @@ export function initEvents() {
 			let matched = searchTerms.some(term =>
 				atomicValue === term ||
 				abbrElementText === term ||
+				dataText.includes(term) ||
 				emText.includes(term)
 			);
 

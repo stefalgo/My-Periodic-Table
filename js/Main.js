@@ -195,10 +195,9 @@ function showState(show, temp = 273) {
     });
 }
 
-function visualize(array, show, prop, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74], radial = false) {
+function visualize(array, prop, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', maxColor = 'rgba(8, 212, 170, 0.75)', radial = false, show = true) {
     const elements = getTableElements();
-
-    if (!show) {
+    if (!show || !array || !prop) {
         elements.forEach(el => (el.style.background = ''));
         return;
     }
@@ -237,7 +236,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
     const maxVal = Math.max(...scaledVals);
     const span = maxVal - minVal || 1;
 
-    document.getElementById('rangeGradient').style.background = `linear-gradient(to top, rgba(${maxColor.join(',')}), rgba(${minColor.join(',')}))`;
+    document.getElementById('rangeGradient').style.background = `linear-gradient(to top, ${maxColor}, ${minColor})`;
 
     if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
 
@@ -251,7 +250,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
         const v = toScale(val);
         const t = (v - minVal) / span;
 
-        const rgba = helpers.lerpColor(`rgba(${minColor.join(',')})`, `rgba(${maxColor.join(',')})`, t);
+        const rgba = helpers.lerpColor(`${minColor}`, `${maxColor}`, t);
 
         if (!radial) {
             el.style.background = rgba;
@@ -260,7 +259,7 @@ function visualize(array, show, prop, useLog = false, displayData = true, minCol
             el.style.background = `
                 radial-gradient(
                     circle,
-                    rgba(${maxColor.join(',')}) ${((val / max) * 50)}%,
+                    ${maxColor} ${((val / max) * 50)}%,
                     rgba(241, 241, 241, 0.1) ${((val / max) * 50) + 10}%
                 )
             `;
@@ -272,20 +271,20 @@ function visualizeOptionFunc(option) {
     const [value, value2] = option.split("-");
     currentVisualizer = { params: null, action: null };
 
-    //<array, show, prop, propKey, useLog = false, displayData = true, minColor = [8, 212, 170, 0], maxColor = [8, 212, 170, 0.74]>
+    //<array, prop, propKey, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)', radial, show>
     const config = {
         'category': {},
         'blocks': { action: () => showBlocks(true) },
         'state': { action: () => showState(true, temp) },
-        'atomicMass': { params: [elementData, true, 'atomicMass', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-        'meltPoint': { params: [elementData, true, 'melt', false, true, [50, 100, 255, 0.01], [0, 255, 255, 0.75]] },
-        'boilPoint': { params: [elementData, true, 'boil', false, true, [255, 100, 50, 0.01], [255, 0, 0, 0.75]] },
-        'density': { params: [elementData, true, 'density', false, true, [8, 212, 170, 0], [8, 212, 170, 0.75]] },
-        'electronegativity': { params: [elementData, true, 'electronegativity', true, true, [0, 60, 240, 0.75], [175, 193, 0, 0.75]] },
-        'electronAffinity': { params: [elementData, true, 'electronAffinity', true, true, [200, 0, 200, 0], [200, 0, 200, 0.75]] },
-        'ionization': { params: [elementData, true, 'ionizationEnergy', true, true, [8, 212, 170, 0], [175, 193, 0, 0.75]] },
-        'radius': { params: [elementData, true, 'atomicRadius', false, true, [43, 125, 125, 0], [43, 125, 125, 0.75], true] },
-        'valence': { params: [elementData, true, 'valence', false, true, [100, 125, 255, 0.75], [255, 16, 16, 0.75]] },
+        'atomicMass': { params: [elementData, 'atomicMass', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] },
+        'meltPoint': { params: [elementData, 'melt', false, true, 'rgba(50, 100, 255, 0.01)', 'rgba(0, 255, 255, 0.75)'] },
+        'boilPoint': { params: [elementData, 'boil', false, true, 'rgba(255, 100, 50, 0.01)', 'rgba(255, 0, 0, 0.75)'] },
+        'density': { params: [elementData, 'density', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] },
+        'electronegativity': { params: [elementData, 'electronegativity', true, true, 'rgba(0, 60, 240, 0.75)', 'rgba(175, 193, 0, 0.75)'] },
+        'electronAffinity': { params: [elementData, 'electronAffinity', true, true, 'rgba(200, 0, 200, 0)', 'rgba(200, 0, 200, 0.75)'] },
+        'ionization': { params: [elementData, 'ionizationEnergy', true, true, 'rgba(8, 212, 170, 0)', 'rgba(175, 193, 0, 0.75)'] },
+        'radius': { params: [elementData, 'atomicRadius', false, true, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)', true] },
+        'valence': { params: [elementData, 'valence', false, true, 'rgba(100, 125, 255, 0.75)', 'rgba(255, 16, 16, 0.75)'] },
         'energyLevels': {
             action: () => {
                 const calculated = {};
@@ -296,7 +295,7 @@ function visualizeOptionFunc(option) {
                     const electrons = shells[idx] ?? 0;
                     (calculated[key] ??= { Total: 0 }).Total += electrons;
                 });
-                let params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                let params = [calculated, 'Total', false, false, 'rgba(133, 173, 49, 0)', 'rgba(133, 173, 49, 0.75)'];
                 displayDataOnElement(
                     elementData,
                     'electronConfiguration',
@@ -319,7 +318,7 @@ function visualizeOptionFunc(option) {
                 Object.entries(elementData).forEach(([key, el]) => {
                     (calculated[key] ??= { Total: 0 }).Total += helpers.lastElectronCount(el.electronConfiguration);
                 });
-                let params = [calculated, true, 'Total', false, false, [133, 173, 49, 0], [133, 173, 49, 0.75]];
+                let params = [calculated, 'Total', false, false, 'rgba(133, 173, 49, 0)', 'rgba(133, 173, 49, 0.75)'];
                 displayDataOnElement(
                     elementData,
                     'electronConfiguration',
@@ -346,7 +345,7 @@ function visualizeOptionFunc(option) {
                     (calculated[key] ??= { Total: '' }).Total += (oxidationState);
                 });
 
-                let params = [calculated, true, 'Total', false, false, [100, 125, 255, 0.75], [255, 16, 16, 0.75]];
+                let params = [calculated, 'Total', false, false, 'rgba(100, 125, 255, 0.75)', 'rgba(255, 16, 16, 0.75)'];
                 displayDataOnElement(
                     elementData,
                     'oxidation',
@@ -359,8 +358,8 @@ function visualizeOptionFunc(option) {
             }
         },
         'discoveryDate': {
+            params: [elementData, 'discovered', false, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)'],
             action: () => {
-                periodicTable.classList.add('category');
                 displayDataOnElement(elementData, 'discovered', null, helpers.formatGreekDate);
             },
         },
@@ -368,7 +367,7 @@ function visualizeOptionFunc(option) {
             action: () => {
                 displayDataOnElement(elementData, `elementAbundance.${value2}`, null, x => `${x}%`);
             },
-            params: [elementData, true, 'elementAbundance', true, false, [43, 125, 125, 0], [43, 125, 125, 0.75]]
+            params: [elementData, 'elementAbundance', true, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)']
         },
     };
 
@@ -377,7 +376,7 @@ function visualizeOptionFunc(option) {
     periodicTable.classList.add(value);
     showBlocks(false);
     showState(false);
-    visualize(null, false);
+    visualize();
 
     if (value2 && selected?.params) {
         const clonedParams = [...selected.params];
@@ -419,7 +418,7 @@ function updateVisualizer(LogMode) {
     }
     if (currentVisualizer.params) {
         if (LogMode != null) {
-            currentVisualizer.params[3] = LogMode;
+            currentVisualizer.params[2] = LogMode;
         }
         visualize(...currentVisualizer.params);
     }
@@ -530,6 +529,9 @@ function infoElement(elementAtomicNumber) {
         ['Βάρος', `${data.atomicMass || '--'} u`],
         ['Κατηγορία', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
         ['Τομέας', helpers.getBlock(data) || '--'],
+
+        ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
+        ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
         ['Φασματική ανάλυση', spectrumImg ? `<img src='${spectrumImg}'>` : '--', spectrumImg ? true : false],
 
         ['Ομάδα', data.group || '--'],
@@ -540,12 +542,10 @@ function infoElement(elementAtomicNumber) {
         ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
         ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
 
-        ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
         ['Διαμόρφωση', data.electronStringConf || '--'],
         ['Σθενότητα', `${data.valence || '--'}`],
         ['Κατάσταση οξείδωσης', `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
         ['Ηλεκτραρνητικότητα', data.electronegativity || '--'],
-        ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
         ['Ηλεκτροσυγγένεια', `${data.electronAffinity || '--'} kJ/mol`],
 
         ['Ανακαλύφθηκε', helpers.formatGreekDate(data.discovered) || '--']
