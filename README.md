@@ -27,7 +27,6 @@ https://stefalgo.github.io/My-Periodic-Table
 [https://wikipedia.org](https://wikipedia.org)
 
 Data are combined into 1 file.\
-The spectrum.json is from the [https://pse-info.de](https://pse-info.de) and is it used as its own file.\
 Current in use: `JsonData/ElementsV5.json` and `JsonData/spectrum.json`
 ## Format ElementsV5.json
 ```jsonc
@@ -62,8 +61,8 @@ Current in use: `JsonData/ElementsV5.json` and `JsonData/spectrum.json`
             "ocean": "11",
             "human": "10"
         },
-        "heatCap": "14300",
-        "thermalConductivity": "0.1805",
+        "heatCap": 14300,
+        "thermalConductivity": 0.1805,
         "category": "nonmetal",
         "period": 1,
         "group": 1,
@@ -74,6 +73,11 @@ Current in use: `JsonData/ElementsV5.json` and `JsonData/spectrum.json`
 ```
 
 ## Format spectrum.json
+spectrum.json is storing the element spectrum images in base64 format of 1px height\
+this allows to embed images much easier instead of having a folder full of those images\
+and by streching the height to something like 40px it will make the spectrum image more visible\
+
+The spectrum.json is from the [https://pse-info.de](https://pse-info.de) and is it used as its own file.
 ```jsonc
 {
     "h":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAABCAIAAADPbEtiAAAA80lEQVRIx+2UTw7BUBDGf++9ioRYiIiVRCxcxS1cwDlcwtbW3g0sXYArkJAg8W+s0KevtFWpRJumb76Zb7558y2qSlR5PMofaTyP4oE9iJPgPz2KhsKBrYQQ3ipoTJn6jtWZY0SFG3giBKeoQFnXaINesgCJo6BcnE+rKlGvwnToVWjNGFw43cviI4vdK7ZCCASU2G68gK4R7olirxAOrRVc8O0Kjo2sU/mCWPCTLm3oTjAw7bOef2tWiheOBOXm9NMbPfkj5IgKCZ3L8878w+CsvukKBn588TKZ0P5Jv+ExagIMl4w3/2KjxA++wczFf+0aVy1Z9wfkGdqJAAAAAElFTkSuQmCC",
