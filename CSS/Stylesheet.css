@@ -442,6 +442,10 @@ td {
 	transform: translateY(calc(-2 * 100%));
 }
 
+#periodicTable:is(.other) .elementsClassView {
+	transform: translateY(calc(-4 * 100%));
+}
+
 .elementsClassView div span {
 	cursor: default;
 }

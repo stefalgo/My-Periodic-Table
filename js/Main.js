@@ -73,7 +73,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         const cell = el.querySelector('data');
         if (!cell) return;
 
-        let value = helpers.getNestedValue(dataMap[key], prop);
+        let value = helpers.getNestedValue(dataMap?.[key], prop);
         if (value === '' || value === undefined) {
             cell.textContent = '--';
             return;
@@ -195,6 +195,27 @@ function showState(show, temp = 273) {
     });
 }
 
+function showSpectralAnalysis(show) {
+    const elements = getTableElements();
+
+    if (!show) {
+        return;
+    }
+
+    displayDataOnElement()
+    periodicTable.classList.add('other')
+    elements.forEach(el => {
+        const key = el.getAttribute('data-atomic');
+        const img = spectrumData[elementData[key].symbol.toLowerCase()];
+        if (img) {
+            el.style.background = `url(${img})`;
+            el.style.backgroundSize = '100% 100%';
+        } else {
+            el.style.background = 'var(--unknown)';
+        }
+    });
+}
+
 function visualize(array, prop, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', maxColor = 'rgba(8, 212, 170, 0.75)', radial = false, show = true) {
     const elements = getTableElements();
     if (!show || !array || !prop) {
@@ -271,11 +292,14 @@ function visualizeOptionFunc(option) {
     const [value, value2] = option.split("-");
     currentVisualizer = { params: null, action: null };
 
+    periodicTable.classList = '';
+    periodicTable.classList.add(value);
     //<array, prop, propKey, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)', radial, show>
     const config = {
         'category': {},
         'blocks': { action: () => showBlocks(true) },
         'state': { action: () => showState(true, temp) },
+        'SpectralAnalysis': { action: () => showSpectralAnalysis(true) },
         'atomicMass': { params: [elementData, 'atomicMass', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] },
         'meltPoint': { params: [elementData, 'melt', false, true, 'rgba(50, 100, 255, 0.01)', 'rgba(0, 255, 255, 0.75)'] },
         'boilPoint': { params: [elementData, 'boil', false, true, 'rgba(255, 100, 50, 0.01)', 'rgba(255, 0, 0, 0.75)'] },
@@ -374,10 +398,6 @@ function visualizeOptionFunc(option) {
     };
 
     const selected = config[value];
-    periodicTable.classList = '';
-    periodicTable.classList.add(value);
-    showBlocks(false);
-    showState(false);
     visualize();
 
     if (value2 && selected?.params) {
@@ -534,7 +554,7 @@ function infoElement(elementAtomicNumber) {
 
         ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
         ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
-        ['Φασματική ανάλυση', spectrumImg ? `<img src='${spectrumImg}'>` : '--', spectrumImg ? true : false],
+        ['Φασματική εκπομπή', spectrumImg ? `<img src='${spectrumImg}'>` : '--', spectrumImg ? true : false],
 
         ['Ομάδα', data.group || '--'],
         ['Περίοδος', data.period || '--'],
