@@ -65,34 +65,36 @@
 			<div style="display: flex; flex-direction: column; align-items: center;">
 				<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
 				<lable for="visualizeOption">Επιλογή οπτικοποίησης:</lable>
-				<select id="visualizeOption">
-					<option value="category">Κατηγορία</option>
-					<option value="blocks">Τομέας</option>
-					<option value="state">Κατάσταση</option>
+				<div style="display: flex; align-items: center;">
+					<select id="visualizeOption">
+						<option value="category">Κατηγορία</option>
+						<option value="blocks">Τομέας</option>
+						<option value="state">Κατάσταση</option>
 
-					<option value="atomicMass">Ατομική Μάζα (u)</option>
-					<option value="energyLevels">Ηλεκτρονική δομή</option>
-					<option value="configuration">Ηλεκτρονική διαμόρφωση</option>
-					<option value="meltPoint">Σημείο τήξης (K)</option>
-					<option value="boilPoint">Σημείο ζέσεως (K)</option>
-					<option value="density">Πυκνότητα (kg/m3)</option>
-					<option value="electronegativity">Ηλεκτραρνητικότητα</option>		
-					<option value="electronAffinity">Ηλεκτροσυγγένεια (kJ/mol)</option>
-					<option value="ionization">Ιονισμός (kJ/mol)</option>
-					<option value="valence">Σθενότητα</option>
-					<option value="oxidationStates">Κατάσταση οξείδωσης</option>
-					<option value="radius">Ακτίνα (pm)</option>
-					<option value="discoveryDate">Ανακαλύφθηκε</option>
-					
-					<optgroup label="Αφθονία">
-						<option value="abundance-universe">Σύμπαν</option>
-						<option value="abundance-solar">Ηλιακό</option>
-						<option value="abundance-meteor">Μετεωρίτες</option>
-						<option value="abundance-crust">Φλοιός</option>
-						<option value="abundance-ocean">Ωκεανός</option>
-						<option value="abundance-human">Άνθρωπος</option>
-					</optgroup>
-				</select>
+						<option value="atomicMass">Ατομική Μάζα (u)</option>
+						<option value="energyLevels">Ηλεκτρονική δομή</option>
+						<option value="configuration">Ηλεκτρονική διαμόρφωση</option>
+						<option value="meltPoint">Σημείο τήξης (K)</option>
+						<option value="boilPoint">Σημείο ζέσεως (K)</option>
+						<option value="density">Πυκνότητα (kg/m3)</option>
+						<option value="electronegativity">Ηλεκτραρνητικότητα</option>		
+						<option value="electronAffinity">Ηλεκτροσυγγένεια (kJ/mol)</option>
+						<option value="ionization">Ιονισμός (kJ/mol)</option>
+						<option value="valence">Σθενότητα</option>
+						<option value="oxidationStates">Κατάσταση οξείδωσης</option>
+						<option value="radius">Ακτίνα (pm)</option>
+						<option value="discoveryDate">Ανακαλύφθηκε</option>
+
+						<optgroup label="Αφθονία">
+							<option value="abundance-universe">Σύμπαν</option>
+							<option value="abundance-solar">Ηλιακό</option>
+							<option value="abundance-meteor">Μετεωρίτες</option>
+							<option value="abundance-crust">Φλοιός</option>
+							<option value="abundance-ocean">Ωκεανός</option>
+							<option value="abundance-human">Άνθρωπος</option>
+						</optgroup>
+					</select>
+				</div>
 
 				<div style="display: flex; align-items: center;">
 					<div class="elementStyle empty" style="width: 80px; height: 80px; display: flex; align-items: flex-end;">
@@ -156,6 +158,7 @@
 								<div class="metalloid highlightElement hoverEffect"><span>Μεταλλοειδή</span></div>
 								<div class="nonmetal highlightElement hoverEffect"><span>Αμέταλλα</span></div>
 								<div class="noble highlightElement hoverEffect"><span>Ευγενή</span></div>
+								<div class="halogen highlightElement hoverEffect"><span>Αλαγόνα</span></div>
 								<div class="unknown highlightElement hoverEffect"><span>Άγνωστα</span></div>
 							</div>
 							<div class="elementsClassView highlightElementBlocks">
@@ -218,7 +221,7 @@
 					<td><div class="element nonmetal p" data-atomic="6"> <b>6</b> <abbr>C</abbr> <em>Άνθρακας</em> <data>12.011</data> </div></td>
 					<td><div class="element nonmetal p" data-atomic="7"> <b>7</b> <abbr>N</abbr> <em>Άζωτο</em> <data>14.007</data> </div></td>
 					<td><div class="element nonmetal p" data-atomic="8"> <b>8</b> <abbr>O</abbr> <em>Οξυγόνο</em> <data>15.999</data> </div></td>
-					<td><div class="element nonmetal p" data-atomic="9"> <b>9</b> <abbr>F</abbr> <em>Φθόριο</em> <data>18.998</data> </div></td>
+					<td><div class="element nonmetal halogen p" data-atomic="9"> <b>9</b> <abbr>F</abbr> <em>Φθόριο</em> <data>18.998</data> </div></td>
 					<td><div class="element noble p" data-atomic="10"> <b>10</b> <abbr>Ne</abbr> <em>Νέον</em> <data>20.180</data> </div></td>
 				</tr>
 				<tr>
@@ -231,7 +234,7 @@
 					<td><div class="element metalloid p" data-atomic="14"> <b>14</b> <abbr>Si</abbr> <em>Πυρίτιο</em> <data>28.085</data> </div></td>
 					<td><div class="element nonmetal p" data-atomic="15"> <b>15</b> <abbr>P</abbr> <em>Φωσφόρος</em> <data>30.974</data> </div></td>
 					<td><div class="element nonmetal p" data-atomic="16"> <b>16</b> <abbr>S</abbr> <em>Θείο</em> <data>32.06</data> </div></td>
-					<td><div class="element nonmetal p" data-atomic="17"> <b>17</b> <abbr>Cl</abbr> <em>Χλώριο</em> <data>35.45</data> </div></td>
+					<td><div class="element nonmetal halogen p" data-atomic="17"> <b>17</b> <abbr>Cl</abbr> <em>Χλώριο</em> <data>35.45</data> </div></td>
 					<td><div class="element noble p" data-atomic="18"> <b>18</b> <abbr>Ar</abbr> <em>Αργό</em> <data>39.948</data> </div></td>
 				</tr>
 				<tr>
@@ -252,7 +255,7 @@
 					<td><div class="element metalloid p" data-atomic="32"> <b>32</b> <abbr>Ge</abbr> <em>Γερμάνιο</em> <data>72.630</data> </div></td>
 					<td><div class="element metalloid p" data-atomic="33"> <b>33</b> <abbr>As</abbr> <em>Αρσενικό</em> <data>74.922</data> </div></td>
 					<td><div class="element nonmetal p" data-atomic="34"> <b>34</b> <abbr>Se</abbr> <em>Σελήνιο</em> <data>78.971</data> </div></td>
-					<td><div class="element nonmetal p" data-atomic="35"> <b>35</b> <abbr>Br</abbr> <em>Βρώμιο</em> <data>79.904</data> </div></td>
+					<td><div class="element nonmetal halogen p" data-atomic="35"> <b>35</b> <abbr>Br</abbr> <em>Βρώμιο</em> <data>79.904</data> </div></td>
 					<td><div class="element noble p" data-atomic="36"> <b>36</b> <abbr>Kr</abbr> <em>Κρυπτό</em> <data>83.798</data> </div></td>
 				</tr>
 				<tr>
@@ -273,7 +276,7 @@
 					<td><div class="element poor p" data-atomic="50"> <b>50</b> <abbr>Sn</abbr> <em>Κασσίτερος</em> <data>118.71</data> </div></td>
 					<td><div class="element metalloid p" data-atomic="51"> <b>51</b> <abbr>Sb</abbr> <em>Αντιμόνιο</em> <data>121.76</data> </div></td>
 					<td><div class="element metalloid p" data-atomic="52"> <b>52</b> <abbr>Te</abbr> <em>Τελλούριο</em> <data>127.60</data> </div></td>
-					<td><div class="element nonmetal p" data-atomic="53"> <b>53</b> <abbr>I</abbr> <em>Ιώδιο</em> <data>126.90</data> </div></td>
+					<td><div class="element nonmetal halogen p" data-atomic="53"> <b>53</b> <abbr>I</abbr> <em>Ιώδιο</em> <data>126.90</data> </div></td>
 					<td><div class="element noble p" data-atomic="54"> <b>54</b> <abbr>Xe</abbr> <em>Ξένο</em> <data>131.29</data> </div></td>
 				</tr>
 				<tr>
@@ -299,7 +302,7 @@
 					<td><div class="element poor p" data-atomic="82"> <b>82</b> <abbr>Pb</abbr> <em>Μόλυβδος</em> <data>207.2</data> </div></td>
 					<td><div class="element poor p" data-atomic="83"> <b>83</b> <abbr>Bi</abbr> <em>Βισμούθιο</em> <data>208.98</data> </div></td>
 					<td><div class="element poor p" data-atomic="84"> <b>84</b> <abbr>Po</abbr> <em>Πολώνιο</em> <data>(209)</data> </div></td>
-					<td><div class="element metalloid p" data-atomic="85"> <b>85</b> <abbr>At</abbr> <em>Άστατο</em> <data>(210)</data> </div></td>
+					<td><div class="element metalloid halogen p" data-atomic="85"> <b>85</b> <abbr>At</abbr> <em>Άστατο</em> <data>(210)</data> </div></td>
 					<td><div class="element noble p" data-atomic="86"> <b>86</b> <abbr>Rn</abbr> <em>Ραδόνιο</em> <data>(222)</data> </div></td>
 				</tr>
 				<tr>

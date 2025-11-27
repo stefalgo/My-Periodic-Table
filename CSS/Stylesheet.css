@@ -108,6 +108,11 @@ select,
 	transition: var(--transitionTime);
 }
 
+select:disabled {
+	color: gray;
+	background-color: var(--primary_B);
+}
+
 option {
 	transition: var(--transitionTime);
 }
@@ -525,17 +530,20 @@ td {
 #infoPopup > .infoContainer > .popup-data .radioactive {
 	position: relative;
     overflow: hidden;
+	box-shadow: var(--borderShadowColorEffect);
+	border-radius: 5px;
+	padding: 5px;
+	background: var(--hazard)/*#ffa60080*/;
 }
 
 #infoPopup > .infoContainer > .popup-data .radioactive::before {
 	background: repeating-linear-gradient(
 		-45deg,
-		#ffa6003b,
-		#ffa6003b 6px,
-		#ffa60080 6px,
-		#ffa60080 12px
+		transparent,
+		transparent 6px,
+		var(--radioactive) 6px,
+		var(--radioactive) 12px
 	);
-	border-radius: 5px;
 }
 
 .close-btn {
@@ -641,6 +649,7 @@ option:hover {
 #periodicTable:has(.highlightElement.actinoid:hover) .actinoid,
 #periodicTable:has(.highlightElement.metalloid:hover) .metalloid,
 #periodicTable:has(.highlightElement.nonmetal:hover) .nonmetal,
+#periodicTable:has(.highlightElement.halogen:hover) .halogen,
 #periodicTable:has(.highlightElement.noble:hover) .noble,
 #periodicTable:has(.highlightElement.unknown:hover) .unknown,
 #periodicTable:has(.highlightElement.s:hover) .s,

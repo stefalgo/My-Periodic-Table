@@ -367,7 +367,7 @@ function visualizeOptionFunc(option) {
             action: () => {
                 displayDataOnElement(elementData, `elementAbundance.${value2}`, null, x => `${x}%`);
             },
-            params: [elementData, 'elementAbundance', true, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)']
+            params: [elementData, `elementAbundance.${value2}`, true, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)']
         },
     };
 

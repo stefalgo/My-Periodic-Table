@@ -15,6 +15,7 @@
 
 	--success: #59a659;
 	--warning: #bfbf40;
+	--hazard: #b88114;
 	--danger: #bf4040;
 	--info: #4080bf;
 
@@ -26,7 +27,7 @@
 	--actinoid: #732e4c;
 	--metalloid: #015146;
 	--nonmetal: #3e6418;
-	--halogen: #d4d4ab;
+	--halogen: #706f23;
 	--noble: #3a2151;
 	--unknown: #222;
 
@@ -64,6 +65,7 @@
 
 	--success: #59a659;
 	--warning: #bfbf40;
+	--hazard: #ebb447;
 	--danger: #bf4040;
 	--info: #4080bf;
 
