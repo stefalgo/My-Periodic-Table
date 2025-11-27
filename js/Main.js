@@ -285,6 +285,8 @@ function visualizeOptionFunc(option) {
         'ionization': { params: [elementData, 'ionizationEnergy', true, true, 'rgba(8, 212, 170, 0)', 'rgba(175, 193, 0, 0.75)'] },
         'radius': { params: [elementData, 'atomicRadius', false, true, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)', true] },
         'valence': { params: [elementData, 'valence', false, true, 'rgba(100, 125, 255, 0.75)', 'rgba(255, 16, 16, 0.75)'] },
+        'heat': { params: [elementData, 'heatCap', true, true, 'rgba(72, 138, 118, 0.75)', 'rgba(255, 69, 69, 0.75)'] },
+        'thermalConductivity': { params: [elementData, 'thermalConductivity', false, true, 'rgba(69, 165, 255, 0)', 'rgba(69, 165, 255, 0.75)'] },
         'energyLevels': {
             action: () => {
                 const calculated = {};
@@ -539,6 +541,8 @@ function infoElement(elementAtomicNumber) {
 
         ['Σημείο τήξης', `${data.melt || '--'} K`],
         ['Σημείο ζέσεως', `${data.boil || '--'} K`],
+        ['Θερμότητα', `${data.heatCap || '--'} J/kgK`],
+        ['Θερμική Αγωγιμότητα', `${data.thermalConductivity || '--'} W/mK`],
         ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
         ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
 

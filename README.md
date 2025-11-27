@@ -62,6 +62,8 @@ Current in use: `JsonData/ElementsV5.json` and `JsonData/spectrum.json`
             "ocean": "11",
             "human": "10"
         },
+        "heatCap": "14300",
+        "thermalConductivity": "0.1805",
         "category": "nonmetal",
         "period": 1,
         "group": 1,

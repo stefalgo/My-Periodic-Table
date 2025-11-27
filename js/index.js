@@ -5,6 +5,7 @@ import { sharePage } from './UtilsAndLib/helpers.js';
 async function loadJson(path) {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+    console.log("Loading", path);
     return await res.json();
 }
 
