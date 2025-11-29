@@ -465,12 +465,25 @@ function generateAtom(atomicNumber) {
         for (let i = 0; i < numElectrons; i++) {
             const angle = (360 / numElectrons) * i - 90;
             const electron = document.createElement('div');
+            //const electron2 = document.createElement('div');
+            //const electron3 = document.createElement('div');
+
             electron.classList.add('electron');
+            //electron2.classList.add('electron');
+            //electron3.classList.add('electron');
+
             const electronX = radius * Math.cos(angle * Math.PI / 180) + radius - 5;
             const electronY = radius * Math.sin(angle * Math.PI / 180) + radius - 5;
-            electron.style.top = electronY + 'px';
-            electron.style.left = electronX + 'px';
+
+            //electron.style.top = electronY + 'px';
+            //electron.style.left = electronX + 'px';
+            electron.style.cssText += `top:${electronY}px; left:${electronX}px;`;
+            //electron2.style.cssText += `top:${electronY}px; left:${electronX}px; transform: translate(40%, 40%) rotateY(90deg);`;
+            //electron3.style.cssText += `top:${electronY}px; left:${electronX}px; transform: translate(40%, 40%) rotateX(90deg);`;
+
             energyLevelDiv.appendChild(electron);
+            //energyLevelDiv.appendChild(electron2);
+            //energyLevelDiv.appendChild(electron3);
         }
     });
 }

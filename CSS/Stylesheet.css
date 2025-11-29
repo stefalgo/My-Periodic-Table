@@ -578,17 +578,17 @@ td {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	transform-style: preserve-3d;
 }
 
 #atom .electron {
 	position: absolute;
 	width: 5px;
 	height: 5px;
-	background-color: var(--electron)
-		/*#77868b*/
-	;
+	background-color: var(--electron);
 	border-radius: 50%;
 	transform: translate(40%, 40%);
+	transform-origin: center;
 }
 
 /**-----------------------------------------------**/
@@ -695,7 +695,7 @@ only screen and (max-height: 650px) {
 
 @keyframes spin {
 	100% {
-		transform: translate(-50%, -50%) rotate(360deg);
+		transform: translate(-50%, -50%) rotateZ(360deg) /*rotateX(360deg) rotateY(360deg)*/;
 	}
 }
 
