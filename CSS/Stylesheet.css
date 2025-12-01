@@ -562,13 +562,19 @@ td {
 /**-----------------------------------------------**/
 #atom .atom {
 	position: relative;
-	width: 20px;
-	height: 20px;
+	width: 24px;
+	height: 24px;
 	top: 50%;
 	left: 50%;
 	border-radius: 50%;
 	background-color: #888;
 	transform: translate(-50%);
+	box-shadow: var(--borderShadowColorEffect);
+	font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	color: var(--textColor_B);
 }
 
 #atom .energy-level {
@@ -589,6 +595,7 @@ td {
 	border-radius: 50%;
 	transform: translate(40%, 40%);
 	transform-origin: center;
+	box-shadow: var(--borderShadowColorEffect);
 }
 
 /**-----------------------------------------------**/
@@ -695,7 +702,13 @@ only screen and (max-height: 650px) {
 
 @keyframes spin {
 	100% {
-		transform: translate(-50%, -50%) rotateZ(360deg) /*rotateX(360deg) rotateY(360deg)*/;
+		transform: translate(-50%, -50%) rotateZ(360deg);
+	}
+}
+
+@keyframes spin3d {
+	100% {
+		transform: translate(-50%, -50%) rotateZ(360deg) rotateX(360deg) rotateY(360deg);
 	}
 }
 

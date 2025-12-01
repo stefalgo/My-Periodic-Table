@@ -446,44 +446,50 @@ function updateVisualizer(LogMode) {
     }
 }
 
-function generateAtom(atomicNumber) {
+function generateAtom(atomicNumber, threeD) {
     const atomContainer = document.getElementById('atom');
     const atomCore = atomContainer.querySelector('.atom');
     if (!elementData[atomicNumber]) { console.error('Atomic number not found in the data.'); return; }
-    atomCore.innerHTML = '';
+    atomCore.innerHTML = elementData[atomicNumber].symbol;
     helpers.energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
         const energyLevelDiv = document.createElement('div');
-        const radius = (index + 2) * 9;
+        const radius = (index + 2.5) * 9;
         const animationSpeed = radius / 2;
 
         energyLevelDiv.classList.add('energy-level');
         energyLevelDiv.style.width = radius * 2 + 'px';
         energyLevelDiv.style.height = radius * 2 + 'px';
-        energyLevelDiv.style.animation = `spin ${animationSpeed}s linear infinite`;
+        energyLevelDiv.style.animation = `${threeD ? 'spin3d' : 'spin'} ${animationSpeed}s linear infinite`;
         atomCore.appendChild(energyLevelDiv);
 
         for (let i = 0; i < numElectrons; i++) {
             const angle = (360 / numElectrons) * i - 90;
             const electron = document.createElement('div');
-            //const electron2 = document.createElement('div');
-            //const electron3 = document.createElement('div');
 
             electron.classList.add('electron');
-            //electron2.classList.add('electron');
-            //electron3.classList.add('electron');
 
             const electronX = radius * Math.cos(angle * Math.PI / 180) + radius - 5;
             const electronY = radius * Math.sin(angle * Math.PI / 180) + radius - 5;
 
-            //electron.style.top = electronY + 'px';
-            //electron.style.left = electronX + 'px';
             electron.style.cssText += `top:${electronY}px; left:${electronX}px;`;
-            //electron2.style.cssText += `top:${electronY}px; left:${electronX}px; transform: translate(40%, 40%) rotateY(90deg);`;
-            //electron3.style.cssText += `top:${electronY}px; left:${electronX}px; transform: translate(40%, 40%) rotateX(90deg);`;
-
             energyLevelDiv.appendChild(electron);
-            //energyLevelDiv.appendChild(electron2);
-            //energyLevelDiv.appendChild(electron3);
+
+            if (threeD) {
+                const electron2 = document.createElement('div');
+                const electron3 = document.createElement('div');
+
+                electron2.classList.add('electron');
+                electron3.classList.add('electron');
+
+                electron.style.top = electronY + 'px';
+                electron.style.left = electronX + 'px';
+
+                electron2.style.cssText += `top:${electronY}px; left:${electronX}px; transform: translate(40%, 40%) rotateY(90deg);`;
+                electron3.style.cssText += `top:${electronY}px; left:${electronX}px; transform: translate(40%, 40%) rotateX(90deg);`;
+
+                energyLevelDiv.appendChild(electron2);
+                energyLevelDiv.appendChild(electron3);
+            }
         }
     });
 }
@@ -514,7 +520,7 @@ function showElementData(elementAtomicNumber) {
         energyLevel.appendChild(spanElement);
     }
 
-    generateAtom(elementAtomicNumber);
+    generateAtom(elementAtomicNumber, Boolean(URLUtils.readParam('a3')));
     helpers.adjustElementsText('#CloseUp', 'em', 65);
 }
 
