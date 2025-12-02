@@ -475,6 +475,8 @@ function generateAtom(atomicNumber, threeD) {
             energyLevelDiv.appendChild(electron);
 
             if (threeD) {
+                //energyLevelDiv.style.border = 'none';
+
                 const electron2 = document.createElement('div');
                 const electron3 = document.createElement('div');
 

@@ -5,7 +5,8 @@
 :root {
 	--hoverShadow: 0 0 10px var(--hoverColor);
 
-	--borderShadowColorEffectHover: inset 0 0 0 2px #0099ff;;
+	--borderShadowColorEffectHover: inset 0 0 0 2px #0099ff;
+	;
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
 
 	--transitionTime: 0.3s;
@@ -272,25 +273,23 @@ td {
 	opacity: 1;
 	color: var(--textColor_B);
 	position: relative;
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .radioactive::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    flex: none;
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 6px,
-        var(--radioactive) 6px,
-        var(--radioactive) 12px
-    );
-    z-index: 0;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	flex: none;
+	background: repeating-linear-gradient(-45deg,
+			transparent,
+			transparent 6px,
+			var(--radioactive) 6px,
+			var(--radioactive) 12px);
+	z-index: 0;
 }
 
 .element *,
@@ -347,7 +346,7 @@ td {
 	box-shadow: var(--borderShadowColorEffect);
 	border-radius: 5px;
 	position: relative;
-    overflow: hidden;
+	overflow: hidden;
 }
 
 #CloseUp output {
@@ -475,7 +474,7 @@ td {
 	z-index: 10;
 }
 
-.popup > .infoContainer {
+.popup>.infoContainer {
 	transition: var(--transitionTime);
 	position: fixed;
 	background-color: var(--background_B);
@@ -492,62 +491,64 @@ td {
 	border-radius: 5px;
 }
 
-.widePopup > .infoContainer {
+.widePopup>.infoContainer {
 	width: 55%;
 	height: 85%;
 }
+
 /**-----------------------------------------------**/
 
-#sitePopup > .infoContainer > iframe {
+#sitePopup>.infoContainer>iframe {
 	border: none;
 	border-radius: 5px;
 	width: 100%;
 	height: 95%;
 }
+
 /**-----------------------------------------------**/
 
-#infoPopup > .infoContainer hr {
+#infoPopup>.infoContainer hr {
 	margin: 10px 0;
 	border: none;
 	border-top: 1px solid #676666;
 }
 
-#infoPopup > .infoContainer fieldset {
+#infoPopup>.infoContainer fieldset {
 	display: flex;
 	justify-content: flex-end;
 	border-radius: 5px;
 	border-color: var(--textColor_C);
 }
 
-#infoPopup > .infoContainer h3 {
+#infoPopup>.infoContainer h3 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	z-index: 1;
-    position: relative;
+	position: relative;
 }
 
-#infoPopup > .infoContainer img {
+#infoPopup>.infoContainer img {
 	width: 100%;
 	height: 40px;
 }
 
-#infoPopup > .infoContainer > .popup-data .radioactive {
+#infoPopup>.infoContainer>.popup-data .radioactive {
 	position: relative;
-    overflow: hidden;
+	overflow: hidden;
 	box-shadow: var(--borderShadowColorEffect);
 	border-radius: 5px;
 	padding: 5px;
-	background: var(--hazard)/*#ffa60080*/;
+	background: var(--hazard)
+		/*#ffa60080*/
+	;
 }
 
-#infoPopup > .infoContainer > .popup-data .radioactive::before {
-	background: repeating-linear-gradient(
-		-45deg,
-		transparent,
-		transparent 6px,
-		var(--radioactive) 6px,
-		var(--radioactive) 12px
-	);
+#infoPopup>.infoContainer>.popup-data .radioactive::before {
+	background: repeating-linear-gradient(-45deg,
+			transparent,
+			transparent 6px,
+			var(--radioactive) 6px,
+			var(--radioactive) 12px);
 }
 
 .close-btn {
@@ -571,9 +572,9 @@ td {
 	transform: translate(-50%);
 	box-shadow: var(--borderShadowColorEffect);
 	font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	color: var(--textColor_B);
 }
 
@@ -684,7 +685,7 @@ option:hover {
 /**-----------------------------------------------**/
 @media only screen and (max-width: 500px),
 only screen and (max-height: 550px) {
-	.popup > .infoContainer {
+	.popup>.infoContainer {
 		width: 100%;
 		height: 100%;
 		border-radius: 0px;
@@ -693,7 +694,7 @@ only screen and (max-height: 550px) {
 
 @media only screen and (max-width: 1000px),
 only screen and (max-height: 650px) {
-	.widePopup > .infoContainer {
+	.widePopup>.infoContainer {
 		width: 100%;
 		height: 100%;
 		border-radius: 0px;
