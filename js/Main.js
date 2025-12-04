@@ -35,6 +35,7 @@ const engToGr = [
 
 function openLinkInIframe(rowId) {
     const sitePopup = document.getElementById('sitePopup');
+    const sitePopupSearchBar = document.getElementById('sitePopupSearchBar');
     let link;
 
     function closePopup() {
@@ -45,6 +46,7 @@ function openLinkInIframe(rowId) {
 
     link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].wiki + '?withgadget=dark-mode';
     sitePopup.querySelector('iframe').src = link;
+    sitePopupSearchBar.value = link;
 
     sitePopup.style.display = "block";
     sitePopup.querySelector('.close-btn').addEventListener('click', closePopup);

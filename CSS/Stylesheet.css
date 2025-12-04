@@ -76,6 +76,12 @@ input[type="number"] {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
+input[type="text"]:disabled,
+input[type="number"]:disabled {
+	color: gray;
+	background-color: var(--primary_B);
+}
+
 input[type="range"] {
 	appearance: none;
 	-webkit-appearance: none;
@@ -558,6 +564,7 @@ td {
 	font-weight: bold;
 	cursor: pointer;
 	transition: var(--transitionTime);
+	user-select: none;
 }
 
 /**-----------------------------------------------**/
@@ -576,6 +583,10 @@ td {
 	justify-content: center;
 	align-items: center;
 	color: var(--textColor_B);
+
+	transform-style: preserve-3d;
+	perspective: 600px;
+    perspective-origin: center;
 }
 
 #atom .energy-level {
@@ -597,6 +608,7 @@ td {
 	transform: translate(40%, 40%);
 	transform-origin: center;
 	box-shadow: var(--borderShadowColorEffect);
+	transform-style: preserve-3d;
 }
 
 /**-----------------------------------------------**/
@@ -615,8 +627,8 @@ select:hover {
 	background-color: var(--primary_B);
 }
 
-input[type="text"]:hover,
-input[type="number"]:hover {
+input[type="text"]:not(:disabled):hover,
+input[type="number"]:not(:disabled):hover {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
 
