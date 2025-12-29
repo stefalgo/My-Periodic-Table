@@ -613,6 +613,31 @@ td {
 
 /**-----------------------------------------------**/
 
+.githubProfile {
+	display: flex;
+    align-items: center;
+	background: var(--githubBG);
+	box-shadow: var(--borderShadowColorEffect);
+	border-radius: 4px;
+	padding: 3px;
+	color: var(--githubLink);
+	text-decoration: none;
+	font-weight: 500;
+	margin: 4px 2px;
+}
+
+.githubProfile:hover {
+	color: var(--githubLink);
+	text-decoration: underline;
+}
+
+.githubProfile img {
+	width: 20px;
+	border-radius: 100%;
+}
+
+/**-----------------------------------------------**/
+
 .hoverEffect:hover {
 	box-shadow: var(--hoverShadow);
 }

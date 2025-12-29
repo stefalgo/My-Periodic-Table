@@ -113,6 +113,7 @@ export function sharePage() {
             .then(() => console.log("Shared successfully"))
             .catch(err => console.error("Share failed:", err));
     } else {
+        alert("The site was not able to share the page");
         console.warn("Web Share API not supported in this browser.");
     }
 }

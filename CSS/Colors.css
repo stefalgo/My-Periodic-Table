@@ -8,6 +8,9 @@
 	--textColor_B: #cccccc;
 	--textColor_C: #b3b3b3;
 
+	--githubBG: #0d1117;
+	--githubLink: #428eef;
+
 	--border: #808080;
 
 	--primary_A: hsl(0, 0%, 15%);
@@ -57,6 +60,9 @@
 	--textColor_A: #4d4d4d;
 	--textColor_B: #333333;
 	--textColor_C: #1a1a1a;
+
+	--githubBG: #ffffff;
+	--githubLink: #1772dc;
 
 	--border: #808080;
 
