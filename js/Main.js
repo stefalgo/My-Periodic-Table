@@ -296,6 +296,7 @@ function visualizeOptionFunc(option) {
 
     periodicTable.classList = '';
     periodicTable.classList.add(value);
+    getTableElements().forEach(el => {el.classList.remove('radioactive')})
     //<array, prop, propKey, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)', radial, show>
     const config = {
         'category': {},
@@ -396,6 +397,17 @@ function visualizeOptionFunc(option) {
                 displayDataOnElement(elementData, `elementAbundance.${value2}`, null, x => `${x}%`);
             },
             params: [elementData, `elementAbundance.${value2}`, true, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)']
+        },
+        'radioactiveEl': {
+            action: () => {
+                displayDataOnElement(elementData, `radioactive`, null, x => `${'Ραδιεν.'}`);
+                const elements = getTableElements();
+                elements.forEach(el => {
+                    elementData[el.dataset.atomic].radioactive ? el.classList.add('radioactive') : ''
+                })
+                periodicTable.classList.add('other')
+            },
+            params: [elementData, `radioactive`, false, false, 'rgba(156, 137, 52, 0.75)']
         },
     };
 
