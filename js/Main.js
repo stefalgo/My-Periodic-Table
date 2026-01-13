@@ -303,17 +303,17 @@ function visualizeOptionFunc(option) {
         'blocks': { action: () => showBlocks(true) },
         'state': { action: () => showState(true, temp) },
         'SpectralAnalysis': { action: () => showSpectralAnalysis(true) },
-        'atomicMass': { params: [elementData, 'atomicMass', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] },
-        'meltPoint': { params: [elementData, 'melt', false, true, 'rgba(50, 100, 255, 0.01)', 'rgba(0, 255, 255, 0.75)'] },
-        'boilPoint': { params: [elementData, 'boil', false, true, 'rgba(255, 100, 50, 0.01)', 'rgba(255, 0, 0, 0.75)'] },
-        'density': { params: [elementData, 'density', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] },
+        'atomicMass': { params: [elementData, 'atomicMass', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] }, // u
+        'meltPoint': { params: [elementData, 'melt', false, true, 'rgba(50, 100, 255, 0.01)', 'rgba(0, 255, 255, 0.75)'] }, // K
+        'boilPoint': { params: [elementData, 'boil', false, true, 'rgba(255, 100, 50, 0.01)', 'rgba(255, 0, 0, 0.75)'] }, // K
+        'density': { params: [elementData, 'density', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] }, // kg/m3
         'electronegativity': { params: [elementData, 'electronegativity', true, true, 'rgba(0, 60, 240, 0.75)', 'rgba(175, 193, 0, 0.75)'] },
-        'electronAffinity': { params: [elementData, 'electronAffinity', true, true, 'rgba(200, 0, 200, 0)', 'rgba(200, 0, 200, 0.75)'] },
-        'ionization': { params: [elementData, 'ionizationEnergy', true, true, 'rgba(8, 212, 170, 0)', 'rgba(175, 193, 0, 0.75)'] },
-        'radius': { params: [elementData, 'atomicRadius', false, true, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)', true] },
+        'electronAffinity': { params: [elementData, 'electronAffinity', true, true, 'rgba(200, 0, 200, 0)', 'rgba(200, 0, 200, 0.75)'] }, // kJ/mol
+        'ionization': { params: [elementData, 'ionizationEnergy', true, true, 'rgba(8, 212, 170, 0)', 'rgba(175, 193, 0, 0.75)'] }, // kJ/mol
+        'radius': { params: [elementData, 'atomicRadius', false, true, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)', true] }, // pm
         'valence': { params: [elementData, 'valence', false, true, 'rgba(100, 125, 255, 0.75)', 'rgba(255, 16, 16, 0.75)'] },
-        'heat': { params: [elementData, 'heatCap', true, true, 'rgba(72, 138, 118, 0.75)', 'rgba(255, 69, 69, 0.75)'] },
-        'thermalConductivity': { params: [elementData, 'thermalConductivity', false, true, 'rgba(69, 165, 255, 0)', 'rgba(69, 165, 255, 0.75)'] },
+        'heat': { params: [elementData, 'heatCap', true, true, 'rgba(72, 138, 118, 0.75)', 'rgba(255, 69, 69, 0.75)'] }, // J/kgK
+        'thermalConductivity': { params: [elementData, 'thermalConductivity', false, true, 'rgba(69, 165, 255, 0)', 'rgba(69, 165, 255, 0.75)'] }, // W/mK
         'energyLevels': {
             action: () => {
                 const calculated = {};
@@ -408,6 +408,16 @@ function visualizeOptionFunc(option) {
                 periodicTable.classList.add('other')
             },
             params: [elementData, `radioactive`, false, false, 'rgba(156, 137, 52, 0.75)']
+        },
+        'atomicVolume': { // cm3/mol
+            action: () => {
+                const calculated = {};
+                Object.entries(elementData).forEach(([key, el]) => {
+                    (calculated[key] ??= { Total: 0 }).Total = ((el.atomicMass / 1000) / el.density) * 1e6;
+                });
+
+                return [calculated, 'Total', true, true, 'rgba(133, 173, 49, 0)', 'rgba(133, 173, 49, 0.75)'];
+            }
         },
     };
 
@@ -600,6 +610,7 @@ function infoElement(elementAtomicNumber) {
         ['Θερμική Αγωγιμότητα', `${data.thermalConductivity || '--'} W/mK`],
         ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
         ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
+        ['Ατομικός όγκος', `${((((data.atomicMass / 1000) / data.density) * 1e6)).toPrecision(3) || '--'} cm<sup>3</sup>/mol`],
 
         ['Διαμόρφωση', data.electronStringConf || '--'],
         ['Σθενότητα', `${data.valence || '--'}`],

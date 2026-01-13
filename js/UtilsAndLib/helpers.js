@@ -157,30 +157,39 @@ export function getRepresentativeOxidation(oxStr) {
 }
 
 export function getBlock(el) {
-    const Z = Number(el.atomic);
-    const group = Number(el.group);
+    // const Z = Number(el.atomic);
+    // const group = Number(el.group);
 
-    if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
+    // if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
 
-    if (group) {
-        if (Z === 2) return 's';
-        if (group === 1 || group === 2) return 's';
-        if (group >= 13 && group <= 18) return 'p';
-        if (group >= 3 && group <= 12) return 'd';
+    // if (group) {
+    //     if (Z === 2) return 's';
+    //     if (group === 1 || group === 2) return 's';
+    //     if (group >= 13 && group <= 18) return 'p';
+    //     if (group >= 3 && group <= 12) return 'd';
+    // }
+
+    // const cfg = el.electronConfiguration ?? '';
+    // let block = '';
+
+    // cfg.replace(/\[.*?\]/g, '')
+    //     .trim()
+    //     .split(/\s+/)
+    //     .forEach(tok => {
+    //         const m = tok.match(/^[0-9]+([spdfg])/i);
+    //         if (m) block = m[1].toLowerCase();
+    //     });
+
+    if (el.atomic >= 57 && el.atomic <= 71) return 'f';
+    if (el.atomic >= 89 && el.atomic <= 103) return 'f';
+    switch (el.quantum.l) {
+        case 0: return 's';
+        case 1: return 'p';
+        case 2: return 'd';
+        case 3: return 'f';
+        default: return '?';
     }
-
-    const cfg = el.electronConfiguration ?? '';
-    let block = '';
-
-    cfg.replace(/\[.*?\]/g, '')
-        .trim()
-        .split(/\s+/)
-        .forEach(tok => {
-            const m = tok.match(/^[0-9]+([spdfg])/i);
-            if (m) block = m[1].toLowerCase();
-        });
-
-    return block;
+    //return block;
 }
 
 export function energyLevels(eConfig) {
