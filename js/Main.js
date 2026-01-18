@@ -474,7 +474,7 @@ function generateAtom(atomicNumber, threeD) {
     const atomContainer = document.getElementById('atom');
     const atomCore = atomContainer.querySelector('.atom');
     if (!elementData[atomicNumber]) { console.error('Atomic number not found in the data.'); return; }
-    atomCore.innerHTML = elementData[atomicNumber].symbol;
+    atomCore.innerHTML = `<span>${elementData[atomicNumber].symbol}</span>`;
     helpers.energyLevels(elementData[atomicNumber].electronConfiguration).forEach((numElectrons, index) => {
         const energyLevelDiv = document.createElement('div');
         const radius = (index + 2.5) * 9;
@@ -499,7 +499,9 @@ function generateAtom(atomicNumber, threeD) {
             energyLevelDiv.appendChild(electron);
 
             if (threeD) {
-                //energyLevelDiv.style.border = 'none';
+                if (threeD==2) {
+                    energyLevelDiv.style.border = 'none';
+                }
 
                 const electron2 = document.createElement('div');
                 const electron3 = document.createElement('div');
@@ -546,7 +548,7 @@ function showElementData(elementAtomicNumber) {
         energyLevel.appendChild(spanElement);
     }
 
-    generateAtom(elementAtomicNumber, Boolean(URLUtils.readParam('a3')));
+    generateAtom(elementAtomicNumber, URLUtils.readParam('a3'));
     helpers.adjustElementsText('#CloseUp', 'em', 65);
 }
 
