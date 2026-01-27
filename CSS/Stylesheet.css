@@ -107,7 +107,8 @@ input[type="range"]::-webkit-slider-thumb {
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
-	background-color: var(--primary_A);
+	background-color: rgb(63, 155, 132);
+	border: 1px solid rgb(66, 80, 75)
 }
 
 /*Firefox*/
@@ -130,7 +131,8 @@ input[type="range"]::-moz-range-thumb {
 	width: 16px;
 	height: 16px;
 	border-radius: 50%;
-	background-color: var(--primary_A);
+	background-color: rgb(63, 155, 132);
+	border: 1px solid rgb(66, 80, 75)
 }
 
 select,
@@ -174,6 +176,26 @@ select:open::picker-icon {
 
 optgroup {
 	background: #00000040;
+}
+
+/*Firefox*/
+@-moz-document url-prefix() {
+    select {
+        all: unset;
+        display: inline-block;
+        color: #ffffff;
+        background: var(--primary_A);
+        box-shadow: var(--borderShadowColorEffect);
+        border-radius: 4px;
+        margin: 4px 2px;
+		padding: 4px;
+		font-size: 16px;
+    }
+
+    select:disabled {
+        color: gray;
+        background-color: #eee;
+    }
 }
 
 /**---------------------------**/
