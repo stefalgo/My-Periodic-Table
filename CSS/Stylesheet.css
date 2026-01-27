@@ -89,6 +89,7 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
+	border-radius: 10px;
 	background: linear-gradient(90deg,
 			#000000 0%,
 			#FF3800 14%,
@@ -99,6 +100,37 @@ input[type="range"]::-webkit-slider-runnable-track {
 			#FFF3FF 85%,
 			#D4EBFF 100%);
 	box-shadow: var(--borderShadowColorEffect);
+}
+input[type="range"]::-webkit-slider-thumb {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: var(--primary_A);
+}
+
+/*Firefox*/
+input[type="range"]::-moz-range-track {
+	height: 16px;
+	border-radius: 10px;
+	background: linear-gradient(90deg,
+		#000000 0%,
+		#FF3800 14%,
+		#FF6D00 28%,
+		#FF9329 42%,
+		#FFC58F 57%,
+		#FFE4CE 71%,
+		#FFF3FF 85%,
+		#D4EBFF 100%);
+	box-shadow: var(--borderShadowColorEffect);
+}
+input[type="range"]::-moz-range-thumb {
+	appearance: none;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background-color: var(--primary_A);
 }
 
 select,
@@ -544,9 +576,7 @@ td {
 	box-shadow: var(--borderShadowColorEffect);
 	border-radius: 5px;
 	padding: 5px;
-	background: var(--hazard)
-		/*#ffa60080*/
-	;
+	background: var(--hazard)/*#ffa60080*/;
 }
 
 #infoPopup>.infoContainer>.popup-data .radioactive::before {

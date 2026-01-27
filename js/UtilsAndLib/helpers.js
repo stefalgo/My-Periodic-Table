@@ -157,7 +157,7 @@ export function getRepresentativeOxidation(oxStr) {
 }
 
 export function getBlock(el) {
-    // const Z = Number(el.atomic);
+    const Z = Number(el.atomic);
     // const group = Number(el.group);
 
     // if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) return 'f';
@@ -180,8 +180,9 @@ export function getBlock(el) {
     //         if (m) block = m[1].toLowerCase();
     //     });
 
-    if (el.atomic >= 57 && el.atomic <= 71) return 'f';
-    if (el.atomic >= 89 && el.atomic <= 103) return 'f';
+    if ((Z >= 57 && Z <= 71) || (Z >= 89 && Z <= 103)) {
+        return 'f';
+    }
     switch (el.quantum.l) {
         case 0: return 's';
         case 1: return 'p';

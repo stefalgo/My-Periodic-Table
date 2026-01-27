@@ -6,15 +6,6 @@ const closeUp = document.getElementById('CloseUp');
 const visualizeOption = document.getElementById('visualizeOption');
 const periodicTable = document.getElementById('periodicTable');
 
-let elementData, spectrumData;
-
-let currentVisualizer = {
-    params: null,
-    action: null
-};
-
-let temp = 273;
-
 const engToGr = [
     { en: "solid", gr: "Στερεά" },
     { en: "liquid", gr: "Υγρά" },
@@ -33,29 +24,14 @@ const engToGr = [
     { en: "noble", gr: "Ευγενές αέριο" }
 ];
 
-function openLinkInIframe(rowId) {
-    const sitePopup = document.getElementById('sitePopup');
-    const sitePopupSearchBar = document.getElementById('sitePopupSearchBar');
-    let link;
+let elementData, spectrumData;
 
-    function closePopup() {
-        sitePopup.querySelector('iframe').src = '';
-        sitePopup.style.display = "none";
-        sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
-    }
+let currentVisualizer = {
+    params: null,
+    action: null
+};
 
-    link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].wiki + '?withgadget=dark-mode';
-    sitePopup.querySelector('iframe').src = link;
-    sitePopupSearchBar.value = link;
-
-    sitePopup.style.display = "block";
-    sitePopup.querySelector('.close-btn').addEventListener('click', closePopup);
-    sitePopup.addEventListener('click', (e) => {
-        if (e.target === sitePopup) {
-            closePopup();
-        }
-    });
-}
+let temp = 273;
 
 function getTableElements() {
     return [
@@ -470,6 +446,8 @@ function updateVisualizer(LogMode) {
     }
 }
 
+
+
 function generateAtom(atomicNumber, threeD) {
     const atomContainer = document.getElementById('atom');
     const atomCore = atomContainer.querySelector('.atom');
@@ -550,6 +528,30 @@ function showElementData(elementAtomicNumber) {
 
     generateAtom(elementAtomicNumber, URLUtils.readParam('a3'));
     helpers.adjustElementsText('#CloseUp', 'em', 65);
+}
+
+function openLinkInIframe(rowId) {
+    const sitePopup = document.getElementById('sitePopup');
+    const sitePopupSearchBar = document.getElementById('sitePopupSearchBar');
+    let link;
+
+    function closePopup() {
+        sitePopup.querySelector('iframe').src = '';
+        sitePopup.style.display = "none";
+        sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
+    }
+
+    link = 'https://el.wikipedia.org/wiki/' + elementData[rowId].wiki + '?withgadget=dark-mode';
+    sitePopup.querySelector('iframe').src = link;
+    sitePopupSearchBar.value = link;
+
+    sitePopup.style.display = "block";
+    sitePopup.querySelector('.close-btn').addEventListener('click', closePopup);
+    sitePopup.addEventListener('click', (e) => {
+        if (e.target === sitePopup) {
+            closePopup();
+        }
+    });
 }
 
 function infoElement(elementAtomicNumber) {
