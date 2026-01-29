@@ -101,6 +101,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 			#D4EBFF 100%);
 	box-shadow: var(--borderShadowColorEffect);
 }
+
 input[type="range"]::-webkit-slider-thumb {
 	appearance: none;
 	-webkit-appearance: none;
@@ -116,16 +117,17 @@ input[type="range"]::-moz-range-track {
 	height: 16px;
 	border-radius: 10px;
 	background: linear-gradient(90deg,
-		#000000 0%,
-		#FF3800 14%,
-		#FF6D00 28%,
-		#FF9329 42%,
-		#FFC58F 57%,
-		#FFE4CE 71%,
-		#FFF3FF 85%,
-		#D4EBFF 100%);
+			#000000 0%,
+			#FF3800 14%,
+			#FF6D00 28%,
+			#FF9329 42%,
+			#FFC58F 57%,
+			#FFE4CE 71%,
+			#FFF3FF 85%,
+			#D4EBFF 100%);
 	box-shadow: var(--borderShadowColorEffect);
 }
+
 input[type="range"]::-moz-range-thumb {
 	appearance: none;
 	width: 16px;
@@ -180,22 +182,22 @@ optgroup {
 
 /*Firefox*/
 @-moz-document url-prefix() {
-    select {
-        all: unset;
-        display: inline-block;
-        color: #ffffff;
-        background: var(--primary_A);
-        box-shadow: var(--borderShadowColorEffect);
-        border-radius: 4px;
-        margin: 4px 2px;
+	select {
+		all: unset;
+		display: inline-block;
+		color: #ffffff;
+		background: var(--primary_A);
+		box-shadow: var(--borderShadowColorEffect);
+		border-radius: 4px;
+		margin: 4px 2px;
 		padding: 4px;
 		font-size: 16px;
-    }
+	}
 
-    select:disabled {
-        color: gray;
-        background-color: #eee;
-    }
+	select:disabled {
+		color: gray;
+		background-color: #eee;
+	}
 }
 
 /**---------------------------**/
@@ -444,11 +446,11 @@ td {
     cursor: crosshair;
 }**/
 
-#periodicTable:not(.blocks, .category) .lanth-Act {
+#periodicTable:not([data-mode="blocks"], [data-mode="category"]) .lanth-Act {
 	background: transparent;
 }
 
-#periodicTable:not(.blocks, .category) td:has(> .element) {
+#periodicTable:not([data-mode="blocks"], [data-mode="category"]) td:has(> .element) {
 	padding: 0;
 }
 
@@ -489,19 +491,19 @@ td {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
-#periodicTable:is(.category) .elementsClassView {
+#periodicTable:is([data-mode="category"]) .elementsClassView {
 	transform: translateY(calc(0 * 100%));
 }
 
-#periodicTable:is(.blocks) .elementsClassView {
+#periodicTable:is([data-mode="blocks"]) .elementsClassView {
 	transform: translateY(calc(-1 * 100%));
 }
 
-#periodicTable:is(.state) .elementsClassView {
+#periodicTable:is([data-mode="state"]) .elementsClassView {
 	transform: translateY(calc(-2 * 100%));
 }
 
-#periodicTable:is(.other) .elementsClassView {
+#periodicTable:is([data-mode="other"]) .elementsClassView {
 	transform: translateY(calc(-4 * 100%));
 }
 
@@ -598,7 +600,9 @@ td {
 	box-shadow: var(--borderShadowColorEffect);
 	border-radius: 5px;
 	padding: 5px;
-	background: var(--hazard)/*#ffa60080*/;
+	background: var(--hazard)
+		/*#ffa60080*/
+	;
 }
 
 #infoPopup>.infoContainer>.popup-data .radioactive::before {
@@ -638,7 +642,7 @@ td {
 
 	transform-style: preserve-3d;
 	perspective: 600px;
-    perspective-origin: center;
+	perspective-origin: center;
 }
 
 #atom .energy-level {
@@ -672,7 +676,7 @@ td {
 
 .githubProfile {
 	display: flex;
-    align-items: center;
+	align-items: center;
 	background: var(--githubBG);
 	box-shadow: var(--borderShadowColorEffect);
 	border-radius: 4px;
@@ -724,7 +728,7 @@ option:hover {
 }
 
 /**-----------------**/
-#periodicTable:not(.blocks, .category) td:has(> :where(.element))> :where(.element) {
+#periodicTable:not([data-mode="blocks"], [data-mode="category"]) td:has(> :where(.element))> :where(.element) {
 	box-shadow: none;
 	padding: 4px;
 }
@@ -799,6 +803,7 @@ only screen and (max-height: 650px) {
 	from {
 		transform: translate(-50%, -50%) rotate(0deg);
 	}
+
 	to {
 		transform: translate(-50%, -50%) rotate(360deg);
 	}
@@ -808,6 +813,7 @@ only screen and (max-height: 650px) {
 	from {
 		transform: translate(-50%, -50%) rotate(0deg) rotateX(0deg) rotateY(0deg);
 	}
+
 	to {
 		transform: translate(-50%, -50%) rotate(360deg) rotateX(360deg) rotateY(360deg);
 	}
@@ -817,6 +823,7 @@ only screen and (max-height: 650px) {
 	from {
 		-webkit-transform: translate(-50%, -50%) rotate(0deg);
 	}
+
 	to {
 		-webkit-transform: translate(-50%, -50%) rotate(360deg);
 	}
@@ -826,6 +833,7 @@ only screen and (max-height: 650px) {
 	from {
 		-webkit-transform: translate(-50%, -50%) rotate(0deg) rotateX(0deg) rotateY(0deg);
 	}
+
 	to {
 		-webkit-transform: translate(-50%, -50%) rotate(360deg) rotateX(360deg) rotateY(360deg);
 	}
@@ -876,19 +884,35 @@ only screen and (max-height: 650px) {
 	background: var(--unknown);
 }
 
-.blocks .s {
+#periodicTable[data-mode="blocks"] .s {
 	background: var(--s-block);
 }
 
-.blocks .p {
+#periodicTable[data-mode="blocks"] .p {
 	background: var(--p-block);
 }
 
-.blocks .d {
+#periodicTable[data-mode="blocks"] .d {
 	background: var(--d-block);
 }
 
-.blocks .f {
+#periodicTable[data-mode="blocks"] .f {
+	background: var(--f-block);
+}
+
+body:has(#periodicTable[data-mode="blocks"]) #CloseUp.s {
+	background: var(--s-block);
+}
+
+body:has(#periodicTable[data-mode="blocks"]) #CloseUp.p {
+	background: var(--p-block);
+}
+
+body:has(#periodicTable[data-mode="blocks"]) #CloseUp.d {
+	background: var(--d-block);
+}
+
+body:has(#periodicTable[data-mode="blocks"]) #CloseUp.f {
 	background: var(--f-block);
 }
 

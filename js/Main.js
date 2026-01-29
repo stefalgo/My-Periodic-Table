@@ -181,7 +181,7 @@ function showSpectralAnalysis(show) {
     }
 
     displayDataOnElement()
-    periodicTable.classList.add('other')
+    //periodicTable.classList.add('other')
     elements.forEach(el => {
         const key = el.getAttribute('data-atomic');
         const img = spectrumData[elementData[key].symbol.toLowerCase()];
@@ -270,15 +270,22 @@ function visualizeOptionFunc(option) {
     const [value, value2] = option.split("-");
     currentVisualizer = { params: null, action: null };
 
-    periodicTable.classList = '';
-    periodicTable.classList.add(value);
-    getTableElements().forEach(el => {el.classList.remove('radioactive')})
+    //periodicTable.classList = '';
+    //periodicTable.classList.add(value);
+
+    periodicTable.dataset.mode = value;
+    getTableElements().forEach(el => { el.classList.remove('radioactive') });
     //<array, prop, propKey, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)', radial, show>
     const config = {
         'category': {},
         'blocks': { action: () => showBlocks(true) },
         'state': { action: () => showState(true, temp) },
-        'SpectralAnalysis': { action: () => showSpectralAnalysis(true) },
+        'SpectralAnalysis': {
+            action: () => {
+                showSpectralAnalysis(true);
+                periodicTable.dataset.mode = "other";
+            }
+        },
         'atomicMass': { params: [elementData, 'atomicMass', false, true, 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)'] }, // u
         'meltPoint': { params: [elementData, 'melt', false, true, 'rgba(50, 100, 255, 0.01)', 'rgba(0, 255, 255, 0.75)'] }, // K
         'boilPoint': { params: [elementData, 'boil', false, true, 'rgba(255, 100, 50, 0.01)', 'rgba(255, 0, 0, 0.75)'] }, // K
@@ -381,7 +388,8 @@ function visualizeOptionFunc(option) {
                 elements.forEach(el => {
                     elementData[el.dataset.atomic].radioactive ? el.classList.add('radioactive') : ''
                 })
-                periodicTable.classList.add('other')
+                //periodicTable.classList.add('other')
+                periodicTable.dataset.mode = "other";
             },
             params: [elementData, `radioactive`, false, false, 'rgba(156, 137, 52, 0.75)']
         },
@@ -477,7 +485,7 @@ function generateAtom(atomicNumber, threeD) {
             energyLevelDiv.appendChild(electron);
 
             if (threeD) {
-                if (threeD==2) {
+                if (threeD == 2) {
                     energyLevelDiv.style.border = 'none';
                 }
 

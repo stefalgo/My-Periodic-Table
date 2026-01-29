@@ -3,9 +3,12 @@ import { onDataLoaded, toggleColorScheme } from './Main.js';
 import { sharePage } from './UtilsAndLib/helpers.js';
 
 async function loadJson(path) {
+    const startTime = performance.now();
     const res = await fetch(path);
     if (!res.ok) throw new Error(`Failed to load ${path}: ${res.status}`);
+    const endTime = performance.now();
     console.log("Loading", path);
+    console.log(`^[Took ${(endTime - startTime).toFixed(2)} ms]`)
     return await res.json();
 }
 

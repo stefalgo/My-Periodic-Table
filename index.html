@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<noscript>
-			<div style="color: white; background-color: red; padding: 10px; border-radius: 5px;">
+			<div style="color: white; background-color: var(--danger); padding: 10px; border-radius: 5px;">
 				⚠️ Warning: JavaScript is disabled in your browser. Some features may not work properly.
 			</div>
 			<style>
@@ -35,6 +35,10 @@
 			<a href="https://github.com/stefalgo" target="_blank" class="githubProfile">
 				<img src="https://github.com/stefalgo.png">
 				Github Profile
+			</a>
+			<a href="https://github.com/stefalgo/My-Periodic-Table" target="_blank" class="githubProfile">
+				<img src="Media\GitHub_Invertocat_White.png" style="background: black;">
+				Project Page
 			</a>
 			<button onclick='sharePage()'>Share Page</button>
 			<button onclick="toggleColorScheme()">Color Scheme</button>
@@ -137,7 +141,7 @@
 			</div>
 		</article>
 
-		<div id="periodicTable" class="category">
+		<div id="periodicTable" data-mode="category">
 			<table id="elements">
 				<tr class="groups">
 					<td class="period">-</td>
