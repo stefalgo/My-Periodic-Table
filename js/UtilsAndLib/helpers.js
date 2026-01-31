@@ -138,6 +138,25 @@ export function adjustElementsText(element, child, width) {
 export const KelvinToCelsius = k => Number(k) - 273;
 export const CelsiusToKelvin = c => Number(c) + 273;
 
+export function getPhase(melt, boil, temp) {
+    const hasMelt = Number.isFinite(melt);
+    const hasBoil = Number.isFinite(boil);
+
+    if (!hasMelt && !hasBoil) return 'unknownState';
+
+    if (hasMelt && hasBoil) {
+        if (temp >= boil) return 'gas';
+        if (temp >= melt) return 'liquid';
+        return 'solid';
+    }
+
+    if (hasMelt) {
+        return temp < melt ? 'solid' : 'unknownState';
+    }
+
+    return temp >= boil ? 'gas' : 'liquid';
+}
+
 export function lastElectronCount(eConfig) {
     const match = eConfig.trim().match(/(\d+[spdfg]\d+)\s*$/);
     if (!match) return null;

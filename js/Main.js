@@ -24,6 +24,8 @@ const engToGr = [
     { en: "noble", gr: "Ευγενές αέριο" }
 ];
 
+const engToGrMap = Object.fromEntries(engToGr.map(i => [i.en, i.gr]));
+
 const DEFAULT_TEMP = 273
 
 let elementData, spectrumData;
@@ -86,9 +88,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
 }
 
 function showBlocks(show) {
-    if (!show) {
-        return;
-    }
+    if (!show) return;
 
     getTableElements().forEach(el => {
         const key = el.dataset.atomic;
@@ -101,72 +101,33 @@ function showBlocks(show) {
     });
 }
 
-function showState(show, temp = 273) {
-    const phaseClasses = ['solid', 'liquid', 'gas', 'unknownState'];
+function showState(show, temp) {
+    if (!show) return;
 
-    if (!show) {
-        return;
-    }
+    const phases = ['solid', 'liquid', 'gas', 'unknownState'];
 
-    const getPhase = (el) => {
-        const key = el.dataset.atomic;
-        const meltTemp = elementData[key]?.melt;
-        const boilTemp = elementData[key]?.boil;
-        let phase = 'unknownState';
+    for (const el of getTableElements()) {
+        const data = elementData[el.dataset.atomic];
+        const phase = helpers.getPhase(data.melt, data.boil, temp);
 
-        const validMelt = (typeof meltTemp === 'number') && !isNaN(meltTemp);
-        const validBoil = (typeof boilTemp === 'number') && !isNaN(boilTemp);
+        if (el.classList.contains(phase)) continue;
 
-        if (!validMelt && !validBoil) {
-            return phase;
-        }
-
-        if (validMelt && validBoil) {
-            if (temp >= boilTemp) {
-                phase = 'gas';
-            } else if (temp >= meltTemp) {
-                phase = 'liquid';
-            } else if (temp < meltTemp) {
-                phase = 'solid';
-            }
-            return phase;
-        }
-
-        if (validMelt) {
-            phase = (temp < meltTemp) ? 'solid' : ('unknownState');
-            return phase;
-        }
-
-        if (validBoil) {
-            phase = (temp >= boilTemp) ? 'gas' : ('liquid');
-            return phase;
-        }
-
-        return phase;
-    };
-
-    const mapped = getTableElements().map(el => ({ el, phase: getPhase(el) }));
-
-    mapped.forEach(({ el, phase }) => {
         const dataText = el.querySelector('data');
-        const text = engToGr.find(c => c.en === phase)?.gr ?? "Άγνωστη";
-        if (el.style.background !== `var(--${phase})`) {
-            el.style.background = `var(--${phase})`;
-        }
-        if (!el.classList.contains(phase)) {
-            phaseClasses.forEach(cls => el.classList.remove(cls));
-            el.classList.add(phase);
-        }
-        if (dataText.textContent !== text) {
+        const text = engToGrMap[phase] ?? 'Άγνωστη';
+
+        el.style.background = `var(--${phase})`;
+
+        el.classList.remove(...phases);
+        el.classList.add(phase);
+
+        if (dataText && dataText.textContent !== text) {
             dataText.textContent = text;
         }
-    });
+    }
 }
 
 function showSpectralAnalysis(show) {
-    if (!show) {
-        return;
-    }
+    if (!show) return;
 
     //periodicTable.classList.add('other')
     getTableElements().forEach(el => {
@@ -621,7 +582,7 @@ function infoElement(atomicNumber) {
         ['Ονομα', data.name || '--'],
         ['Ατομικός', data.atomic || '--'],
         ['Βάρος', `${data.atomicMass || '--'} u`],
-        ['Κατηγορία', engToGr.find(c => c.en === data.category)?.gr ?? "Άγνωστη κατηγορία"],
+        ['Κατηγορία', engToGrMap[data.category] ?? "Άγνωστη κατηγορία"],
         ['Τομέας', helpers.getBlock(data) || '--'],
 
         ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
