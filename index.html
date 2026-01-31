@@ -32,26 +32,38 @@
 		<div class="header">
 			<h2 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h2>
 			<div class="vertical-line"></div>
-			<a href="https://github.com/stefalgo" target="_blank" class="githubProfile">
-				<img src="https://github.com/stefalgo.png">
+			<a href="https://github.com/stefalgo" target="_blank" rel="noopener noreferrer" class="githubProfile">
+				<img src="https://github.com/stefalgo.png" alt="stefalgo GitHub profile">
 				Github Profile
 			</a>
-			<a href="https://github.com/stefalgo/My-Periodic-Table" target="_blank" class="githubProfile">
-				<img src="Media\GitHub_Invertocat_White.png" style="background: black;">
+			<a href="https://github.com/stefalgo/My-Periodic-Table" target="_blank" rel="noopener noreferrer" class="githubProfile">
+				<img src="Media/GitHub_Invertocat_White.png" alt="Project GitHub" style="background: black;">
 				Project Page
 			</a>
-			<button onclick='sharePage()'>Share Page</button>
-			<button onclick="toggleColorScheme()">Color Scheme</button>
+			<button type="button" onclick='sharePage()'>Share Page</button>
+			<button type="button" onclick="toggleColorScheme()">Color Scheme</button>
 		</div>
 
 		<div id="infoPopup" class="popup">
 			<div class="infoContainer" style="overflow: auto;">
 				<div>
-					<span class="close-btn">X</span>
-					<div id="CloseUp2"></div>
+					<button class="close-btn" type="button" aria-label="Close">X</button>
+					
+					<div id="CloseUp2">
+						<output>
+							<b class="closeUp-atomic">X</b> 
+							<abbr class="closeUp-shortName">A</abbr> 
+							<em class="closeUp-name">A</em> 
+							<data class="closeUp-mass">X</data>
+						</output>
+						<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
+							<span>X</span>
+						</small>
+					</div>
+
 					<div style="display: flex; justify-content: space-between;">
 						<a class="popup-pdfDownload">Λήψη αρχείου PDF</a>
-						<a class="popup-wikipediaLink" target="_blank">Ανοιγμα στη Βικιπαίδεια</a>
+						<a class="popup-wikipediaLink" target="_blank" rel="noopener noreferrer">Ανοιγμα στη Βικιπαίδεια</a>
 					</div>
 				</div>
 				<hr>
@@ -61,16 +73,16 @@
 
 		<div id="sitePopup" class="popup widePopup">
 			<div class="infoContainer">
-				<span class="close-btn">X</span>
+				<button class="close-btn" type="button" aria-label="Close">X</button>
 				<input id="sitePopupSearchBar" type="text" disabled style="width: 80%;">
-				<iframe></iframe>
+				<iframe title="External site preview"></iframe>
 			</div>
 		</div>
 
 		<div class="popup"><!--minigame thingy popup idk (WIP)-->
 			<div class="infoContainer" style="overflow: auto;">
 				<div>
-					<span class="close-btn">X</span>
+					<button class="close-btn" type="button" aria-label="Close">X</button>
 				</div>
 			</div>
 		</div>
@@ -78,7 +90,7 @@
 		<article id="PeriodicTablePanel">
 			<div style="display: flex; flex-direction: column; align-items: center;">
 				<input type="text" id="searchbar" placeholder="Αναζήτηση στοιχείο...">
-				<lable for="visualizeOption">Επιλογή οπτικοποίησης:</lable>
+				<label for="visualizeOption">Επιλογή οπτικοποίησης:</label>
 				<div style="display: flex; align-items: center;">
 					<select id="visualizeOption">
 						<option value="category">Κατηγορία</option>
