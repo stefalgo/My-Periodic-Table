@@ -59,18 +59,12 @@ function getTableElements(includeCloseUp = true) {
 
 function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
     getTableElements().forEach(el => {
-        const key =
-            el.dataset.atomic ||
-            el.getAttribute('data-linkedElement');
-
+        const key = el.dataset.atomic || el.getAttribute('data-linkedElement');
         const cell = el.querySelector('data');
         if (!cell) return;
 
         let value = helpers.getNestedValue(dataMap?.[key], prop);
-        if (value === '' || value === undefined) {
-            cell.textContent = '--';
-            return;
-        }
+        if (value === '' || value === undefined) value = '--';
 
         if (sliceNum != null) {
             if (typeof value === 'string' || Array.isArray(value)) {
@@ -81,9 +75,11 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
             }
         }
 
-        cell.textContent = convertFunc
-            ? convertFunc(value)
-            : value;
+        const displayValue = convertFunc ? convertFunc(value) : value;
+
+        if (cell.textContent !== String(displayValue)) {
+            cell.textContent = displayValue;
+        }
     });
 }
 

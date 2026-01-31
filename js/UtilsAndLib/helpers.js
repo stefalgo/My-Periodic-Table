@@ -139,22 +139,39 @@ export const KelvinToCelsius = k => Number(k) - 273;
 export const CelsiusToKelvin = c => Number(c) + 273;
 
 export function getPhase(melt, boil, temp) {
-    const hasMelt = Number.isFinite(melt);
-    const hasBoil = Number.isFinite(boil);
+    const meltTemp = melt;
+    const boilTemp = boil;
+    let phase = 'unknownState';
 
-    if (!hasMelt && !hasBoil) return 'unknownState';
+    const validMelt = (typeof meltTemp === 'number') && !isNaN(meltTemp);
+    const validBoil = (typeof boilTemp === 'number') && !isNaN(boilTemp);
 
-    if (hasMelt && hasBoil) {
-        if (temp >= boil) return 'gas';
-        if (temp >= melt) return 'liquid';
-        return 'solid';
+    if (!validMelt && !validBoil) {
+        return phase;
     }
 
-    if (hasMelt) {
-        return temp < melt ? 'solid' : 'unknownState';
+    if (validMelt && validBoil) {
+        if (temp >= boilTemp) {
+            phase = 'gas';
+        } else if (temp >= meltTemp) {
+            phase = 'liquid';
+        } else if (temp < meltTemp) {
+            phase = 'solid';
+        }
+        return phase;
     }
 
-    return temp >= boil ? 'gas' : 'liquid';
+    if (validMelt) {
+        phase = (temp < meltTemp) ? 'solid' : ('unknownState');
+        return phase;
+    }
+
+    if (validBoil) {
+        phase = (temp >= boilTemp) ? 'gas' : ('liquid');
+        return phase;
+    }
+
+    return phase;
 }
 
 export function lastElectronCount(eConfig) {
