@@ -64,7 +64,10 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         if (!cell) return;
 
         let value = helpers.getNestedValue(dataMap?.[key], prop);
-        if (value === '' || value === undefined) value = '--';
+        if (value === '' || value === undefined) {
+            cell.textContent = '--';
+            return;
+        }
 
         if (sliceNum != null) {
             if (typeof value === 'string' || Array.isArray(value)) {
