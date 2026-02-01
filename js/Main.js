@@ -83,9 +83,7 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
     });
 }
 
-function showBlocks(show) {
-    if (!show) return;
-
+function showBlocks() {
     getTableElements().forEach(el => {
         const key = el.dataset.atomic;
         const data = elementData[key];
@@ -97,16 +95,14 @@ function showBlocks(show) {
     });
 }
 
-function showState(show, temp) {
-    if (!show) return;
-
+function showState(temp, updateAll) {
     const phases = ['solid', 'liquid', 'gas', 'unknownState'];
 
     for (const el of getTableElements()) {
         const data = elementData[el.dataset.atomic];
         const phase = helpers.getPhase(data.melt, data.boil, temp);
 
-        if (el.classList.contains(phase)) continue;
+        if (el.classList.contains(phase) && !updateAll) continue;
 
         const dataText = el.querySelector('data');
         const text = engToGrMap[phase] ?? 'Άγνωστη';
@@ -122,9 +118,7 @@ function showState(show, temp) {
     }
 }
 
-function showSpectralAnalysis(show) {
-    if (!show) return;
-
+function showSpectralAnalysis() {
     //periodicTable.classList.add('other')
     getTableElements().forEach(el => {
         const key = el.dataset.atomic;
@@ -223,11 +217,11 @@ function visualizeOptionFunc(option) {
     //<array, prop, propKey, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', 'rgba(8, 212, 170, 0.75)', radial, show>
     const config = {
         'category': {},
-        'blocks': { action: () => showBlocks(true) },
-        'state': { action: () => showState(true, temp) },
+        'blocks': { action: () => showBlocks() },
+        'state': { action: () => showState(temp), once: () => showState(temp, true) },
         'SpectralAnalysis': {
             action: () => {
-                showSpectralAnalysis(true);
+                showSpectralAnalysis();
                 periodicTable.dataset.mode = "other";
             }
         },
@@ -365,6 +359,7 @@ function visualizeOptionFunc(option) {
 
     if (selected) {
         currentVisualizer.action = selected.action || null;
+        selected?.once?.();
 
         if (selected.action) {
             let params = selected.action();
