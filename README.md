@@ -86,4 +86,4 @@ The spectrum.json is from the [https://pse-info.de](https://pse-info.de) and is 
 ```
 
 # Author
-&copy; 2025 @stefalgo](https://github.com/stefalgo). **Licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0).**
+&copy; 2025 [@stefalgo](https://github.com/stefalgo). **Licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0).**
