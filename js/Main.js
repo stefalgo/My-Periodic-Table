@@ -647,14 +647,6 @@ function onDataLoaded(element, spectrum) {
     helpers.adjustElementsText('.element', 'em', 60);
 }
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.classList.add('darkMode');
-    document.documentElement.classList.remove('lightMode');
-} else {
-    document.documentElement.classList.add('lightMode');
-    document.documentElement.classList.remove('darkMode');
-}
-
 export {
     onDataLoaded,
     visualizeOptionFunc,

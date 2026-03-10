@@ -8,26 +8,18 @@ function toggleColorScheme() {
 }
 
 async function loadJson(path) {
-    const startTime = performance.now();
+    const start = performance.now();
 
-    try {
-        const res = await fetch(path);
+    const res = await fetch(path);
+    const duration = (performance.now() - start).toFixed(2);
 
-        const endTime = performance.now();
-        console.log("Loading", path);
-        console.log(`^[Took ${(endTime - startTime).toFixed(2)} ms]`);
+    console.log(`Loading ${path} [${duration} ms]`);
 
-        if (!res.ok) {
-            alert(`Failed to load ${path}: ${res.status}`);
-            throw new Error(`HTTP error ${res.status} while loading ${path}`);
-        }
-
-        return await res.json();
-
-    } catch (err) {
-        alert(`Failed to load ${path}`);
-        throw err;
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status} while loading ${path}`);
     }
+
+    return res.json();
 }
 
 async function bootstrap() {
@@ -51,4 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
     bootstrap();
     window.toggleColorScheme = toggleColorScheme;
     window.sharePage = sharePage;
+    document.documentElement.classList.add('darkMode');
+
+    // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //     document.documentElement.classList.add('darkMode');
+    //     document.documentElement.classList.remove('lightMode');
+    // } else {
+    //     document.documentElement.classList.add('lightMode');
+    //     document.documentElement.classList.remove('darkMode');
+    // }
 });
