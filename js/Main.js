@@ -511,20 +511,22 @@ function showElementData(atomicNumber) {
 function openLinkInIframe(atomicNumber) {
     const sitePopup = document.getElementById('sitePopup');
     const sitePopupSearchBar = document.getElementById('sitePopupSearchBar');
+    const iframe = sitePopup.querySelector('iframe');
     let link;
 
     function closePopup() {
-        sitePopup.querySelector('iframe').src = '';
+        iframe.src = '';
         sitePopup.style.display = "none";
         sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
 
     link = 'https://el.wikipedia.org/wiki/' + elementData[atomicNumber].wiki + '?withgadget=dark-mode';
-    sitePopup.querySelector('iframe').src = link;
+    iframe.src = link;
     sitePopupSearchBar.value = link;
 
     sitePopup.style.display = "block";
     sitePopup.querySelector('.close-btn').addEventListener('click', closePopup);
+
     sitePopup.addEventListener('click', (e) => {
         if (e.target === sitePopup) {
             closePopup();

@@ -76,6 +76,7 @@ button:disabled {
 }
 
 input[type="text"],
+input[type="url"],
 input[type="number"] {
 	background-color: transparent;
 	color: var(--textColor_A);
@@ -88,6 +89,7 @@ input[type="number"] {
 }
 
 input[type="text"]:disabled,
+input[type="url"],
 input[type="number"]:disabled {
 	color: gray;
 	background-color: var(--primary_B);
@@ -716,6 +718,7 @@ select:hover {
 }
 
 input[type="text"]:not(:disabled):hover,
+input[type="url"]:not(:disabled):hover,
 input[type="number"]:not(:disabled):hover {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
