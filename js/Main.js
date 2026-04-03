@@ -181,6 +181,8 @@ function visualize(array, prop, useLog = false, displayData = true, minColor = '
 
     if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
 
+    const maxRaw = Math.max(...data.map(d => d.val));
+
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
             //el.querySelector('data').textContent = '';
@@ -196,12 +198,11 @@ function visualize(array, prop, useLog = false, displayData = true, minColor = '
         if (!radial) {
             el.style.background = rgba;
         } else {
-            const max = Math.max(...data.map(d => d.val))
             el.style.background = `
                 radial-gradient(
                     circle,
-                    ${maxColor} ${((val / max) * 50)}%,
-                    rgba(241, 241, 241, 0.1) ${((val / max) * 50) + 10}%
+                    ${maxColor} ${((val / maxRaw) * 50)}%,
+                    rgba(241, 241, 241, 0.1) ${((val / maxRaw) * 50) + 10}%
                 )
             `;
         }
@@ -481,7 +482,7 @@ function updateCloseUp(atomicNumber, closeUp) {
     symbol.textContent = elementData[atomicNumber].symbol;
 
 
-    closeUp.className = '';
+    closeUp.className = 'CloseUp';
     closeUp.classList.add(elementData[atomicNumber].category);
     closeUp.classList.add(helpers.getBlock(elementData[atomicNumber]));
     if (elementData[atomicNumber]?.radioactive) {
@@ -540,8 +541,6 @@ function infoElement(atomicNumber) {
     const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
     const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
 
-    const closeUp = document.getElementById('CloseUp');
-
     const closeUp2 = document.getElementById('CloseUp2');
     updateCloseUp(atomicNumber, closeUp2);
     //closeUp2.style.background = closeUp.style.background;
@@ -556,6 +555,7 @@ function infoElement(atomicNumber) {
     downloadPDF.href = `https://el.wikipedia.org/api/rest_v1/page/pdf/${data.wiki}`;
 
     popupData.innerHTML = '';
+    URLUtils.setParam('elinfo', atomicNumber);
 
     const createData = (title, value, customValueTag) => {
         const dataTag = customValueTag ? value : `<h3>${value}</h3>`
@@ -570,6 +570,7 @@ function infoElement(atomicNumber) {
     function closePopup() {
         infoPopup.style.display = "none";
         wikipediaLink.href = downloadPDF.href = '';
+        URLUtils.removeParam('elinfo');
         closeUp2.removeEventListener('click', wikipediaIframeOpen);
         infoPopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
@@ -639,9 +640,16 @@ function onDataLoaded(element, spectrum) {
             ? URLUtils.readParam('SelectedElement')
             : 1
     );
+    if (URLUtils.readParam('elinfo')) {
+        infoElement(URLUtils.readParam('elinfo'));
+    }
+    if (URLUtils.readParam('minigame')) {
+        openMinigame();
+    }
 
-    temp = URLUtils.readParam('temp') ? URLUtils.readParam('temp') : DEFAULT_TEMP
-    updateTemperatureInputs(null, temp)
+
+    temp = URLUtils.readParam('temp') ? URLUtils.readParam('temp') : DEFAULT_TEMP;
+    updateTemperatureInputs(null, temp);
 
     visualizeOptionFunc(URLUtils.readParam('visualizeOption') || "category");
     document.getElementById('visualizeOption').value = URLUtils.readParam('visualizeOption') || "category";
@@ -655,5 +663,6 @@ export {
     updateVisualizer,
     showElementData,
     infoElement,
-    tempChanged
+    tempChanged,
+    elementData
 };

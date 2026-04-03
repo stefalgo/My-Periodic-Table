@@ -2,6 +2,8 @@ import { initEvents } from './Events.js';
 import { onDataLoaded } from './Main.js';
 import { sharePage } from './UtilsAndLib/helpers.js';
 
+import { OpenPopup as openMinigame } from './minigame.js'
+
 function toggleColorScheme() {
     document.documentElement.classList.toggle('darkMode');
     document.documentElement.classList.toggle('lightMode');
@@ -43,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     bootstrap();
     window.toggleColorScheme = toggleColorScheme;
     window.sharePage = sharePage;
+    window.openMinigame = openMinigame;
     document.documentElement.classList.add('darkMode');
-
     // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     //     document.documentElement.classList.add('darkMode');
     //     document.documentElement.classList.remove('lightMode');

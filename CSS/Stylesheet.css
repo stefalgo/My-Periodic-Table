@@ -393,8 +393,7 @@ td {
 }
 
 /**--------------------**/
-#CloseUp,
-#CloseUp2 {
+.CloseUp {
 	line-height: 1;
 	font-style: normal;
 	font-weight: normal;
@@ -411,8 +410,7 @@ td {
 	overflow: hidden;
 }
 
-#CloseUp output,
-#CloseUp2 output {
+.CloseUp output {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -420,26 +418,22 @@ td {
 	min-width: 0;
 }
 
-#CloseUp b,
-#CloseUp2 b {
+.CloseUp b {
 	font-size: 1em;
 }
 
-#CloseUp abbr,
-#CloseUp2 abbr {
+.CloseUp abbr {
 	font-size: 1.8em;
 	font-weight: 600;
 }
 
-#CloseUp em,
-#CloseUp2 em {
+.CloseUp em {
 	font-size: .8em;
 	font-weight: 500;
 	font-style: normal;
 }
 
-#CloseUp data,
-#CloseUp2 data {
+.CloseUp data {
 	font-size: .8em;
 	font-weight: 400;
 	font-style: normal;
@@ -561,6 +555,18 @@ td {
 .widePopup>.infoContainer {
 	width: 55%;
 	height: 85%;
+}
+
+#minigamePopup>.infoContainer>.minigameContainer {
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+#minigamePopup>.infoContainer>.minigameContainer>.CloseUp {
+	width: 90px;
+	height: 90px;
 }
 
 /**-----------------------------------------------**/

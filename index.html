@@ -34,21 +34,23 @@
 		<h2 style="font-size: clamp(12px, 2vw, 25px)">O Περιοδικός πίνακας των χημικών στοιχείων</h2>
 		<div class="vertical-line"></div>
 		<button type="button" onclick='sharePage()'>Share Page</button>
+		<button type="button" onclick="openMinigame()">Minigame</button>
 		<button type="button" onclick="toggleColorScheme()">Color Scheme</button>
 	</header>
 	<div id="infoPopup" class="popup">
 		<div class="infoContainer" style="overflow: auto;">
 			<div>
 				<button class="close-btn" type="button" aria-label="Close">X</button>
-				
+
 				<div id="CloseUp2">
 					<output>
-						<b class="closeUp-atomic">X</b> 
-						<abbr class="closeUp-shortName">A</abbr> 
-						<em class="closeUp-name">A</em> 
+						<b class="closeUp-atomic">X</b>
+						<abbr class="closeUp-shortName">A</abbr>
+						<em class="closeUp-name">A</em>
 						<data class="closeUp-mass">X</data>
 					</output>
-					<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
+					<small
+						style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
 						<span>X</span>
 					</small>
 				</div>
@@ -71,10 +73,26 @@
 		</div>
 	</div>
 
-	<div class="popup"><!--minigame thingy popup idk (WIP)-->
+	<div id="minigamePopup" class="popup"><!--minigame thingy popup idk (WIP)-->
 		<div class="infoContainer" style="overflow: auto;">
-			<div>
-				<button class="close-btn" type="button" aria-label="Close">X</button>
+			<button class="close-btn" type="button" aria-label="Close">X</button>
+			<h2>Title</h2>
+			<div class="minigameContainer">
+				<h3 id="minigameScore">Σκορ: 0/0</h3>
+				<div class="CloseUp">
+					<output>
+						<b class="closeUp-atomic">X</b>
+						<abbr class="closeUp-shortName">A</abbr>
+						<em class="closeUp-name">A</em>
+					</output>
+					<small style="font-size: .8em; text-align: end; display: flex; flex-direction: column; line-height: 11px;">
+						<span>X</span>
+					</small>
+				</div>
+				<br>
+				<input type="text" placeholder="Απάντηση..." id="minigameAnsware">
+				<br>
+				<button id="miniameCheckAnsware" type="button" aria-label="Check">Έλεγχος απάντησης.</button>
 			</div>
 		</div>
 	</div>
