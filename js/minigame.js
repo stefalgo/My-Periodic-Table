@@ -59,11 +59,19 @@ function setVisualData(atomicNumber, type) {
 
     fields[type] = "?";
 
+    if (type === "atomic") {
+        energyLevel.innerHTML = "";
+    }
+
     const hideSecond = Math.random() < 0.5;
     if (hideSecond) {
         const otherKeys = Object.keys(fields).filter(k => k !== type);
         const secondKey = otherKeys[Math.floor(Math.random() * otherKeys.length)];
         fields[secondKey] = "-";
+
+        if (secondKey === "atomic") {
+            energyLevel.innerHTML = "";
+        }
     }
 
     atomic.textContent = fields.atomic;
@@ -121,7 +129,7 @@ function OpenPopup() {
     setVisualData(currentQuestion.atomicNumber, currentQuestion.type);
 
     URLUtils.setParam('minigame', 1);
-    
+
     function closePopup() {
         score = 0;
         totalQuestions = 0;
