@@ -9,7 +9,7 @@ const minigameScore = document.getElementById('minigameScore');
 const userInput = document.getElementById('minigameAnsware');
 const checkBtn = document.getElementById('miniameCheckAnsware');
 const multipleChoice = document.getElementById('minigame-multipleChoice');
-const multipleChoise_MaxOptions = 5
+const multipleChoise_MaxOptions = 5;
 
 const minigames = [
     { type: "atomic" },
@@ -21,7 +21,7 @@ let currentQuestion = null;
 let score = 0;
 let totalQuestions = 0;
 
-const simpleStr = (input) => helpers.removeDiacritics(input.trim().toLowerCase())
+const simpleStr = (input) => helpers.removeDiacritics(input.trim().toLowerCase());
 
 function getRandomElement() {
     const keys = Object.keys(elementData);
@@ -106,32 +106,33 @@ function setVisualData(atomicNumber, type) {
 
     const el = elementData[atomicNumber];
 
-    updateMultipleChoice();
-
-    energyLevel.innerHTML = '';
-    for (const level of helpers.energyLevels(el.electronConfiguration)) {
-        let spanElement = document.createElement('span');
-        spanElement.textContent = level;
-        energyLevel.appendChild(spanElement);
-    }
-
     if (!el) {
         console.error("Invalid element:", atomicNumber);
         return;
     }
 
-    closeUp.className = `CloseUp ${el.category}`;
-
     let fields = { atomic: el.atomic, symbol: el.symbol, name: el.name };
 
-    fields[type] = "?";
-
-    if (type === "atomic") {
-        energyLevel.innerHTML = "";
+    if (type) {
+        updateMultipleChoice();
+        fields[type] = "?";
     }
 
+    if (type === "atomic") {
+        energyLevel.innerHTML = '';
+    } else {
+        energyLevel.innerHTML = '';
+        for (const level of helpers.energyLevels(el.electronConfiguration)) {
+            let spanElement = document.createElement('span');
+            spanElement.textContent = level;
+            energyLevel.appendChild(spanElement);
+        }
+    }
+
+    closeUp.className = `CloseUp ${el.category}`;
+
     const hideSecond = Math.random() < 0.5;
-    if (hideSecond) {
+    if (hideSecond && type) {
         const otherKeys = Object.keys(fields).filter(k => k !== type);
         const secondKey = otherKeys[Math.floor(Math.random() * otherKeys.length)];
         fields[secondKey] = "-";
@@ -158,21 +159,39 @@ function setVisualData(atomicNumber, type) {
     }
 }
 
+function nextQuestion() {
+    currentQuestion = getRandomElement();
+    setVisualData(currentQuestion.atomicNumber, currentQuestion.type);
+    userInput.value = "";
+    userInput.disabled = false;
+    checkBtn.dataset.NextQuestion = 'false';
+    checkBtn.textContent = 'Έλεγχος απάντησης.';
+}
+
 function checkAnswer(ans) {
     const el = elementData[currentQuestion.atomicNumber];
     const answer = simpleStr(ans);
 
     let correct = "";
+    let raw_correct = "";
+
+    userInput.disabled = true;
+
+    checkBtn.dataset.NextQuestion = 'true';
+    checkBtn.textContent = '> Επόμενη ερώτηση';
 
     switch (currentQuestion.type) {
         case "atomic":
             correct = String(el.atomic);
+            raw_correct = correct;
             break;
         case "symbol":
             correct = el.symbol.toLowerCase();
+            raw_correct = el.symbol;
             break;
         case "name":
             correct = simpleStr(el.name);
+            raw_correct = el.name;
             break;
     }
 
@@ -180,28 +199,27 @@ function checkAnswer(ans) {
 
     if (answer === correct) {
         score++;
+        popupTitle.innerHTML = "<span style='color: var(--success);'>Σωστό!</span>";
+        setTimeout(nextQuestion, 1000);
+    } else {
+        popupTitle.innerHTML = `<span style='color: var(--danger);'>Λάθος!</span> Σωστή απάντηση: <span style='color: var(--success);'>${raw_correct}</span>`;
+        setVisualData(currentQuestion.atomicNumber);
     }
 
     minigameScore.innerHTML = `Σκορ: <span style='color: var(--success);'>${score}</span>/<span style='color: var(--danger);'>${totalQuestions - score}</span>`;
-
-    currentQuestion = getRandomElement();
-    setVisualData(currentQuestion.atomicNumber, currentQuestion.type);
-
-    userInput.value = "";
 }
 
 function OpenPopup() {
 
-    currentQuestion = getRandomElement();
-    setVisualData(currentQuestion.atomicNumber, currentQuestion.type);
+    nextQuestion();
 
     URLUtils.setParam('minigame', 1);
 
     function closePopup() {
         score = 0;
         totalQuestions = 0;
-        minigameScore.innerHTML = "Σκορ: <span style='color: var(--success);'>0</span>/<span style='color: var(--danger);'>0</span>"
-        URLUtils.removeParam('minigame')
+        minigameScore.innerHTML = "Σκορ: <span style='color: var(--success);'>0</span>/<span style='color: var(--danger);'>0</span>";
+        URLUtils.removeParam('minigame');
         popup.style.display = "none";
         popup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
@@ -218,24 +236,30 @@ function OpenPopup() {
 
 userInput.addEventListener("keydown", (e) => {
     const selected = multipleChoice.querySelector('input[name="answer"]:checked');
-
-    let ans = selected ? selected.value : userInput.value
+    let ans = selected ? selected.value : userInput.value;
 
     if (selected) {
         selected.checked = false;
     }
-
     if (e.key === "Enter") {
         checkAnswer(ans);
     }
 });
 
 checkBtn.addEventListener("click", () => {
-    const selected = multipleChoice.querySelector('input[name="answer"]:checked');
+    if (checkBtn.dataset.NextQuestion === 'true') {
+        nextQuestion();
+    } else {
+        const selected = multipleChoice.querySelector('input[name="answer"]:checked');
+        let ans = selected ? selected.value : userInput.value;
+        checkAnswer(ans);
+    }
+});
 
-    let ans = selected ? selected.value : userInput.value
-
-    checkAnswer(ans);
+multipleChoice.addEventListener("click", (e) => {
+    if (e.target && e.target.matches('input[name="answer"]')) {
+        userInput.value = "";
+    }
 });
 
 export {
