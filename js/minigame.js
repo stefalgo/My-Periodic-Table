@@ -182,7 +182,7 @@ function checkAnswer(ans) {
         score++;
     }
 
-    minigameScore.textContent = `Σκορ: ${score}/${totalQuestions}`;
+    minigameScore.innerHTML = `Σκορ: <span style='color: var(--success);'>${score}</span>/<span style='color: var(--danger);'>${totalQuestions - score}</span>`;
 
     currentQuestion = getRandomElement();
     setVisualData(currentQuestion.atomicNumber, currentQuestion.type);
@@ -200,7 +200,7 @@ function OpenPopup() {
     function closePopup() {
         score = 0;
         totalQuestions = 0;
-        minigameScore.textContent = 'Σκορ: 0/0'
+        minigameScore.innerHTML = "Σκορ: <span style='color: var(--success);'>0</span>/<span style='color: var(--danger);'>0</span>"
         URLUtils.removeParam('minigame')
         popup.style.display = "none";
         popup.querySelector('.close-btn').removeEventListener('click', closePopup);
@@ -219,12 +219,14 @@ function OpenPopup() {
 userInput.addEventListener("keydown", (e) => {
     const selected = multipleChoice.querySelector('input[name="answer"]:checked');
 
+    let ans = selected ? selected.value : userInput.value
+
     if (selected) {
         selected.checked = false;
     }
-    
+
     if (e.key === "Enter") {
-        checkAnswer(userInput.value);
+        checkAnswer(ans);
     }
 });
 
