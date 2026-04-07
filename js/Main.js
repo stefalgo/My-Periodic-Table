@@ -368,7 +368,7 @@ function visualizeOptionFunc(option) {
         if (selected.action) {
             let params = selected.action();
             if (params) {
-                currentVisualizer.params = params
+                currentVisualizer.params = params;
             }
         }
         if (selected.params && !currentVisualizer.params) {
@@ -640,9 +640,12 @@ function onDataLoaded(element, spectrum) {
             ? URLUtils.readParam('SelectedElement')
             : 1
     );
-    if (URLUtils.readParam('elinfo')) {
+    if (URLUtils.readParam('elinfo') && elementData[URLUtils.readParam('elinfo')]) {
         infoElement(URLUtils.readParam('elinfo'));
+    } else {
+        URLUtils.removeParam('elinfo');
     }
+
     if (URLUtils.readParam('minigame')) {
         openMinigame();
     }
