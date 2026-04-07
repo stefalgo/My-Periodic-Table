@@ -166,6 +166,7 @@ function nextQuestion() {
     userInput.disabled = false;
     checkBtn.dataset.NextQuestion = 'false';
     checkBtn.textContent = 'Έλεγχος απάντησης.';
+    checkBtn.disabled = false;
 }
 
 function checkAnswer(ans) {
@@ -176,9 +177,6 @@ function checkAnswer(ans) {
     let raw_correct = "";
 
     userInput.disabled = true;
-
-    checkBtn.dataset.NextQuestion = 'true';
-    checkBtn.textContent = '> Επόμενη ερώτηση';
 
     switch (currentQuestion.type) {
         case "atomic":
@@ -200,10 +198,13 @@ function checkAnswer(ans) {
     if (answer === correct) {
         score++;
         popupTitle.innerHTML = "<span style='color: var(--success);'>Σωστό!</span>";
+        checkBtn.disabled = true;
         setTimeout(nextQuestion, 1000);
     } else {
         popupTitle.innerHTML = `<span style='color: var(--danger);'>Λάθος!</span> Σωστή απάντηση: <span style='color: var(--success);'>${raw_correct}</span>`;
         setVisualData(currentQuestion.atomicNumber);
+        checkBtn.dataset.NextQuestion = 'true';
+        checkBtn.textContent = '> Επόμενη ερώτηση';
     }
 
     minigameScore.innerHTML = `Σκορ: <span style='color: var(--success);'>${score}</span>/<span style='color: var(--danger);'>${totalQuestions - score}</span>`;
