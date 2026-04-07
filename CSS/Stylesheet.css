@@ -275,6 +275,48 @@ optgroup {
 }
 
 /**-----------------------------------------------**/
+
+#minigame-multipleChoice input[type="radio"] {
+	display: none;
+}
+
+#minigame-multipleChoice label {
+	display: inline-block;
+	background-color: var(--primary_A);
+	color: white;
+	padding: 4px 10px;
+	margin: 4px 2px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: var(--transitionTime);
+	box-shadow: var(--borderShadowColorEffect);
+	font-size: 16px;
+}
+
+#minigame-multipleChoice label:hover {
+	filter: brightness(1.1);
+}
+
+#minigame-multipleChoice input[type="radio"]:checked + label {
+	background-color: var(--primary_B);
+	box-shadow: var(--borderShadowColorEffectHover);
+	color: white;
+	transform: scale(1.05);
+}
+
+#minigame-multipleChoice input[type="radio"]:disabled + label {
+	background-color: var(--primary_B);
+	color: gray;
+	cursor: not-allowed;
+}
+
+fieldset:has(#minigame-multipleChoice) {
+	border-radius: 10px;
+	border: none;
+	box-shadow: var(--borderShadowColorEffect);
+}
+
+/**-----------------------------------------------**/
 table {
 	table-layout: fixed;
 	border-collapse: collapse;

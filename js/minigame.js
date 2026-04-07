@@ -8,6 +8,8 @@ const popupTitle = popup.querySelector('h2');
 const minigameScore = document.getElementById('minigameScore');
 const userInput = document.getElementById('minigameAnsware');
 const checkBtn = document.getElementById('miniameCheckAnsware');
+const multipleChoice = document.getElementById('minigame-multipleChoice');
+const multipleChoise_MaxOptions = 5
 
 const minigames = [
     { type: "atomic" },
@@ -33,6 +35,69 @@ function getRandomElement() {
     };
 }
 
+function updateMultipleChoice() {
+    multipleChoice.innerHTML = "";
+
+    const correctEl = elementData[currentQuestion.atomicNumber];
+
+    let correctAnswer;
+
+    switch (currentQuestion.type) {
+        case "atomic":
+            correctAnswer = String(correctEl.atomic);
+            break;
+        case "symbol":
+            correctAnswer = correctEl.symbol;
+            break;
+        case "name":
+            correctAnswer = correctEl.name;
+            break;
+    }
+
+    const options = new Set();
+    options.add(correctAnswer);
+
+    const keys = Object.keys(elementData);
+
+    while (options.size < multipleChoise_MaxOptions) {
+        const randomKey = keys[Math.floor(Math.random() * keys.length)];
+        const el = elementData[randomKey];
+
+        let value;
+
+        switch (currentQuestion.type) {
+            case "atomic":
+                value = String(el.atomic);
+                break;
+            case "symbol":
+                value = el.symbol;
+                break;
+            case "name":
+                value = el.name;
+                break;
+        }
+
+        options.add(value);
+    }
+
+    const shuffled = [...options].sort(() => Math.random() - 0.5);
+
+    shuffled.forEach((opt, i) => {
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "answer";
+        input.value = opt;
+        input.id = `minigame-opt-${i}`;
+
+        const label = document.createElement("label");
+        label.setAttribute("for", input.id);
+        label.textContent = opt;
+
+        multipleChoice.appendChild(input);
+        multipleChoice.appendChild(label);
+    });
+}
+
 function setVisualData(atomicNumber, type) {
     const atomic = closeUp.querySelector('.closeUp-atomic');
     const symbol = closeUp.querySelector('.closeUp-shortName');
@@ -40,6 +105,8 @@ function setVisualData(atomicNumber, type) {
     const energyLevel = closeUp.querySelector('small');
 
     const el = elementData[atomicNumber];
+
+    updateMultipleChoice();
 
     energyLevel.innerHTML = '';
     for (const level of helpers.energyLevels(el.electronConfiguration)) {
@@ -91,9 +158,9 @@ function setVisualData(atomicNumber, type) {
     }
 }
 
-function checkAnswer() {
+function checkAnswer(ans) {
     const el = elementData[currentQuestion.atomicNumber];
-    const answer = simpleStr(userInput.value);
+    const answer = simpleStr(ans);
 
     let correct = "";
 
@@ -150,14 +217,24 @@ function OpenPopup() {
 }
 
 userInput.addEventListener("keydown", (e) => {
+    const selected = multipleChoice.querySelector('input[name="answer"]:checked');
+
+    if (selected) {
+        selected.checked = false;
+    }
+    
     if (e.key === "Enter") {
-        checkAnswer();
+        checkAnswer(userInput.value);
     }
 });
 
-checkBtn.addEventListener("click", (e) => {
-    checkAnswer();
-})
+checkBtn.addEventListener("click", () => {
+    const selected = multipleChoice.querySelector('input[name="answer"]:checked');
+
+    let ans = selected ? selected.value : userInput.value
+
+    checkAnswer(ans);
+});
 
 export {
     OpenPopup
