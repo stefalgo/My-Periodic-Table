@@ -198,6 +198,7 @@ function checkAnswer(ans) {
     if (answer === correct) {
         score++;
         popupTitle.innerHTML = "<span style='color: var(--success);'>Σωστό!</span>";
+        setVisualData(currentQuestion.atomicNumber);
         checkBtn.disabled = true;
         setTimeout(nextQuestion, 1000);
     } else {
