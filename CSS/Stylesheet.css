@@ -291,6 +291,7 @@ optgroup {
 	transition: var(--transitionTime);
 	box-shadow: var(--borderShadowColorEffect);
 	font-size: 16px;
+	user-select: none;
 }
 
 #minigame-multipleChoice label:hover {
