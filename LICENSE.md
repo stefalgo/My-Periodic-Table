@@ -1,6 +1,6 @@
 Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 
-© 2025 @stefalgo. Licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0).
+(c) 2025 @stefalgo. Licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0).
 
 You are free to:
 - Share — copy and redistribute the material in any medium or format for non-commercial purposes only
