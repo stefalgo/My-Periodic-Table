@@ -122,16 +122,16 @@ export function adjustElementsText(element, child, width) {
     document.querySelectorAll(`${element} ${child}`).forEach(em => {
         em.style.transform = 'none';
         em.style.letterSpacing = '';
+        em.style.whiteSpace = 'nowrap';
 
         const natural = em.scrollWidth;
-        const scale = natural > width ? width / natural : 1;
+
+        const scale = natural > width
+            ? width / natural
+            : 1;
 
         em.style.transformOrigin = 'left center';
         em.style.transform = `scaleX(${scale})`;
-
-        if (em.textContent.length >= 10) {
-            em.style.letterSpacing = '-0.05em';
-        }
     });
 }
 //------------------------------Table helpers------------------------------

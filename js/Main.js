@@ -6,26 +6,6 @@ import { updateTemperatureInputs } from './Events.js';
 
 const periodicTable = document.getElementById('periodicTable');
 
-const engToGr = [
-    { en: "solid", gr: "Στερεά" },
-    { en: "liquid", gr: "Υγρά" },
-    { en: "gas", gr: "Αέρια" },
-    { en: "plasma", gr: "Πλάσμα" },
-
-    { en: "alkali", gr: "Αλκαλικά μέταλλα" },
-    { en: "alkaline", gr: "Αλκαλικές γαίες" },
-    { en: "nonmetal", gr: "Αμέταλλο" },
-    { en: "transition", gr: "Μετάλλα μετάπτωσης" },
-    { en: "unknown", gr: "Άγνωστο" },
-    { en: "lanthanoid", gr: "Λανθανίδα" },
-    { en: "actinoid", gr: "Ακτινίδα" },
-    { en: "metalloid", gr: "Μεταλλοειδές" },
-    { en: "poor", gr: "Φτωχό μέταλλο" },
-    { en: "noble", gr: "Ευγενές αέριο" }
-];
-
-const engToGrMap = Object.fromEntries(engToGr.map(i => [i.en, i.gr]));
-
 const DEFAULT_TEMP = 273
 
 let elementData, spectrumData;
@@ -108,7 +88,7 @@ function showState(temp, updateAll) {
         if (el.classList.contains(phase) && !updateAll) continue;
 
         const dataText = el.querySelector('data');
-        const text = engToGrMap[phase] ?? 'Άγνωστη';
+        const text = t(`element.state.${phase}`);
 
         el.style.background = `var(--${phase})`;
 
@@ -478,7 +458,7 @@ function updateCloseUp(atomicNumber, closeUp) {
 
     energyLevel.innerHTML = '';
     atomic.textContent = atomicNumber;
-    name.textContent = elementData[atomicNumber].name;
+    name.textContent = t(`elements.${elementData[atomicNumber].name.toLowerCase()}`);
     symbol.textContent = elementData[atomicNumber].symbol;
 
 
@@ -521,7 +501,8 @@ function openLinkInIframe(atomicNumber) {
         sitePopup.querySelector('.close-btn').removeEventListener('click', closePopup);
     }
 
-    link = 'https://el.wikipedia.org/wiki/' + elementData[atomicNumber].wiki + '?withgadget=dark-mode';
+    const wikiName = t(`wikipedia.names.${elementData[atomicNumber].name.toLowerCase()}`);
+    link = `https://${t("language.code")}.wikipedia.org/wiki/${(wikiName)}?withgadget=dark-mode`;
     iframe.src = link;
     sitePopupSearchBar.value = link;
 
@@ -540,9 +521,11 @@ function infoElement(atomicNumber) {
     const popupData = infoPopup.querySelector('.popup-data');
     const wikipediaLink = infoPopup.querySelector('.popup-wikipediaLink');
     const downloadPDF = infoPopup.querySelector('.popup-pdfDownload');
+    let link;
 
     const closeUp2 = document.getElementById('CloseUp2');
     updateCloseUp(atomicNumber, closeUp2);
+    helpers.adjustElementsText('#CloseUp2', 'em', 65);
     //closeUp2.style.background = closeUp.style.background;
     //closeUp2.classList = closeUp.classList;
 
@@ -551,8 +534,11 @@ function infoElement(atomicNumber) {
 
     const wikipediaIframeOpen = () => openLinkInIframe(atomicNumber);
 
-    wikipediaLink.href = `https://el.wikipedia.org/wiki/${data.wiki}`;
-    downloadPDF.href = `https://el.wikipedia.org/api/rest_v1/page/pdf/${data.wiki}`;
+    const wikiName = t(`wikipedia.names.${elementData[atomicNumber].name.toLowerCase()}`);
+    const language = t("language.code");
+    link = `https://${language}.wikipedia.org/wiki/${encodeURIComponent(wikiName)}?withgadget=dark-mode`;
+    wikipediaLink.href = `https://${language}.wikipedia.org/wiki/${encodeURIComponent(wikiName)}`;
+    downloadPDF.href = `https://${language}.wikipedia.org/api/rest_v1/page/pdf/${encodeURIComponent(wikiName)}`;
 
     popupData.innerHTML = '';
     URLUtils.setParam('elinfo', atomicNumber);
@@ -576,40 +562,40 @@ function infoElement(atomicNumber) {
     }
 
     const fields = [
-        ['Ονομα', data.name || '--'],
-        ['Ατομικός', data.atomic || '--'],
-        ['Βάρος', `${data.atomicMass || '--'} u`],
-        ['Κατηγορία', engToGrMap[data.category] ?? "Άγνωστη κατηγορία"],
-        ['Τομέας', helpers.getBlock(data) || '--'],
+        [t("fields.name"), t(`elements.${data.name.toLowerCase()}`) || t("fields.noData")],
+        [t("fields.atomic"), data.atomic || t("fields.noData")],
+        [t("fields.mass"), `${data.atomicMass || t("fields.noData")} u`],
+        [t("fields.category"), t(`element.category_long.${data.category}`) ?? t("fields.unknownCategory")],
+        [t("fields.block"), helpers.getBlock(data) || t("fields.noData")],
 
-        ['Ηλεκτρονική δομή', helpers.energyLevels(data.electronConfiguration).join(', ') || '--'],
-        ['Ιονισμός', `${data.ionizationEnergy || '--'} kJ/mol`],
-        ['Φασματική εκπομπή', spectrumImg ? `<img src='${spectrumImg}'>` : '--', spectrumImg ? true : false],
+        [t("fields.energyLevels"), helpers.energyLevels(data.electronConfiguration).join(', ') || t("fields.noData")],
+        [t("fields.ionization"), `${data.ionizationEnergy || t("fields.noData")} kJ/mol`],
+        [t("fields.spectralAnalysis"), spectrumImg ? `<img src='${spectrumImg}'>` : t("fields.noData"), spectrumImg ? true : false],
 
-        ['Ομάδα', data.group || '--'],
-        ['Περίοδος', data.period || '--'],
+        [t("fields.group"), data.group || t("fields.noData")],
+        [t("fields.period"), data.period || t("fields.noData")],
 
-        ['Σημείο τήξης', `${data.melt || '--'} K`],
-        ['Σημείο ζέσεως', `${data.boil || '--'} K`],
-        ['Θερμότητα', `${data.heatCap || '--'} J/kgK`],
-        ['Θερμική Αγωγιμότητα', `${data.thermalConductivity || '--'} W/mK`],
-        ['Ακτίνα', `${data.atomicRadius || '--'} pm`],
-        ['Πυκνότητα', `${data.density || '--'} kg/m<sup>3</sup>`],
-        ['Ατομικός όγκος', `${((((data.atomicMass / 1000) / data.density) * 1e6)).toPrecision(3) || '--'} cm<sup>3</sup>/mol`],
+        [t("fields.meltingPoint"), `${data.melt || t("fields.noData")} K`],
+        [t("fields.boilingPoint"), `${data.boil || t("fields.noData")} K`],
+        [t("fields.heat"), `${data.heatCap || t("fields.noData")} J/kgK`],
+        [t("fields.thermalConductivity"), `${data.thermalConductivity || t("fields.noData")} W/mK`],
+        [t("fields.radius"), `${data.atomicRadius || t("fields.noData")} pm`],
+        [t("fields.density"), `${data.density || t("fields.noData")} kg/m<sup>3</sup>`],
+        [t("fields.atomicVolume"), `${((((data.atomicMass / 1000) / data.density) * 1e6)).toPrecision(3) || t("fields.noData")} cm<sup>3</sup>/mol`],
 
-        ['Διαμόρφωση', data.electronStringConf || '--'],
-        ['Σθενότητα', `${data.valence || '--'}`],
-        ['Κατάσταση οξείδωσης', `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || '--'}`],
-        ['Ηλεκτραρνητικότητα', data.electronegativity || '--'],
-        ['Ηλεκτροσυγγένεια', `${data.electronAffinity || '--'} kJ/mol`],
+        [t("fields.configuration"), data.electronStringConf || t("fields.noData")],
+        [t("fields.valence"), `${data.valence || t("fields.noData")}`],
+        [t("fields.oxidationStates"), `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || t("fields.noData")}`],
+        [t("fields.electronegativity"), data.electronegativity || t("fields.noData")],
+        [t("fields.electronAffinity"), `${data.electronAffinity || t("fields.noData")} kJ/mol`],
 
-        ['Ανακαλύφθηκε', helpers.formatGreekDate(data.discovered) || '--']
+        [t("fields.discoveryDate"), helpers.formatGreekDate(data.discovered) || t("fields.noData")]
     ];
 
     if (data.radioactive) {
         popupData.insertAdjacentHTML('beforeend', `
             <div class="radioactive">
-                <h3><b>Ραδιενεργό</b></h3>
+                <h3><b>${t("radioactive")}</b></h3>
             </div>
         `);
     }

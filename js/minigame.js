@@ -35,13 +35,18 @@ function getRandomElement() {
     };
 }
 
+function getElementName(el) {
+    if (!el?.name) {
+        return t("fields.noData");
+    }
+
+    return t(`elements.${el.name.toLowerCase()}`);
+}
+
 function updateMultipleChoice() {
     multipleChoice.innerHTML = "";
-
     const correctEl = elementData[currentQuestion.atomicNumber];
-
     let correctAnswer;
-
     switch (currentQuestion.type) {
         case "atomic":
             correctAnswer = String(correctEl.atomic);
@@ -50,21 +55,16 @@ function updateMultipleChoice() {
             correctAnswer = correctEl.symbol;
             break;
         case "name":
-            correctAnswer = correctEl.name;
+            correctAnswer = getElementName(correctEl);
             break;
     }
-
     const options = new Set();
     options.add(correctAnswer);
-
     const keys = Object.keys(elementData);
-
     while (options.size < multipleChoise_MaxOptions) {
         const randomKey = keys[Math.floor(Math.random() * keys.length)];
         const el = elementData[randomKey];
-
         let value;
-
         switch (currentQuestion.type) {
             case "atomic":
                 value = String(el.atomic);
@@ -73,26 +73,21 @@ function updateMultipleChoice() {
                 value = el.symbol;
                 break;
             case "name":
-                value = el.name;
+                value = getElementName(el);
                 break;
         }
-
         options.add(value);
     }
-
     const shuffled = [...options].sort(() => Math.random() - 0.5);
-
     shuffled.forEach((opt, i) => {
         const input = document.createElement("input");
         input.type = "radio";
         input.name = "answer";
         input.value = opt;
         input.id = `minigame-opt-${i}`;
-
         const label = document.createElement("label");
         label.setAttribute("for", input.id);
         label.textContent = opt;
-
         multipleChoice.appendChild(input);
         multipleChoice.appendChild(label);
     });
@@ -111,7 +106,11 @@ function setVisualData(atomicNumber, type) {
         return;
     }
 
-    let fields = { atomic: el.atomic, symbol: el.symbol, name: el.name };
+    let fields = {
+        atomic: el.atomic,
+        symbol: el.symbol,
+        name: getElementName(el)
+    };
 
     if (type) {
         updateMultipleChoice();
@@ -148,13 +147,13 @@ function setVisualData(atomicNumber, type) {
 
     switch (type) {
         case "atomic":
-            popupTitle.textContent = "Ποιος είναι ο ατομικός αριθμός;";
+            popupTitle.textContent = t("minigame.window.title.q.atomic");
             break;
         case "symbol":
-            popupTitle.textContent = "Ποιο είναι το σύμβολο;";
+            popupTitle.textContent = t("minigame.window.title.q.symbol");
             break;
         case "name":
-            popupTitle.textContent = "Ποιο είναι το όνομα;";
+            popupTitle.textContent = t("minigame.window.title.q.name");
             break;
     }
 }
@@ -165,50 +164,51 @@ function nextQuestion() {
     userInput.value = "";
     userInput.disabled = false;
     checkBtn.dataset.NextQuestion = 'false';
-    checkBtn.textContent = 'Έλεγχος απάντησης.';
+    checkBtn.textContent = t("minigame.window.button.check");
     checkBtn.disabled = false;
 }
 
 function checkAnswer(ans) {
     const el = elementData[currentQuestion.atomicNumber];
     const answer = simpleStr(ans);
-
     let correct = "";
     let raw_correct = "";
-
     userInput.disabled = true;
-
     switch (currentQuestion.type) {
         case "atomic":
             correct = String(el.atomic);
             raw_correct = correct;
             break;
         case "symbol":
-            correct = el.symbol.toLowerCase();
+            correct = simpleStr(el.symbol);
             raw_correct = el.symbol;
             break;
-        case "name":
-            correct = simpleStr(el.name);
-            raw_correct = el.name;
+        case "name": {
+            const translationKey = `elements.${el.name.toLowerCase()}`;
+            const translatedName = t(translationKey);
+
+            correct = simpleStr(translatedName);
+            raw_correct = translatedName;
             break;
+        }
     }
-
     totalQuestions++;
-
     if (answer === correct) {
         score++;
-        popupTitle.innerHTML = "<span style='color: var(--success);'>Σωστό!</span>";
+        popupTitle.innerHTML = t("minigame.window.title.correct");
         setVisualData(currentQuestion.atomicNumber);
         checkBtn.disabled = true;
         setTimeout(nextQuestion, 1000);
     } else {
-        popupTitle.innerHTML = `<span style='color: var(--danger);'>Λάθος!</span> Σωστή απάντηση: <span style='color: var(--success);'>${raw_correct}</span>`;
+        popupTitle.innerHTML = t("minigame.window.title.wrong", { raw_correct: raw_correct });
         setVisualData(currentQuestion.atomicNumber);
         checkBtn.dataset.NextQuestion = 'true';
-        checkBtn.textContent = '> Επόμενη ερώτηση';
+        checkBtn.textContent = t("minigame.window.button.check.next");
     }
-
-    minigameScore.innerHTML = `Σκορ: <span style='color: var(--success);'>${score}</span>/<span style='color: var(--danger);'>${totalQuestions - score}</span>`;
+    minigameScore.innerHTML = t("minigame.window.score", {
+        score: score,
+        remaining: totalQuestions - score
+    });
 }
 
 function OpenPopup() {
@@ -220,7 +220,7 @@ function OpenPopup() {
     function closePopup() {
         score = 0;
         totalQuestions = 0;
-        minigameScore.innerHTML = "Σκορ: <span style='color: var(--success);'>0</span>/<span style='color: var(--danger);'>0</span>";
+        minigameScore.innerHTML = `Σκορ: <span style='color: var(--success);'>${score}</span>/<span style='color: var(--danger);'>${totalQuestions - score}</span>`;
         URLUtils.removeParam('minigame');
         popup.style.display = "none";
         popup.querySelector('.close-btn').removeEventListener('click', closePopup);

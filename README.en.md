@@ -1,51 +1,52 @@
 [![by-nc-nd](docs/images/by_nc_nd_4_0.png)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-Ελληνικά | [日本語](README.ja.md) | [English](README.en.md)
+[Ελληνικά](README.md) | [日本語](README.ja.md) | English
 
 # My Periodic Table
 
 https://stefalgo.github.io/My-Periodic-Table
 
-## Όλα τα 118 στοιχεία
+## All 118 Elements
 
-![image](docs/images/PeriodicTable.png)\
+![image](docs/images/PeriodicTable.png)
 
-Μπορείτε να δείτε όλα τα 118 χημικά στοιχεία στον πίνακα και κάνοντας κλικ στην προεπισκόπηση του στοιχείου,\
+You can view all 118 chemical elements in the periodic table. By clicking on an element preview,
 
-θα εμφανιστούν περισσότερες πληροφορίες για αυτό το στοιχείο, όπως το όνομα, το σύμβολο (σύντομο όνομα), ο ατομικός αριθμός κ.ά.\
+more information about that element will appear, such as its name, symbol (short name), atomic number, etc.
 
-Εάν κάνετε κλικ στην προεπισκόπηση αυτού του παραθύρου, θα ανοίξει το PDF του στοιχείου από τη Wikipedia.
+Clicking on the preview in this window will open the element's Wikipedia PDF.
 
-![image](docs/images/Closeup.png)\
+![image](docs/images/Closeup.png)
 
 ![image](docs/images/InfoWindow2.png)
 
+## Visualizations
 
-## Οπτικοποίησης
+![image](docs/images/Highlights.png)
 
-![image](docs/images/Highlights.png)\
+You can hover over these boxes to highlight the elements belonging to the corresponding category.
 
-Μπορείτε να περάσετε το ποντίκι πάνω από αυτά τα κουτάκια για να επισημάνετε τα στοιχεία της αντίστοιχης κατηγορίας.
+You can also use the dropdown menu to select other visualizations.
 
-Επίσης, μπορείτε να πατήσετε το αναπτυσσόμενο πλαίσιο για να επιλέξετε άλλες απεικονίσεις\
-
-![image](docs/images/Dropdown2.png)\
+![image](docs/images/Dropdown2.png)
 
 ![image](docs/images/State.png)
 
 # JSON Data
-## Πηγές δεδομένων στοιχείων
-[https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)\
 
-[https://pse-info.de](https://pse-info.de)\
+## Element Data Sources
+
+[https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
+
+[https://pse-info.de](https://pse-info.de)
 
 [https://wikipedia.org](https://wikipedia.org)
 
-Data are combined into 1 file.\
+The data is combined into a single file.
 
-Current in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
+Currently in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
 
-## Format ElementsV5.json
+## Format of ElementsV5.json
 
 ```jsonc
 {
@@ -85,6 +86,7 @@ Current in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
         "group": 1,
         "discovered": "1766"
     },
+
     //...
 }
 ```
