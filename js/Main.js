@@ -159,7 +159,7 @@ function visualize(array, prop, useLog = false, displayData = true, minColor = '
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, ${maxColor}, ${minColor})`;
 
-    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString('el-GR'));
+    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString(document.localizationLanguage));
 
     const maxRaw = Math.max(...data.map(d => d.val));
 
