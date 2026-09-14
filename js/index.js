@@ -1,8 +1,10 @@
 import { initEvents } from './Events.js';
 import { onDataLoaded } from './Main.js';
 import { sharePage } from './UtilsAndLib/helpers.js';
+import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js';
 import { OpenPopup as openMinigame } from './minigame.js';
 
+const supportedLanguages = ["el", "ja", "en"];
 
 function toggleColorScheme() {
     document.documentElement.classList.toggle('darkMode');
@@ -112,16 +114,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.openMinigame = openMinigame;
     document.documentElement.classList.add("darkMode");
     const languageSelect = document.querySelector("#language");
-    const supportedLanguages = ["el", "ja", "en"];
-    const urlLanguage = new URLSearchParams(window.location.search).get("lan");
+    const urlLanguage = URLUtils.readParam('lan');
     const browserLanguage = navigator.language.split("-")[0];
     const language = supportedLanguages.includes(urlLanguage) ? urlLanguage : supportedLanguages.includes(browserLanguage) ? browserLanguage : "en";
     languageSelect.value = language;
     languageSelect.addEventListener("change", async () => {
         const language = languageSelect.value;
-        const url = new URL(window.location.href);
-        url.searchParams.set("lan", language);
-        window.history.pushState({}, "", url);
+        URLUtils.setParam("lan", language);
         await loadLocalization(language);
     });
     await loadLocalization(language);

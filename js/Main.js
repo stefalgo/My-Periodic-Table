@@ -37,7 +37,7 @@ function getTableElements(includeCloseUp = true) {
         : cachedTableElements.filter(el => !el.id?.startsWith('CloseUp'));
 }
 
-function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
+function displayDataOnElement(dataMap, prop, sliceNum, convertFunc, locales) {
     getTableElements().forEach(el => {
         const key = el.dataset.atomic || el.getAttribute('data-linkedElement');
         const cell = el.querySelector('data');
@@ -59,9 +59,9 @@ function displayDataOnElement(dataMap, prop, sliceNum, convertFunc) {
         }
 
         const displayValue = convertFunc ? convertFunc(value) : value;
-
+        const locale = locales ? t(`${locales}.${displayValue.toLowerCase()}`) : displayValue;
         if (cell.textContent !== String(displayValue)) {
-            cell.textContent = displayValue;
+            cell.textContent = locale;
         }
     });
 }
@@ -295,7 +295,7 @@ function visualizeOptionFunc(option) {
         'discoveryDate': {
             params: [elementData, 'discovered', false, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)'],
             action: () => {
-                displayDataOnElement(elementData, 'discovered', null, helpers.formatGreekDate);
+                displayDataOnElement(elementData, 'discovered', null, x => {return helpers.formatDate(x, document.localizationLanguage)});
             },
         },
         'abundance': {
@@ -589,7 +589,7 @@ function infoElement(atomicNumber) {
         [t("fields.electronegativity"), data.electronegativity || t("fields.noData")],
         [t("fields.electronAffinity"), `${data.electronAffinity || t("fields.noData")} kJ/mol`],
 
-        [t("fields.discoveryDate"), helpers.formatGreekDate(data.discovered) || t("fields.noData")]
+        [t("fields.discoveryDate"), helpers.formatDate(data.discovered, document.localizationLanguage) || t("fields.noData")]
     ];
 
     if (data.radioactive) {

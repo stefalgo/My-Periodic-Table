@@ -67,6 +67,10 @@
     "min": "Min.",
     "max": "Max.",
     "radioactive": "Radioactive",
+    "date": {
+        "bc": "${year} BC",
+        "ad": "${year} AD"
+    },
 
     "fields": {
         "name": "Name",

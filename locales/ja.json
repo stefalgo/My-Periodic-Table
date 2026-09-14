@@ -67,6 +67,10 @@
     "min": "最小",
     "max": "最大",
     "radioactive": "放射性",
+    "date": {
+        "bc": "紀元前${year}年",
+        "ad": "${year}年"
+    },
 
     "fields": {
         "name": "名前",

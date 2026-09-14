@@ -68,25 +68,19 @@ export function getNestedValue(obj, path) {
 }
 
 /**
- * Formats a year to the Greek notation.
- * @param {number} year - The year (e.g., 1930 → "1930 μ.Χ.", -2300 → "2300 π.Χ.")
- * @returns {string} The formatted year in Greek notation, handling BC and AD
+ * Formats a year according to the current language.
+ * @param {number|string} yearLike - The year (e.g., 1930, -2300)
+ * @returns {string} The formatted year
  */
-export function formatGreekDate(yearLike) {
+export function formatDate(yearLike) {
     if (yearLike == null) return '';
-
     const raw = String(yearLike).trim();
-
     const m = raw.match(/^([+-]?\d+)$/);
     if (!m) return raw;
-
     let year = Number(m[1]);
-
     if (year === 0) year = -1;
-
-    return year < 0
-        ? `${Math.abs(year)} π.Χ.`
-        : `${year} μ.Χ.`;
+    const key = year < 0 ? "date.bc" : "date.ad";
+    return t(key, {year: Math.abs(year)});
 }
 
 /**
