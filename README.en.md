@@ -8,7 +8,7 @@ https://stefalgo.github.io/My-Periodic-Table
 
 ## All 118 Elements
 
-![image](docs/images/PeriodicTable.png)
+![image](docs/images/en/PeriodicTable.png)
 
 You can view all 118 chemical elements in the periodic table. By clicking on an element preview,
 
@@ -16,21 +16,21 @@ more information about that element will appear, such as its name, symbol (short
 
 Clicking on the preview in this window will open the element's Wikipedia PDF.
 
-![image](docs/images/Closeup.png)
+![image](docs/images/en/Closeup.png)
 
-![image](docs/images/InfoWindow2.png)
+![image](docs/images/en/InfoWindow.png)
 
 ## Visualizations
 
-![image](docs/images/Highlights.png)
+![image](docs/images/en/Highlights.png)
 
 You can hover over these boxes to highlight the elements belonging to the corresponding category.
 
 You can also use the dropdown menu to select other visualizations.
 
-![image](docs/images/Dropdown2.png)
+![image](docs/images/en/Dropdown.png)
 
-![image](docs/images/State.png)
+![image](docs/images/en/State.png)
 
 # JSON Data
 

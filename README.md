@@ -8,40 +8,40 @@ https://stefalgo.github.io/My-Periodic-Table
 
 ## Όλα τα 118 στοιχεία
 
-![image](docs/images/PeriodicTable.png)\
+![image](docs/images/el/PeriodicTable.png)
 
-Μπορείτε να δείτε όλα τα 118 χημικά στοιχεία στον πίνακα και κάνοντας κλικ στην προεπισκόπηση του στοιχείου,\
+Μπορείτε να δείτε όλα τα 118 χημικά στοιχεία στον πίνακα και κάνοντας κλικ στην προεπισκόπηση του στοιχείου,
 
-θα εμφανιστούν περισσότερες πληροφορίες για αυτό το στοιχείο, όπως το όνομα, το σύμβολο (σύντομο όνομα), ο ατομικός αριθμός κ.ά.\
+θα εμφανιστούν περισσότερες πληροφορίες για αυτό το στοιχείο, όπως το όνομα, το σύμβολο (σύντομο όνομα), ο ατομικός αριθμός κ.ά.
 
 Εάν κάνετε κλικ στην προεπισκόπηση αυτού του παραθύρου, θα ανοίξει το PDF του στοιχείου από τη Wikipedia.
 
-![image](docs/images/Closeup.png)\
+![image](docs/images/el/Closeup.png)
 
-![image](docs/images/InfoWindow2.png)
+![image](docs/images/el/InfoWindow2.png)
 
 
 ## Οπτικοποίησης
 
-![image](docs/images/Highlights.png)\
+![image](docs/images/el/Highlights.png)
 
 Μπορείτε να περάσετε το ποντίκι πάνω από αυτά τα κουτάκια για να επισημάνετε τα στοιχεία της αντίστοιχης κατηγορίας.
 
 Επίσης, μπορείτε να πατήσετε το αναπτυσσόμενο πλαίσιο για να επιλέξετε άλλες απεικονίσεις\
 
-![image](docs/images/Dropdown2.png)\
+![image](docs/images/el/Dropdown2.png)
 
-![image](docs/images/State.png)
+![image](docs/images/el/State.png)
 
 # JSON Data
 ## Πηγές δεδομένων στοιχείων
-[https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)\
+[https://github.com/Bowserinator/Periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
 
-[https://pse-info.de](https://pse-info.de)\
+[https://pse-info.de](https://pse-info.de)
 
 [https://wikipedia.org](https://wikipedia.org)
 
-Data are combined into 1 file.\
+Data are combined into 1 file.
 
 Current in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
 
@@ -92,7 +92,7 @@ Current in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
 ## Format spectrum.json
 spectrum.json is storing the element spectrum images in base64 format of 1px height\
 this allows to embed images much easier instead of having a folder full of those images\
-and by streching the height to something like 40px it will make the spectrum image more visible\
+and by streching the height to something like 40px it will make the spectrum image more visible
 
 The spectrum.json is from the [https://pse-info.de](https://pse-info.de) and is it used as its own file.
 ```jsonc

@@ -8,7 +8,7 @@ https://stefalgo.github.io/My-Periodic-Table
 
 ## 全118元素
 
-![image](docs/images/PeriodicTable.png)
+![image](docs/images/ja/PeriodicTable.png)
 
 周期表では、全118元素の化学元素を見ることができます。元素のプレビューをクリックすると、
 
@@ -16,21 +16,21 @@ https://stefalgo.github.io/My-Periodic-Table
 
 このウィンドウ内のプレビューをクリックすると、その元素のWikipediaのPDFが開きます。
 
-![image](docs/images/Closeup.png)
+![image](docs/images/ja/Closeup.png)
 
-![image](docs/images/InfoWindow2.png)
+![image](docs/images/ja/InfoWindow.png)
 
 ## 可視化
 
-![image](docs/images/Highlights.png)
+![image](docs/images/ja/Highlights.png)
 
 これらのボックスにマウスを合わせると、それぞれのカテゴリーに属する元素がハイライトされます。
 
 また、ドロップダウンメニューから他の表示方法を選択することもできます。
 
-![image](docs/images/Dropdown2.png)
+![image](docs/images/ja/Dropdown.png)
 
-![image](docs/images/State.png)
+![image](docs/images/ja/State.png)
 
 # JSONデータ
 
