@@ -49,6 +49,7 @@
     "visualizeOption.radioactiveEl": "Radioactive Elements",
     "visualizeOption.discoveryDate": "Discovered",
 
+    "visualizeOption.abundance": "Abundance",
     "visualizeOption.abundance.universe": "Universe",
     "visualizeOption.abundance.solar": "Solar System",
     "visualizeOption.abundance.meteor": "Meteorites",

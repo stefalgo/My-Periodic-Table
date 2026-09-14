@@ -49,6 +49,7 @@
     "visualizeOption.radioactiveEl": "Ραδιενεργά στοιχεία",
     "visualizeOption.discoveryDate": "Ανακαλύφθηκε",
 
+    "visualizeOption.abundance": "Αφθονία",
     "visualizeOption.abundance.universe": "Σύμπαν",
     "visualizeOption.abundance.solar": "Ηλιακό",
     "visualizeOption.abundance.meteor": "Μετεωρίτες",

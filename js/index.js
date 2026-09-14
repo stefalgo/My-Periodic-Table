@@ -62,7 +62,9 @@ async function loadLocalization(language = "el") {
                 console.warn(`Missing translation: ${key}`);
                 return;
             }
-            if ("placeholder" in element) {
+            if (element.tagName === "OPTGROUP") {
+                element.label = translation;
+            } else if ("placeholder" in element) {
                 element.placeholder = translation;
             } else {
                 element.textContent = translation;

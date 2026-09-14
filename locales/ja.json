@@ -49,6 +49,7 @@
     "visualizeOption.radioactiveEl": "放射性元素",
     "visualizeOption.discoveryDate": "発見年",
 
+    "visualizeOption.abundance": "存在量",
     "visualizeOption.abundance.universe": "宇宙",
     "visualizeOption.abundance.solar": "太陽",
     "visualizeOption.abundance.meteor": "隕石",
@@ -320,7 +321,7 @@
         "curium": "キュリウム",
         "berkelium": "バークリウム",
         "californium": "カリホルニウム",
-        "einsteinium": "アインスタイン",
+        "einsteinium": "アインスタイニウム",
         "fermium": "フェルミウム",
         "mendelevium": "メンデレビウム",
         "nobelium": "ノーベリウム",
