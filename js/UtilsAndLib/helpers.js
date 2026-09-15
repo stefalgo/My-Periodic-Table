@@ -112,17 +112,37 @@ export function sharePage() {
     }
 }
 
+const adjustedTextCache = new WeakMap();
+
 export function adjustElementsText(element, child, width) {
-    document.querySelectorAll(`${element} ${child}`).forEach(em => {
-        em.style.transform = 'none';
-        em.style.letterSpacing = '';
-        em.style.whiteSpace = 'nowrap';
-        const natural = em.scrollWidth;
-        const scale = natural > width
-            ? width / natural
-            : 1;
-        em.style.transformOrigin = 'left center';
-        em.style.transform = `scaleX(${scale})`;
+    const viewportWidth = window.innerWidth;
+    const rootClass = document.documentElement.className;
+
+    document.querySelectorAll(`${element} ${child}`).forEach(textElement => {
+        if (textElement.style.whiteSpace !== 'nowrap') {
+            textElement.style.whiteSpace = 'nowrap';
+        }
+
+        const text = textElement.textContent;
+        const cacheKey = `${text}|${width}|${viewportWidth}|${rootClass}`;
+        const cached = adjustedTextCache.get(textElement);
+        let scale = cached?.key === cacheKey ? cached.scale : null;
+
+        if (scale === null) {
+            const natural = textElement.scrollWidth;
+            scale = natural > width ? width / natural : 1;
+            if (natural > 0) {
+                adjustedTextCache.set(textElement, { key: cacheKey, scale });
+            }
+        }
+
+        const transform = `scaleX(${scale})`;
+        if (textElement.style.transformOrigin !== 'left center') {
+            textElement.style.transformOrigin = 'left center';
+        }
+        if (textElement.style.transform !== transform) {
+            textElement.style.transform = transform;
+        }
     });
 }
 //------------------------------Table helpers------------------------------
