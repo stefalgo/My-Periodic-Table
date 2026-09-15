@@ -16,6 +16,10 @@ const tempRangeSlider = document.getElementById('temp');
 const closeUp = document.getElementById('CloseUp');
 const visOption = document.getElementById('visualizeOption');
 
+function setTempTransitionState(active) {
+	document.body.classList.toggle('temp-updating', active);
+}
+
 const debouncedTempSetParam = ((delay) => {
 	let t;
 	return (value) => {
@@ -23,6 +27,22 @@ const debouncedTempSetParam = ((delay) => {
 		t = setTimeout(() => URLUtils.setParam("temp", value), delay);
 	};
 })(300);
+
+let tempUpdateRaf = null;
+let latestTempValue = null;
+
+function scheduleTempVisualizerUpdate(k) {
+	latestTempValue = k;
+
+	if (tempUpdateRaf) {
+		cancelAnimationFrame(tempUpdateRaf);
+	}
+
+	tempUpdateRaf = requestAnimationFrame(() => {
+		tempUpdateRaf = null;
+		tempChanged(latestTempValue);
+	});
+}
 
 export function updateTemperatureInputs(from, value) {
 	let k, c;
@@ -57,10 +77,19 @@ export function updateTemperatureInputs(from, value) {
 		}
 	}
 
-	tempChanged(k);
+	scheduleTempVisualizerUpdate(k);
 }
 
 export function initEvents() {
+	if (tempRangeSlider) {
+		tempRangeSlider.addEventListener('pointerdown', () => setTempTransitionState(true));
+		tempRangeSlider.addEventListener('pointerup', () => setTempTransitionState(false));
+		tempRangeSlider.addEventListener('pointerleave', () => setTempTransitionState(false));
+		tempRangeSlider.addEventListener('pointercancel', () => setTempTransitionState(false));
+		tempRangeSlider.addEventListener('change', () => setTempTransitionState(false));
+		tempRangeSlider.addEventListener('blur', () => setTempTransitionState(false));
+	}
+
 	const propertyKeyEl = document.getElementById('propertyKey');
 	if (propertyKeyEl) {
 		propertyKeyEl.addEventListener('change', () => {

@@ -18,6 +18,7 @@ let currentVisualizer = {
 let temp = DEFAULT_TEMP;
 
 let cachedTableElements = null;
+let statePhaseCache = new Map();
 
 function getTableElements(includeCloseUp = true) {
     if (!cachedTableElements) {
@@ -35,6 +36,26 @@ function getTableElements(includeCloseUp = true) {
     return includeCloseUp
         ? cachedTableElements
         : cachedTableElements.filter(el => !el.id?.startsWith('CloseUp'));
+}
+
+function setSolidBackground(el, color) {
+    if (!el) return;
+    const nextColor = color ?? '';
+    const currentColor = el.style.getPropertyValue('--element-fill');
+    if (currentColor === nextColor) return;
+    if (nextColor) {
+        el.style.setProperty('--element-fill', nextColor);
+    } else {
+        el.style.removeProperty('--element-fill');
+    }
+    el.style.removeProperty('--element-bg-image');
+}
+
+function clearElementBackground(el) {
+    if (!el) return;
+
+    el.style.removeProperty('--element-fill');
+    el.style.removeProperty('--element-bg-image');
 }
 
 function displayDataOnElement(dataMap, prop, sliceNum, convertFunc, locales) {
@@ -71,34 +92,37 @@ function showBlocks() {
         const key = el.dataset.atomic;
         const data = elementData[key];
         if (!data) return;
-
         const val = helpers.getBlock(data);
-
         el.querySelector('data').textContent = String(val);
     });
 }
 
 function showState(temp, updateAll) {
     const phases = ['solid', 'liquid', 'gas', 'unknownState'];
-
-    for (const el of getTableElements()) {
-        const data = elementData[el.dataset.atomic];
+    const elements = getTableElements();
+    if (updateAll) statePhaseCache.clear();
+    const nextPhaseCache = new Map();
+    for (const el of elements) {
+        const key = el.dataset.atomic || el.getAttribute('data-linkedElement');
+        const data = elementData?.[key];
+        if (!data) continue;
         const phase = helpers.getPhase(data.melt, data.boil, temp);
-
-        if (el.classList.contains(phase) && !updateAll) continue;
-
+        const prevPhase = statePhaseCache.get(key);
+        if (!updateAll && prevPhase === phase) {
+            nextPhaseCache.set(key, phase);
+            continue;
+        }
         const dataText = el.querySelector('data');
         const text = t(`element.state.${phase}`);
-
-        el.style.background = `var(--${phase})`;
-
+        setSolidBackground(el, `var(--${phase})`);
         el.classList.remove(...phases);
         el.classList.add(phase);
-
         if (dataText && dataText.textContent !== text) {
             dataText.textContent = text;
         }
+        nextPhaseCache.set(key, phase);
     }
+    statePhaseCache = nextPhaseCache;
 }
 
 function showSpectralAnalysis() {
@@ -108,10 +132,17 @@ function showSpectralAnalysis() {
         const data = elementData?.[key];
         const img = data ? spectrumData?.[data.symbol?.toLowerCase()] : null;
         if (img) {
-            el.style.background = `url(${img})`;
-            el.style.backgroundSize = '100% 100%';
+            const nextImage = `url(${img})`;
+            const currentImage = el.style.getPropertyValue('--element-bg-image');
+
+            if (currentImage !== nextImage) {
+                el.style.setProperty('--element-bg-image', nextImage);
+            }
+
+            el.style.removeProperty('--element-fill');
         } else {
-            el.style.background = 'var(--unknown)';
+            el.style.removeProperty('--element-bg-image');
+            setSolidBackground(el, 'var(--unknown)');
         }
     });
 }
@@ -119,7 +150,7 @@ function showSpectralAnalysis() {
 function visualize(array, prop, useLog = false, displayData = true, minColor = 'rgba(8, 212, 170, 0)', maxColor = 'rgba(8, 212, 170, 0.75)', radial = false, show = true) {
     const elements = getTableElements();
     if (!show || !array || !prop) {
-        elements.forEach(el => (el.style.background = ''));
+        elements.forEach(clearElementBackground);
         return;
     }
 
@@ -166,7 +197,7 @@ function visualize(array, prop, useLog = false, displayData = true, minColor = '
     mapped.forEach(({ el, val }) => {
         if (isNaN(val)) {
             //el.querySelector('data').textContent = '';
-            el.style.background = `rgba(${unknownColor.join(',')})`;
+            setSolidBackground(el, `rgba(${unknownColor.join(',')})`);
             return;
         }
 
@@ -176,15 +207,16 @@ function visualize(array, prop, useLog = false, displayData = true, minColor = '
         const rgba = helpers.lerpColor(`${minColor}`, `${maxColor}`, t);
 
         if (!radial) {
-            el.style.background = rgba;
+            setSolidBackground(el, rgba);
         } else {
-            el.style.background = `
+            el.style.removeProperty('--element-fill');
+            el.style.setProperty('--element-bg-image', `
                 radial-gradient(
                     circle,
                     ${maxColor} ${((val / maxRaw) * 50)}%,
                     rgba(241, 241, 241, 0.1) ${((val / maxRaw) * 50) + 10}%
                 )
-            `;
+            `);
         }
     });
 }
@@ -216,7 +248,7 @@ function visualizeOptionFunc(option) {
         'electronegativity': { params: [elementData, 'electronegativity', true, true, 'rgba(0, 60, 240, 0.75)', 'rgba(175, 193, 0, 0.75)'] },
         'electronAffinity': { params: [elementData, 'electronAffinity', true, true, 'rgba(200, 0, 200, 0)', 'rgba(200, 0, 200, 0.75)'] }, // kJ/mol
         'ionization': { params: [elementData, 'ionizationEnergy', true, true, 'rgba(8, 212, 170, 0)', 'rgba(175, 193, 0, 0.75)'] }, // kJ/mol
-        'radius': { params: [elementData, 'atomicRadius', false, true, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)', true] }, // pm
+        'radius': { params: [elementData, 'atomicRadius', false, true, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)'] }, // pm
         'valence': { params: [elementData, 'valence', false, true, 'rgba(100, 125, 255, 0.75)', 'rgba(255, 16, 16, 0.75)'] },
         'heat': { params: [elementData, 'heatCap', true, true, 'rgba(72, 138, 118, 0.75)', 'rgba(255, 69, 69, 0.75)'] }, // J/kgK
         'thermalConductivity': { params: [elementData, 'thermalConductivity', false, true, 'rgba(69, 165, 255, 0)', 'rgba(69, 165, 255, 0.75)'] }, // W/mK
@@ -378,6 +410,15 @@ function updateVisualizer(LogMode) {
         }
         visualize(...currentVisualizer.params);
     }
+
+    const closeUp = document.getElementById('CloseUp');
+    const closeUp2 = document.getElementById('CloseUp2');
+    const selected = closeUp?.getAttribute('data-atomic') || closeUp2?.getAttribute('data-atomic');
+
+    if (selected && periodicTable?.dataset?.mode === 'state') {
+        syncCloseUpState(closeUp, selected);
+        syncCloseUpState(closeUp2, selected);
+    }
 }
 
 function createElectron(x, y, transform = '') {
@@ -450,6 +491,23 @@ function generateAtom(atomicNumber, threeD) {
     atomCore.appendChild(fragment);
 }
 
+function syncCloseUpState(closeUp, atomicNumber) {
+    const data = elementData?.[atomicNumber];
+    if (!closeUp || !data) return;
+
+    const phase = helpers.getPhase(data.melt, data.boil, temp);
+    const dataText = closeUp.querySelector('data');
+    const text = t(`element.state.${phase}`);
+
+    closeUp.classList.remove('solid', 'liquid', 'gas', 'unknownState');
+    closeUp.classList.add(phase);
+    setSolidBackground(closeUp, `var(--${phase})`);
+
+    if (dataText && dataText.textContent !== text) {
+        dataText.textContent = text;
+    }
+}
+
 function updateCloseUp(atomicNumber, closeUp) {
     const atomic = closeUp.querySelector('.closeUp-atomic');
     const symbol = closeUp.querySelector('.closeUp-shortName');
@@ -469,6 +527,10 @@ function updateCloseUp(atomicNumber, closeUp) {
         closeUp.classList.add('radioactive');
     }
 
+    if (periodicTable?.dataset?.mode === 'state') {
+        syncCloseUpState(closeUp, atomicNumber);
+    }
+
     for (const level of helpers.energyLevels(elementData[atomicNumber].electronConfiguration)) {
         let spanElement = document.createElement('span');
         spanElement.textContent = level;
@@ -484,9 +546,11 @@ function showElementData(atomicNumber) {
     closeUp2.setAttribute('data-atomic', atomicNumber);
 
     updateCloseUp(atomicNumber, closeUp);
+    updateCloseUp(atomicNumber, closeUp2);
     updateVisualizer();
     generateAtom(atomicNumber, URLUtils.readParam('a3'));
     helpers.adjustElementsText('#CloseUp', 'em', 65);
+    helpers.adjustElementsText('#CloseUp2', 'em', 65);
 }
 
 function openLinkInIframe(atomicNumber) {

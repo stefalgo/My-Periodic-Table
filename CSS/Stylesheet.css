@@ -369,7 +369,13 @@ td {
 	width: 100%;
 	height: 100%;
 	padding: 2px;
-	transition: var(--transitionTime);
+	background-color: var(--element-fill, transparent);
+	background-image: var(--element-bg-image, none);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: background-color var(--transitionTime), padding var(--transitionTime), box-shadow var(--transitionTime), color var(--transitionTime), opacity var(--transitionTime);
+	will-change: background-color, padding;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
@@ -377,6 +383,12 @@ td {
 	color: var(--textColor_B);
 	position: relative;
 	overflow: hidden;
+}
+
+body.temp-updating .element,
+body.temp-updating .elementStyle,
+body.temp-updating .CloseUp {
+	transition: none !important;
 }
 
 .radioactive::before {
@@ -441,7 +453,13 @@ td {
 	font-style: normal;
 	font-weight: normal;
 	padding: 2px;
-	transition: var(--transitionTime);
+	background-color: var(--element-fill, transparent);
+	background-image: var(--element-bg-image, none);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: background-color var(--transitionTime), padding var(--transitionTime), box-shadow var(--transitionTime), color var(--transitionTime), opacity var(--transitionTime);
+	will-change: background-color, padding;
 	width: 80px;
 	height: 80px;
 	display: flex;
@@ -938,94 +956,94 @@ only screen and (max-height: 650px) {
 
 /**-----------------------------------------------**/
 .alkali {
-	background: var(--alkali);
+	background-color: var(--element-fill, var(--alkali));
 }
 
 .alkaline {
-	background: var(--alkaline);
+	background-color: var(--element-fill, var(--alkaline));
 }
 
 .transition {
-	background: var(--transition);
+	background-color: var(--element-fill, var(--transition));
 }
 
 .poor {
-	background: var(--poor);
+	background-color: var(--element-fill, var(--poor));
 }
 
 .lanthanoid {
-	background: var(--lanthanoid);
+	background-color: var(--element-fill, var(--lanthanoid));
 }
 
 .actinoid {
-	background: var(--actinoid);
+	background-color: var(--element-fill, var(--actinoid));
 }
 
 .metalloid {
-	background: var(--metalloid);
+	background-color: var(--element-fill, var(--metalloid));
 }
 
 .nonmetal {
-	background: var(--nonmetal);
+	background-color: var(--element-fill, var(--nonmetal));
 }
 
 .halogen {
-	background: var(--halogen);
+	background-color: var(--element-fill, var(--halogen));
 }
 
 .noble {
-	background: var(--noble);
+	background-color: var(--element-fill, var(--noble));
 }
 
 .unknown {
-	background: var(--unknown);
+	background-color: var(--element-fill, var(--unknown));
 }
 
 #periodicTable[data-mode="blocks"] .s {
-	background: var(--s-block);
+	background-color: var(--element-fill, var(--s-block));
 }
 
 #periodicTable[data-mode="blocks"] .p {
-	background: var(--p-block);
+	background-color: var(--element-fill, var(--p-block));
 }
 
 #periodicTable[data-mode="blocks"] .d {
-	background: var(--d-block);
+	background-color: var(--element-fill, var(--d-block));
 }
 
 #periodicTable[data-mode="blocks"] .f {
-	background: var(--f-block);
+	background-color: var(--element-fill, var(--f-block));
 }
 
 body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].s {
-	background: var(--s-block);
+	background-color: var(--element-fill, var(--s-block));
 }
 
 body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].p {
-	background: var(--p-block);
+	background-color: var(--element-fill, var(--p-block));
 }
 
 body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].d {
-	background: var(--d-block);
+	background-color: var(--element-fill, var(--d-block));
 }
 
 body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].f {
-	background: var(--f-block);
+	background-color: var(--element-fill, var(--f-block));
 }
 
 /**-----------------------------------------------**/
 .highlightElementState .solid {
-	background: var(--solid);
+	background-color: var(--element-fill, var(--solid));
 }
 
 .highlightElementState .liquid {
-	background: var(--liquid);
+	background-color: var(--element-fill, var(--liquid));
 }
 
 .highlightElementState .gas {
-	background: var(--gas);
+	background-color: var(--element-fill, var(--gas));
 }
 
 .highlightElementState .unknownState {
-	background: var(--unknownState);
+	background-color: var(--element-fill, var(--unknownState));
 }
