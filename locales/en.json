@@ -375,5 +375,37 @@
         "liquid": "Liquid",
         "gas": "Gas",
         "unknownState": "Unknown"
+    },
+
+    "tooltip": {
+        "name": "The name of the element.",
+        "symbol": "A one- or two-letter symbol representing an element.",
+        "atomic": "The number of protons in an atom. This number is unique to each element.",
+        "mass": "A value representing the average mass of an atom.",
+        "category": "A classification that groups elements with similar properties.",
+        "block": "A classification based on the type of orbital occupied by the last electron in the electron configuration. There are s-, p-, d-, and f-blocks.",
+        "state": "The physical state of the element under normal conditions: solid, liquid, or gas.",
+        "energyLevels": "The number of electrons in each electron shell. For example, \"2, 8, 1\" means there are 2 electrons in the first shell, 8 in the second, and 1 in the third.",
+        "configuration": "Shows how many electrons occupy each orbital. For example, \"1s1\" means that one electron occupies the 1s orbital.",
+        "ionization": "The energy required to remove one electron from an atom.",
+        "spectralAnalysis": "The light emitted by an element separated by wavelength. Each element has a characteristic pattern.",
+        "group": "A vertical column in the periodic table. Elements in the same group may have similar properties.",
+        "period": "A horizontal row in the periodic table. Elements in the same period have the same number of electron shells.",
+        "meltingPoint": "The temperature at which a solid begins to change into a liquid.",
+        "boilingPoint": "The temperature at which a liquid boils and changes into a gas.",
+        "heat": "The amount of energy required to raise the temperature of a substance by 1 K.",
+        "thermalConductivity": "A value describing how easily heat passes through a substance.",
+        "radius": "A radius used as a measure of the approximate size of an atom.",
+        "density": "The amount of mass contained in a given volume.",
+        "atomicVolume": "The approximate volume occupied by 1 mol of an element.",
+        "valence": "An approximate measure of the number of bonds an atom can form with other atoms.",
+        "oxidationStates": "The charge value considered to be associated with an element in a compound or ion.",
+        "electronegativity": "A measure of how strongly an atom attracts electrons in a chemical bond.",
+        "electronAffinity": "The energy released or absorbed when an atom gains one electron.",
+        "radioactive": "The property of an atomic nucleus of changing spontaneously and emitting radiation in the process.",
+        "discoveryDate": "The year in which the element was discovered.",
+        "abundance": "How much of the element is present.",
+        "linear": "A method that displays values according to their actual rate of increase.",
+        "logarithmic": "A method that represents values using a logarithmic scale, making very large and small values easier to compare."
     }
 }

@@ -190,7 +190,7 @@ function visualize(array, prop, useLog = false, displayData = true, minColor = '
 
     document.getElementById('rangeGradient').style.background = `linear-gradient(to top, ${maxColor}, ${minColor})`;
 
-    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString(document.localizationLanguage));
+    if (displayData) displayDataOnElement(array, prop, 7, x => x.toLocaleString(t("language.code")));
 
     const maxRaw = Math.max(...data.map(d => d.val));
 
@@ -327,7 +327,7 @@ function visualizeOptionFunc(option) {
         'discoveryDate': {
             params: [elementData, 'discovered', false, false, 'rgba(43, 125, 125, 0)', 'rgba(43, 125, 125, 0.75)'],
             action: () => {
-                displayDataOnElement(elementData, 'discovered', null, x => {return helpers.formatDate(x, document.localizationLanguage)});
+                displayDataOnElement(elementData, 'discovered', null, x => { return helpers.formatDate(x, t("language.code")) });
             },
         },
         'abundance': {
@@ -338,7 +338,7 @@ function visualizeOptionFunc(option) {
         },
         'radioactiveEl': {
             action: () => {
-                displayDataOnElement(elementData, `radioactive`, null, x => `${'Ραδιεν.'}`);
+                displayDataOnElement(elementData, `radioactive`, null, x => `${t('radioactive')}`);
                 const elements = getTableElements();
                 elements.forEach(el => {
                     if (elementData[el.dataset.atomic]?.radioactive) {
@@ -389,12 +389,15 @@ function visualizeOptionFunc(option) {
     }
 
     if (!currentVisualizer.params && !selected?.action) {
-        displayDataOnElement(elementData, 'category');
+        displayDataOnElement(elementData, 'category', null, null, 'element.category');
     }
 
     if (currentVisualizer.params) {
         visualize(...currentVisualizer.params);
     }
+
+    helpers.adjustElementsText('.element', 'em', 55);
+    helpers.adjustElementsText('.element', 'data', 55);
 }
 
 function updateVisualizer(LogMode) {
@@ -402,7 +405,7 @@ function updateVisualizer(LogMode) {
         currentVisualizer.action();
     }
     if (!currentVisualizer.params && !currentVisualizer?.action) {
-        displayDataOnElement(elementData, 'category');
+        displayDataOnElement(elementData, 'category', null, null, 'element.category');
     }
     if (currentVisualizer.params) {
         if (LogMode != null) {
@@ -419,6 +422,8 @@ function updateVisualizer(LogMode) {
         syncCloseUpState(closeUp, selected);
         syncCloseUpState(closeUp2, selected);
     }
+    helpers.adjustElementsText('.element', 'em', 55);
+    helpers.adjustElementsText('.element', 'data', 55);
 }
 
 function createElectron(x, y, transform = '') {
@@ -549,8 +554,8 @@ function showElementData(atomicNumber) {
     updateCloseUp(atomicNumber, closeUp2);
     updateVisualizer();
     generateAtom(atomicNumber, URLUtils.readParam('a3'));
-    helpers.adjustElementsText('#CloseUp', 'em', 65);
-    helpers.adjustElementsText('#CloseUp2', 'em', 65);
+    helpers.adjustElementsText('#CloseUp', 'em', 60);
+    helpers.adjustElementsText('#CloseUp', 'data', 60);
 }
 
 function openLinkInIframe(atomicNumber) {
@@ -589,7 +594,6 @@ function infoElement(atomicNumber) {
 
     const closeUp2 = document.getElementById('CloseUp2');
     updateCloseUp(atomicNumber, closeUp2);
-    helpers.adjustElementsText('#CloseUp2', 'em', 65);
     //closeUp2.style.background = closeUp.style.background;
     //closeUp2.classList = closeUp.classList;
 
@@ -611,7 +615,7 @@ function infoElement(atomicNumber) {
         const dataTag = customValueTag ? value : `<h3>${value}</h3>`
         popupData.insertAdjacentHTML('beforeend', `
             <fieldset>
-                <legend><b>${title}</b></legend>
+                <legend data-tip="tooltip.${title}"><b>${t(`fields.${title}`)}</b></legend>
                 ${dataTag}
             </fieldset>
         `);
@@ -626,40 +630,40 @@ function infoElement(atomicNumber) {
     }
 
     const fields = [
-        [t("fields.name"), t(`elements.${data.name.toLowerCase()}`) || t("fields.noData")],
-        [t("fields.atomic"), data.atomic || t("fields.noData")],
-        [t("fields.mass"), `${data.atomicMass || t("fields.noData")} u`],
-        [t("fields.category"), t(`element.category_long.${data.category}`) ?? t("fields.unknownCategory")],
-        [t("fields.block"), helpers.getBlock(data) || t("fields.noData")],
+        ["name", t(`elements.${data.name.toLowerCase()}`) || t("fields.noData")],
+        ["atomic", data.atomic || t("fields.noData")],
+        ["mass", `${data.atomicMass || t("fields.noData")} u`],
+        ["category", t(`element.category_long.${data.category}`) ?? t("fields.unknownCategory")],
+        ["block", helpers.getBlock(data) || t("fields.noData")],
 
-        [t("fields.energyLevels"), helpers.energyLevels(data.electronConfiguration).join(', ') || t("fields.noData")],
-        [t("fields.ionization"), `${data.ionizationEnergy || t("fields.noData")} kJ/mol`],
-        [t("fields.spectralAnalysis"), spectrumImg ? `<img src='${spectrumImg}'>` : t("fields.noData"), spectrumImg ? true : false],
+        ["energyLevels", helpers.energyLevels(data.electronConfiguration).join(', ') || t("fields.noData")],
+        ["ionization", `${data.ionizationEnergy || t("fields.noData")} kJ/mol`],
+        ["spectralAnalysis", spectrumImg ? `<img src='${spectrumImg}'>` : t("fields.noData"), spectrumImg ? true : false],
 
-        [t("fields.group"), data.group || t("fields.noData")],
-        [t("fields.period"), data.period || t("fields.noData")],
+        ["group", data.group || t("fields.noData")],
+        ["period", data.period || t("fields.noData")],
 
-        [t("fields.meltingPoint"), `${data.melt || t("fields.noData")} K`],
-        [t("fields.boilingPoint"), `${data.boil || t("fields.noData")} K`],
-        [t("fields.heat"), `${data.heatCap || t("fields.noData")} J/kgK`],
-        [t("fields.thermalConductivity"), `${data.thermalConductivity || t("fields.noData")} W/mK`],
-        [t("fields.radius"), `${data.atomicRadius || t("fields.noData")} pm`],
-        [t("fields.density"), `${data.density || t("fields.noData")} kg/m<sup>3</sup>`],
-        [t("fields.atomicVolume"), `${((((data.atomicMass / 1000) / data.density) * 1e6)).toPrecision(3) || t("fields.noData")} cm<sup>3</sup>/mol`],
+        ["meltingPoint", `${data.melt || t("fields.noData")} K`],
+        ["boilingPoint", `${data.boil || t("fields.noData")} K`],
+        ["heat", `${data.heatCap || t("fields.noData")} J/kgK`],
+        ["thermalConductivity", `${data.thermalConductivity || t("fields.noData")} W/mK`],
+        ["radius", `${data.atomicRadius || t("fields.noData")} pm`],
+        ["density", `${data.density || t("fields.noData")} kg/m<sup>3</sup>`],
+        ["atomicVolume", `${((((data.atomicMass / 1000) / data.density) * 1e6)).toPrecision(3) || t("fields.noData")} cm<sup>3</sup>/mol`],
 
-        [t("fields.configuration"), data.electronStringConf || t("fields.noData")],
-        [t("fields.valence"), `${data.valence || t("fields.noData")}`],
-        [t("fields.oxidationStates"), `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || t("fields.noData")}`],
-        [t("fields.electronegativity"), data.electronegativity || t("fields.noData")],
-        [t("fields.electronAffinity"), `${data.electronAffinity || t("fields.noData")} kJ/mol`],
+        ["configuration", data.electronStringConf || t("fields.noData")],
+        ["valence", `${data.valence || t("fields.noData")}`],
+        ["oxidationStates", `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || t("fields.noData")}`],
+        ["electronegativity", data.electronegativity || t("fields.noData")],
+        ["electronAffinity", `${data.electronAffinity || t("fields.noData")} kJ/mol`],
 
-        [t("fields.discoveryDate"), helpers.formatDate(data.discovered, document.localizationLanguage) || t("fields.noData")]
+        ["discoveryDate", helpers.formatDate(data.discovered, t("language.code")) || t("fields.noData")]
     ];
 
     if (data.radioactive) {
         popupData.insertAdjacentHTML('beforeend', `
             <div class="radioactive">
-                <h3><b>${t("radioactive")}</b></h3>
+                <h3 data-tip="${t("tooltip.radioactive")}"><b>${t("radioactive")}</b></h3>
             </div>
         `);
     }
@@ -674,6 +678,8 @@ function infoElement(atomicNumber) {
         }
     });
     infoPopup.style.display = "block";
+    helpers.adjustElementsText('#CloseUp2', 'em', 60);
+    helpers.adjustElementsText('#CloseUp2', 'data', 60);
 }
 
 function tempChanged(k) {
@@ -695,19 +701,13 @@ function onDataLoaded(element, spectrum) {
     } else {
         URLUtils.removeParam('elinfo');
     }
-
     if (URLUtils.readParam('minigame')) {
         openMinigame();
     }
-
-
     temp = URLUtils.readParam('temp') ? URLUtils.readParam('temp') : DEFAULT_TEMP;
     updateTemperatureInputs(null, temp);
-
     visualizeOptionFunc(URLUtils.readParam('visualizeOption') || "category");
     document.getElementById('visualizeOption').value = URLUtils.readParam('visualizeOption') || "category";
-
-    helpers.adjustElementsText('.element', 'em', 60);
 }
 
 export {

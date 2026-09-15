@@ -22,6 +22,18 @@ html {
 	box-sizing: border-box;
 }
 
+html[lang="ja"] {
+	--tooltip-marker: "※";
+}
+
+html[lang="el"] {
+	--tooltip-marker: "?";
+}
+
+html[lang="en"] {
+	--tooltip-marker: "?";
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -298,14 +310,14 @@ optgroup {
 	filter: brightness(1.1);
 }
 
-#minigame-multipleChoice input[type="radio"]:checked + label {
+#minigame-multipleChoice input[type="radio"]:checked+label {
 	background-color: var(--primary_B);
 	box-shadow: var(--borderShadowColorEffectHover);
 	color: white;
 	transform: scale(1.05);
 }
 
-#minigame-multipleChoice input[type="radio"]:disabled + label {
+#minigame-multipleChoice input[type="radio"]:disabled+label {
 	background-color: var(--primary_B);
 	color: gray;
 	cursor: not-allowed;
@@ -412,7 +424,7 @@ body.temp-updating .CloseUp {
 #CloseUp *,
 #CloseUp2 *,
 .lanth-Act * {
-	pointer-events: none;
+	/* pointer-events: none; */
 	user-select: none;
 	z-index: 1;
 }
@@ -620,7 +632,7 @@ body.temp-updating .CloseUp {
 
 #minigamePopup>.infoContainer>.minigameContainer {
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 	align-items: center;
 	width: 100%;
 }
@@ -1046,4 +1058,31 @@ body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].f {
 
 .highlightElementState .unknownState {
 	background-color: var(--element-fill, var(--unknownState));
+}
+
+.tooltip {
+	position: fixed;
+	background: hsla(0, 0%, 12%, 0.5);
+	backdrop-filter: blur(10px);
+	border: 1px hsla(0, 0%, 24%, 0.5) solid;
+	padding: 5px;
+	color: white;
+	border-radius: 5px;
+	white-space: normal;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.2s;
+	z-index: 9999;
+
+	width: max-content;
+	max-width: min(500px, calc(100vw - 20px));
+	overflow-wrap: break-word;
+}
+
+[data-tip]:not([data-tip=""])::after {
+	content: var(--tooltip-marker, "※");
+	margin-left: 0.2em;
+	font-size: 0.8em;
+	vertical-align: super;
+	opacity: 0.7;
 }

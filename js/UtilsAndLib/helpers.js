@@ -117,13 +117,10 @@ export function adjustElementsText(element, child, width) {
         em.style.transform = 'none';
         em.style.letterSpacing = '';
         em.style.whiteSpace = 'nowrap';
-
         const natural = em.scrollWidth;
-
         const scale = natural > width
             ? width / natural
             : 1;
-
         em.style.transformOrigin = 'left center';
         em.style.transform = `scaleX(${scale})`;
     });
@@ -218,6 +215,7 @@ export function getBlock(el) {
         case 1: return 'p';
         case 2: return 'd';
         case 3: return 'f';
+        case 4: return 'g';
         default: return '?';
     }
     //return block;

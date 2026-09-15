@@ -8,10 +8,10 @@
 
     "button.share": "ページを共有",
     "button.minigame": "ミニゲーム",
-    "button.colorScheme": "色のテーマ",
+    "button.colorScheme": "カラーテーマ",
 
     "element.detail.pdfDownload": "PDFをダウンロード",
-    "element.detail.openInWiki": "ウィキペディアで開く",
+    "element.detail.openInWiki": "Wikipediaで開く",
 
     "minigame.window.answer": "答え：",
     "minigame.window.writtenAnswer.placeholder": "答えを入力...",
@@ -27,7 +27,7 @@
     "searchbar.placeholder": "元素を検索...",
 
     "visualizeOption": "表示方法：",
-    "visualizeOption.category": "分類",
+    "visualizeOption.category": "元素の分類",
     "visualizeOption.blocks": "ブロック",
     "visualizeOption.state": "状態",
     "visualizeOption.atomicMass": "原子量 (u)",
@@ -58,7 +58,7 @@
     "visualizeOption.abundance.human": "人体",
 
     "element.preview.atomic": "原子番号",
-    "element.preview.symbol": "記号",
+    "element.preview.symbol": "元素記号",
     "element.preview.name": "元素名",
     "element.preview.data": "データ",
     "element.preview.energyLevels": "電子殻",
@@ -74,10 +74,10 @@
     },
 
     "fields": {
-        "name": "名前",
+        "name": "元素名",
         "atomic": "原子番号",
         "mass": "原子量",
-        "category": "分類",
+        "category": "元素の分類",
         "block": "ブロック",
         "energyLevels": "電子殻",
         "ionization": "イオン化エネルギー",
@@ -375,5 +375,37 @@
         "liquid": "液体",
         "gas": "気体",
         "unknownState": "不明"
+    },
+
+    "tooltip": {
+        "name": "元素の名前です。",
+        "symbol": "元素を表す1文字または2文字の記号です。",
+        "atomic": "原子の中にある陽子の数です。元素ごとに決まっています。",
+        "mass": "原子の平均的な質量を表す値です。",
+        "category": "元素を性質の似たグループに分けたものです。",
+        "block": "電子配置の最後の電子が入る軌道の種類による区分です。s・p・d・fブロックがあります。",
+        "state": "通常の条件で、その元素が固体・液体・気体のどれであるかを表します。",
+        "energyLevels": "電子が入っている殻ごとの数です。たとえば「2, 8, 1」なら、1つ目の殻に2個、2つ目に8個、3つ目に1個の電子があります。",
+        "configuration": "電子がどの軌道に何個入っているかを表します。たとえば「1s1」は、1s軌道に電子が1個あることを表します。",
+        "ionization": "原子から電子を1個取り去るために必要なエネルギーです。",
+        "spectralAnalysis": "元素が出す光を波長ごとに分けたものです。元素ごとに特徴的なパターンがあります。",
+        "group": "周期表の縦の列です。同じ族の元素は似た性質を持つことがあります。",
+        "period": "周期表の横の列です。同じ周期の元素は同じ数の電子殻を持ちます。",
+        "meltingPoint": "固体が液体に変わり始める温度です。",
+        "boilingPoint": "液体が沸騰して気体に変わる温度です。",
+        "heat": "物質の温度を1 K上げるために必要なエネルギーの大きさです。",
+        "thermalConductivity": "熱が物質の中を伝わりやすいかどうかを表す値です。",
+        "radius": "原子の大きさの目安となる半径です。",
+        "density": "一定の体積あたりにどれだけ質量があるかを表します。",
+        "atomicVolume": "1 molの元素が占める体積の目安です。",
+        "valence": "原子が他の原子と結びつくときに使える結合の数の目安です。",
+        "oxidationStates": "化合物やイオンの中で、その元素が持つと考える電荷の値です。",
+        "electronegativity": "原子が化学結合の電子を引きつける強さを表します。",
+        "electronAffinity": "原子が電子を1個受け取るときに出入りするエネルギーです。",
+        "radioactive": "原子核が自然に変化し、そのとき放射線を出す性質です。",
+        "discoveryDate": "その元素が発見された年です。",
+        "abundance": "その元素がどのくらい存在しているかを表します。",
+        "linear": "値の増え方をそのまま表示する方法です。",
+        "logarithmic": "値の大きさを対数で表し、非常に大きな値と小さな値を比較しやすくする方法です。"
     }
 }

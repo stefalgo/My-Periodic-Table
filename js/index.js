@@ -1,10 +1,11 @@
 import { initEvents } from './Events.js';
 import { onDataLoaded } from './Main.js';
-import { sharePage } from './UtilsAndLib/helpers.js';
+import { sharePage, adjustElementsText } from './UtilsAndLib/helpers.js';
 import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js';
 import { OpenPopup as openMinigame } from './minigame.js';
+import * as classes from './UtilsAndLib/classes.js'
 
-const supportedLanguages = ["el", "ja", "en"];
+const supportedLanguages = ["el", "ja", "en", "arx-EL", "arx-EL-N"];
 
 function toggleColorScheme() {
     document.documentElement.classList.toggle('darkMode');
@@ -54,7 +55,7 @@ async function loadLocalization(language = "el") {
         const translations = await loadJson(`locales/${language}.json`);
         document.localization = translations;
         document.localizationLanguage = language;
-        document.documentElement.lang = language;
+        document.documentElement.lang = translations.language.code;
         document.querySelectorAll("[data-i18n]").forEach(element => {
             const key = element.dataset.i18n;
             const translation = t(key);
@@ -89,6 +90,9 @@ async function loadLocalization(language = "el") {
             }
             nameElement.textContent = localizedName;
         });
+
+        // adjustElementsText('.element', 'em', 55);
+        // adjustElementsText('.element', 'data', 55);
 
     } catch (error) {
         console.error("Failed to load localization:", error);
@@ -125,6 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         URLUtils.setParam("lan", language);
         await loadLocalization(language);
     });
+    const tooltipManager = new classes.TooltipManager();
     await loadLocalization(language);
     await bootstrap();
 });
