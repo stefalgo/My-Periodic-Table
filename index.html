@@ -137,6 +137,7 @@
 						<option data-i18n="visualizeOption.atomicVolume" value="atomicVolume">Ατομικός όγκος (cm3/mol)</option>
 
 						<option data-i18n="visualizeOption.spectralAnalysis" value="spectralAnalysis">Φασματική εκπομπή</option>
+						<option data-i18n="visualizeOption.bohrModel" value="bohrModel">Μοντέλο του Μπορ</option>
 						<option data-i18n="visualizeOption.radioactiveEl" value="radioactiveEl">Ραδιενεργά στοιχεία</option>
 						<option data-i18n="visualizeOption.discoveryDate" value="discoveryDate">Ανακαλύφθηκε</option>
 
@@ -259,7 +260,11 @@
 							</div>
 						</div>
 					</td>
-					<td colspan="3"></td>
+					<td data-tip="tooltip.bohrModel2" colspan="3" rowspan="3" class="empty noTooltip">
+						<div id="atom">
+							<div class="atom"></div>
+						</div>
+					</td>
 					<td colspan="2"></td>
 					<td colspan="5" class="description-cell">
 						<input type="checkbox" id="descriptionToggle">
@@ -283,13 +288,7 @@
 						<div class="element alkaline s" data-atomic="4"> <b>4</b> <abbr>Be</abbr> <em>Βηρύλλιο</em> <data>9.0122</data> </div>
 					</td>
 					<td></td>
-					<td></td>
-					<td class="empty">
-						<div id="atom">
-							<div class="atom"></div>
-						</div>
-					</td>
-					<td colspan="3"></td>
+					<td colspan="2"></td>
 					<td>
 						<div class="element metalloid p" data-atomic="5"> <b>5</b> <abbr>B</abbr> <em>Βόριο</em> <data>10.81</data> </div>
 					</td>
@@ -318,7 +317,7 @@
 						<div class="element alkaline s" data-atomic="12"> <b>12</b> <abbr>Mg</abbr> <em>Μαγνήσιο</em> <data>24.305</data> </div>
 					</td>
 					<td></td>
-					<td colspan="5"></td>
+					<td colspan="2"></td>
 					<td>
 						<div class="element poor p" data-atomic="13"> <b>13</b> <abbr>Al</abbr> <em>Αργίλιο</em> <data>26.982</data> </div>
 					</td>

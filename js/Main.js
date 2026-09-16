@@ -8,7 +8,7 @@ const periodicTable = document.getElementById('periodicTable');
 
 const DEFAULT_TEMP = 273
 
-let elementData, spectrumData;
+let elementData, spectrumData, bohrAtomData;
 
 let currentVisualizer = {
     params: null,
@@ -125,12 +125,12 @@ function showState(temp, updateAll) {
     statePhaseCache = nextPhaseCache;
 }
 
-function showSpectralAnalysis() {
+function showImageOnElement(imageDataJson) {
     //periodicTable.classList.add('other')
     getTableElements().forEach(el => {
         const key = el.dataset.atomic;
         const data = elementData?.[key];
-        const img = data ? spectrumData?.[data.symbol?.toLowerCase()] : null;
+        const img = data ? imageDataJson?.[data.symbol?.toLowerCase()] : null;
         if (img) {
             const nextImage = `url(${img})`;
             const currentImage = el.style.getPropertyValue('--element-bg-image');
@@ -138,7 +138,6 @@ function showSpectralAnalysis() {
             if (currentImage !== nextImage) {
                 el.style.setProperty('--element-bg-image', nextImage);
             }
-
             el.style.removeProperty('--element-fill');
         } else {
             el.style.removeProperty('--element-bg-image');
@@ -237,7 +236,13 @@ function visualizeOptionFunc(option) {
         'state': { action: () => showState(temp), once: () => showState(temp, true) },
         'spectralAnalysis': {
             action: () => {
-                showSpectralAnalysis();
+                showImageOnElement(spectrumData);
+                periodicTable.dataset.mode = "other";
+            }
+        },
+        'bohrModel': {
+            action: () => {
+                showImageOnElement(bohrAtomData);
                 periodicTable.dataset.mode = "other";
             }
         },
@@ -602,6 +607,7 @@ function infoElement(atomicNumber) {
 
     const data = elementData[atomicNumber];
     const spectrumImg = spectrumData[data.symbol.toLowerCase()] || '';
+    const bohrImg = bohrAtomData[data.symbol.toLowerCase()] || '';
 
     const wikipediaIframeOpen = () => openLinkInIframe(atomicNumber);
 
@@ -655,6 +661,7 @@ function infoElement(atomicNumber) {
         ["atomicVolume", `${((((data.atomicMass / 1000) / data.density) * 1e6)).toPrecision(3) || t("fields.noData")} cm<sup>3</sup>/mol`],
 
         ["configuration", data.electronStringConf || t("fields.noData")],
+        ["bohrModel", bohrImg ? `<img style="height: auto;" src='${bohrImg}'>` : t("fields.noData"), bohrImg ? true : false],
         ["valence", `${data.valence || t("fields.noData")}`],
         ["oxidationStates", `${data.oxidation?.replace(/c/g, '').replace(/,/g, ' ') || t("fields.noData")}`],
         ["electronegativity", data.electronegativity || t("fields.noData")],
@@ -690,9 +697,10 @@ function tempChanged(k) {
     updateVisualizer();
 }
 
-function onDataLoaded(element, spectrum) {
+function onDataLoaded(element, spectrum, bohrAtomIMG) {
     elementData = Object.freeze(element);
     spectrumData = Object.freeze(spectrum);
+    bohrAtomData = Object.freeze(bohrAtomIMG);
     if (!element) return;
     showElementData(
         elementData[URLUtils.readParam('SelectedElement')]

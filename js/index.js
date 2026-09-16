@@ -102,11 +102,12 @@ async function loadLocalization(language = "el") {
 
 async function bootstrap() {
     try {
-        const [elements, spectrumIMG] = await Promise.all([
+        const [elements, spectrumIMG, bohrAtomIMG] = await Promise.all([
             loadJson("JsonData/ElementsV6.json"),
-            loadJson("JsonData/spectrum.json")
+            loadJson("JsonData/spectrum.json"),
+            loadJson("JsonData/bohrAtom.json")
         ]);
-        onDataLoaded(elements, spectrumIMG);
+        onDataLoaded(elements, spectrumIMG, bohrAtomIMG);
         initEvents();
         console.log("loaded successfully");
     } catch (err) {
