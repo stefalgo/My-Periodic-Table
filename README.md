@@ -4,7 +4,7 @@
 
 # My Periodic Table
 
-https://stefalgo.github.io/My-Periodic-Table
+https://stefalgo.github.io/My-Periodic-Table/?lan=el
 
 ## Όλα τα 118 στοιχεία
 
