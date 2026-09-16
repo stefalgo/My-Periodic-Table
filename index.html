@@ -119,7 +119,7 @@
 						<option data-i18n="visualizeOption.state" value="state">Κατάσταση</option>
 
 						<option data-i18n="visualizeOption.atomicMass" value="atomicMass">Ατομική Μάζα (u)</option>
-						<option data-i18n="visualizeOption.energyLeves" value="energyLevels">Ηλεκτρονική δομή</option>
+						<option data-i18n="visualizeOption.energyLevels" value="energyLevels">Ηλεκτρονική δομή</option>
 						<option data-i18n="visualizeOption.configuration" value="configuration">Ηλεκτρονική διαμόρφωση</option>
 						<option data-i18n="visualizeOption.meltPoint" value="meltPoint">Σημείο τήξης (K)</option>
 						<option data-i18n="visualizeOption.boilPoint" value="boilPoint">Σημείο ζέσεως (K)</option>
@@ -136,7 +136,7 @@
 						<option data-i18n="visualizeOption.radius" value="radius">Ακτίνα (pm)</option>
 						<option data-i18n="visualizeOption.atomicVolume" value="atomicVolume">Ατομικός όγκος (cm3/mol)</option>
 
-						<option data-i18n="visualizeOption.spectralAnalysis" value="SpectralAnalysis">Φασματική εκπομπή</option>
+						<option data-i18n="visualizeOption.spectralAnalysis" value="spectralAnalysis">Φασματική εκπομπή</option>
 						<option data-i18n="visualizeOption.radioactiveEl" value="radioactiveEl">Ραδιενεργά στοιχεία</option>
 						<option data-i18n="visualizeOption.discoveryDate" value="discoveryDate">Ανακαλύφθηκε</option>
 
@@ -261,10 +261,12 @@
 					</td>
 					<td colspan="3"></td>
 					<td colspan="2"></td>
-					<td colspan="5">
-						<p style="margin: 0px;" id="ViewDescription">
+					<td colspan="5" class="description-cell">
+						<input type="checkbox" id="descriptionToggle">
 
-						</p>
+						<label for="descriptionToggle">
+							<p id="ViewDescription"></p>
+						</label>
 					</td>
 					<td>
 						<div class="element noble s" data-atomic="2"> <b>2</b> <abbr>He</abbr> <em>Ήλιο</em> <data>4.0026</data> </div>

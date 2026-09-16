@@ -235,7 +235,7 @@ function visualizeOptionFunc(option) {
         'category': {},
         'blocks': { action: () => showBlocks() },
         'state': { action: () => showState(temp), once: () => showState(temp, true) },
-        'SpectralAnalysis': {
+        'spectralAnalysis': {
             action: () => {
                 showSpectralAnalysis();
                 periodicTable.dataset.mode = "other";
@@ -395,6 +395,9 @@ function visualizeOptionFunc(option) {
     if (currentVisualizer.params) {
         visualize(...currentVisualizer.params);
     }
+
+    document.getElementById('ViewDescription').textContent = t(`visualizeOption.description.${option}`);
+    document.getElementById('ViewDescription').dataset.i18n = `visualizeOption.description.${option}`;
 
     helpers.adjustElementsText('.element', 'em', 55);
     helpers.adjustElementsText('.element', 'data', 55);
