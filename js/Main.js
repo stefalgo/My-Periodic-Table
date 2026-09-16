@@ -396,8 +396,8 @@ function visualizeOptionFunc(option) {
         visualize(...currentVisualizer.params);
     }
 
-    document.getElementById('ViewDescription').textContent = t(`visualizeOption.description.${option}`);
-    document.getElementById('ViewDescription').dataset.i18n = `visualizeOption.description.${option}`;
+    document.getElementById('ViewDescriptionText').textContent = t(`visualizeOption.description.${option}`);
+    document.getElementById('ViewDescriptionText').dataset.i18n = `visualizeOption.description.${option}`;
 
     helpers.adjustElementsText('.element', 'em', 55);
     helpers.adjustElementsText('.element', 'data', 55);

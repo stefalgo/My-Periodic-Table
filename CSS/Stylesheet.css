@@ -4,22 +4,20 @@
 
 :root {
 	--hoverShadow: 0 0 10px var(--hoverColor);
-
 	--borderShadowColorEffectHover: inset 0 0 0 2px #0099ff;
-
 	--borderShadowColorEffectClick: inset 0 0 0 2px #ff4a4a;
-
 	--transitionTime: 0.3s;
 }
 
 /**------------------------------------------------**/
-* {
-	box-sizing: inherit;
-}
 
 html {
 	height: 100%;
 	box-sizing: border-box;
+}
+
+* {
+	box-sizing: inherit;
 }
 
 html[lang="ja"] {
@@ -563,6 +561,10 @@ body.temp-updating .CloseUp {
 	box-shadow: var(--borderShadowColorEffect);
 }
 
+#propertyKey {
+	align-content: center;
+}
+
 #periodicTable:is([data-mode="category"]) .elementsClassView {
 	transform: translateY(calc(0 * 100%));
 }
@@ -920,10 +922,12 @@ only screen and (max-height: 650px) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	body * {
-		animation: none !important;
-		transition: none !important;
-	}
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
 }
 
 @keyframes spin {
@@ -1088,40 +1092,61 @@ body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].f {
 }
 
 .description-cell {
-	position: relative;
-	height: 60px;
+    position: relative;
+    height: 60px;
 }
 
 #descriptionToggle {
-	display: none;
+    display: none;
 }
 
 #ViewDescription {
-	margin: 2px;
+    margin: 2px;
 	padding: 5px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 60px;
-	overflow: hidden;
-	z-index: 5;
-	background: var(--background_C);
-	box-shadow: inset 0 -18px 15px -15px var(--textColor_C);
-	cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    overflow: hidden;
+    z-index: 5;
+    background: var(--background_C);
+    box-shadow: inset 0 -18px 15px -15px var(--textColor_C);
+    cursor: pointer;
 }
 
-#ViewDescription:hover {
-	/* height: auto;
+#ViewDescriptionText {
+    display: block;
+    animation: descriptionAutoScroll 20s linear infinite;
+}
+
+#descriptionToggle:checked + label #ViewDescription {
+    height: auto;
     max-height: 500px;
-    overflow: visible; */
+    min-height: 60px;
+    overflow: visible;
+    box-shadow: var(--borderShadowColorEffectClick);
+}
+
+#descriptionToggle:hover + label #ViewDescription {
 	box-shadow: var(--borderShadowColorEffectHover);
 }
 
-#descriptionToggle:checked+label #ViewDescription {
-	height: auto;
-	max-height: 500px;
-	min-height: 60px;
-	overflow: visible;
-	box-shadow: var(--borderShadowColorEffectClick);
+#descriptionToggle:checked + label #ViewDescriptionText {
+    animation: none;
+}
+
+@keyframes descriptionAutoScroll {
+    0%,
+    20% {
+        transform: translateY(0);
+    }
+
+    60% {
+        transform: translateY(calc(-100% + 50px));
+    }
+
+    100% {
+        transform: translateY(calc(-100% + 50px));
+    }
 }
