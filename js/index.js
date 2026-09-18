@@ -5,7 +5,7 @@ import * as URLUtils from './UtilsAndLib/UrlParamsUtils.js';
 import { OpenPopup as openMinigame } from './minigame.js';
 import * as classes from './UtilsAndLib/classes.js'
 
-const supportedLanguages = ["el", "ja", "en", "arx-EL", "arx-EL-N"];
+const supportedLanguages = ["el", "ja", "en", "ru", "arx-EL", "arx-EL-N"];
 
 function toggleColorScheme() {
     document.documentElement.classList.toggle('darkMode');
