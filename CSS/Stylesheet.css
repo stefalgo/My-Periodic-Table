@@ -1158,6 +1158,7 @@ body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].f {
 
 #ViewDescriptionText {
 	display: block;
+	min-height: 100%;
 	animation: descriptionAutoScroll 20s linear infinite;
 }
 
