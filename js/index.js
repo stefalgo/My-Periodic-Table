@@ -136,9 +136,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         initial: language,
 
         languages: [
+            { code: "ja", name: "日本語", flag: "../Media/SVGs/jp.svg" },
             { code: "en", name: "English", flag: "../Media/SVGs/gb.svg" },
             { code: "el", name: "Ελληνικά", flag: "../Media/SVGs/gr.svg" },
-            { code: "ja", name: "日本語", flag: "../Media/SVGs/jp.svg" }
         ],
 
         onChange: async (code, language) => {
