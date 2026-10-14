@@ -120,16 +120,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.sharePage = sharePage;
     window.openMinigame = openMinigame;
     document.documentElement.classList.add("darkMode");
-    const languageSelect = document.querySelector("#language");
+    //const languageSelect = document.querySelector("#language");
     const urlLanguage = URLUtils.readParam('lan');
     const browserLanguage = navigator.language.split("-")[0];
     const language = supportedLanguages.includes(urlLanguage) ? urlLanguage : supportedLanguages.includes(browserLanguage) ? browserLanguage : "en";
-    languageSelect.value = language;
-    languageSelect.addEventListener("change", async () => {
-        const language = languageSelect.value;
-        URLUtils.setParam("lan", language);
-        await loadLocalization(language);
+    // languageSelect.value = language;
+    // languageSelect.addEventListener("change", async () => {
+    //     const language = languageSelect.value;
+    //     URLUtils.setParam("lan", language);
+    //     await loadLocalization(language);
+    // });
+
+    const languageDropdown = new classes.LanguageDropdown("#languageDropdown", {
+        flagsPath: "flags/",
+        initial: language,
+
+        languages: [
+            { code: "en", name: "English", flag: "../Media/SVGs/gb.svg" },
+            { code: "el", name: "Ελληνικά", flag: "../Media/SVGs/gr.svg" },
+            { code: "ja", name: "日本語", flag: "../Media/SVGs/jp.svg" }
+        ],
+
+        onChange: async (code, language) => {
+            URLUtils.setParam("lan", code);
+            await loadLocalization(code);
+        }
     });
+
     const tooltipManager = new classes.TooltipManager();
     await loadLocalization(language);
     await bootstrap();
