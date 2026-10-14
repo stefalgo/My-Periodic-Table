@@ -220,7 +220,10 @@ function OpenPopup() {
     function closePopup() {
         score = 0;
         totalQuestions = 0;
-        minigameScore.innerHTML = `Σκορ: <span style='color: var(--success);'>${score}</span>/<span style='color: var(--danger);'>${totalQuestions - score}</span>`;
+        minigameScore.innerHTML = t("minigame.window.score", {
+            score: score,
+            remaining: totalQuestions - score
+        });
         URLUtils.removeParam('minigame');
         popup.style.display = "none";
         popup.querySelector('.close-btn').removeEventListener('click', closePopup);
@@ -228,6 +231,11 @@ function OpenPopup() {
 
     popup.style.display = "block";
     popup.querySelector('.close-btn').addEventListener('click', closePopup);
+
+    minigameScore.innerHTML = t("minigame.window.score", {
+        score: score,
+        remaining: totalQuestions - score
+    });
 
     popup.addEventListener('click', (e) => {
         if (e.target === popup) {
