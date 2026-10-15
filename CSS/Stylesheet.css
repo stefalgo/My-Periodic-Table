@@ -1300,6 +1300,10 @@ body:has(#periodicTable[data-mode="blocks"]) [id^="CloseUp"].f {
 	animation: none;
 }
 
+#ViewDescription:hover #ViewDescriptionText {
+    animation-play-state: paused;
+}
+
 @keyframes descriptionAutoScroll {
 
 	0%,

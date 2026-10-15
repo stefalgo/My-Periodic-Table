@@ -168,7 +168,7 @@ export class LanguageDropdown {
 
             const check = document.createElement("span");
             check.className = "language-dropdown-check";
-            check.textContent = "✓";
+            check.textContent = "<";
             check.setAttribute("aria-hidden", "true");
 
             button.append(flag, name, check);
