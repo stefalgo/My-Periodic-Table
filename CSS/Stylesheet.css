@@ -217,7 +217,7 @@ input[type="range"]::-moz-range-thumb {
 	gap: 7px;
 	box-sizing: border-box;
 	height: 32px;
-	min-width: 72px;
+	/* min-width: 72px; */
 	padding: 0 10px;
 	background: var(--primary_A);
 	font: inherit;
@@ -317,6 +317,12 @@ input[type="range"]::-moz-range-thumb {
 
 .language-dropdown-option[aria-selected="true"] .language-dropdown-check {
 	display: inline;
+}
+
+@media (max-width: 600px) {
+    .language-dropdown-trigger .language-dropdown-name {
+        display: none;
+    }
 }
 
 /* -------------------------------------------------------- */
