@@ -46,7 +46,7 @@ The data is combined into a single file.
 
 Currently in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
 
-## Format of ElementsV5.json
+## Format of ElementsV6.json `2026.9.15`
 
 ```jsonc
 {
@@ -86,7 +86,6 @@ Currently in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
         "group": 1,
         "discovered": "1766"
     },
-
     //...
 }
 ```

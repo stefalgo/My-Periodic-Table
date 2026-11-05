@@ -46,7 +46,7 @@ https://wikipedia.org
 
 現在使用しているファイル: `JsonData/ElementsV6.json` と `JsonData/spectrum.json`
 
-## ElementsV5.jsonの形式
+## ElementsV6.jsonの形式 `2026.9.15`
 
 ```jsonc
 {

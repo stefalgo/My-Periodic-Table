@@ -45,7 +45,7 @@ Data are combined into 1 file.
 
 Current in use: `JsonData/ElementsV6.json` and `JsonData/spectrum.json`
 
-## Format ElementsV5.json
+## Format ElementsV6.json `2026.9.15`
 
 ```jsonc
 {
