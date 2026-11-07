@@ -109,4 +109,4 @@ spectrum.jsonは「https://pse-info.de」のデータを使用しており、独
 
 # 作者
 
-(c) 2025 [@stefalgo](https://github.com/stefalgo). Licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International [CC BY-NC-ND 4.0](./LICENSE.md).
+(c) 2025 [@stefalgo](https://github.com/stefalgo). Licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International [CC BY-NC-ND 4.0](./LICENSE).
